@@ -1,0 +1,63 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <%= f.label :email, class: 'sr-only' %>
+    <div class="input-group">
+      <div class="input-group-addon"><i class='glyphicon glyphicon-envelope'></i></div>
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Email', autofocus: true, required: true, 'aria-required': true %>
+    </div>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <i>(leave password fields blank if you don't want to change it)</i>
+  <div class="form-group">
+    <%= f.label :password, class: 'sr-only' %>
+    <div class="input-group">
+      <div class="input-group-addon"><i class='glyphicon glyphicon-asterisk'></i></div>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password', autocomplete: "off" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'sr-only' %>
+    <div class="input-group">
+      <div class="input-group-addon"><i class='glyphicon glyphicon-asterisk'></i></div>
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password', autocomplete: "off" %>
+    </div>
+  </div>
+  <i>(we need your current password to confirm your changes)</i>
+  <div class="form-group">
+    <%= f.label :current_password, class: 'sr-only' %>
+    <div class="input-group">
+      <div class="input-group-addon"><i class='glyphicon glyphicon-asterisk'></i></div>
+      <%= f.password_field :current_password, class: 'form-control', placeholder: 'Current Password', autocomplete: "off", required: true, 'aria-required': true %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
+<br>
+<div style='text-align:center'>
+  <%= link_to "Back to Cedar", :back %>
+</div>
+
+<br><br>
+<h3>Cancel my account</h3>
+
+<%
+  confirm_delete = {
+    :'sweet-alert-confirm' => 'Are you sure you want to delete your account?',
+    :'confirm-button-text' => 'Yes, delete my account',
+    :'cancel-button-text' => 'No thanks',
+    :'confirm-button-color' => '#da534b',
+    :'sweet-alert-type' => 'warning'
+  }
+%>
+
+<p>Feel like leaving Cedar? <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-danger btn-block', method: :delete, data: confirm_delete %></p>

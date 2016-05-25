@@ -1,0 +1,22 @@
+# Mongoid Configuration for Travis CI
+# ===================================
+#
+development:
+  clients:
+    default:
+      database: cedar_development
+      hosts:
+        - localhost:27017
+test:
+  clients:
+    default:
+      database: cedar_test
+      hosts:
+        - <%= ENV['TEST_DB_HOST'] || 'localhost' %>:27017
+
+production:
+  clients:
+    default:
+      database: cedar_production
+      hosts:
+        - localhost:27017

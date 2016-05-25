@@ -1,0 +1,534 @@
+.cedar .navbar-fixed-top .navbar-collapse {
+  max-height: 1000px;}
+
+.cedar-user {}
+  .cedar-user h2 {
+    text-align: center;}
+
+.db-right-border {
+  border-right: 1px solid #9a79a6; }
+
+.content-right-border {
+  border-right: 1px solid #939597; }
+
+.navbar {
+  background-color: #432748;
+  border-color: #432748;
+  height: 60px; }
+  .navbar .navbar-nav {
+    background: #432748; }
+  .navbar .navbar-brand {
+    padding: 5px 10px 0px 0px; }
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+  height: 60px;
+  padding-top: 20px; }
+  .navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #6b576f; }
+  .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: #6b576f; }
+  .navbar-inverse .navbar-nav > li > a:active {
+    background-color: #6b576f; }
+
+.db-overview {
+  margin-bottom: 18px;
+  height: 166px;
+  padding-top: 12px;
+  color: #58585b;
+  text-align: center; }
+  .db-overview .db-center-results {
+    display: inline-block;
+    margin-top: 34px; }
+  .db-overview .db-overview-icon {
+    width: auto;
+    margin-top: 11px;
+    float: left; }
+    .db-overview .db-overview-icon span {
+      color: white;
+      font-size: 28px;
+      border-radius: 4px;
+      padding: 8px;
+      margin-right: 12px; }
+    .db-overview .db-overview-icon .overview-totals {
+      background-color: #9a79a6; }
+    .db-overview .db-overview-icon .overview-passed {
+      background-color: #58b956; }
+    .db-overview .db-overview-icon .overview-incomplete {
+      background-color: #989898; }
+    .db-overview .db-overview-icon .overview-error {
+      background-color: #da534b; }
+  .db-overview .db-overview-results {
+    width: 100px;
+    float: left; }
+    .db-overview .db-overview-results h1 {
+      font-size: 60px;
+      height: 110px;
+      padding: 0px;
+      margin-top: 0px;
+      text-align: left; }
+      .db-overview .db-overview-results h1 p {
+        font-size: 14px;
+        color: #585858;
+        text-transform: uppercase;
+        text-align: left;
+        padding-left: 4px; }
+
+.progress-wizard {
+  background: #6b576f;
+  width: 100%;
+  margin-top: -10px;
+  padding-bottom: 5px;}
+  .progress-wizard ol {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;}
+    .progress-wizard ol li {
+      display: table-cell;
+      text-align: center;}
+      .progress-wizard ol li a {
+        color: white;}
+      .progress-wizard ol li.unfinished a {
+        text-decoration: none !important;
+        cursor: default;}
+      .progress-wizard ol li.current a {
+        font-weight: bold;}
+
+/* Override for bootstrap-slider */
+.slider.slider-disabled .slider-track {
+  cursor: default !important;}
+
+.process-nav {
+  background-color: white;
+  border-top: 1px solid #6b576f;
+  padding-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 80px; }
+
+.processwizard {
+  background-color: #6b576f;
+  margin-top: -30px;
+  margin-bottom: 12px;
+  height: 128px; }
+  .processwizard p {
+    color: white; }
+  .processwizard a {
+    color: white;
+    font-weight: bold; }
+    .processwizard a:hover {
+      text-decoration: none; }
+    .processwizard a:focus {
+      text-decoration: none; }
+    .processwizard a:active {
+      text-decoration: none; }
+  .processwizard a.disabled {
+    color: #c0b8c1;
+    font-weight: normal; }
+  .processwizard ul {
+    padding-left: 0px; }
+  .processwizard ul > li {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    margin-top: 40px; }
+    .processwizard ul > li:first-child {
+      text-align: left;
+      padding-left: 22px; }
+    .processwizard ul > li:nth-child(2) {
+      padding-left: 15px; }
+    .processwizard ul > li:nth-child(3) {
+      padding-left: 98px; }
+    .processwizard ul > li:nth-child(4) {
+      padding-left: 88px; }
+    .processwizard ul > li:last-child {
+      text-align: right;
+      padding-right: 34px; }
+
+.process-title {
+  margin-bottom: 25px; }
+
+.process-content {
+  margin-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px; }
+  .process-content .form-group {
+    margin-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px; }
+
+.process-download {
+  height: 330px;
+  padding-top: 50px; }
+  .process-download .download-button {
+    padding-top: 25px; }
+    .process-download .download-button span {
+      color: white;
+      font-size: 58px; }
+    .process-download .download-button .circle {
+      width: 148px;
+      height: 148px;
+      background: #317dbe;
+      padding: 40px 0px 0px 6px;
+      border-radius: 100%;
+      color: white;
+      text-align: center; }
+
+.download-instructions h4 {
+  margin-bottom: 32px; }
+
+.download-instructions .instruction-steps {
+  margin-bottom: 42px;
+  height: 38px; }
+  .download-instructions .instruction-steps .numbers {
+    background-color: #3c763d;
+    color: white;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 1px; }
+  .download-instructions .instruction-steps p {
+    margin-left: 50px; }
+
+.db-panels .panel {
+  margin-top: 20px;
+  border-radius: 10px; }
+  .db-panels .panel .panel-heading {
+    text-align: left;
+    font-size: 18px;
+    color: #58585b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    font-weight: 500; }
+    .db-panels .panel .panel-heading a {
+      color: #337ab7;
+      padding: 0px; }
+      .db-panels .panel .panel-heading a:hover {
+        text-decoration: none;
+        color: #6d6e70; }
+      .db-panels .panel .panel-heading a:focus {
+        text-decoration: none;
+        color: #6d6e70; }
+      .db-panels .panel .panel-heading a:active {
+        text-decoration: none;
+        color: #6d6e70; }
+    .db-panels .panel .panel-heading .dropdown-menu {
+      padding-left: 15px; }
+  .db-panels .panel .panel-body {
+    padding-top: 5px;
+    overflow-y: scroll;
+    height: 400px; }
+  .db-panels .panel h4 {
+    color: #999;
+    padding-top: 60px; }
+    .db-panels .panel h4 span {
+      font-size: 54px;
+      margin-bottom: 15px; }
+    .db-panels .panel h4 p {
+      color: #666; }
+  .db-panels .panel .list-group-item {
+    text-align: left;
+    border-top: 0px;
+    padding: 6px 0px 0px 0px;
+    margin-bottom: 5px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    height: 52px; }
+    .db-panels .panel .list-group-item:last-child {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px; }
+    .db-panels .panel .list-group-item .item-row1 {
+      height: 24px; }
+      .db-panels .panel .list-group-item .item-row1 a {
+        font-weight: 500; }
+        .db-panels .panel .list-group-item .item-row1 a:hover {
+          text-decoration: none;
+          color: #6d6e70; }
+        .db-panels .panel .list-group-item .item-row1 a:focus {
+          text-decoration: none;
+          color: #6d6e70; }
+        .db-panels .panel .list-group-item .item-row1 a:active {
+          text-decoration: none;
+          color: #6d6e70; }
+      .db-panels .panel .list-group-item .item-row1 span {
+        padding-left: 8px; }
+    .db-panels .panel .list-group-item .item-row2 {
+      height: 24px;
+      font-size: 12px;
+      color: #666; }
+      /* Use the next class for incomplete tests (Blue with gray background) */
+      .db-panels .panel .list-group-item .item-row2 .test-progress-incomplete {
+        height: 6px;
+        width: 120px;
+        background-color: #DDD;
+        margin-top: 6px; }
+      .db-panels .panel .list-group-item .item-row2 .test-progress-steps {
+        height: 6px;
+        width: 80px;
+        background-color: #00adef; }
+      /* Use the next two classes for complete tests (Green with red background) */
+      .db-panels .panel .list-group-item .item-row2 .test-progress-complete {
+        height: 6px;
+        width: 120px;
+        background-color: #da534b;
+        margin-top: 6px; }
+      .db-panels .panel .list-group-item .item-row2 .test-progress-passed {
+        height: 6px;
+        width: 120px;
+        background-color: #58b956;}
+      .db-panels .panel .list-group-item .item-row2 span {
+        padding-right: 6px; }
+
+.sv-panels {
+  padding-right: 50px;
+  padding-left: 30px;
+  margin-top: 20px;
+  text-align: left;
+  margin-bottom: 20px; }
+  .sv-panels .panel-selection-bar {
+    padding-left: 10px;
+    border-bottom: 1px solid #f1f1f2;
+    margin-bottom: 10px; }
+  .sv-panels .panel-body {
+    background-color: #f1f1f2;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .sv-panels .panel-selection {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    width: 30px;
+    padding-left: 10px;
+    padding-top: 5px; }
+  .sv-panels .panel-toggle {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    height: 48px;
+    width: 30px;
+    cursor: pointer; }
+    .sv-panels .panel-toggle span {
+      margin-left: 10px;
+      margin-top: 24px;
+      padding-top: 10px;
+      height: 5px; }
+  .sv-panels .panel {
+    padding-right: 30px;
+    padding-left: 30px; }
+    .sv-panels .panel .panel-heading {
+      border-radius: 0px;
+      background-color: white;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd; }
+      .sv-panels .panel .panel-heading .panel-title {
+        margin-top: 4px; }
+
+.er-panels {
+  padding-right: 30px;
+  padding-left: 30px;
+  text-align: left;
+  margin-bottom: 20px; }
+  .er-panels .panel .panel-heading {
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white; }
+    .er-panels .panel .panel-heading h3 {
+      padding-left: 15px; }
+  .er-panels .panel .list-group-header {
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 11px;
+    padding-top: 6px;
+    background-color: #f1f1f2; }
+    .er-panels .panel .list-group-header .doc-name {
+      padding-left: 15px; }
+    .er-panels .panel .list-group-header .slct-results {
+      margin-right: 16px;
+      text-align: center;
+      width: 136px; }
+  .er-panels .panel .panel-body {
+    padding-top: 0px; }
+    .er-panels .panel .panel-body .list-group-item {
+      text-align: left;
+      border-top: 0px;
+      padding: 6px 0px 0px 0px;
+      margin-bottom: 5px;
+      border-left: 0px;
+      border-right: 0px;
+      border-bottom: 1px solid #ddd;
+      background-color: transparent;
+      height: 52px; }
+      .er-panels .panel .panel-body .list-group-item span {
+        padding-right: 10px; }
+      .er-panels .panel .panel-body .list-group-item:last-child {
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px; }
+      .er-panels .panel .panel-body .list-group-item .document {
+        padding-top: 6px; }
+
+.td-panel .list-group-item {
+  padding: 0px 20px 0px 20px; }
+
+.overview-panels {
+  padding-right: 50px;
+  padding-left: 30px;
+  text-align: left;
+  margin-bottom: 20px; }
+  .overview-panels .panel-selection-bar {
+    padding-left: 18px;
+    padding-right: 46px;
+    height: 26px;
+    border-bottom: 1px solid #f1f1f2;
+    margin-bottom: 10px;
+    font-weight: bold; }
+    .overview-panels .panel-selection-bar .bar-column1 {
+      text-align: center; }
+    .overview-panels .panel-selection-bar .bar-column2 {
+      text-align: center;
+      width: 144px; }
+    .overview-panels .panel-selection-bar .bar-column3 {
+      text-align: center;
+      width: 134px; }
+    .overview-panels .panel-selection-bar .bar-column4 {
+      text-align: center;
+      width: 110px; }
+  .overview-panels .panel-body {
+    background-color: #f1f1f2;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px; }
+    .overview-panels .panel-body .default-message {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px; }
+      .overview-panels .panel-body .default-message:last-child {
+        margin-bottom: 0px;
+        border-bottom: 0px; }
+      .overview-panels .panel-body .default-message h5 {
+        font-weight: 900; }
+    .overview-panels .panel-body .error-message {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px; }
+      .overview-panels .panel-body .error-message:last-child {
+        margin-bottom: 0px;
+        border-bottom: 0px; }
+      .overview-panels .panel-body .error-message h5 {
+        font-weight: 900; }
+  .overview-panels .panel-selection {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    height: 58px;
+    width: 30px;
+    padding-left: 10px;
+    padding-top: 10px; }
+  .overview-panels .panel-toggle {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    height: 58px;
+    width: 30px;
+    cursor: pointer; }
+    .overview-panels .panel-toggle span {
+      margin-left: 10px;
+      margin-top: 26px;
+      padding-top: 10px;
+      height: 10px; }
+  .overview-panels .panel {
+    padding-right: 30px; }
+    .overview-panels .panel .panel-heading {
+      overflow: hidden;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-color: white;
+      border-right: 1px solid #ddd; }
+      .overview-panels .panel .panel-heading h2 {
+        margin: 0px; }
+      .overview-panels .panel .panel-heading .label {
+        font-weight: normal; }
+      .overview-panels .panel .panel-heading .column1 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px; }
+      .overview-panels .panel .panel-heading .column2 {
+        text-align: center;
+        margin-left: 6px;
+        border-left: 1px solid #ddd;
+        width: 142px; }
+        .overview-panels .panel .panel-heading .column2 span {
+          margin-right: 6px;
+          color: #989898; }
+      .overview-panels .panel .panel-heading .column3 {
+        text-align: center;
+        margin-right: 20px;
+        width: 100px; }
+      .overview-panels .panel .panel-heading .column4 {
+        text-align: center;
+        margin-right: 10px;
+        width: 100px; }
+      .overview-panels .panel .panel-heading .panel-title {
+        margin-top: 12px; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url('VarelaRound-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Varela Round', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /* Margin bottom by footer height */
+  margin-bottom: 35px;
+  /* Padding top by navbar height */
+  padding-top: 70px; }
+
+.footer {
+  background-color: #432748;
+  text-align: center;
+  height: 35px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  .footer p {
+    color: #c0b8c1;
+    padding-top: 8px;
+    font-size: 12px; }
+
+.cedar-btn-accept, .cedar-btn-reject,
+.cedar-btn-accept:hover, .cedar-btn-reject:hover {
+  background: white;
+  color: black;
+  border-color: #CCC;}
+  .cedar-btn-accept label, .cedar-btn-reject label {
+    cursor: pointer;}
+  .cedar-btn-accept.active {
+    color: white;
+    border-color: #CCC;
+    background: #3c763d;}
+
+/* Bootstrap overrides for a11y and style */
+.label-default {
+  background-color: #666;
+}
+.label-success {
+  background-color: #3c763d;
+}
+.label-danger {
+  background-color: #c9302c;
+}
+.tooltip {
+  font-family: 'Varela Round';
+}

@@ -1,0 +1,42 @@
+<%= form_for(@validation) do |f| %>
+  <style>
+    .field input, .field textarea {
+      width: 100%;
+    }
+  </style>
+  <% if @validation.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@validation.errors.count, 'error') %> prohibited this validation from being saved:</h2>
+
+      <ul>
+      <% @validation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field'>
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class='field'>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class='field'>
+    <%= f.label :overview_text %><br>
+    <%= f.text_area :overview_text %>
+  </div>
+  <div class='field'>
+    <%= f.label :qrda_type %><br>
+    <%= f.select(:qrda_type, ['1','3','all']) %>
+  </div>
+  <div class='actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

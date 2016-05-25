@@ -1,0 +1,22 @@
+<script>
+  $(document).ready( function(){
+    // Render the progress bubbles by abusing the bootstrap-slider
+    $('#progress-bubbles').slider({
+      ticks: <%= (1..steps).to_a %>,
+      enabled: false,
+      tooltip: 'hide',
+      value: <%= step %>
+    });
+    // Prevent users from skipping ahead
+    $('.unfinished a').click(function(event){
+      event.preventDefault();
+    });
+  });
+</script>
+<div class='progress-wizard' style='height:45px;padding-top:10px' role='presentation'>
+  <div class='container'>
+    <div class='col-md-12 text-center'>
+      <input type='text' id='progress-bubbles' style='width:83%;' />
+    </div>
+  </div>
+</div>

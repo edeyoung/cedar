@@ -1,0 +1,31 @@
+<div class='container'>
+  <p id='notice'><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @validation.name %>
+  </p>
+
+  <p>
+    <strong>Code:</strong>
+    <%= @validation.code %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @validation.description %>
+  </p>
+
+  <p>
+    <strong>Overview Text:</strong>
+    <%= @validation.overview_text %>
+  </p>
+
+  <p>
+    <strong>QRDA Type:</strong>
+    <%= @validation.qrda_type %>
+  </p>
+
+  <%= link_to 'Edit', edit_validation_path(@validation) %> |
+  <%= link_to 'Back', validations_path %>
+</div>

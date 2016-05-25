@@ -1,0 +1,40 @@
+<div class='container'>
+  <% flash.each do |name, msg| %>
+    <% if flash.keys[0] == 'error' %>
+      <%= content_tag :div, msg.html_safe, class: 'alert alert-danger' %>
+    <% else %>
+      <%= content_tag :div, msg.html_safe, class: 'alert alert-info' %>
+    <% end %>
+  <% end %>
+
+  <script>
+    $(document).ready( function(){
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+  </script>
+
+  <%= render partial: 'test_executions/dashboard_totals',
+             locals: {test_executions_num: @test_executions.length,
+                      tests_passed_num: @tests_passed.length,
+                      tests_failed_num: @tests_failed.length,
+                      tests_incomplete_num: @tests_incomplete.length} %>
+
+  <% unless @prevent_test %>
+    <div class='col-lg-12 text-center'>
+      <%= link_to new_test_execution_path, class: 'btn btn-primary btn-lg' do %>
+        <i class='glyphicon glyphicon-leaf'></i>&nbsp;Create a New Test
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render partial: 'test_executions/dashboard_panel_tests',
+             locals: {panel_title: 'PASSED',
+                      tests: @tests_passed} %>
+  <%= render partial: 'test_executions/dashboard_panel_tests',
+             locals: {panel_title: 'FAILED',
+                      tests: @tests_failed} %>
+  <%= render partial: 'test_executions/dashboard_panel_tests',
+             locals: {panel_title: 'INCOMPLETE',
+                      tests: @tests_incomplete} %>
+
+</div>

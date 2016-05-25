@@ -1,0 +1,85 @@
+<% if tests.size == 0 %>
+  <div class='col-md-4 db-panels'>
+    <div class='panel panel-default'>
+      <div class='panel-heading'><%= panel_title %></div>
+      <div class='panel-body'>
+        <div class='text-center'>
+          <h4><span aria-hidden='true' class='glyphicon glyphicon-leaf'></span><p>No Tests</p></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <script>
+    // Set up the sorting events
+    $( document ).ready(function() {
+      $( '.sort-<%= panel_title %>-name' ).click(function() {
+        tinysort('.list-<%= panel_title %> .list-group-item',{attr:'data-name'})
+      });
+      $( '.sort-<%= panel_title %>-date' ).click(function() {
+        tinysort('.list-<%= panel_title %> .list-group-item',{attr:'data-date'})
+      });
+    });
+  </script>
+  <div class='col-md-4 db-panels'>
+    <div class='panel panel-default'>
+      <div class='panel-heading'><%= panel_title %>
+        <div class='dropdown pull-right'>
+          <a class='dropdown-toggle pull-right' style='cursor:pointer' data-toggle='dropdown' id='menu<%= panel_title %>'>Sort <span class='caret'></span></a>
+          <ul class='dropdown-menu'>
+            <li><button class='btn btn-link sort-<%= panel_title %>-date'>Date</button>
+            <li><button class='btn btn-link sort-<%= panel_title %>-name'>A-Z</button>
+          </ul>
+        </div>
+      </div>
+      <div class='panel-body list-<%= panel_title %>'>
+        <% tests.each do |test_execution| %>
+          <!-- Set up some objects that are dependent on the test type -->
+          <% if panel_title.downcase == 'incomplete' %>
+            <% test_objects = { progress_background_class: 'test-progress-incomplete',
+                                progress_bar_class: 'test-progress-steps',
+                                progress_tooltip: test_execution.step.to_s.gsub(/[_]/, ' ').titleize,
+                                progress_percent: test_execution.wizard_progress} %>
+          <% elsif panel_title.downcase == 'passed' || panel_title.downcase == 'failed' %>
+            <% test_objects = { progress_background_class: 'test-progress-complete',
+                                progress_bar_class: 'test-progress-passed',
+                                progress_tooltip: test_execution.results[:passed].to_s + ' out of ' + test_execution.results[:total].to_s + ' passed',
+                                progress_percent: 100*test_execution.results[:passed].to_i/test_execution.results[:total].to_i} %>
+          <% end %>
+          <div class='list-group-item' data-name='<%= test_execution.name %>' data-date='<%= test_execution.updated_at %>'>
+            <div class='item-row1'>
+              <%= link_to test_execution_step_path(test_execution, test_execution.step.to_sym) do %>
+                <%= test_execution.name %>
+              <% end %>
+              <%= link_to copy_test_execution_path(test_execution), method: :copy, class: 'pull-right', style: 'margin-left: 10px' do %>
+                <i class='glyphicon glyphicon-repeat' title='Copy and Rerun Test' data-toggle='tooltip' data-placement='bottom'></i>
+                <span class='sr-only'>Copy and Rerun Test</span>
+              <% end %>
+              <%= link_to test_execution, method: :delete, class: 'pull-right', data: confirm_delete do %>
+                <i class='glyphicon glyphicon-trash' title='Delete Test' data-toggle='tooltip' data-placement='bottom'></i>
+                <span class='sr-only'>Delete Test</span>
+              <% end %>
+            </div>
+            <div class='item-row2'>
+              <span class='glyphicon glyphicon-calendar'></span>
+              <%= test_execution.updated_at.localtime.strftime('%m/%d/%Y') %>
+              <div class='progress <%= test_objects[:progress_background_class] %> pull-right'
+                   data-toggle='tooltip'
+                   data-placement='top'
+                   title='<%= test_objects[:progress_tooltip] %>'>
+                <div aria-valuemax='100'
+                     aria-valuemin='0'
+                     aria-valuenow=<%= test_objects[:progress_percent] %>
+                     class='progress-bar <%= test_objects[:progress_bar_class] %>'
+                     role='progressbar'
+                     style='width: <%= test_objects[:progress_percent] %>%'>
+                    <span class='sr-only'><%= test_objects[:progress_tooltip] %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
