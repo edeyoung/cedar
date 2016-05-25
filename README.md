@@ -13,6 +13,7 @@ Cedar is a Ruby on Rails application with a mongo database backend.  Wherever po
 Application Dependencies
 ========================
 To start a local installation of Cedar, ensure that you have done the following:
+
 1. Download and install `xcode` and `xcode developer tools` from the app store (OSX only)
 2. Install [homebrew](http://brew.sh/): `brew link openssl --force`
 3. Install mongodb using homebrew: `brew install mongodb`
