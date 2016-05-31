@@ -1,4 +1,7 @@
 # Globally available constants
+BUNDLE_MAP = { '2016' => 1_388_534_400,
+               '2015' => 1_356_998_400,
+               '2014' => 1_325_376_000 }.freeze
 CV_POPULATION_KEYS = %w(IPP MSRPOPL MSRPOPLEX OBSERV).freeze
 PROPORTION_POPULATION_KEYS = %w(IPP DENOM NUMER DENEX DENEXCEP).freeze
 CODE_SYSTEM_OIDS = %w(2.16.840.1.113883.6.96
