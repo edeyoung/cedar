@@ -47,8 +47,8 @@ class TestExecution
       generate_invalid_qrda_text
       generate_valid_qrda_text
       zip_qrda_files
-      HealthDataStandards::CQM::PatientCache.where('value.test_id.exists' => true).destroy_all
-      HealthDataStandards::CQM::QueryCache.where('value.test_id.exists' => true).destroy_all
+      HealthDataStandards::CQM::PatientCache.where('value.test_id'.to_sym.ne => nil).destroy_all
+      HealthDataStandards::CQM::QueryCache.where('value.test_id'.to_sym.exists => true).destroy_all
     end
   end
 
