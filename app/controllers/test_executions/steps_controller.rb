@@ -1,14 +1,14 @@
 # Steps for creation of test executions are implemented c/o the wicked gem
 class TestExecutions::StepsController < ApplicationController
   include Wicked::Wizard
-  steps :details, :validations, :download, :enter_results, :overview
+  steps :details, :measures, :validations, :download, :enter_results, :overview
 
   def show
     @test_execution = TestExecution.find(params[:test_execution_id])
     update_position
     case step
-    when :details
-      @measures = Measure.top_level.only(:_id, :name, :cms_id, :title).sort_by(&:cms_id)
+    when :measures
+      @measures = Measure.where(bundle_id: @test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title).sort_by(&:cms_id)
     when :validations
       @useful_validations = Validation.all.qrda_type(@test_execution.qrda_type) + Validation.all.qrda_type('all')
     when :download

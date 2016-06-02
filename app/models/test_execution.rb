@@ -95,7 +95,7 @@ class TestExecution
     measure_id = measure['hqmf_id']
     start_date = DateTime.new(reporting_period.to_i, 1, 1).utc
     end_date = start_date.years_since(1) - 1
-    bundle = HealthDataStandards::CQM::Bundle.first
+    bundle = self.bundle
     patient_records = HealthDataStandards::CQM::PatientCache.where('value.measure_id' => measure_id, 'value.test_id' => nil).to_a.map(&:record)
     if qrda_type == '3' # TODO: We could potentially create a Cat 3 file without creating Cat 1 files
       zip = Cypress::CreateDownloadZip.create_zip(patient_records, 'qrda', measure, start_date, end_date)
@@ -109,6 +109,11 @@ class TestExecution
     else
       raise 'Unknown QRDA type'
     end
+  end
+
+  # Find the bundle that corresponds to the reporting_period
+  def bundle
+    HealthDataStandards::CQM::Bundle.find_by measure_period_start: BUNDLE_MAP[reporting_period]
   end
 
   # Zip all the qrda files associated with a given test execution
