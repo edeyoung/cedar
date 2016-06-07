@@ -52,81 +52,9 @@ class TestExecution
     end
   end
 
-  # FIXME: There is a bunch of duplicated code in the next two methods
-  # For each chosen validation, generate one or two invalid qrda documents
-  def generate_invalid_qrda_text
-    validation_ids.each do |validation_id|
-      Random.new.rand(1..2).times do
-        measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_ids.sample)
-        doc = Document.create(
-          name: Faker::Company.name,
-          validation_id: validation_id,
-          test_execution: self,
-          measure_id: measure.hqmf_id,
-          qrda: generate_qrda_text(measure)
-        )
-        Cedar::Invalidator.invalidate_qrda(doc)
-      end
-      @current_document += 1
-      update_attribute(:qrda_progress, 100 * @current_document / @documents_to_generate)
-    end
-  end
-
-  # To prevent teaching to the test, generate some totally valid qrda documents
-  def generate_valid_qrda_text
-    Random.new.rand(1..4).times do
-      measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_ids.sample)
-      Document.create(
-        name: Faker::Company.name,
-        expected_result: :accept,
-        test_execution: self,
-        measure_id: measure.hqmf_id,
-        qrda: generate_qrda_text(measure)
-      )
-    end
-    @current_document += 1
-    update_attribute(:qrda_progress, 100 * @current_document / @documents_to_generate)
-  end
-
-  # Use a random measure ID from the test_execution list of measure ids
-  # Take the one bundle object from the db
-  # Array of patient record objects found from the patient cache for the particular measure
-  def generate_qrda_text(measure)
-    measure_id = measure['hqmf_id']
-    start_date = DateTime.new(reporting_period.to_i, 1, 1).utc
-    end_date = start_date.years_since(1) - 1
-    bundle = self.bundle
-    patient_records = HealthDataStandards::CQM::PatientCache.where('value.measure_id' => measure_id, 'value.test_id' => nil).to_a.map(&:record)
-    if qrda_type == '3' # TODO: We could potentially create a Cat 3 file without creating Cat 1 files
-      zip = Cypress::CreateDownloadZip.create_zip(patient_records, 'qrda', measure, start_date, end_date)
-      c3c = Cypress::Cat3Calculator.new([measure_id], bundle)
-      c3c.import_cat1_zip(zip)
-      c3c.generate_cat3(start_date, end_date)
-    elsif qrda_type == '1'
-      formatter = Cypress::QRDAExporter.new([measure], start_date, end_date)
-      patient = patient_records.sample
-      formatter.export(patient)
-    else
-      raise 'Unknown QRDA type'
-    end
-  end
-
   # Find the bundle that corresponds to the reporting_period
   def bundle
     HealthDataStandards::CQM::Bundle.find_by measure_period_start: BUNDLE_MAP[reporting_period]
-  end
-
-  # Zip all the qrda files associated with a given test execution
-  def zip_qrda_files
-    file_name = name.gsub(/[^0-9A-Za-z]/, '_')
-    update_attribute(:file_path, "data/#{file_name}.zip")
-    Zip::ZipOutputStream.open('public/' + file_path) do |zip|
-      document_ids.each do |document_id|
-        doc = Document.find(document_id)
-        zip.put_next_entry("#{doc.name}.xml")
-        zip << doc.qrda
-      end
-    end
   end
 
   # Assume that the test_execution passed, loop through all of its documents,
@@ -164,5 +92,93 @@ class TestExecution
     )
     duplicate.save
     duplicate
+  end
+
+  private
+
+  # For each chosen validation, generate one or two invalid qrda documents
+  def generate_invalid_qrda_text
+    validation_ids.each do |validation_id|
+      Random.new.rand(1..2).times do
+        measure_id = determine_useful_measures(validation_id).sample
+        measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_id)
+        doc = Document.create(
+          name: Faker::Company.name,
+          validation_id: validation_id,
+          test_execution: self,
+          measure_id: measure.hqmf_id,
+          qrda: generate_qrda_text(measure)
+        )
+        Cedar::Invalidator.invalidate_qrda(doc)
+      end
+      update_qrda_progress
+    end
+  end
+
+  # To prevent teaching to the test, generate some totally valid qrda documents
+  def generate_valid_qrda_text
+    Random.new.rand(1..4).times do
+      measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_ids.sample)
+      Document.create(
+        name: Faker::Company.name,
+        expected_result: :accept,
+        test_execution: self,
+        measure_id: measure.hqmf_id,
+        qrda: generate_qrda_text(measure)
+      )
+    end
+    update_qrda_progress
+  end
+
+  # Use a random measure ID from the test_execution list of measure ids
+  # Take the one bundle object from the db
+  # Array of patient record objects found from the patient cache for the particular measure
+  def generate_qrda_text(measure)
+    measure_id = measure['hqmf_id']
+    start_date = DateTime.new(reporting_period.to_i, 1, 1).utc
+    end_date = start_date.years_since(1) - 1
+    bundle = self.bundle
+    patient_records = HealthDataStandards::CQM::PatientCache.where('value.measure_id' => measure_id, 'value.test_id' => nil).to_a.map(&:record)
+    if qrda_type == '3' # TODO: We could potentially create a Cat 3 file without creating Cat 1 files
+      zip = Cypress::CreateDownloadZip.create_zip(patient_records, 'qrda', measure, start_date, end_date)
+      c3c = Cypress::Cat3Calculator.new([measure_id], bundle)
+      c3c.import_cat1_zip(zip)
+      c3c.generate_cat3(start_date, end_date)
+    elsif qrda_type == '1'
+      formatter = Cypress::QRDAExporter.new([measure], start_date, end_date)
+      patient = patient_records.sample
+      formatter.export(patient)
+    else
+      raise 'Unknown QRDA type'
+    end
+  end
+
+  # Zip all the qrda files associated with a given test execution
+  def zip_qrda_files
+    file_name = name.gsub(/[^0-9A-Za-z]/, '_')
+    update_attribute(:file_path, "data/#{file_name}.zip")
+    Zip::ZipOutputStream.open('public/' + file_path) do |zip|
+      document_ids.each do |document_id|
+        doc = Document.find(document_id)
+        zip.put_next_entry("#{doc.name}.xml")
+        zip << doc.qrda
+      end
+    end
+  end
+
+  def update_qrda_progress
+    @current_document += 1
+    update_attribute(:qrda_progress, 100 * @current_document / @documents_to_generate)
+  end
+
+  def determine_useful_measures(validation_id)
+    validation = Validation.find(validation_id)
+    if validation.measure_type == 'discrete'
+      measure_ids.select { |id| HealthDataStandards::CQM::Measure.find_by(_id: id).continuous_variable == false }
+    elsif validation.measure_type == 'continuous'
+      measure_ids.select { |id| HealthDataStandards::CQM::Measure.find_by(_id: id).continuous_variable == true }
+    else
+      measure_ids
+    end
   end
 end

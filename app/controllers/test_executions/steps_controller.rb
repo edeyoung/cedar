@@ -10,7 +10,7 @@ class TestExecutions::StepsController < ApplicationController
     when :measures
       @measures = Measure.where(bundle_id: @test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title).sort_by(&:cms_id)
     when :validations
-      @useful_validations = Validation.all.qrda_type(@test_execution.qrda_type) + Validation.all.qrda_type('all')
+      @useful_validations = determine_useful_validations
     when :download
       # @test_execution.create_documents # Only for debug
       CreateDocumentsJob.perform_later(@test_execution)
@@ -40,6 +40,36 @@ class TestExecutions::StepsController < ApplicationController
       validation_ids: [],
       documents_attributes: [:id, :actual_result]
     )
+  end
+
+  # Take the intersection of all checks for useful validations given test conditions
+  def determine_useful_validations
+    useful_checks = [
+      useful_validations_for_qrda_type,
+      useful_validations_for_measure_type
+    ]
+    useful_checks.inject(:&)
+  end
+
+  def useful_validations_for_qrda_type
+    Validation.all.qrda_type(@test_execution.qrda_type) + Validation.all.qrda_type('all')
+  end
+
+  # If both continuous and discrete measures are selected, validations for both types of measure are valid
+  # If only one type is selected, remove the validations specific to the other type
+  def useful_validations_for_measure_type
+    selected_measure_types = { discrete: false, continuous: false }
+    @test_execution.measure_ids.each do |measure_id|
+      measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_id)
+      measure.continuous_variable ? selected_measure_types[:continuous] = true : selected_measure_types[:discrete] = true
+    end
+    if selected_measure_types[:discrete] == false
+      Validation.all - Validation.all.measure_type('discrete')
+    elsif selected_measure_types[:continuous] == false
+      Validation.all - Validation.all.measure_type('continuous')
+    else
+      Validation.all.to_a
+    end
   end
 
   def update_position

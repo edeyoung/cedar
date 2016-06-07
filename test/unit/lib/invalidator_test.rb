@@ -55,19 +55,19 @@ class InvalidatorTest < ActiveSupport::TestCase
   def test_discharge_after_upload
     bad_file = Nokogiri::XML(Cedar::Invalidator.discharge_after_upload(Nokogiri::XML(@cat_1_file)))
     upload_time = bad_file.at_css('ClinicalDocument effectiveTime').attributes['value'].value.to_i
-    encounters = bad_file.css('encounter[classCode="ENC"]').to_a
+    encounters_and_procedures = bad_file.css('encounter[classCode="ENC"], procedure[classCode="PROC"]').to_a
     discharge_times = []
-    encounters.each { |encounter| discharge_times << encounter.at_css('effectiveTime high').attributes['value'].value.to_i }
+    encounters_and_procedures.each { |item| discharge_times << item.at_css('effectiveTime high').attributes['value'].value.to_i }
     assert(discharge_times.any? { |discharge| discharge > upload_time }, 'None of the discharge dates are after the upload date')
   end
 
   def test_discharge_before_admission
     bad_file = Nokogiri::XML(Cedar::Invalidator.discharge_before_admission(Nokogiri::XML(@cat_1_file)))
-    encounters = bad_file.css('encounter[classCode="ENC"]').to_a
+    encounters_and_procedures = bad_file.css('encounter[classCode="ENC"], procedure[classCode="PROC"]').to_a
     bad_discharge_times = 0
-    encounters.each do |encounter|
-      admission = encounter.at_css('effectiveTime low').attributes['value'].value.to_i
-      discharge = encounter.at_css('effectiveTime high').attributes['value'].value.to_i
+    encounters_and_procedures.each do |item|
+      admission = item.at_css('effectiveTime low').attributes['value'].value.to_i
+      discharge = item.at_css('effectiveTime high').attributes['value'].value.to_i
       bad_discharge_times += 1 if discharge < admission
     end
     assert(bad_discharge_times == 1, 'None of the discharge dates are before their respective admission dates')

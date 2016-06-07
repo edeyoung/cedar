@@ -76,22 +76,22 @@ module Cedar
     def self.discharge_after_upload(doc)
       # Find the upload time
       upload_time = doc.at_css('ClinicalDocument effectiveTime').attributes['value'].value
-      # Pick a random encounter
-      encounter = doc.css('encounter[classCode="ENC"]').to_a.sample
+      # Pick a random encounter or procedure
+      encounter_or_procedure = doc.css('encounter[classCode="ENC"], procedure[classCode="PROC"]').to_a.sample
       # Add a random number of days from admission TODO: Subtract time?
       bad_discharge = (Date.parse(upload_time) + Random.new.rand(1..5)).strftime('%Y%m%d%H%M%S')
-      encounter.at_css('effectiveTime high').attributes['value'].value = bad_discharge
+      encounter_or_procedure.at_css('effectiveTime high').attributes['value'].value = bad_discharge
       doc.to_xml
     end
 
     def self.discharge_before_admission(doc)
-      # Pick a random encounter
-      encounter = doc.css('encounter[classCode="ENC"]').to_a.sample
+      # Pick a random encounter or procedure
+      encounter_or_procedure = doc.css('encounter[classCode="ENC"], procedure[classCode="PROC"]').to_a.sample
       # Find the admission date/time
-      admission = encounter.at_css('effectiveTime low').attributes['value'].value
+      admission = encounter_or_procedure.at_css('effectiveTime low').attributes['value'].value
       # Subtract a random number of days from admission TODO: Subtract time?
       bad_discharge = (Date.parse(admission) - Random.new.rand(1..5)).strftime('%Y%m%d%H%M%S')
-      encounter.at_css('effectiveTime high').attributes['value'].value = bad_discharge
+      encounter_or_procedure.at_css('effectiveTime high').attributes['value'].value = bad_discharge
       doc.to_xml
     end
 

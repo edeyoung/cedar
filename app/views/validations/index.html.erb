@@ -9,6 +9,7 @@
         <th>Description</th>
         <th>Overview Text</th>
         <th>QRDA Type</th>
+        <th>Measure Type</th>
         <th colspan='3'>Actions</th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
           <td><%= validation.description %></td>
           <td><%= validation.overview_text %></td>
           <td><%= validation.qrda_type %></td>
+          <td><%= validation.measure_type %></td>
           <!-- <td><%= link_to 'Show', validation %></td> -->
           <td><%= link_to 'Edit', edit_validation_path(validation) %></td>
           <td><%= link_to 'Destroy', validation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -45,7 +45,7 @@ class ValidationsController < ApplicationController
 
   def validation_params
     params.require(:validation).permit(
-      :name, :code, :description, :overview_text, :qrda_type
+      :name, :code, :description, :overview_text, :qrda_type, :measure_type
     )
   end
 end
