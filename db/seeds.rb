@@ -63,6 +63,14 @@ Validation.create(
   'measure_type' => 'discrete'
 )
 Validation.create(
+  'code' => 'performance_rate_out_of_range',
+  'description' => 'According to the QRDA specification, the performance rate for a discrete measure in a QRDA Cat 3 file should be between zero and one. In this file, the performance rate was replaced with a number that is outside of that range.',
+  'name' => 'Performance Rate Out of Range',
+  'overview_text' => 'In this file, the performance rate was replaced with a number that is outside the acceptable range (a floating point number between 0 and 1).',
+  'qrda_type' => '3',
+  'measure_type' => 'discrete'
+)
+Validation.create(
   'code' => 'reporting_period',
   'description' => 'There is a known set of reporting periods for QRDA files (currently, 2014, 2015, 2016, and 2017).  The reporting period in this file will be dated far outside of those expected reporting periods.',
   'name' => 'Reporting Period',

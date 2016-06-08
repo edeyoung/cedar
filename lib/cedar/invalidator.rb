@@ -72,6 +72,13 @@ module Cedar
       doc.to_xml
     end
 
+    def self.performance_rate_out_of_range(doc)
+      performance_rate = doc.at_css('code[code="72510-1"][codeSystem="2.16.840.1.113883.6.1"] ~ value')
+      bad_performance = Random.new.rand(1.001..2.000).to_s
+      performance_rate.attributes['value'].value = bad_performance
+      doc.to_xml
+    end
+
     # --- Validations for QRDA Category 1 ---
     def self.discharge_after_upload(doc)
       # Find the upload time

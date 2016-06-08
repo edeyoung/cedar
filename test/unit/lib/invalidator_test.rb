@@ -50,6 +50,12 @@ class InvalidatorTest < ActiveSupport::TestCase
     assert(numer_value >= denom_value, 'The NUMER value is less than or equal to the DENOM value')
   end
 
+  def test_performance_rate_out_of_range
+    bad_file = Nokogiri::XML(Cedar::Invalidator.performance_rate_out_of_range(Nokogiri::XML(@cat_3_file)))
+    performance_rate = bad_file.at_css('code[code="72510-1"][codeSystem="2.16.840.1.113883.6.1"] ~ value').attributes['value'].value.to_f
+    assert(performance_rate >= 1, 'The performance rate is within the acceptable range (0 to 1)')
+  end
+
   # --- Validations for QRDA Category 1 ---
 
   def test_discharge_after_upload
