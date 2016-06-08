@@ -8,7 +8,7 @@ Validation.create(
 )
 Validation.create(
   'code' => 'discharge_before_admission',
-  'description' => 'Among the encounterand procedure events in a QRDA category 1 file, all discharge dates should be after the admission date. In this file, a randomly selected encounter or procedure will have a discharge date before its admission date.',
+  'description' => 'Among the encounter and procedure events in a QRDA category 1 file, all discharge dates should be after the admission date. In this file, a randomly selected encounter or procedure will have a discharge date before its admission date.',
   'name' => 'Discharge Before Admission',
   'overview_text' => 'In this file, a randomly selected encounter or procedure had a discharge date before its admission date. The file should be rejected.',
   'qrda_type' => '1',
