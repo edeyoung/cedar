@@ -154,14 +154,19 @@ class TestExecution
   end
 
   # Zip all the qrda files associated with a given test execution
+  # While doing so, randomly order and index them
   def zip_qrda_files
     file_name = name.gsub(/[^0-9A-Za-z]/, '_')
     update_attribute(:file_path, "data/#{file_name}.zip")
     Zip::ZipOutputStream.open('public/' + file_path) do |zip|
-      document_ids.each do |document_id|
+      i = 0
+      document_ids.shuffle.each do |document_id|
         doc = Document.find(document_id)
+        doc.update_attribute(:test_index, i)
+        doc.update_attribute(:name, i.to_s.rjust(4, '0') + ' - ' + doc.name)
         zip.put_next_entry("#{doc.name}.xml")
         zip << doc.qrda
+        i += 1
       end
     end
   end

@@ -38,7 +38,7 @@ class TestExecutions::StepsController < ApplicationController
       :results,
       measure_ids: [],
       validation_ids: [],
-      documents_attributes: [:id, :actual_result]
+      documents_attributes: [:id, :name, :actual_result, :test_index]
     )
   end
 

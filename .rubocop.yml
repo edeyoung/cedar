@@ -14,7 +14,7 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 20
 Metrics/ClassLength:
-  Max: 150
+  Max: 200
   Exclude:
     - 'test/**/*'
 Metrics/AbcSize:

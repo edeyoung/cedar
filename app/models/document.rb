@@ -10,6 +10,7 @@ class Document
   field :state,                type: Symbol, default: :failed  # passed, failed
   field :qrda,                 type: String, default: ''
   field :measure_id,           type: String, default: nil
+  field :test_index,           type: Integer, default: 0
 
   belongs_to                   :validation
   belongs_to                   :test_execution,
