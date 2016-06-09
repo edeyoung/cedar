@@ -37,6 +37,23 @@ module Cedar
       doc.slice!(0..(doc.length / 2))
     end
 
+    def self.invalid_measure_id(doc)
+      # Find all the valid measure ids
+      valid_measure_ids = []
+      HealthDataStandards::CQM::Measure.all.each do |measure|
+        valid_measure_ids << measure.hqmf_id
+        valid_measure_ids << measure.hqmf_set_id
+      end
+      # Randomly select the id or setId to invalidate
+      id_or_set_id = %w(id setId).sample
+      id_to_invalidate = doc.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument ' + id_or_set_id)
+      # Generate a guid that doesn't exist in the db and inject it
+      bad_guid = SecureRandom.uuid.upcase
+      bad_guid = SecureRandom.uuid.upcase while valid_measure_ids.include?(bad_guid)
+      id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value
+      doc.to_xml
+    end
+
     # --- Validations for QRDA Category 3 ---
     def self.denom_greater_than_ipp(doc)
       # TODO: Filter out continuous measures for this validation (and potentially others)

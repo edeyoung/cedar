@@ -24,6 +24,21 @@ class InvalidatorTest < ActiveSupport::TestCase
     assert(good_file_length > bad_file.length, 'The file appears to be complete')
   end
 
+  def test_invalid_measure_id
+    # Find all the valid measure ids
+    valid_measure_ids = []
+    HealthDataStandards::CQM::Measure.all.each do |measure|
+      valid_measure_ids << measure.hqmf_id
+      valid_measure_ids << measure.hqmf_set_id
+    end
+    assert(valid_measure_ids != [], 'No measures are loaded in the test database')
+    # Test the measure IDs to see if they are valid
+    bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_measure_id(Nokogiri::XML(@cat_1_file)))
+    measure_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
+    set_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument setId').attributes['root'].value
+    assert(valid_measure_ids.include?(measure_id) && valid_measure_ids.include?(set_id), 'The measure HQMF ID and HQMF Set ID appear to be valid')
+  end
+
   # --- Validations for QRDA Category 3 ---
   def test_denom_greater_than_ipp
     bad_file = Nokogiri::XML(Cedar::Invalidator.denom_greater_than_ipp(Nokogiri::XML(@cat_3_file)))
