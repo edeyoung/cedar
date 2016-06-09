@@ -18,10 +18,8 @@ class InvalidatorTest < ActiveSupport::TestCase
   end
 
   def test_unfinished_file
-    # TODO: This is a hacky test - should see if Nokogiri has a way to validate that the nodes are properly closed
-    good_file_length = @cat_1_file.length
-    bad_file = Cedar::Invalidator.unfinished_file(@cat_1_file)
-    assert(good_file_length > bad_file.length, 'The file appears to be complete')
+    bad_file = Nokogiri::XML(Cedar::Invalidator.unfinished_file(@cat_3_file))
+    assert(bad_file.errors.length > 1, 'The file appears to be complete')
   end
 
   def test_invalid_measure_id
