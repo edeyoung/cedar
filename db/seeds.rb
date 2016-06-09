@@ -23,6 +23,14 @@ Validation.create(
   'measure_type' => 'all'
 )
 Validation.create(
+  'code' => 'invalid_code',
+  'description' => 'Each code reported in a QRDA document must belong to the specified Value Set. In this file, one of the existing codes will be replaced by a code that is not valid for the value set.',
+  'name' => 'Invalid Code',
+  'overview_text' => 'In this file, one of the existing codes was replaced by a code that is not valid for the value set.',
+  'qrda_type' => '1',
+  'measure_type' => 'all'
+)
+Validation.create(
   'code' => 'invalid_value_set',
   'description' => 'Each measure contains a limited scope of value sets, as determined by the eCQM specification.  In this file, one of the value set OIDs will be replaced by an OID that is not useful for calculating this measure.',
   'name' => 'Invalid Value Set',
@@ -69,6 +77,14 @@ Validation.create(
   'overview_text' => 'In this file, the performance rate was replaced with a number that is outside the acceptable range (a floating point number between 0 and 1).',
   'qrda_type' => '3',
   'measure_type' => 'discrete'
+)
+Validation.create(
+  'code' => 'invalid_measure_id',
+  'description' => 'Measures are identified by their HQMF IDs, as output by the Measure Authoring Tool. In this file, a valid HQMF ID will be replaced with an invalid GUID.',
+  'name' => 'Invalid Measure ID',
+  'overview_text' => 'In this file, a valid HQMF ID or HQMF Set ID was be replaced with an invalid GUID.',
+  'qrda_type' => 'all',
+  'measure_type' => 'all'
 )
 Validation.create(
   'code' => 'reporting_period',
