@@ -129,12 +129,28 @@ module Cedar
       doc.to_xml
     end
 
+    def self.invalid_code(doc)
+      # Loop through the value sets to find a master list of unique, valid codes
+      all_codes = []
+      HealthDataStandards::SVS::ValueSet.each { |vs| vs.concepts.each { |concept| all_codes << concept.code } }
+      all_codes.uniq!
+      # Find a value set within the QRDA file and the codes that are valid for it
+      node_with_value_set = doc.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.sample.parent
+      value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
+      valid_codes = []
+      value_set.concepts.each { |vs| valid_codes << vs.code }
+      valid_codes.uniq!
+      invalid_code = (all_codes - valid_codes).sample
+      # Inject the invalid code into the file and save it
+      node_with_value_set.attributes['code'].value = invalid_code
+      doc.to_xml
+    end
+
     def self.invalid_value_set(doc, measure_id)
       # TODO: Move the generation of all_measure_oids elsewhere
       all_measure_oids = []
       HealthDataStandards::SVS::ValueSet.each { |vs| all_measure_oids << vs.oid }
       all_measure_oids.uniq!
-      # FIXME: This is assuming that there are measures in test database (which are currently only in the dev db)
       measure = HealthDataStandards::CQM::Measure.find_by(hqmf_id: measure_id)
       # Pick a random value set in the file
       sample_value_set = doc.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.sample

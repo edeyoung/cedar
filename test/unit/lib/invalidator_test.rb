@@ -107,9 +107,27 @@ class InvalidatorTest < ActiveSupport::TestCase
       code = node.attributes['code'].value
       code_system = node.attributes['codeSystem'].value
       # Attempt to find the code/codeSystem pair in the value sets database
-      bad_code_systems += 1 unless [all_valid_codes].include? [code, code_system]
+      bad_code_systems += 1 unless all_valid_codes.include? [code, code_system]
     end
     assert(bad_code_systems == 1, 'All of the code systems seem to be correct for their respective codes')
+  end
+
+  def test_invalid_code
+    # Loop through the value sets to find a master list of unique, valid codes
+    all_codes = []
+    HealthDataStandards::SVS::ValueSet.each { |vs| vs.concepts.each { |concept| all_codes << concept.code } }
+    all_codes.uniq!
+    assert(all_codes != [], 'No value sets are loaded in the test database')
+    nodes_with_value_set = bad_file.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a
+    bad_codes = 0
+    nodes_with_value_set.each do |node|
+      code = node.attributes['code'].value
+      value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
+      valid_codes = []
+      value_set.concepts.each { |vs| valid_codes << vs.code }
+      bad_codes += 1 unless valid_codes.include? code
+    end
+    assert(bad_code_systems == 1, 'All of the codes seem to be valid for their respective value sets')
   end
 
   def test_invalid_value_set
