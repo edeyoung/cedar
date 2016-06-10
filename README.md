@@ -31,10 +31,9 @@ Installation and Database Setup
 2. Go into the new directory: `cd cedar`
 3. Install the ruby bundler library: `gem install bundler`
 4. Use the Gemfile to grab all the dependencies and install Cedar: `bundle install`
-5. Seed the database: `bundle exec rake db:seed`
-6. Follow the [Cypress bundle import instructions](https://github.com/projectcypress/cypress/wiki/Cypress-3.0.0-Install-Instructions#7-import-the-measure-bundle) to load the 2016 Measure Bundle.  Also, load the 2015 measure bundle (2.6.0) and the 2014 measure bundle (2.4.0).
-7. Start the background job worker: `bundle exec rake jobs:work`
-8. In a separate shell, start the Cedar application: `bundle exec rake rails s`
+5. Follow the [Cypress bundle import instructions](https://github.com/projectcypress/cypress/wiki/Cypress-3.0.0-Install-Instructions#7-import-the-measure-bundle) to load the 2015 Measure Bundle (for the 2016 reporting year).  Also, load the 2014 measure bundle (2.6.0) and the 2013 measure bundle (2.4.0).
+6. Start the background job worker: `bundle exec rake jobs:work`
+7. In a separate shell, start the Cedar application: `bundle exec rake rails s`
 
 Docker Installation
 ===================
