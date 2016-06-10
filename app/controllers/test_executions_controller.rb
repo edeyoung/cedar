@@ -42,19 +42,9 @@ class TestExecutionsController < ApplicationController
     false
   end
 
-  def validation_exists?
-    Validation.first
-    true
-  rescue
-    false
-  end
-
   def dashboard_errors
     unless bundle_exists?
       flash[:error] = 'Please make sure at least one bundle is uploaded before you run Cedar. See the bundle installation instructions in the README'
-    end
-    unless validation_exists?
-      flash[:error] = 'Please make sure you have seeded the database before you run Cedar. Run <code>bundle exec rake db:seed</code> in a terminal'
     end
   end
 end
