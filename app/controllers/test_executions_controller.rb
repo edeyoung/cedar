@@ -30,7 +30,7 @@ class TestExecutionsController < ApplicationController
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
     dashboard_errors
-    @prevent_test = !(bundle_exists?)
+    @prevent_test = !bundle_exists?
   end
 
   private

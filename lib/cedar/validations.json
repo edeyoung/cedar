@@ -110,6 +110,16 @@
         }
     },
     {
+        "code": "inconsistent_time_formats",
+        "attributes": {
+            "description": "The CMS QRDA Implementation Guide does not specify that local time, UTC time, or specific time zone offsets should be used, but it does specify that the time format should be consistent throughout the file. In this file, one of the times will be given a different format than the others.",
+            "name": "Inconsistent Time Formats",
+            "overview_text": "In this file, one of the times was given a different format than the others.",
+            "qrda_type": "all",
+            "measure_type": "all"
+        }
+    },
+    {
         "code": "reporting_period",
         "attributes": {
             "description": "There is a known set of reporting periods for QRDA files (currently, 2014, 2015, 2016, and 2017).  The reporting period in this file will be dated far outside of those expected reporting periods.",

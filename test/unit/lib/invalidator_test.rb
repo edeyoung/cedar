@@ -2,6 +2,7 @@ require 'test_helper'
 require 'fileutils'
 require 'nokogiri'
 
+# Unit test cases for all of the Cedar invalidators
 class InvalidatorTest < ActiveSupport::TestCase
   setup do
     @cat_1_file = IO.read('test/fixtures/qrda/cat_1/good.xml')
@@ -9,17 +10,12 @@ class InvalidatorTest < ActiveSupport::TestCase
   end
 
   # --- Validations for both QRDA Category 1 and Category 3 ---
-  def test_reporting_period
-    bad_file = Nokogiri::XML(Cedar::Invalidator.reporting_period(Nokogiri::XML(@cat_1_file)))
-    period_start = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime low').attributes['value'].value.to_i
-    period_end = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime high').attributes['value'].value.to_i
-    # TODO: Find out the valid reporting periods from the uploaded bundle files and use that instead
-    assert(period_start > 20_300_101_000_000 && period_end > 20_300_101_000_000, 'The reporting period was probably not changed')
-  end
-
-  def test_unfinished_file
-    bad_file = Nokogiri::XML(Cedar::Invalidator.unfinished_file(@cat_3_file))
-    assert(bad_file.errors.length > 1, 'The file appears to be complete')
+  def test_inconsistent_time_formats
+    bad_file = Nokogiri::XML(Cedar::Invalidator.inconsistent_time_formats(Nokogiri::XML(@cat_1_file)))
+    all_times = bad_file.css('effectiveTime low[value], effectiveTime high[value], effectiveTime [value]').to_a
+    invalid_times = 0
+    all_times.each { |time| invalid_times += 1 if time.attributes['value'].value.length > 14 }
+    assert(invalid_times == 1, 'All time formats appear to be similar')
   end
 
   def test_invalid_measure_id
@@ -35,6 +31,19 @@ class InvalidatorTest < ActiveSupport::TestCase
     measure_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
     set_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument setId').attributes['root'].value
     assert(valid_measure_ids.include?(measure_id) && valid_measure_ids.include?(set_id), 'The measure HQMF ID and HQMF Set ID appear to be valid')
+  end
+
+  def test_reporting_period
+    bad_file = Nokogiri::XML(Cedar::Invalidator.reporting_period(Nokogiri::XML(@cat_1_file)))
+    period_start = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime low').attributes['value'].value.to_i
+    period_end = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime high').attributes['value'].value.to_i
+    # TODO: Find out the valid reporting periods from the uploaded bundle files and use that instead
+    assert(period_start > 20_300_101_000_000 && period_end > 20_300_101_000_000, 'The reporting period was probably not changed')
+  end
+
+  def test_unfinished_file
+    bad_file = Nokogiri::XML(Cedar::Invalidator.unfinished_file(@cat_3_file))
+    assert(bad_file.errors.length > 1, 'The file appears to be complete')
   end
 
   # --- Validations for QRDA Category 3 ---

@@ -13,28 +13,14 @@ module Cedar
       end
     end
 
-    # Per Sam, consider refactoring like this...
-    # VALIDATORS = {reporting_period: Cedar::ReportingPeriodInvalidator.new(2014, 2015)}
-    # files.each do |file|
-    #   VALIDATORS[file.code].validate(file.doc)
-    # end
-
     # --- Validations for both QRDA Category 1 and Category 3 ---
-    def self.reporting_period(doc)
-      # Change the text description
-      doc.at_css('item:contains("Reporting period")').content = 'Reporting period: end of the world'
-      # Mangle the start of the reporting period
-      start = doc.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime low')
-      start.attributes['value'].value = '30000101000000'
-      # Mangle the end of the reporting period
-      finish = doc.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime high')
-      finish.attributes['value'].value = '30010101000000'
+    def self.inconsistent_time_formats(doc)
+      # Find all of the times in the QRDA file and select a random one
+      valid_time = doc.css('effectiveTime low[value], effectiveTime high[value], effectiveTime [value]').to_a.sample
+      # Randomly compute a timezone offset and add it to the randomly selected time
+      offset = %w(+ -).sample + (Random.new.rand(1..12) * 100).to_s.rjust(4, '0')
+      valid_time.attributes['value'].value = valid_time.attributes['value'].value + offset
       doc.to_xml
-      # TODO: better, more random dates?
-    end
-
-    def self.unfinished_file(doc)
-      doc.slice!(0..(doc.length / 2))
     end
 
     def self.invalid_measure_id(doc)
@@ -52,6 +38,23 @@ module Cedar
       bad_guid = SecureRandom.uuid.upcase while valid_measure_ids.include?(bad_guid)
       id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value
       doc.to_xml
+    end
+
+    def self.reporting_period(doc)
+      # Change the text description
+      doc.at_css('item:contains("Reporting period")').content = 'Reporting period: end of the world'
+      # Mangle the start of the reporting period
+      start = doc.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime low')
+      start.attributes['value'].value = '30000101000000'
+      # Mangle the end of the reporting period
+      finish = doc.at_css('templateId[root="2.16.840.1.113883.10.20.17.3.8"] ~ effectiveTime high')
+      finish.attributes['value'].value = '30010101000000'
+      doc.to_xml
+      # TODO: better, more random dates?
+    end
+
+    def self.unfinished_file(doc)
+      doc.slice!(0..(doc.length / 2))
     end
 
     # --- Validations for QRDA Category 3 ---
