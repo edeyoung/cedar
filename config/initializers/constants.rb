@@ -30,3 +30,23 @@ CODE_SYSTEM_OIDS = %w(2.16.840.1.113883.6.96
                       2.16.840.1.113883.6.73
                       2.16.840.1.113883.6.24
                       1.2.840.10008.2.16.4).freeze
+
+# Find all the valid measure ids
+all_valid_measure_ids = []
+HealthDataStandards::CQM::Measure.all.each do |measure|
+  all_valid_measure_ids << measure.hqmf_id
+  all_valid_measure_ids << measure.hqmf_set_id
+end
+ALL_VALID_MEASURE_IDS = all_valid_measure_ids.freeze
+
+# Find all the valid codes in value sets
+all_value_set_codes = []
+HealthDataStandards::SVS::ValueSet.each { |vs| vs.concepts.each { |concept| all_value_set_codes << concept.code } }
+all_value_set_codes.uniq!
+ALL_VALUE_SET_CODES = all_value_set_codes.freeze
+
+# Find all the valid oids for value sets
+all_value_set_oids = []
+HealthDataStandards::SVS::ValueSet.each { |vs| all_value_set_oids << vs.oid }
+all_value_set_oids.uniq!
+ALL_VALUE_SET_OIDS = all_value_set_oids.freeze

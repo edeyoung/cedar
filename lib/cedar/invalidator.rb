@@ -24,18 +24,12 @@ module Cedar
     end
 
     def self.invalid_measure_id(doc)
-      # Find all the valid measure ids
-      valid_measure_ids = []
-      HealthDataStandards::CQM::Measure.all.each do |measure|
-        valid_measure_ids << measure.hqmf_id
-        valid_measure_ids << measure.hqmf_set_id
-      end
       # Randomly select the id or setId to invalidate
       id_or_set_id = %w(id setId).sample
       id_to_invalidate = doc.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument ' + id_or_set_id)
       # Generate a guid that doesn't exist in the db and inject it
       bad_guid = SecureRandom.uuid.upcase
-      bad_guid = SecureRandom.uuid.upcase while valid_measure_ids.include?(bad_guid)
+      bad_guid = SecureRandom.uuid.upcase while ALL_VALID_MEASURE_IDS.include?(bad_guid)
       id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value
       doc.to_xml
     end
@@ -145,33 +139,24 @@ module Cedar
     end
 
     def self.invalid_code(doc)
-      # Loop through the value sets to find a master list of unique, valid codes
-      all_codes = []
-      HealthDataStandards::SVS::ValueSet.each { |vs| vs.concepts.each { |concept| all_codes << concept.code } }
-      all_codes.uniq!
       # Find a value set within the QRDA file and the codes that are valid for it
       node_with_value_set = doc.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.sample.parent
       value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
       valid_codes = []
       value_set.concepts.each { |vs| valid_codes << vs.code }
       valid_codes.uniq!
-      invalid_code = (all_codes - valid_codes).sample
+      invalid_code = (ALL_VALUE_SET_CODES - valid_codes).sample
       # Inject the invalid code into the file and save it
       node_with_value_set.attributes['code'].value = invalid_code
       doc.to_xml
     end
 
     def self.invalid_value_set(doc, measure_id)
-      # TODO: Move the generation of all_measure_oids elsewhere
-      all_measure_oids = []
-      HealthDataStandards::SVS::ValueSet.each { |vs| all_measure_oids << vs.oid }
-      all_measure_oids.uniq!
       measure = HealthDataStandards::CQM::Measure.find_by(hqmf_id: measure_id)
       # Pick a random value set in the file
       sample_value_set = doc.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.sample
       # Inject a value set that should not be used for that measure
-      sample_value_set.value = (all_measure_oids - measure.oids).sample
-      # TODO: Should I update the text as well?
+      sample_value_set.value = (ALL_VALUE_SET_OIDS - measure.oids).sample
       doc.to_xml
     end
 
