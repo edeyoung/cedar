@@ -59,7 +59,6 @@ module Cedar
 
     # --- Validations for QRDA Category 3 ---
     def self.denom_greater_than_ipp(doc)
-      # TODO: Filter out continuous measures for this validation (and potentially others)
       # Find the IPP and DENOM
       ipp = doc.at_css('value[code="IPP"] ~ entryRelationship[typeCode="SUBJ"] observation value')
       denom = doc.at_css('value[code="DENOM"] ~ entryRelationship[typeCode="SUBJ"] observation value')
@@ -81,7 +80,6 @@ module Cedar
     end
 
     def self.numer_greater_than_denom(doc)
-      # TODO: Filter out continuous measures for this validation (and potentially others)
       # Find the NUMER and DENOM
       numer = doc.at_css('value[code="NUMER"] ~ entryRelationship[typeCode="SUBJ"] observation value')
       denom = doc.at_css('value[code="DENOM"] ~ entryRelationship[typeCode="SUBJ"] observation value')
@@ -89,6 +87,20 @@ module Cedar
       # Add a random amount to DENOM and store it in NUMER
       numer_value = denom_value + Random.new.rand(1..10)
       numer.attributes['value'].value = numer_value.to_s
+      doc.to_xml
+    end
+
+    def self.performance_rate_divide_by_zero(doc)
+      # Set the performance rate to zero
+      performance_rate = doc.at_css('code[code="72510-1"][codeSystem="2.16.840.1.113883.6.1"] ~ value')
+      performance_rate.attributes['value'].value = '0'
+      # Modify the denom amount to force a div/0 error
+      denom = doc.at_css('value[code="DENOM"] ~ entryRelationship[typeCode="SUBJ"] observation value')
+      denex = doc.at_css('value[code="DENEX"] ~ entryRelationship[typeCode="SUBJ"] observation value')
+      denex_value = denex.attributes['value'].value.to_i if denex
+      denexcep = doc.at_css('value[code="DENEXCEP"] ~ entryRelationship[typeCode="SUBJ"] observation value')
+      denexcep_value = denexcep.attributes['value'].value.to_i if denexcep
+      denom.attributes['value'].value = ((denex_value || 0) + (denexcep_value || 0)).to_s
       doc.to_xml
     end
 

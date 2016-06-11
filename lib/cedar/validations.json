@@ -90,6 +90,16 @@
         }
     },
     {
+        "code": "performance_rate_divide_by_zero",
+        "attributes": {
+            "description": "According to the QRDA specification, if the expression (DENOM – DENOM EXCL – DENOM EXCEP) results in a null or a value of 0, then a nullFlavor of 'NA' should be provided for the Performance Rate. In this file, the denominator in the performance rate calculation would result in a divide by zero error, but the performance rate will not be reported as 'NA'.",
+            "name": "Performance Rate Contains Divide by Zero Error",
+            "overview_text": "In this file, the denominator in the performance rate calculation results in a divide by zero error, but the performance rate was not reported as 'NA'.",
+            "qrda_type": "3",
+            "measure_type": "discrete"
+        }
+    },
+    {
         "code": "performance_rate_out_of_range",
         "attributes": {
             "description": "According to the QRDA specification, the performance rate for a discrete measure in a QRDA Cat 3 file should be between zero and one. In this file, the performance rate was replaced with a number that is outside of that range.",

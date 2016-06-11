@@ -49,8 +49,8 @@ class InvalidatorTest < ActiveSupport::TestCase
   # --- Validations for QRDA Category 3 ---
   def test_denom_greater_than_ipp
     bad_file = Nokogiri::XML(Cedar::Invalidator.denom_greater_than_ipp(Nokogiri::XML(@cat_3_file)))
-    ipp_value = bad_file.at_css('value[code="IPP"] ~ entryRelationship[typeCode="SUBJ"] observation value').attributes['value'].value.to_i
-    denom_value = bad_file.at_css('value[code="DENOM"] ~ entryRelationship[typeCode="SUBJ"] observation value').attributes['value'].value.to_i
+    ipp_value = get_population_value(bad_file, 'IPP')
+    denom_value = get_population_value(bad_file, 'DENOM')
     assert(denom_value >= ipp_value, 'The DENOM value is less than or equal to the IPP value')
   end
 
@@ -67,9 +67,19 @@ class InvalidatorTest < ActiveSupport::TestCase
 
   def test_numer_greater_than_denom
     bad_file = Nokogiri::XML(Cedar::Invalidator.numer_greater_than_denom(Nokogiri::XML(@cat_3_file)))
-    numer_value = bad_file.at_css('value[code="NUMER"] ~ entryRelationship[typeCode="SUBJ"] observation value').attributes['value'].value.to_i
-    denom_value = bad_file.at_css('value[code="DENOM"] ~ entryRelationship[typeCode="SUBJ"] observation value').attributes['value'].value.to_i
+    numer_value = get_population_value(bad_file, 'NUMER')
+    denom_value = get_population_value(bad_file, 'DENOM')
     assert(numer_value >= denom_value, 'The NUMER value is less than or equal to the DENOM value')
+  end
+
+  def test_performance_rate_divide_by_zero
+    bad_file = Nokogiri::XML(Cedar::Invalidator.performance_rate_divide_by_zero(Nokogiri::XML(@cat_3_file)))
+    performance_rate_value = bad_file.at_css('code[code="72510-1"][codeSystem="2.16.840.1.113883.6.1"] ~ value').attributes['value'].value
+    denom_value = get_population_value(bad_file, 'DENOM')
+    denex_value = get_population_value(bad_file, 'DENEX')
+    denexcep_value = get_population_value(bad_file, 'DENEXCEP')
+    calculated_denominator = denom_value - ((denex_value || 0) + (denexcep_value || 0))
+    assert(performance_rate_value == '0' && calculated_denominator == 0, 'The performance rate does not contain a divide by zero error.')
   end
 
   def test_performance_rate_out_of_range
@@ -79,7 +89,6 @@ class InvalidatorTest < ActiveSupport::TestCase
   end
 
   # --- Validations for QRDA Category 1 ---
-
   def test_discharge_after_upload
     bad_file = Nokogiri::XML(Cedar::Invalidator.discharge_after_upload(Nokogiri::XML(@cat_1_file)))
     upload_time = bad_file.at_css('ClinicalDocument effectiveTime').attributes['value'].value.to_i
@@ -169,5 +178,15 @@ class InvalidatorTest < ActiveSupport::TestCase
       value_sets_without_code_system += 1 if node['codeSystem'].nil?
     end
     assert(value_sets_without_code_system == 1, 'All of the nodes with value sets have a corresponding code system')
+  end
+
+  private
+
+  def get_population(file, pop)
+    file.at_css('value[code="' + pop + '"] ~ entryRelationship[typeCode="SUBJ"] observation value')
+  end
+
+  def get_population_value(file, pop)
+    get_population(file, pop).attributes['value'].value.to_i if get_population(file, pop)
   end
 end
