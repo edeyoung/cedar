@@ -80,6 +80,16 @@
         }
     },
     {
+        "code": "missing_population_id",
+        "attributes": {
+            "description": "According to each eCQM specification, several populations are required for calculation. In this file, one of those necessary populations will be removed.",
+            "name": "Missing Population ID",
+            "overview_text": "In this file, one of populations necessary to calculate the measure was removed.",
+            "qrda_type": "3",
+            "measure_type": "all"
+        }
+    },
+    {
         "code": "numer_greater_than_denom",
         "attributes": {
             "description": "For discrete measures, the numerator should always be less than the denominator.  In this file, the submitted numerator will be greater than the denominator.",

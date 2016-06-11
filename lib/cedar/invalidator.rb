@@ -73,6 +73,18 @@ module Cedar
       doc.to_xml
     end
 
+    def self.missing_population_id(doc)
+      # Determine whether this is discrete or continuous
+      numer = doc.at_css('value[code="NUMER"] ~ entryRelationship[typeCode="SUBJ"] observation value')
+      required_populations = (numer.nil? ? REQUIRED_CV_POPULATION_KEYS : REQUIRED_PROPORTION_POPULATION_KEYS)
+      # Find a random population and delete it
+      required_populations_search = ''
+      required_populations.uniq.each { |id| required_populations_search += 'value[code="' + id + '"], ' }
+      random_population = doc.css(required_populations_search.chomp(', ')).to_a.sample.parent.parent
+      random_population.remove
+      doc.to_xml
+    end
+
     def self.numer_greater_than_denom(doc)
       # Find the NUMER and DENOM
       numer = doc.at_css('value[code="NUMER"] ~ entryRelationship[typeCode="SUBJ"] observation value')

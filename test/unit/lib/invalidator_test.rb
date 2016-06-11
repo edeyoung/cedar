@@ -65,6 +65,15 @@ class InvalidatorTest < ActiveSupport::TestCase
     assert(population_ids.count - population_ids.uniq.count == 1, 'All of the population ids are unique')
   end
 
+  def test_missing_population_id
+    bad_file = Nokogiri::XML(Cedar::Invalidator.missing_population_id(Nokogiri::XML(@cat_3_file)))
+    required_population_keys = REQUIRED_PROPORTION_POPULATION_KEYS
+    required_populations_search = ''
+    required_population_keys.uniq.each { |id| required_populations_search += 'value[code="' + id + '"], ' }
+    required_populations = bad_file.css(required_populations_search.chomp(', ')).to_a
+    assert(required_populations.length < required_population_keys.length, 'All of the required population exist in this file')
+  end
+
   def test_numer_greater_than_denom
     bad_file = Nokogiri::XML(Cedar::Invalidator.numer_greater_than_denom(Nokogiri::XML(@cat_3_file)))
     numer_value = get_population_value(bad_file, 'NUMER')
