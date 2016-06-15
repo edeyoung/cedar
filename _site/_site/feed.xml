@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cedar</title>
+    <description>Cedar is a tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files.
+</description>
+    <link>http://projectcedar.org/</link>
+    <atom:link href="http://projectcedar.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 14 Jun 2016 19:49:45 -0400</pubDate>
+    <lastBuildDate>Tue, 14 Jun 2016 19:49:45 -0400</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+  </channel>
+</rss>
