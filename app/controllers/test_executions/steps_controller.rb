@@ -8,9 +8,11 @@ class TestExecutions::StepsController < ApplicationController
     update_position
     case step
     when :measures
-      @measures = Measure.where(bundle_id: @test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title).sort_by(&:cms_id)
+      @measures = Measure.where(bundle_id: @test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title, :tags).sort_by(&:cms_id)
+      @all_tags = get_all_tags(@measures)
     when :validations
       @useful_validations = determine_useful_validations
+      @all_tags = get_all_tags(@useful_validations)
     when :download
       # @test_execution.create_documents # Only for debug
       CreateDocumentsJob.perform_later(@test_execution)
@@ -70,6 +72,12 @@ class TestExecutions::StepsController < ApplicationController
     else
       Validation.all.to_a
     end
+  end
+
+  def get_all_tags(things)
+    all_tags = []
+    things.each { |thing| all_tags += thing.tags }
+    all_tags.uniq
   end
 
   def update_position

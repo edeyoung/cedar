@@ -16,6 +16,7 @@
 //= require bootstrap-slider
 //= require parsley
 //= require sweetalert.min
+//= require jquery.filtertable.min
 //= require sweet-alert-confirm
 //= require tinysort
 //= require_tree .

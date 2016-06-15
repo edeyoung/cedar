@@ -1,7 +1,5 @@
 # Validations are what Cedar is all about
 class ValidationsController < ApplicationController
-  before_action :set_validation, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -9,43 +7,13 @@ class ValidationsController < ApplicationController
     respond_with(@validations)
   end
 
-  def show
-    respond_with(@validation)
+  def add_tag
+    val = Validation.find(params[:id])
+    val.add_tag(params[:tag])
   end
 
-  def new
-    @validation = Validation.new
-    respond_with(@validation)
-  end
-
-  def edit
-  end
-
-  def create
-    @validation = Validation.new(validation_params)
-    @validation.save
-    respond_with(@validation)
-  end
-
-  def update
-    @validation.update(validation_params)
-    respond_with(@validation)
-  end
-
-  def destroy
-    @validation.destroy
-    respond_with(@validation)
-  end
-
-  private
-
-  def set_validation
-    @validation = Validation.find(params[:id])
-  end
-
-  def validation_params
-    params.require(:validation).permit(
-      :name, :code, :description, :overview_text, :qrda_type, :measure_type
-    )
+  def remove_tag
+    val = Validation.find(params[:id])
+    val.remove_tag(params[:tag])
   end
 end

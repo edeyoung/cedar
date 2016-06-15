@@ -1,46 +1,48 @@
 <script>
   $(document).ready(function() {
       $('.table').filterTable({
-        inputSelector: '#search-validations'
+        inputSelector: '#search-measures'
       });
   });
 </script>
 
 <div class='container'>
 
-  <h1>Cedar Validations</h1>
+  <h1>Cedar Measures</h1>
   <div class='col-md-4 col-sm-6'>
-    <label for='search-validations' class='sr-only'>Search Measures</label>
+    <label for='search-measures' class='sr-only'>Search Measures</label>
     <div class="input-group">
       <span class="input-group-addon">
         <i class='glyphicon glyphicon-search'></i>
       </span>
-      <input id='search-validations' type='search' class='form-control' placeholder='Search Validations' name=''>
+      <input id='search-measures' type='search' class='form-control' placeholder='Search Measures' name=''>
     </div>
   </div>
   <table class='table'>
     <thead>
       <tr>
+        <th scope='col'>CMS ID</th>
+        <th scope='col'>Reporting Period</th>
         <th scope='col'>Name</th>
         <th scope='col'>Description</th>
-        <th scope='col'>Overview Text</th>
-        <th scope='col'>QRDA Type</th>
-        <th scope='col'>Measure Type</th>
+        <th scope='col'>Type</th>
+        <th scope='col'>Continuous or Discrete?</th>
         <th scope='col' class='text-center'>Tags</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @validations.each do |validation| %>
+      <% @measures.each do |measure| %>
         <tr>
-          <th scope='row'><%= validation.name %></th>
-          <td><%= validation.description %></td>
-          <td><%= validation.overview_text %></td>
-          <td><%= validation.qrda_type %></td>
-          <td><%= validation.measure_type %></td>
+          <th scope='row'><%= measure.cms_id %></th>
+          <td><%= measure.reporting_period %></td>
+          <td><%= measure.name %></td>
+          <td><%= measure.description %></td>
+          <td><%= measure.type.upcase %></td>
+          <td><%= measure.continuous_variable ? 'Continuous' : 'Discrete' %></td>
           <td class='text-center'>
-            <div class='cedar-tags' data-tag-item-type='validation' data-tag-item-id='<%= validation.id %>'>
-              <% validation.tags.each do |tag| %>
+            <div class='cedar-tags' data-tag-item-type='measure' data-tag-item-id='<%= measure.id %>'>
+              <% measure.tags.each do |tag| %>
                 <div class='cedar-tag-parent' style='white-space:nowrap;'>
                   <span class='label label-primary cedar-tag'>
                     <i class='glyphicon glyphicon-tag'></i> <%= tag %>
@@ -54,8 +56,8 @@
             <button type='button' class='btn btn-link add-tag'>+ Add a New Tag</button>
             <div class='input-group new-tag' style='display:none;'>
               <span class='input-group-btn' style='width:auto;display:flex;'>
-                <label for='add-tag-<%= validation.id %>' class='sr-only'>Enter Tag Text</label>
-                <input id='add-tag-<%= validation.id %>'
+                <label for='add-tag-<%= measure.id %>' class='sr-only'>Enter Tag Text</label>
+                <input id='add-tag-<%= measure.id %>'
                        type='text'
                        class='form-control'
                        placeholder='Tag Text'

@@ -78,8 +78,6 @@ group :development, :test do
   # Brakeman and bundle-audit for automated testing of security vulnerabilities
   gem 'brakeman', require: false
   gem 'bundler-audit'
-  # Travis for continuous integration builds
-  gem 'travis'
 end
 
 group :production do

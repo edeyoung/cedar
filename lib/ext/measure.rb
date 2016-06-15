@@ -5,12 +5,20 @@ Measure = HealthDataStandards::CQM::Measure
 class Measure
   include HealthDataStandards::Export
   include HealthDataStandards::CQM
+  include Taggable
   field :bundle_id, type: BSON::ObjectId
+  field :tags, type: Array, default: []
   index bundle_id: 1
   index id: 1, sub_id: 1
 
   def display_name
     sub_id ? "#{cms_id} (#{sub_id}) #{name}" : "#{cms_id} #{name}"
+  end
+
+  # Find the reporting period that corresponds to the measure bundle
+  def reporting_period
+    bundle = HealthDataStandards::CQM::Bundle.find(bundle_id)
+    BUNDLE_MAP.key(bundle.measure_period_start)
   end
 
   def cms_int
