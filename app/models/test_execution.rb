@@ -157,7 +157,8 @@ class TestExecution
   # While doing so, randomly order and index them
   def zip_qrda_files
     file_name = name.gsub(/[^0-9A-Za-z]/, '_')
-    update_attribute(:file_path, "data/#{file_name}.zip")
+    FileUtils.mkdir_p("public/data/#{user_id}")
+    update_attribute(:file_path, "data/#{user_id}/#{file_name}.zip")
     Zip::ZipOutputStream.open('public/' + file_path) do |zip|
       i = 0
       document_ids.shuffle.each do |document_id|
