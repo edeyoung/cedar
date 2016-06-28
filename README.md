@@ -33,8 +33,10 @@ To start a local instance of Cedar for development purposes, ensure that you hav
 13. Start the background job worker: `bundle exec rake jobs:work`
 14. In a separate shell, start the Cedar application: `bundle exec rake rails s`
 
-Docker Installation
-===================
+Production Docker Installation
+==============================
+1. Pull Cedar down from github: `git clone https://github.com/mitre/cedar`
+2. Go into the new directory: `cd cedar`
 3. Generate new secrets for devise and rails: `./prod_setup.sh`
 4. Build and start the docker image: `docker-compose build && docker-compose up`
 5. In a separate terminal window, start the Cedar application: `docker-compose run cedar`
