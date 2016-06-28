@@ -8,9 +8,10 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 # Adding to pre-compile assets, per http://stackoverflow.com/questions/22970573/asset-filtered-out-and-will-not-be-served-add-config-assets-precompile
+# Removed js and css files per http://stackoverflow.com/questions/9915950/bootstrap-sass-undefined-variable-baselineheight
 Rails.application.config.assets.precompile += [
-  /.*\.js/,
-  /.*\.css/,
+  # /.*\.js/,
+  # /.*\.css/,
   /.*\.woff/,
   /.*\.woff2/,
   /.*\.eot/,
