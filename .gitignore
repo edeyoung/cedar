@@ -19,6 +19,9 @@
 public/data/*
 !public/data/.keep
 
+# pre-compiled assets
+public/assets
+
 # System Files
 .DS_Store
 *.DS_Store
