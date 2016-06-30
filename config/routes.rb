@@ -23,4 +23,11 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
 
   root to: 'test_executions#dashboard'
+
+  namespace :api do
+    namespace :v1 do
+      devise_for :users, controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/registrations' }
+      resources :test_executions, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
 end
