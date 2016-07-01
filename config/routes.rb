@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :validations
+
+  get 'validations', to: 'validations#index'
+  post 'validations/:id/add_tag', to: 'validations#add_tag'
+  post 'validations/:id/remove_tag', to: 'validations#remove_tag'
+
+  get 'measures', to: 'measures#index'
+  post 'measures/:id/add_tag', to: 'measures#add_tag'
+  post 'measures/:id/remove_tag', to: 'measures#remove_tag'
 
   get 'test_executions/:id/qrda_progress', to: 'test_executions#qrda_progress'
 

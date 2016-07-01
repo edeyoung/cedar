@@ -5,12 +5,6 @@
   .cedar-user h2 {
     text-align: center;}
 
-.db-right-border {
-  border-right: 1px solid #9a79a6; }
-
-.content-right-border {
-  border-right: 1px solid #939597; }
-
 .navbar {
   background-color: #432748;
   border-color: #432748;
@@ -30,6 +24,10 @@
     background-color: #6b576f; }
   .navbar-inverse .navbar-nav > li > a:active {
     background-color: #6b576f; }
+
+/* Dashboard */
+.db-right-border {
+border-right: 1px solid #9a79a6; }
 
 .db-overview {
   margin-bottom: 18px;
@@ -73,128 +71,6 @@
         text-transform: uppercase;
         text-align: left;
         padding-left: 4px; }
-
-.progress-wizard {
-  background: #6b576f;
-  width: 100%;
-  margin-top: -10px;
-  padding-bottom: 5px;}
-  .progress-wizard ol {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    margin: 0;
-    padding: 0;}
-    .progress-wizard ol li {
-      display: table-cell;
-      text-align: center;}
-      .progress-wizard ol li a {
-        color: white;}
-      .progress-wizard ol li.unfinished a {
-        text-decoration: none !important;
-        cursor: default;}
-      .progress-wizard ol li.current a {
-        font-weight: bold;}
-
-/* Override for bootstrap-slider */
-.slider.slider-disabled .slider-track {
-  cursor: default !important;}
-
-.process-nav {
-  background-color: white;
-  border-top: 1px solid #6b576f;
-  padding-top: 20px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  height: 80px; }
-
-.processwizard {
-  background-color: #6b576f;
-  margin-top: -30px;
-  margin-bottom: 12px;
-  height: 128px; }
-  .processwizard p {
-    color: white; }
-  .processwizard a {
-    color: white;
-    font-weight: bold; }
-    .processwizard a:hover {
-      text-decoration: none; }
-    .processwizard a:focus {
-      text-decoration: none; }
-    .processwizard a:active {
-      text-decoration: none; }
-  .processwizard a.disabled {
-    color: #c0b8c1;
-    font-weight: normal; }
-  .processwizard ul {
-    padding-left: 0px; }
-  .processwizard ul > li {
-    display: inline-block;
-    width: 20%;
-    text-align: center;
-    margin-top: 40px; }
-    .processwizard ul > li:first-child {
-      text-align: left;
-      padding-left: 22px; }
-    .processwizard ul > li:nth-child(2) {
-      padding-left: 15px; }
-    .processwizard ul > li:nth-child(3) {
-      padding-left: 98px; }
-    .processwizard ul > li:nth-child(4) {
-      padding-left: 88px; }
-    .processwizard ul > li:last-child {
-      text-align: right;
-      padding-right: 34px; }
-
-.process-title {
-  margin-bottom: 25px; }
-
-.process-content {
-  margin-top: 25px;
-  padding-left: 30px;
-  padding-right: 30px; }
-  .process-content .form-group {
-    margin-bottom: 25px;
-    padding-left: 30px;
-    padding-right: 30px; }
-
-.process-download {
-  height: 330px;
-  padding-top: 50px; }
-  .process-download .download-button {
-    padding-top: 25px; }
-    .process-download .download-button span {
-      color: white;
-      font-size: 58px; }
-    .process-download .download-button .circle {
-      width: 148px;
-      height: 148px;
-      background: #317dbe;
-      padding: 40px 0px 0px 6px;
-      border-radius: 100%;
-      color: white;
-      text-align: center; }
-
-.download-instructions h4 {
-  margin-bottom: 32px; }
-
-.download-instructions .instruction-steps {
-  margin-bottom: 42px;
-  height: 38px; }
-  .download-instructions .instruction-steps .numbers {
-    background-color: #3c763d;
-    color: white;
-    font-size: 18px;
-    width: 36px;
-    height: 36px;
-    border-radius: 100%;
-    text-align: center;
-    padding-top: 5px;
-    padding-left: 1px; }
-  .download-instructions .instruction-steps p {
-    margin-left: 50px; }
-
 .db-panels .panel {
   margin-top: 20px;
   border-radius: 10px; }
@@ -287,12 +163,135 @@
       .db-panels .panel .list-group-item .item-row2 span {
         padding-right: 6px; }
 
+.progress-wizard {
+  background: #6b576f;
+  width: 100%;
+  margin-top: -10px;
+  padding-bottom: 5px;}
+  .progress-wizard ol {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;}
+    .progress-wizard ol li {
+      display: table-cell;
+      text-align: center;}
+      .progress-wizard ol li a {
+        color: white;}
+      .progress-wizard ol li.unfinished a {
+        text-decoration: none !important;
+        cursor: default;}
+      .progress-wizard ol li.current a {
+        font-weight: bold;}
+
+/* Override for bootstrap-slider */
+.slider.slider-disabled .slider-track {
+  cursor: default !important;}
+
+.process-nav {
+  background-color: white;
+  border-top: 1px solid #6b576f;
+  padding-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 80px; }
+
+.processwizard {
+  background-color: #6b576f;
+  margin-top: -30px;
+  margin-bottom: 12px;
+  height: 128px; }
+  .processwizard p {
+    color: white; }
+  .processwizard a {
+    color: white;
+    font-weight: bold; }
+    .processwizard a:hover {
+      text-decoration: none; }
+    .processwizard a:focus {
+      text-decoration: none; }
+    .processwizard a:active {
+      text-decoration: none; }
+  .processwizard a.disabled {
+    color: #c0b8c1;
+    font-weight: normal; }
+  .processwizard ul {
+    padding-left: 0px; }
+  .processwizard ul > li {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    margin-top: 40px; }
+    .processwizard ul > li:first-child {
+      text-align: left;
+      padding-left: 22px; }
+    .processwizard ul > li:nth-child(2) {
+      padding-left: 15px; }
+    .processwizard ul > li:nth-child(3) {
+      padding-left: 98px; }
+    .processwizard ul > li:nth-child(4) {
+      padding-left: 88px; }
+    .processwizard ul > li:last-child {
+      text-align: right;
+      padding-right: 34px; }
+
+.process-title {
+  margin-bottom: 25px; }
+
+.process-content {
+  margin-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%; }
+  .process-content .form-group {
+    margin-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%; }
+
+/* Download page */
+.process-download {
+  height: 330px;
+  padding-top: 50px; }
+  .process-download .download-button {
+    padding-top: 25px; }
+    .process-download .download-button span {
+      color: white;
+      font-size: 58px; }
+    .process-download .download-button .circle {
+      width: 148px;
+      height: 148px;
+      background: #317dbe;
+      padding: 40px 0px 0px 6px;
+      border-radius: 100%;
+      color: white;
+      text-align: center; }
+
+.download-instructions h4 {
+  margin-bottom: 32px; }
+
+.download-instructions .instruction-steps {
+  margin-bottom: 42px;
+  height: 38px; }
+  .download-instructions .instruction-steps .numbers {
+    background-color: #3c763d;
+    color: white;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 1px; }
+  .download-instructions .instruction-steps p {
+    margin-left: 50px; }
+
+/* Validations */
 .sv-panels {
-  padding-right: 50px;
-  padding-left: 30px;
-  margin-top: 20px;
+  padding-right: 2%;
+  padding-left: 2%;
+  margin-top: 1%;
   text-align: left;
-  margin-bottom: 20px; }
+  margin-bottom: 1%; }
   .sv-panels .panel-selection-bar {
     padding-left: 10px;
     border-bottom: 1px solid #f1f1f2;
@@ -317,20 +316,23 @@
     cursor: pointer; }
     .sv-panels .panel-toggle span {
       margin-left: 10px;
-      margin-top: 24px;
+      margin-top: 20px;
       padding-top: 10px;
       height: 5px; }
   .sv-panels .panel {
     padding-right: 30px;
     padding-left: 30px; }
     .sv-panels .panel .panel-heading {
-      border-radius: 0px;
+      overflow: hidden;
       background-color: white;
       border-left: 1px solid #ddd;
       border-right: 1px solid #ddd; }
-      .sv-panels .panel .panel-heading .panel-title {
-        margin-top: 4px; }
 
+.new-tag {
+  margin: 0 1em;
+}
+
+/* Enter Results */
 .er-panels {
   padding-right: 30px;
   padding-left: 30px;
@@ -379,6 +381,7 @@
 .td-panel .list-group-item {
   padding: 0px 20px 0px 20px; }
 
+/* Overview */
 .overview-panels {
   padding-right: 50px;
   padding-left: 30px;
@@ -477,6 +480,33 @@
       .overview-panels .panel .panel-heading .panel-title {
         margin-top: 12px; }
 
+.new-tag {
+  margin: 0;
+}
+.cedar-tag {
+  font-size: 0.9em;
+  display: inline-block;
+  margin-top: 5px;
+}
+.cedar-remove-tag {
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+.cedar-label {
+  margin: 2px;
+}
+.checkByTag {
+  margin-bottom: 4px;
+}
+.table > thead > tr > th {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+.table > tbody > tr > th {
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
 html {
   position: relative;
   min-height: 100%; }
@@ -532,3 +562,11 @@ body {
 .tooltip {
   font-family: 'Varela Round';
 }
+.list-group-item {
+  overflow: hidden;
+}
+
+/* FilterTable */
+.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.fitler-table .quick:hover { text-decoration: underline; }
+td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }

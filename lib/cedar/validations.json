@@ -66,7 +66,8 @@
             "name": "Denominator Greater Than IPP",
             "overview_text": "In this file, the submitted denominator was greater than the initial patient population. In discrete eCQMs, the denominator should always be less than or equal to the initial patient population.",
             "qrda_type": "3",
-            "measure_type": "discrete"
+            "measure_type": "discrete",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -76,7 +77,8 @@
             "name": "Duplicated Measure Population IDs",
             "overview_text": "In this file, one of the measure populations (e.g., IPP, Numerator, Observed Value, etc.) was reported twice.  For a given measure, these populations should be reported once and only once.",
             "qrda_type": "3",
-            "measure_type": "all"
+            "measure_type": "all",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -86,7 +88,8 @@
             "name": "Missing Population ID",
             "overview_text": "In this file, one of populations necessary to calculate the measure was removed.",
             "qrda_type": "3",
-            "measure_type": "all"
+            "measure_type": "all",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -96,7 +99,8 @@
             "name": "Numerator Greater Than Denominator",
             "overview_text": "In this file, the submitted numerator was greater than the denominator.  Discrete eCQMs should be a ratio less than one.",
             "qrda_type": "3",
-            "measure_type": "discrete"
+            "measure_type": "discrete",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -106,7 +110,8 @@
             "name": "Performance Rate Contains Divide by Zero Error",
             "overview_text": "In this file, the denominator in the performance rate calculation results in a divide by zero error, but the performance rate was not reported as 'NA'.",
             "qrda_type": "3",
-            "measure_type": "discrete"
+            "measure_type": "discrete",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -116,7 +121,8 @@
             "name": "Performance Rate Out of Range",
             "overview_text": "In this file, the performance rate was replaced with a number that is outside the acceptable range (a floating point number between 0 and 1).",
             "qrda_type": "3",
-            "measure_type": "discrete"
+            "measure_type": "discrete",
+            "tags": ["Calculation"]
         }
     },
     {
@@ -156,7 +162,8 @@
             "name": "Unfinished QRDA file",
             "overview_text": "The latter half of this file was deleted to represent a file transfer error that would result in an unfinished QRDA file.  It should be rejected outright.",
             "qrda_type": "all",
-            "measure_type": "all"
+            "measure_type": "all",
+            "tags": ["Schema"]
         }
     }
 ]

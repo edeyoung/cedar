@@ -1,36 +1,38 @@
 <%= render partial: 'test_executions/steps/progress_bubbles', locals: {step: @current_step_number, steps: @total_steps} %>
 <%= progress_bar %>
 
-<script>
-  $(document).ready( function(){
-    $('#checkAll').click(function () {
-      $('.check').prop('checked', $(this).prop('checked'));
-    });
-  });
-</script>
-
 <div class='container'>
   <div class='col-md-12'>
     <div class='process-title'><h3 id='validationsTitle'>Select Validations</h3></div>
   </div>
   <%= render partial: 'test_executions/steps/disabled' %>
   <%= form_for @test_execution, url: wizard_path, html: {'data-parsley-validate': ''}, method: :put do |f| %>
+    <div class='col-md-4'>
+      <p>When using Cedar, you are not required to perform all validations in any one test.</p>
+      <p>Most eCQM collections systems are built piece-by-piece, so Cedar allows you to group validations together into logical groups.</p>
+      <p>You must choose at least one validation, but you are free to choose whichever you would care to test.</p>
+      <% unless @test_execution[:disable_details] %>
+        <div class='panel-selection-bar'>
+          <button type='button' class='btn btn-success' id='checkAll'>Select All Validations</button>
+          <button type='button' class='btn btn-danger' id='checkNone'>Select No Validations</button>
+          <h4>Select by tag:</h4>
+          <% @all_tags.each do |tag| %>
+            <button type='button' class='btn btn-primary checkByTag'><i class='glyphicon glyphicon-tag'></i> <%= tag %></button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <div class='col-md-8 text-center'>
-      <div class='sv-panels content-right-border' id='validation_list'>
-        <% unless @test_execution[:disable_details] %>
-          <div class='panel-selection-bar'>
-            <div class='checkbox'>
-              <label><input type='checkbox' class='check' id='checkAll'>Select All</label>
-            </div>
-          </div>
-        <% end %>
+      <div class='sv-panels' id='validation_list'>
         <%= f.collection_check_boxes :validation_ids, @useful_validations, :id, :name do |b| %>
+          <% tag_classes = '' %>
+          <% b.object.tags.each { |t| tag_classes += ' tag-' + t.gsub(/[^0-9A-Za-z]/, '_') }%>
           <div class='panel-group'>
             <div class='pull-left panel-selection'>
               <%= b.check_box(
                 disabled: @test_execution[:disable_details],
-                class:'check',
-                style:'margin-top:15px',
+                class:'check' + tag_classes,
+                style:'margin-top:10px',
                 'aria-labelledby': 'validationsTitle',
                 'data-parsley-required':'',
                 'data-parsley-mincheck':'1',
@@ -45,6 +47,11 @@
             <div class='panel panel-default'>
               <div class='panel-heading'>
                 <%= b.label class: 'panel-title' %>
+                <% b.object.tags.each do |tag| %>
+                  <span class='label label-primary pull-right cedar-label'>
+                    <i class='glyphicon glyphicon-tag'></i> <%= tag %>
+                  </span>
+                <% end %>
               </div>
             </div>
             <div class='panel-collapse collapse' id='collapse<%= b.object.id %>'>
@@ -55,12 +62,6 @@
           </div>
         <% end %>
       </div>
-    </div>
-    <div class='col-md-4'>
-      <h4>About Validations</h4>
-      <p>When using Cedar, you are not required to perform all validations in any one test.</p>
-      <p>Most eCQM collections systems are built piece-by-piece, so Cedar allows you to group validations together into logical groups.</p>
-      <p>You must choose at least one validation, but you are free to choose whichever you would care to test.</p>
     </div>
     <div class='clearfix'></div>
     <div class='process-nav'>
