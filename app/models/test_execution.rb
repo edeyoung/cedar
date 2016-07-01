@@ -66,13 +66,9 @@ class TestExecution
     document_ids.each do |document|
       doc = Document.find(document)
       total_validations += 1
-      if doc.expected_result != doc.actual_result
-        pass_test = false
-        doc.update_attribute(:state, :failed)
-      else
-        doc.update_attribute(:state, :passed)
-        passed_validations += 1
-      end
+      doc_pass = doc.update_state
+      pass_test &&= doc_pass
+      passed_validations += 1 if doc_pass
     end
     pass_test ? update_attribute(:state, :passed) : update_attribute(:state, :failed)
     update_attribute(:results, passed: passed_validations, total: total_validations)

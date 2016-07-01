@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       devise_for :users, controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/registrations' }
-      resources :test_executions, only: [:index, :create, :show, :update, :destroy]
+      resources :test_executions, only: [:index, :create, :show, :update, :destroy] do
+        match :report_results, via: [:post], on: :member
+        resources :documents, only: [:index, :show, :update]
+      end
     end
   end
 end

@@ -16,4 +16,14 @@ class Document
   belongs_to                   :test_execution,
                                inverse_of: :documents
   validates :test_execution,   presence: true
+
+  def update_state
+    if expected_result != actual_result
+      update_attribute(:state, :failed)
+      return false
+    else
+      update_attribute(:state, :passed)
+      return true
+    end
+  end
 end
