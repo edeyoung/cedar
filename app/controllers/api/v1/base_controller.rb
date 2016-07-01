@@ -4,13 +4,10 @@ module API
       protect_from_forgery with: :null_session
       before_action :authenticate_user_from_token!
       before_action :destroy_session
+      before_action :authenticate_user!
 
       def destroy_session
         request.session_options[:skip] = true
-      end
-
-      def not_found
-        api_error(status: 404, errors: 'Not found')
       end
 
       def authenticate_user_from_token!
