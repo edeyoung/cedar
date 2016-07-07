@@ -64,6 +64,8 @@ gem 'quality-measure-engine', git: 'https://github.com/projectcypress/quality-me
 gem 'rubyzip'
 # Prettier replacements for javascript alerts
 gem 'sweet-alert-confirm'
+# Apipie for documentation
+gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
