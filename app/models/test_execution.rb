@@ -147,6 +147,7 @@ class TestExecution
     elsif qrda_type == '1'
       formatter = Cypress::QRDAExporter.new([measure], start_date, end_date)
       patient = patient_records.sample
+      Cypress::DemographicsRandomizer.randomize(patient)
       formatter.export(patient)
     else
       raise 'Unknown QRDA type'

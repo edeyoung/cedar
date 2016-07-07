@@ -3,6 +3,7 @@ require 'health-data-standards'
 require 'hqmf-parser'
 
 Faker::Config.locale = 'en-US'
+APP_CONFIG = YAML.load(File.read(File.expand_path('../cedar.yml', __FILE__)))
 
 # Insert or update all valdations based on validations.json
 validations_data = JSON.parse(File.read('lib/cedar/validations.json'))
