@@ -103,7 +103,7 @@ class TestExecution
         measure_id = determine_useful_measures(validation_id).sample
         measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_id)
         doc = Document.create(
-          name: Faker::Company.name,
+          name: HOSPITALS.sample,
           validation_id: validation_id,
           test_execution: self,
           measure_id: measure.hqmf_id,
@@ -120,7 +120,7 @@ class TestExecution
     Random.new.rand(1..4).times do
       measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_ids.sample)
       Document.create(
-        name: Faker::Company.name,
+        name: HOSPITALS.sample,
         expected_result: :accept,
         test_execution: self,
         measure_id: measure.hqmf_id,
