@@ -2,34 +2,29 @@
 module API
   module V1
     class SessionsController < Devise::SessionsController
+      resource_description do
+        short 'Get authentication tokens'
+        formats ['json']
+      end
       skip_before_action :authenticate_user!, only: [:create, :new]
       skip_before_action :verify_signed_out_user
       respond_to :json
 
-      def new
-        self.resource = resource_class.new(sign_in_params)
-        clean_up_passwords(resource)
-        respond_with(resource, serialize_options(resource))
-      end
-
+      api! 'get auth token'
+      param :email, String, required: true
       def create
-        respond_to do |format|
-          format.html do
-            super
-          end
-          format.json do
-            resource = resource_from_credentials
-            return invalid_login_attempt unless resource
+        resource = resource_from_credentials
+        return invalid_login_attempt unless resource
 
-            if resource.valid_password?(params[:password])
-              render json: { user: { email: resource.email, authentication_token: resource.authentication_token } }, success: true, status: :created
-            else
-              invalid_login_attempt
-            end
-          end
+        if resource.valid_password?(params[:password])
+          render json: { user: { email: resource.email, authentication_token: resource.authentication_token } }, success: true, status: :created
+        else
+          invalid_login_attempt
         end
       end
 
+      api! 'regenerate auth token'
+      header 'X-API-TOKEN', 'user\'s current authentication token', required: true
       def destroy
         respond_to do |format|
           format.html do

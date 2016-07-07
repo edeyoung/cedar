@@ -1,31 +1,62 @@
 module API
   module V1
     class TestExecutionsController < API::V1::BaseController
+      resource_description do
+        short 'Test cases'
+        formats ['json']
+        header 'X-API-EMAIL', 'user\'s email', required: true
+        header 'X-API-TOKEN', 'user\'s current authentication token', required: true
+        description <<-EOS
+        Test Executions accept a set of measures and validations to create valid and
+        invalid qrda data with.
+        EOS
+      end
+
+      api! 'get all tests of current user'
       def index
         render json: TestExecution.all.user(current_user)
       end
 
+      api! 'get test'
       def show
         render json: TestExecution.find(params[:id])
       end
 
+      api! 'create new test'
+      param :name, String, desc: 'Name of test', required: true
+      param :description, String, desc: 'Description for this test'
+      param :reporting_period, String, desc: 'Which year measures will be from', required: true
+      param :qrda_type, String, desc: '"1" or "3" for category 1 and category 3 QRDA data, measures, and validations, respectively', required: true
+      param :measure_ids, Array,
+            of: String,
+            desc: 'Array of measures to create qrda data with. Measures can be specified with either hqmf or cms ids',
+            required: true
+      param :validation_ids, Array,
+            of: String,
+            desc: 'Array of validation to invalidate qrda data with. Validations are specified with their codes. Eg: "discharge_after_upload"',
+            required: true
       def create
         te = TestExecution.create(test_execution_params)
         te.create_documents
         render json: { download: "#{request.host_with_port}/#{te.file_path}" }, status: 201
       end
 
-      def update
-        test_execution = TestExecution.find(params[:test_execution_id])
-        test_execution.update_attributes(test_execution_params)
-        head :ok
-      end
+      # api! ''
+      # def update
+      #   test_execution = TestExecution.find(params[:test_execution_id])
+      #   test_execution.update_attributes(test_execution_params)
+      #   head :ok
+      # end
 
+      api! 'delete test'
       def destroy
         TestExecution.find(params[:id]).destroy
         render json: { message: 'Test execution deleted.' }, success: true, status: 200
       end
 
+      api! 'bulk report document results'
+      param :results, Hash,
+            desc: 'Hash of results. Keys are test_indices and values are "accept" or "reject". Ex: results: { "1": "accept", "2": "reject" }'
       def report_results
         test_execution = TestExecution.find(params[:id])
         params[:results].each do |k, v|
@@ -43,7 +74,6 @@ module API
           :description,
           :reporting_period,
           :qrda_type,
-          :results,
           measure_ids: [],
           validation_ids: []
         )
