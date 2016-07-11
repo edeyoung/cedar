@@ -1,6 +1,10 @@
 module API
   module V1
     class TestExecutionsController < API::V1::BaseController
+      include Roar::Rails::ControllerAdditions
+
+      respond_to :json_api
+
       resource_description do
         short 'Test cases'
         formats ['json']
@@ -14,12 +18,12 @@ module API
 
       api! 'get all tests of current user'
       def index
-        render json: TestExecution.all.user(current_user)
+        render json: TestExecutionRepresenter.for_collection.new(TestExecution.user(current_user))
       end
 
       api! 'get test'
       def show
-        render json: TestExecution.find(params[:id])
+        respond_with TestExecution.user(current_user).find(params[:id])
       end
 
       api! 'create new test'
@@ -37,8 +41,8 @@ module API
             required: true
       def create
         te = TestExecution.create(test_execution_params)
-        te.create_documents
-        render json: { download: "#{request.host_with_port}/#{te.file_path}" }, status: 201
+        CreateDocumentsJob.perform_later(te)
+        render json: { message: 'Started qrda data generation' }, location: api_v1_test_execution_url(te), status: 201
       end
 
       # api! ''
@@ -68,7 +72,7 @@ module API
       private
 
       def test_execution_params
-        filtered = params.require(:test_execution).permit(
+        filtered = params.permit(
           :user_id,
           :name,
           :description,
@@ -78,6 +82,7 @@ module API
           validation_ids: []
         )
         filtered[:user_id] = current_user.id
+        filtered[:api_measure_codes] = filtered[:measure_ids].dup
         filtered[:measure_ids].map! { |paramid| convert_measure(paramid).id } if filtered[:measure_ids]
         filtered[:validation_ids].map! { |paramid| convert_validation(paramid).id } if filtered[:validation_ids]
         filtered

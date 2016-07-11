@@ -33,8 +33,11 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
-  config.assets.precompile += %w( .svg .eot .woff .ttf)
+  config.assets.precompile += %w(.svg .eot .woff .ttf)
 
   # Default Mailer for Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Representer/Roar Hyperlinks
+  config.representer.default_url_options = { host: '127.0.0.1:3000' }
 end
