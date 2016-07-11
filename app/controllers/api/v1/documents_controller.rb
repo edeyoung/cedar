@@ -1,6 +1,10 @@
 module API
   module V1
     class DocumentsController < API::V1::BaseController
+      include Roar::Rails::ControllerAdditions
+
+      respond_to :json_api
+
       resource_description do
         short 'QRDA data and associated information'
         formats ['json']
@@ -18,7 +22,7 @@ module API
 
       api! 'get all documents of test execution'
       def index
-        render json: te.documents
+        render json: DocumentRepresenter.for_collection.new(te.documents)
       end
 
       api! 'get document of test execution'
@@ -26,7 +30,7 @@ module API
       Documents are retrieved using their index within the test_exection they belong to
       EOS
       def show
-        render json: te.documents[params[:id].to_i]
+        respond_with te.documents[params[:id].to_i]
       end
 
       api! 'report result'
@@ -37,7 +41,7 @@ module API
         document = te.documents[params[:id].to_i]
         document.update_attribute(:actual_result, result_params)
         document.update_state
-        render json: document
+        respond_with document
       end
 
       private

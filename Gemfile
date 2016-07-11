@@ -68,6 +68,9 @@ gem 'sweet-alert-confirm'
 gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
 # FactoryGirl for testing
 gem 'factory_girl_rails', '~> 4.0'
+# Roar rails for API field filtering and json-api standards
+gem 'roar', git: 'https://github.com/apotonick/roar.git'
+gem 'roar-rails'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
