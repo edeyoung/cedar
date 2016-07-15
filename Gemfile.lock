@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/apotonick/roar.git
+  revision: 5d3c2f15552b09a6b5b01ab87a6ba6df3c16e744
+  specs:
+    roar (1.0.3)
+      representable (>= 2.4.0, < 3.1.0)
+
+GIT
   remote: https://github.com/ottodog/apipie-rails.git
   revision: 00f15e9a0ad66af66ba30d2ab8d271da33b94aac
   specs:
@@ -36,12 +43,6 @@ GIT
       mongoid (~> 5.0.0)
       rubyzip (>= 1.0.0)
       zip-zip
-
-PATH
-  remote: ../roar
-  specs:
-    roar (1.0.3)
-      representable (>= 2.4.0, < 3.1.0)
 
 GEM
   remote: https://rubygems.org/

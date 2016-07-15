@@ -17,7 +17,6 @@ class TestExecution
   field :results,             type: Hash,    default: { passed: 0, total: 0 }
   field :disable_details,     type: Boolean, default: false
   field :file_path,           type: String,  default: ''
-  field :api_measure_codes,   type: Array,   default: []           # Original measure codes sent through API
 
   has_and_belongs_to_many :measures
   has_and_belongs_to_many :validations
