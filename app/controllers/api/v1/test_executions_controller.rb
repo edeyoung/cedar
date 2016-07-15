@@ -27,22 +27,31 @@ module API
       end
 
       api! 'create new test'
-      param :name, String, desc: 'Name of test', required: true
-      param :description, String, desc: 'Description for this test'
-      param :reporting_period, String, desc: 'Which year measures will be from', required: true
-      param :qrda_type, String, desc: '"1" or "3" for category 1 and category 3 QRDA data, measures, and validations, respectively', required: true
-      param :measure_ids, Array,
-            of: String,
-            desc: 'Array of measures to create qrda data with. Measures can be specified with either hqmf or cms ids',
-            required: true
-      param :validation_ids, Array,
-            of: String,
-            desc: 'Array of validation to invalidate qrda data with. Validations are specified with their codes. Eg: "discharge_after_upload"',
-            required: true
+      param :data, Hash, desc: 'Root level hash', required: true do
+        param :attributes, Hash, desc: 'Properties to set', required: true do
+          param :name, String, desc: 'Name of test', required: true
+          param :description, String, desc: 'Description for this test'
+          param :reporting_period, [2014, 2015, 2016], desc: 'Which year measures will be from', required: true
+          param :qrda_type, [1, 3],
+                desc: '"1" or "3" for category 1 and category 3 QRDA data, measures, and validations, respectively',
+                required: true
+          param :measure_ids, Array,
+                of: String,
+                desc: 'Array of measures to create qrda data with. Measures can be specified with either hqmf or cms ids',
+                required: true
+          param :validation_ids, Array,
+                of: String,
+                desc: 'Array of validation to invalidate qrda data with. Validations are specified with their codes. Eg: "discharge_after_upload"',
+                required: true
+        end
+      end
       def create
-        te = TestExecution.create(test_execution_params)
+        te = TestExecution.new
+        consume!(te)
+        te.save!
+        current_user.test_executions << te
         CreateDocumentsJob.perform_later(te)
-        render json: { message: 'Started qrda data generation' }, location: api_v1_test_execution_url(te), status: 201
+        respond_with te, status: 200
       end
 
       # api! ''
@@ -82,7 +91,6 @@ module API
           validation_ids: []
         )
         filtered[:user_id] = current_user.id
-        filtered[:api_measure_codes] = filtered[:measure_ids].dup
         filtered[:measure_ids].map! { |paramid| convert_measure(paramid).id } if filtered[:measure_ids]
         filtered[:validation_ids].map! { |paramid| convert_validation(paramid).id } if filtered[:validation_ids]
         filtered
