@@ -44,6 +44,17 @@ module API
         respond_with document
       end
 
+      api! 'bulk report document results'
+      param :results, Hash,
+            desc: 'Hash of results. Keys are ids and values are "accept" or "reject". Ex: results: { "1": "accept", "2": "reject" }'
+      def report_results
+        byebug
+        params[:results].each do |k, v|
+          te.documents[k.to_i].update_attribute(:actual_result, v)
+        end
+        head :ok
+      end
+
       private
 
       def result_params

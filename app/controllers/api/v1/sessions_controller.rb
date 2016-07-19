@@ -8,10 +8,10 @@ module API
       end
       skip_before_action :authenticate_user!, only: [:create, :new]
       skip_before_action :verify_signed_out_user
-      respond_to :json
+      respond_to :json_api
 
       api! 'get auth token'
-      param :email, String, required: true
+      # param :email, String, required: true
       def create
         resource = resource_from_credentials
         return invalid_login_attempt unless resource
@@ -26,20 +26,13 @@ module API
       api! 'regenerate auth token'
       header 'X-API-TOKEN', 'user\'s current authentication token', required: true
       def destroy
-        respond_to do |format|
-          format.html do
-            super
-          end
-          format.json do
-            user = User.find_by(authentication_token: request.headers['X-API-TOKEN'])
-            if user
-              user.reset_authentication_token!
-              user.save
-              render json: { message: 'Session deleted.' }, success: true, status: 200
-            else
-              render json: { message: 'Invalid token.' }, status: 404
-            end
-          end
+        user = User.find_by(authentication_token: request.headers['X-API-TOKEN'])
+        if user
+          user.reset_authentication_token!
+          user.save
+          render json: { message: 'Session deleted.' }, success: true, status: 200
+        else
+          render json: { message: 'Invalid token.' }, status: 404
         end
       end
 

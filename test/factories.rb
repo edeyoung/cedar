@@ -16,8 +16,8 @@ FactoryGirl.define do
     name 'first test'
     reporting_period '2016'
     qrda_type '3'
-    measure_ids %w(CMS109v4 CMS110v4)
-    validation_ids %w(duplicate_population_ids missing_population_id)
+    measures { [Measure.find_by(cms_id: 'CMS109v4')] }
+    validations { [Validation.find_by(code: 'duplicate_population_ids')] }
   end
 
   factory :te2, class: TestExecution do
@@ -25,7 +25,7 @@ FactoryGirl.define do
     name 'test2'
     reporting_period '2016'
     qrda_type '1'
-    measure_ids ['40280381-3D61-56A7-013e-6649110743ce']
-    validation_ids ['discharge_after_upload']
+    measures { [Measure.find_by(cms_id: 'CMS126v2')] }
+    validations { [Validation.find_by(code: 'discharge_after_upload')] }
   end
 end
