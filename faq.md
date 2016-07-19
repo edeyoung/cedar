@@ -38,4 +38,4 @@ Cedar takes users through a guided process to generate tests that can be run on 
 Cedar is a web-based Ruby on Rails application that sits on a Mongo database.  It can be deployed locally on a laptop or hosted on a server to allow for multiple users within an organization to access the same instance.
 
 ## How can my organization use Cedar?
-Cedar is totally free and available as open source under Apache 2.0 licensing, so you can download the code on GitHub and install it whenever you like: http://github.com/mitre/cedar.
+Cedar is totally free and available as open source under Apache 2.0 licensing, so you can [download the code on GitHub](http://github.com/mitre/cedar) and install it whenever you like.
