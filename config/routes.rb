@@ -31,8 +31,9 @@ Rails.application.routes.draw do
       resources :validations, only: [:index, :show]
       resources :measures, only: [:index, :show]
       resources :test_executions, only: [:index, :create, :show, :update, :destroy] do
-        match :report_results, via: [:post], on: :member
-        resources :documents, only: [:index, :show, :update]
+        resources :documents, only: [:index, :show, :update] do
+          match :report_results, via: [:patch], on: :collection
+        end
       end
     end
   end

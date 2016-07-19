@@ -31,15 +31,15 @@ module API
         param :attributes, Hash, desc: 'Properties to set', required: true do
           param :name, String, desc: 'Name of test', required: true
           param :description, String, desc: 'Description for this test'
-          param :reporting_period, [2014, 2015, 2016], desc: 'Which year measures will be from', required: true
-          param :qrda_type, [1, 3],
+          param :reporting_period, %w(2014 2015 2016), desc: 'Which year measures will be from', required: true
+          param :qrda_type, %w(1 3),
                 desc: '"1" or "3" for category 1 and category 3 QRDA data, measures, and validations, respectively',
                 required: true
-          param :measure_ids, Array,
+          param :measures, Array,
                 of: String,
                 desc: 'Array of measures to create qrda data with. Measures can be specified with either hqmf or cms ids',
                 required: true
-          param :validation_ids, Array,
+          param :validations, Array,
                 of: String,
                 desc: 'Array of validation to invalidate qrda data with. Validations are specified with their codes. Eg: "discharge_after_upload"',
                 required: true
@@ -65,17 +65,6 @@ module API
       def destroy
         TestExecution.find(params[:id]).destroy
         render json: { message: 'Test execution deleted.' }, success: true, status: 200
-      end
-
-      api! 'bulk report document results'
-      param :results, Hash,
-            desc: 'Hash of results. Keys are test_indices and values are "accept" or "reject". Ex: results: { "1": "accept", "2": "reject" }'
-      def report_results
-        test_execution = TestExecution.find(params[:id])
-        params[:results].each do |k, v|
-          test_execution.documents[k.to_i].update_attribute(:actual_result, v)
-        end
-        head :ok
       end
 
       private
