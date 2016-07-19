@@ -6,15 +6,14 @@ module API
       include Devise::Test::ControllerHelpers
       include FactoryGirl::Syntax::Methods
       setup do
-        @user = User.where(email: 'djchu@mitre.org').first
-        @user ||= User.create!(email: 'djchu@mitre.org', password: 'password')
+        @user = create(:user)
         @request.env['devise.mapping'] = Devise.mappings[:user]
         @request.headers['Accept'] = 'application/vnd.api+json'
         @request.headers['Content-Type'] = 'application/vnd.api+json'
       end
 
       test 'sign in' do
-        post :create, { email: 'djchu@mitre.org', password: 'password' }, format: 'json'
+        post :create, { email: @user.email, password: @user.password }, format: 'json'
 
         assert_response :success
 
