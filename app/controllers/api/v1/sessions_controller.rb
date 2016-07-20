@@ -30,7 +30,7 @@ module API
         if user
           user.reset_authentication_token!
           user.save
-          render json: { message: 'Session deleted.' }, success: true, status: 200
+          render json: { message: 'Token reset.' }, success: true, status: 200
         else
           render json: { message: 'Invalid token.' }, status: 404
         end
