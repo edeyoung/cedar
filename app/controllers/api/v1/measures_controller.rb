@@ -6,7 +6,7 @@ module API
       respond_to :json_api
 
       def index
-        render json: MeasureRepresenter.for_collection.new(Measure.all)
+        render json: MeasureRepresenter.for_collection.new(Measure.all.top_level.only(:cms_id, :name, :description, :hqmf_id))
       end
 
       def show

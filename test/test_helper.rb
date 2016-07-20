@@ -10,6 +10,7 @@ class ActiveSupport::TestCase
   def global_teardown
     DatabaseCleaner.strategy = :truncation, { only: %w(users test_executions documents) }
     DatabaseCleaner.clean
+    FactoryGirl.reload
   end
 
   def json(response)

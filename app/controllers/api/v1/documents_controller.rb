@@ -40,19 +40,20 @@ module API
       def update
         document = te.documents[params[:id].to_i]
         document.update_attribute(:actual_result, result_params)
-        document.update_state
-        respond_with document
+        te.set_overview_state
+        document.reload
+        render json: DocumentRepresenter.new(document)
       end
 
       api! 'bulk report document results'
       param :results, Hash,
             desc: 'Hash of results. Keys are ids and values are "accept" or "reject". Ex: results: { "1": "accept", "2": "reject" }'
       def report_results
-        byebug
         params[:results].each do |k, v|
           te.documents[k.to_i].update_attribute(:actual_result, v)
         end
-        head :ok
+        te.set_overview_state
+        render json: DocumentRepresenter.for_collection.new(te.documents)
       end
 
       private
