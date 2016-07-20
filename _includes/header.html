@@ -19,7 +19,15 @@
       <div class="trigger">
         {% for my_page in site.pages %}
           {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">
+            {% if my_page.title == 'Download' %}
+              <i class='glyphicon glyphicon-download'></i> {{ my_page.title }}
+            {% elsif my_page.title == 'About' %}
+              <i class='glyphicon glyphicon-flag'></i> {{ my_page.title }}
+            {% elsif my_page.title == 'FAQ' %}
+              <i class='glyphicon glyphicon-question-sign'></i> {{ my_page.title }}
+            {% endif %}
+          </a>
           {% endif %}
         {% endfor %}
       </div>
