@@ -2,13 +2,11 @@ FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
     password 'password'
-    password_confirmation 'password'
   end
 
   factory :user2, class: User do
     email { Faker::Internet.email }
     password 'password'
-    password_confirmation 'password'
   end
 
   factory :te1, class: TestExecution do

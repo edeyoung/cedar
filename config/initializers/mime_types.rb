@@ -9,6 +9,7 @@ ActionController::Renderers.add :json_api do |obj, _options|
 end
 # Add JSON-API request data to params hash inside controllers
 # http://blog.arkency.com/2016/03/creating-new-content-types-in-rails-4-dot-2/
+# Necessary for both apipie and from_hash(params) with roar
 middlewares = Cedar::Application.config.middleware
 middlewares.swap(ActionDispatch::ParamsParser,
                  ActionDispatch::ParamsParser,
