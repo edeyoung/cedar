@@ -870,3 +870,131 @@ body {
   font-size: small;
   padding: 10px 0;
 }
+
+/* Simple Grid */
+.grid-half {
+  width: 50%;
+  float: left;
+}
+.padded {
+  padding: 1em;
+}
+.clear:after {
+  clear: both;
+}
+.clear:before {
+  display: table;
+  content: " ";
+}
+.clear {
+  width: 100%;
+  overflow: hidden;
+}
+@media screen and (max-width: 800px) {
+  .grid-half {
+    width: 100%;
+  }
+}
+
+/* Homepage */
+.cedar-screenshot {
+  background: url('../images/cedar_screenshot.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.cedar-logo {
+  background: url('../images/cedar_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100px;
+  margin-bottom: 10px;
+}
+.github {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #299171;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 #cdcdcd;
+  line-height: 25px;
+  font-size: 25px;
+  &:hover {
+    background-color: #42aa8a;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  & > svg {
+    width: 25px;
+  }
+}
+.spacer {
+  height: 50px;
+  clear: both;
+  content: "";
+}
+.ribbon {
+  background-color: #9b7aa7;
+  color: white;
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  overflow: hidden;
+}
+@media screen and (max-width: 800px) {
+  .spacer {
+    height: 10px;
+  }
+  .ribbon {
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .ribbon {
+    font-size: 58px;
+  }
+}
+.step-number {
+  font-size: 40px;
+  border-radius: 40px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  background: #432748;
+  color: white;
+}
+.step-header {
+  font-size: 50px;
+}
+.step-text {
+  margin-left: 50px;
+}
+@media screen and (max-width: 1200px) {
+  .step-number {
+    font-size: 30px;
+    border-radius: 30px;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+  }
+  .step-header {
+    font-size: 35px;
+  }
+  .step-text {
+    margin-left: 35px;
+  }
+}
+.death-number {
+  font-size: 70px;
+  color: #c9302c;
+  display: inline-block;
+  float: left;
+  line-height: 75px;
+  padding: 5px 10px;
+}
