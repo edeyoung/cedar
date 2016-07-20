@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/ottodog/apipie-rails.git
-  revision: 00f15e9a0ad66af66ba30d2ab8d271da33b94aac
+  revision: 465375666dd2bc2a455b092ffe98a3d9c9ad0ba7
   specs:
     apipie-rails (0.3.6)
       json

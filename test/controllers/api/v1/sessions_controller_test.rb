@@ -12,13 +12,18 @@ module API
         @request.headers['Content-Type'] = 'application/vnd.api+json'
       end
 
-      test 'sign in' do
-        post :create, { email: @user.email, password: @user.password }, format: 'json'
+      test 'valid sign in' do
+        post :create, email: @user.email, password: @user.password
 
         assert_response :success
 
         user = json(response)['user']
         assert_not_nil user['authentication_token']
+      end
+
+      test 'invalid sign in' do
+        post :create, email: Faker::Internet.email, password: 'incorrect'
+        assert_response :unauthorized
       end
 
       test 'sign out' do

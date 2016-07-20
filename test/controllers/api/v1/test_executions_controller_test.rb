@@ -29,9 +29,25 @@ module API
         assert_equal @te.name, json(response)['data']['attributes']['name']
       end
 
-      # Note: Roar-rails is uncooperative with functional tests, so we can't test :create here.
-      # Specifically, the consume! function reads from request.body, which is populated differently in tests.
-      # One workaround is to use .to_json on parameters here, but then that fails the api-pie params validation.
+      test 'create test' do
+        post :create,
+             data: {
+               attributes: {
+                 name: 'first',
+                 reporting_period: '2016',
+                 qrda_type: '1',
+                 measures: ['40280381-3D61-56A7-013e-6649110743ce'],
+                 validations: ['discharge_after_upload']
+               }
+             }
+        assert_response :success
+      end
+
+      test 'delete test' do
+        delete :destroy, id: @te.id
+        assert_response :success
+        assert_empty TestExecution.where(id: @te.id).documents
+      end
     end
   end
 end

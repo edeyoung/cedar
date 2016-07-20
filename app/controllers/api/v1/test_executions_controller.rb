@@ -47,8 +47,10 @@ module API
       end
       def create
         te = TestExecution.new
-        consume!(te)
-        te.save!
+        # NOTE: Roar makes #consume! available, that is supposed to make this much easier
+        # However, it does not play nice with controller tests and apipie example generation
+        # Also, from_hash(params) would not work with application/vnd.api+json content-type if not for code in initializers/mime_types.rb
+        TestExecutionRepresenter.new(te).from_hash(params)
         current_user.test_executions << te
         CreateDocumentsJob.perform_later(te)
         respond_with te, status: 200
