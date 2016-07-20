@@ -821,21 +821,24 @@ Bootstrap is released under the MIT license and is copyright 2015 Twitter.
 /* Overrides for default Jekyll styles */
 
 * {
-  font-family: 'Varela Round'
+  font-family: 'Varela Round';
+  box-sizing: border-box;
 }
 body {
   background-color: white;
+  padding-top: 60px;
 }
-
-/* Site Header */
 .site-header {
   background: rgb(67, 39, 72);
   border-top: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .site-nav .page-link {
   color: white;
   display: inline-block;
-  line-height: 56px;
+  line-height: 60px;
   padding: 0 10px;
   &:hover {
     background-color: rgb(107, 87, 111);
@@ -843,6 +846,11 @@ body {
   }
   &:not(:last-child) {
     margin-right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .site-nav .menu-icon {
+    height: 32px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -857,4 +865,8 @@ body {
       text-decoration: none;
     }
   }
+}
+.site-footer {
+  font-size: small;
+  padding: 10px 0;
 }
