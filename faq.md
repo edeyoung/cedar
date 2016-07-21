@@ -5,14 +5,14 @@ permalink: /faq/
 ---
 
 ## What is Cedar?
-Cedar is a free, open source tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files.  It is being actively developed by CMS/CMCS with the help of CAMH.
+Cedar is a free, open source tool for testing the strength of [Electronic Clinical Quality Measure (eCQM)](https://ecqi.healthit.gov/content/putting-ecqms-work) collection systems that receive [Quality Reporting Document Architecture (QRDA)](https://ecqi.healthit.gov/qrda) files.  It is being actively developed by the [Center for Medicaid and CHIP Services (CMCS)](https://www.medicaid.gov/about-us/organization/organization.html) with the help of [MITRE](http://mitre.org) and the [CMS Alliance to Modernize Healthcare (CAMH)](https://www.mitre.org/centers/cms-alliances-to-modernize-healthcare/who-we-are).
 
 ## Why is Cedar necessary?
-QRDA is a relatively new standard for reporting clinical quality measures.  As such, it is expected that many organizations may receive QRDA files with errors.  Cedar will show you if your eCQM collection system can correctly identify and reject files with errors, such as…
+QRDA is a relatively new standard for reporting clinical quality measures.  As such, it is expected that many organizations may receive QRDA files with errors.  Cedar will reveal whether a eCQM collection system can correctly identify and reject files with errors, such as…
 
-- Structural Errors, e.g. files that are missing information required to meet the QRDA standard
-- Calculation Errors, e.g. measures reported with a numerator greater than their denominator
--	Contextual Errors, e.g. reported value sets that are not in the scope of a given measure definition
+- *Structural Errors*, e.g. files that are missing information required to meet the QRDA standard
+- *Calculation Errors*, e.g. measures reported with a numerator greater than their denominator
+-	*Contextual Errors*, e.g. reported value sets that are not in the scope of a given measure definition
 
 All of these errors have been encountered in the real world.  In the 2014 reporting period, [greater than 93% of QRDA Category 3 files contained errors](https://www.cms.gov/eHealth/downloads/2014_EP_Submission_Data_Issues.pdf).
 
@@ -23,18 +23,24 @@ Any organization that collects QRDA files and uses them to assess the quality of
 -	Quality Improvement Organizations
 -	Health Information Exchanges
 
-Currently, MITRE is working with the Michigan Health Information Network (MiHIN) to pilot development and usage of Cedar in a production setting.
+Currently, MITRE is working with the [Michigan Health Information Network (MiHIN)](http://mihin.org/) to pilot development and usage of Cedar in a production setting.
 
 ## How does Cedar work?
 Cedar takes users through a guided process to generate tests that can be run on an eCQM collection system.
 
 1. The user asks for test files based on the type of QRDA files to generate, which reporting period to use, how many and what types of validations to use, etc.
 2. Cedar generates QRDA files – some with errors, some without – to be used in a blind test of the eCQM collection system
-3. Users take the QRDA files and process them in their eCQM collection system, noting any rejections
-4. Users return to Cedar and record the results of their test (which files were rejected/accepted)
-5. Cedar shows a comparison of the expected and actual recorded results of the test
+3. The user takes the QRDA files and process them in their eCQM collection system, noting any rejections, then returns to Cedar to record the test results (which files were rejected/accepted)
+4. Cedar shows a comparison of the expected and actual recorded results of the test
 
 ## What is the technical architecture for Cedar?
+<div class='grid-half'>
+  <div style='width:250px;display:inline-block;'>{% include rails-logo.svg %}</div>
+</div>
+<div class='grid-half'>
+  <img src='../images/MongoDB-Logo.png' alt='MongoDB Logo' style='width:350px;'>
+</div>
+<div class='clear'></div>
 Cedar is a web-based Ruby on Rails application that sits on a Mongo database.  It can be deployed locally on a laptop or hosted on a server to allow for multiple users within an organization to access the same instance.
 
 ## How can my organization use Cedar?

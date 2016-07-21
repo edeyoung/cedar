@@ -932,7 +932,7 @@ body {
   }
 }
 .spacer {
-  height: 50px;
+  height: 60px;
   clear: both;
   content: "";
 }
@@ -940,9 +940,9 @@ body {
   background-color: $cedar-light-base;
   color: white;
   font-size: 50px;
-  text-transform: uppercase;
   text-align: center;
   overflow: hidden;
+  padding: 50px 0;
 }
 @media screen and (max-width: 800px) {
   .spacer {
@@ -950,6 +950,7 @@ body {
   }
   .ribbon {
     font-size: 40px;
+    padding: 0;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -996,4 +997,17 @@ body {
   float: left;
   line-height: 75px;
   padding: 5px 10px;
+}
+.good-span {
+  font-size: 28px;
+  color: $cedar-dark-secondary;
+}
+.table-layout {
+  display: table;
+  width: 100%;
+}
+.table-layout-cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 2px;
 }
