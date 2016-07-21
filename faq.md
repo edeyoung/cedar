@@ -30,7 +30,7 @@ Cedar takes users through a guided process to generate tests that can be run on 
 
 1. The user asks for test files based on the type of QRDA files to generate, which reporting period to use, how many and what types of validations to use, etc.
 2. Cedar generates QRDA files – some with errors, some without – to be used in a blind test of the eCQM collection system
-3. The user takes the QRDA files and process them in their eCQM collection system, noting any rejections, then returns to Cedar to record the test results (which files were rejected/accepted)
+3. The user takes the QRDA files and processes them in their eCQM collection system, noting any rejections, then returns to Cedar to record the test results (which files were rejected/accepted)
 4. Cedar shows a comparison of the expected and actual recorded results of the test
 
 ## What is the technical architecture for Cedar?
