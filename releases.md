@@ -12,5 +12,5 @@ Current Cedar Version: 0.1
 
 ## Release Notes for Previous Versions
 
-### Version 0.1
+### [Version 0.1](https://github.com/mitre/cedar/releases/tag/v0.1)
 - Initial release to GitHub
