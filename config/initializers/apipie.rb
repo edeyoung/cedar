@@ -10,23 +10,26 @@ Apipie.configure do |config|
   accuracy.
 
   == Common Usage
-  <b>Create an account:</b>
 
-  POST /api/v1/users
+  <b>Get authentication token with one of two methods:</b>
 
-  <b>Get authentication token:</b>
+  1. Create an account at {POST /api/v1/users}[link:/apipie/v1/registrations/create.html]
 
-  POST /api/v1/users/sign_in
+  2. Sign in at {POST /api/v1/users/sign_in}[link:/apipie/v1/sessions/create.html]
 
-  <b>Create test execution:</b>
+  <b>Create test execution at </b>
 
-  POST /api/v1/test_executions
+  {POST /api/v1/test_executions}[link:/apipie/v1/test_executions/create.html]
 
-  <i>Download qrda files and test them on your collection system</i>
+  <b>Get QRDA data with one of two methods</b>
+
+  1. Download zip from file_path url returned from creation
+
+  2. Get qrda data from documents at {GET /api/v1/test_executions/:test_execution_id/documents}[link:/apipie/v1/documents/index.html]
 
   <b>Report results:</b>
 
-  POST /api/v1/test_executions/:id/report_results
+  {POST /api/v1/test_executions/:test_execution_id/documents/report_results}[link:/apipie/v1/documents/report_results.html]
 EOS
   config.api_base_url            = '/api'
   config.doc_base_url            = '/apipie'
