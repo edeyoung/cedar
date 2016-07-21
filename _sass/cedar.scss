@@ -821,7 +821,6 @@ Bootstrap is released under the MIT license and is copyright 2015 Twitter.
 /* Overrides for default Jekyll styles */
 
 * {
-  font-family: 'Varela Round';
   box-sizing: border-box;
 }
 body {
@@ -829,7 +828,7 @@ body {
   padding-top: 60px;
 }
 .site-header {
-  background: rgb(67, 39, 72);
+  background: $cedar-dark-base;
   border-top: none;
   position: fixed;
   top: 0;
@@ -841,7 +840,7 @@ body {
   line-height: 60px;
   padding: 0 10px;
   &:hover {
-    background-color: rgb(107, 87, 111);
+    background-color: $cedar-light-base;
     text-decoration: none;
   }
   &:not(:last-child) {
@@ -861,7 +860,7 @@ body {
     line-height: 1.5em;
     &:hover {
       color: white;
-      background-color: rgb(107, 87, 111);
+      background-color: $cedar-light-base;
       text-decoration: none;
     }
   }
@@ -916,14 +915,14 @@ body {
   display: inline-block;
   text-align: center;
   padding: 10px 20px;
-  background-color: #299171;
+  background-color: $cedar-dark-secondary;
   color: white;
   border-radius: 4px;
-  box-shadow: 0 2px 2px 0 #cdcdcd;
+  box-shadow: 2px 2px 2px 0 $grey-color;
   line-height: 25px;
   font-size: 25px;
   &:hover {
-    background-color: #42aa8a;
+    background-color: $cedar-light-secondary;
   }
   a:hover {
     text-decoration: none;
@@ -938,7 +937,7 @@ body {
   content: "";
 }
 .ribbon {
-  background-color: #9b7aa7;
+  background-color: $cedar-light-base;
   color: white;
   font-size: 50px;
   text-transform: uppercase;
@@ -966,7 +965,7 @@ body {
   line-height: 50px;
   text-align: center;
   display: inline-block;
-  background: #432748;
+  background: $cedar-dark-base;
   color: white;
 }
 .step-header {

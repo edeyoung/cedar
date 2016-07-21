@@ -1,73 +1,85 @@
 ---
-layout: default
+layout: full_page
 ---
 
-<div class="home">
+<div class="home page-content">
 
-  <div class='grid-half padded'>
-    <div class='cedar-screenshot'></div>
+  <div class="wrapper">
+
+    <div class='grid-half padded' style='float:right'>
+      <div class='cedar-logo'></div>
+      <p>Cedar is a free, open source tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files.</p>
+      <a href='https://github.com/mitre/cedar'>
+        <div class='github'>
+          {% include icon-github.svg %} Download it on GitHub!
+        </div>
+      </a>
+    </div>
+    <div class='grid-half padded' style='float:right'>
+      <div class='cedar-screenshot'></div>
+    </div>
+
   </div>
-  <div class='grid-half padded'>
-    <div class='cedar-logo'></div>
-    <p>Cedar is a free, open source tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files.</p>
-    <a href='https://github.com/mitre/cedar'>
-      <div class='github'>
-        {% include icon-github.svg %} Download it on GitHub!
+
+  <div class='spacer'></div>
+
+  <div class='ribbon'>
+    <div class="wrapper">
+      <div class='grid-half'>QRDA is messy.</div>
+      <div class='grid-half'>Cedar can help.</div>
+    </div>
+  </div>
+
+  <div class='spacer'></div>
+
+  <div class="wrapper">
+    <div class='grid-half padded'>
+      <span class='step-number'>1</span> <span class='step-header'>You choose</span>
+      <div class='step-text'>
+        how you want to test your eCQM collection system by entering test details like...
+        <ul>
+          <li>Reporting Year
+          <li>QRDA Type <em>(Category 1 or 3)</em>
+          <li>Measure <em>(choose from any of the 100+ MU eCQMs)</em>
+          <li>Validations to run <em>(Cedar can check the structure, calculation, or contextual details of a QRDA file)</em>
+        </ul>
       </div>
-    </a>
-  </div>
-
-  <div class='spacer'></div>
-
-  <div class='ribbon'>
-    <div class='grid-half'>QRDA is messy.</div>
-    <div class='grid-half'>Cedar can help.</div>
-  </div>
-
-  <div class='spacer'></div>
-
-  <div class='grid-half padded'>
-    <span class='step-number'>1</span> <span class='step-header'>You choose</span>
-    <div class='step-text'>
-      how you want to test your eCQM collection system by entering test details like...
-      <ul>
-        <li>Reporting Year
-        <li>QRDA Type <em>(Category 1 or 3)</em>
-        <li>Measure <em>(choose from any of the 100+ MU eCQMs)</em>
-        <li>Validations to run <em>(Cedar can check the structure, calculation, or contextual details of a QRDA file)</em>
-      </ul>
     </div>
-  </div>
-  <div class='grid-half padded'>
-    <span class='step-number'>2</span> <span class='step-header'>Cedar generates</span>
-    <div class='step-text'>
-      a series of valid and invalid QRDA files for you to use in testing your eCQM collection system.  Each file is assigned an index and the name of a healthcare provider and placed in a zip file for a simple download.
+    <div class='grid-half padded'>
+      <span class='step-number'>2</span> <span class='step-header'>Cedar generates</span>
+      <div class='step-text'>
+        a series of valid and invalid QRDA files for you to use in testing your eCQM collection system.  Each file is assigned an index and the name of a healthcare provider and placed in a zip file for a simple download.
+      </div>
     </div>
-  </div>
-  <div class='clear'></div>
-  <div class='grid-half padded'>
-    <span class='step-number'>3</span> <span class='step-header'>You test</span>
-    <div class='step-text'>
-      the QRDA files that Cedar generates through your eCQM collection system.  Then, you enter the actual results from your tests into Cedar.
+    <div class='clear'></div>
+    <div class='grid-half padded'>
+      <span class='step-number'>3</span> <span class='step-header'>You test</span>
+      <div class='step-text'>
+        the QRDA files that Cedar generates through your eCQM collection system.  Then, you enter the actual results from your tests into Cedar.
+      </div>
     </div>
-  </div>
-  <div class='grid-half padded'>
-    <span class='step-number'>4</span> <span class='step-header'>Cedar shows</span>
-    <div class='step-text'>
-      which QRDA errors your eCQM collection system is able to understand and reject.  This means Cedar can help with both the initial rollout of an eCQM collection system and regression testing when those systems are modified.
+    <div class='grid-half padded'>
+      <span class='step-number'>4</span> <span class='step-header'>Cedar shows</span>
+      <div class='step-text'>
+        which QRDA errors your eCQM collection system is able to understand and reject.  This means Cedar can help with both the initial rollout of an eCQM collection system and regression testing when those systems are modified.
+      </div>
     </div>
   </div>
 
   <div class='spacer'></div>
 
   <div class='ribbon'>
-    Why use Cedar?
+    <div class="wrapper">
+      Why use Cedar?
+    </div>
   </div>
 
   <div class='spacer'></div>
 
-  <div class='grid-half'>
-    <span class='death-number'>93%</span> of QRDA Category III files contained errors during the 2014 reporting period.
+  <div class="wrapper">
+    <div class='grid-half'>
+      <span class='death-number'>93%</span> of QRDA Category III files contained errors during the 2014 reporting period.
+    </div>
   </div>
 
 </div>
