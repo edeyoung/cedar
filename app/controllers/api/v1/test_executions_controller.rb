@@ -31,7 +31,7 @@ module API
         param :attributes, Hash, desc: 'Properties to set', required: true do
           param :name, String, desc: 'Name of test', required: true
           param :description, String, desc: 'Description for this test'
-          param :reporting_period, %w(2014 2015 2016), desc: 'Which year measures will be from', required: true
+          param :reporting_period, BUNDLE_MAP.keys, desc: 'Which year measures will be from', required: true
           param :qrda_type, %w(1 3),
                 desc: '"1" or "3" for category 1 and category 3 QRDA data, measures, and validations, respectively',
                 required: true
