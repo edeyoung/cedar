@@ -40,7 +40,7 @@ layout: full_page
         <ul>
           <li>Reporting Year
           <li>QRDA Type <em>(Category 1 or 3)</em>
-          <li>Measure <em>(choose from any of the 100+ MU eCQMs)</em>
+          <li>Measure <em>(choose from any of the 100+ Meaningful Use eCQMs)</em>
           <li>Validations to run <em>(Cedar can check the structure, calculation, or contextual details of a QRDA file)</em>
         </ul>
       </div>
@@ -48,7 +48,7 @@ layout: full_page
     <div class='grid-half padded'>
       <span class='step-number'>2</span> <span class='step-header'>Cedar generates</span>
       <div class='step-text'>
-        a series of valid and invalid QRDA files for you to use in testing your eCQM collection system.  Each file is assigned an index and the name of a healthcare provider and placed in a zip file for a simple download.
+        a series of valid and invalid QRDA test files for you to use in testing your eCQM collection system.  Each file is assigned an index and the name of a mock healthcare provider and placed in a zip file for a simple download.
       </div>
     </div>
     <div class='clear'></div>
@@ -73,39 +73,49 @@ layout: full_page
   </div>
 
   <div class="wrapper">
-    <div class='grid-half'>
-      <div class='table-layout'>
-        <div class='table-layout-cell'>
-          <span class='death-number'>93%</span>
+    <div class='grid-half padded'>
+      <p class='detail-header-1' style='color:#c9302c;'>
+        93%
+      </p>
+      <p>
+        of QRDA Category III files contained errors <a href='https://www.cms.gov/eHealth/downloads/2014_EP_Submission_Data_Issues.pdf'>during the 2014 reporting period</a>.
+      </p>
+    </div>
+    <div class='grid-half padded'>
+      <p class='detail-header-1' style='color:#9b7aa7;'>
+        <span style='white-space:nowrap'>No PHI</span>
+      </p>
+      <p>
+        Cedar QRDA files contain no Protected Health Information (PHI) or Personally Identifiable Information (PII).
+      </p>
+    </div>
+    <div class='clear'></div>
+    <div class='grid-half padded'>
+      <p class='detail-header-2' style='color:#299171;'>
+          Accurate eCQMs empower
+      </p>
+      <div class='table-layout-cell' style='font-size:large;'>
+        <div class='table-layout-row'>
+          <div class='table-layout-cell'><i class='glyphicon glyphicon-usd' style='color:#299171;font-size:24px;' aria-hidden="true"></i></div>
+          <div class='table-layout-cell'>Accurate Provider Reimbursement</div>
         </div>
-        <div class='table-layout-cell'>
-          of QRDA Category III files contained errors <a href='https://www.cms.gov/eHealth/downloads/2014_EP_Submission_Data_Issues.pdf'>during the 2014 reporting period</a>.
+        <div class='table-layout-row'>
+          <div class='table-layout-cell'><i class='glyphicon glyphicon-eye-open' style='color:#9b7aa7;font-size:24px;' aria-hidden="true"></i></div>
+          <div class='table-layout-cell'>Insight into Clinical Quality</div>
+        </div>
+        <div class='table-layout-row'>
+          <div class='table-layout-cell'><i class='glyphicon glyphicon-heart-empty' style='color:red;font-size:24px;' aria-hidden="true"></i></div>
+          <div class='table-layout-cell'>Better Patient Outcomes</div>
         </div>
       </div>
     </div>
-    <div class='grid-half'>
-      <div class='table-layout'>
-        <div class='table-layout-cell' style='text-align:center'>
-            <span class='good-span'>Accurate eCQMs</span>
-        </div>
-        <div class='table-layout-cell'>
-          <span style='font-size: 28px;'><i class='glyphicon glyphicon-arrow-right' aria-hidden="true"></i></span>
-        </div>
-        <div class='table-layout-cell' style='font-size:large;'>
-          <div class='table-layout-row'>
-            <div class='table-layout-cell'><i class='glyphicon glyphicon-usd' style='color:#299171;font-size:24px;' aria-hidden="true"></i></div>
-            <div class='table-layout-cell'>Accurate Provider Reimbursement</div>
-          </div>
-          <div class='table-layout-row'>
-            <div class='table-layout-cell'><i class='glyphicon glyphicon-eye-open' style='color:#9b7aa7;font-size:24px;' aria-hidden="true"></i></div>
-            <div class='table-layout-cell'>Insight into Clinical Quality</div>
-          </div>
-          <div class='table-layout-row'>
-            <div class='table-layout-cell'><i class='glyphicon glyphicon-heart-empty' style='color:red;font-size:24px;' aria-hidden="true"></i></div>
-            <div class='table-layout-cell'>Better Patient Outcomes</div>
-          </div>
-        </div>
-      </div>
+    <div class='grid-half padded'>
+      <p class='detail-header-2' style='color:#337ab7;'>
+        Free + Open Source
+      </p>
+      <p>
+        Cedar is and always will be available 100% free of charge. Also, Cedar's source code is available under the Apache v2.0 license, so you can modify it to fit your organizations' needs.
+      </p>
     </div>
   </div>
 

@@ -992,17 +992,15 @@ body {
     margin-left: 35px;
   }
 }
-.death-number {
+.detail-header-1 {
+  text-align: center;
   font-size: 70px;
-  color: #c9302c;
-  display: inline-block;
-  float: left;
   line-height: 75px;
-  padding: 5px 10px;
 }
-.good-span {
-  font-size: 28px;
-  color: $cedar-dark-secondary;
+.detail-header-2 {
+  text-align: center;
+  font-size: 35px;
+  line-height: 38px;
 }
 .table-layout {
   display: table;
