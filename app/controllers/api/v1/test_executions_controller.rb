@@ -51,9 +51,14 @@ module API
         # However, it does not play nice with controller tests and apipie example generation
         # Also, from_hash(params) would not work with application/vnd.api+json content-type if not for code in initializers/mime_types.rb
         TestExecutionRepresenter.new(te).from_hash(params)
-        current_user.test_executions << te
-        CreateDocumentsJob.perform_later(te)
-        respond_with te, status: 200
+        validate_test_execution(te)
+        if @errors.any?
+          render json: { errors: @errors }, status: 400
+        else
+          current_user.test_executions << te
+          CreateDocumentsJob.perform_later(te)
+          respond_with te, status: 200
+        end
       end
 
       # api! ''
@@ -70,6 +75,56 @@ module API
       end
 
       private
+
+      def validate_test_execution(test_execution)
+        @errors = []
+        check_measure_year(test_execution)
+        check_validation_measure_type(test_execution)
+        check_validation_qrda_type(test_execution)
+      end
+
+      def check_measure_year(test_execution)
+        bundle_id = test_execution.bundle.id
+        invalid_measure_ids = test_execution.measures.select { |measure| measure.bundle_id != bundle_id }.map(&:cms_id)
+
+        if invalid_measure_ids.any?
+          @errors << {
+            title: 'Incorrect Measure Reporting Period',
+            detail: "Measures #{invalid_measure_ids.join(',')} are not in reporting period #{test_execution.reporting_period}"
+          }
+        end
+      end
+
+      def check_validation_measure_type(test_execution)
+        measure_types = test_execution.selected_measure_types
+        if !measure_types[:discrete]
+          invalid = 'discrete'
+          valid = 'continuous'
+        elsif !measure_types[:continuous]
+          invalid = 'continuous'
+          valid = 'discrete'
+        else
+          return
+        end
+        invalid_validation_ids = test_execution.validations.select { |validation| validation.measure_type == invalid }.map(&:code)
+        if invalid_validation_ids.any?
+          @errors << {
+            title: 'Incompatible Validations and Measures',
+            detail: "All selected measures are #{valid}, but validations #{invalid_validation_ids.join(',')} are only for #{invalid} measures"
+          }
+        end
+      end
+
+      def check_validation_qrda_type(test_execution)
+        qrda_type = test_execution.qrda_type
+        invalid_validation_ids = test_execution.validations.select { |validation| validation.qrda_type != qrda_type }.map(&:code)
+        if invalid_validation_ids.any?
+          @errors << {
+            title: 'Incorrect QRDA Type',
+            detail: "Validations #{invalid_validation_ids.join(',')} are not QRDA cat #{qrda_type}"
+          }
+        end
+      end
 
       def test_execution_params
         filtered = params.permit(
