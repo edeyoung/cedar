@@ -14,6 +14,7 @@ module API
       property :description
       property :qrda_type
       property :measure_type
+      property :tags
     end
   end
 end
