@@ -30,32 +30,15 @@ module API
       property :qrda_type
 
       # Validations
-      # THERE ARE TWO WAYS TO DO this
-      # First is to render the validation collection through the has_and_belongs_to_many relation
-      # Only output code property
-      # collection :validations, class: Validation do
-      #   property :code
-      # end
-      # Second way is to take the hidden validation_ids field from mongoDB and map to convert all to code
-      property :validation_ids,
-               as: :validations,
-               render_filter: ->(input, _options) { input.map { |id| Validation.find(id).code } },
-               parse_filter: ->(input, _options) { input.map { |code| Validation.find_by(code: code.downcase).id } }
-      # THIRD would be to keep another column in mongoDB with the original input
+      property :validations,
+               render_filter: ->(input, _options) { input.map(&:code) },
+               skip_parse: true
 
       # Measures
 
-      property :measure_ids,
-               as: :measures,
-               render_filter: lambda { |input, _options|
-                                input.map { |id| Measure.find_by(_id: id).hqmf_id }
-                              },
-               parse_filter: lambda { |input, _options|
-                               input.map do |paramid|
-                                 (Measure.where(hqmf_id: paramid.upcase).first ||
-                                   Measure.where(cms_id: /^#{Regexp.escape(paramid)}$/i).first).id
-                               end
-                             }
+      property :measures,
+               render_filter: ->(input, _options) { input.map(&:cms_id) },
+               skip_parse: true
     end
   end
 end

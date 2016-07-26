@@ -11,6 +11,8 @@ class Measure
   index bundle_id: 1
   index id: 1, sub_id: 1
 
+  scope :bundle_id, ->(bundle_id) { where bundle_id: bundle_id }
+
   def display_name
     sub_id ? "#{cms_id} (#{sub_id}) #{name}" : "#{cms_id} #{name}"
   end
