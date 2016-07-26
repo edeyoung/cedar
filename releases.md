@@ -14,7 +14,7 @@ Cedar development began in January 2016 on MITRE servers and was released to Git
 - Allow user-specified modifications to the QRDA header
 - Improve performance of QRDA Category 3 file generation
 - Allow for a user-specified number of QRDA documents to be generated in each test
-- Generate QRDA files using the Joint Commission IG, rather than the CMS IG
+- Generate QRDA files using the Joint Commission IG in addition to the CMS IG
 - Dashboard showing validation coverage over time
 
 ## Version 0.2 (Planned for August 2016)
