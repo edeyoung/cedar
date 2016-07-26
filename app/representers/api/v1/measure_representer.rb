@@ -14,6 +14,7 @@ module API
       property :description
       property :cms_id, as: :id
       property :hqmf_id
+      property :tags
     end
   end
 end
