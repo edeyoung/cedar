@@ -66,16 +66,20 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
         @errors = []
         @warnings = []
         validate_test_execution(te)
+
+        hash = {}
+        if @warnings.any?
+          hash['meta'] = {}
+          hash['meta']['filtered'] = @warnings
+        end
         if @errors.any?
-          render json: { errors: @errors }, status: 400
+          te.destroy
+          hash[:errors] = @errors
+          render json: hash, status: 400
         else
           current_user.test_executions << te
           CreateDocumentsJob.perform_later(te)
-          hash = TestExecutionRepresenter.new(te).to_hash
-          if @warnings.any?
-            hash['meta'] = {}
-            hash['meta']['filtered'] = @warnings
-          end
+          hash.merge! TestExecutionRepresenter.new(te).to_hash
           render json: hash, status: 202
         end
       end
@@ -122,6 +126,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
         check_measure_year(test_execution)
         check_validation_qrda_type(test_execution)
         check_validation_measure_type(test_execution)
+        check_nulls(test_execution)
       end
 
       def check_measure_year(test_execution)
@@ -167,6 +172,21 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
             removed: invalid_validations.map(&:code).join(', '),
             reason: 'Incorrect QRDA Type',
             conflict: "QRDA cat #{qrda_type}"
+          }
+        end
+      end
+
+      def check_nulls(test_execution)
+        if test_execution.validations.empty?
+          @errors << {
+            title: 'No Validations',
+            detail: 'Either no validations were chosen, or all were automatically removed because of conflicts. Check /meta/filtered'
+          }
+        end
+        if test_execution.measures.empty?
+          @errors << {
+            title: 'No Measures',
+            detail: 'Either no measures were chosen, or all were automatically removed. Check /meta/filtered'
           }
         end
       end
