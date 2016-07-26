@@ -24,8 +24,8 @@ class ApiTest < ActionDispatch::IntegrationTest
                name: 'first',
                reporting_period: '2016',
                qrda_type: '1',
-               measures: ['40280381-3D61-56A7-013e-6649110743ce'],
-               validations: ['discharge_after_upload']
+               measures: { include: ['40280381-4B9A-3825-014B-C2730E6F088c'] },
+               validations: { include: ['discharge_after_upload'] }
              }
            } }.to_json, @header
     end

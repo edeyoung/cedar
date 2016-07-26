@@ -265,22 +265,77 @@
       "request_data": {
         "data": {
           "attributes": {
+            "name": "incompatible measure and validation",
+            "reporting_period": "2016",
+            "qrda_type": "3",
+            "measures": {
+              "include": [
+                "CMS55v4"
+              ]
+            },
+            "validations": {
+              "include": [
+                "numer_greater_than_denom"
+              ]
+            }
+          }
+        }
+      },
+      "response_data": {
+        "errors": [
+          {
+            "title": "Incompatible Validations and Measures",
+            "detail": "All selected measures are continuous, but validations numer_greater_than_denom are only for discrete measures"
+          }
+        ]
+      },
+      "code": "400",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/test_executions",
+      "versions": [
+        "v1"
+      ],
+      "query": null,
+      "request_data": {
+        "data": {
+          "attributes": {
             "name": "first",
             "reporting_period": "2016",
             "qrda_type": "1",
-            "measures": [
-              "40280381-3D61-56A7-013e-6649110743ce"
-            ],
-            "validations": [
-              "discharge_after_upload"
-            ]
+            "measures": {
+              "tags": [
+                "Hospital"
+              ],
+              "include": [
+                "40280381-4B9A-3825-014B-C2730E6F088C",
+                "CMS117v4",
+                "CMS100V2"
+              ],
+              "exclude": [
+                "CMS9v4",
+                "CMS91v5"
+              ]
+            },
+            "validations": {
+              "tags": [
+                "Schema"
+              ],
+              "include": [
+                "discharge_after_upload",
+                "numer_greater_than_denom"
+              ]
+            }
           }
         }
       },
       "response_data": {
         "data": {
           "type": "test_executions",
-          "id": "579102db3bb752629ce40c17",
+          "id": "5797a2953bb752280873d7bc",
           "attributes": {
             "state": "incomplete",
             "qrda_progress": 0.0,
@@ -290,10 +345,39 @@
             "file_path": "",
             "qrda_type": "1",
             "validations": [
+              "unfinished_file",
               "discharge_after_upload"
             ],
             "measures": [
-              "40280381-3D61-56A7-013E-6649110743CE"
+              "CMS100v4",
+              "CMS102v4",
+              "CMS104v4",
+              "CMS105v4",
+              "CMS107v4",
+              "CMS108v4",
+              "CMS109v4",
+              "CMS110v4",
+              "CMS111v4",
+              "CMS113v4",
+              "CMS114v4",
+              "CMS171v5",
+              "CMS172v5",
+              "CMS178v5",
+              "CMS185v4",
+              "CMS188v5",
+              "CMS190v4",
+              "CMS26v3",
+              "CMS30v5",
+              "CMS31v4",
+              "CMS32v5",
+              "CMS53v4",
+              "CMS55v4",
+              "CMS60v4",
+              "CMS71v5",
+              "CMS72v4",
+              "CMS73v4",
+              "CMS117v4",
+              "CMS75v4"
             ]
           },
           "relationships": {
@@ -304,11 +388,183 @@
             }
           },
           "links": {
-            "self": "http://127.0.0.1:3000/api/v1/test_executions/579102db3bb752629ce40c17"
+            "self": "http://127.0.0.1:3000/api/v1/test_executions/5797a2953bb752280873d7bc"
+          }
+        },
+        "meta": {
+          "filtered": [
+            {
+              "removed": "CMS100v2",
+              "reason": "Incorrect Measure Reporting Period",
+              "conflict": "2016"
+            },
+            {
+              "removed": "numer_greater_than_denom",
+              "reason": "Incorrect QRDA Type",
+              "conflict": "QRDA cat 1"
+            }
+          ]
+        }
+      },
+      "code": "202",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/test_executions",
+      "versions": [
+        "v1"
+      ],
+      "query": null,
+      "request_data": {
+        "data": {
+          "attributes": {
+            "name": "all",
+            "reporting_period": "2016",
+            "qrda_type": "1",
+            "measures": {
+              "all": true
+            },
+            "validations": {
+              "all": true
+            }
           }
         }
       },
-      "code": "200",
+      "response_data": {
+        "data": {
+          "type": "test_executions",
+          "id": "5797a2963bb752280873d7c2",
+          "attributes": {
+            "state": "incomplete",
+            "qrda_progress": 0.0,
+            "name": "all",
+            "description": "",
+            "reporting_period": "2016",
+            "file_path": "",
+            "qrda_type": "1",
+            "validations": [
+              "discharge_after_upload",
+              "discharge_before_admission",
+              "incorrect_code_system",
+              "invalid_code",
+              "invalid_value_set",
+              "value_set_without_code_system",
+              "inconsistent_time_formats",
+              "invalid_measure_id",
+              "reporting_period",
+              "unfinished_file"
+            ],
+            "measures": [
+              "CMS100v4",
+              "CMS102v4",
+              "CMS104v4",
+              "CMS105v4",
+              "CMS107v4",
+              "CMS108v4",
+              "CMS109v4",
+              "CMS110v4",
+              "CMS111v4",
+              "CMS113v4",
+              "CMS114v4",
+              "CMS171v5",
+              "CMS172v5",
+              "CMS178v5",
+              "CMS185v4",
+              "CMS188v5",
+              "CMS190v4",
+              "CMS26v3",
+              "CMS30v5",
+              "CMS31v4",
+              "CMS32v5",
+              "CMS53v4",
+              "CMS55v4",
+              "CMS60v4",
+              "CMS71v5",
+              "CMS72v4",
+              "CMS73v4",
+              "CMS91v5",
+              "CMS9v4",
+              "CMS117v4",
+              "CMS122v4",
+              "CMS123v4",
+              "CMS124v4",
+              "CMS125v4",
+              "CMS126v4",
+              "CMS127v4",
+              "CMS128v4",
+              "CMS129v5",
+              "CMS130v4",
+              "CMS131v4",
+              "CMS132v4",
+              "CMS133v4",
+              "CMS134v4",
+              "CMS135v4",
+              "CMS136v5",
+              "CMS137v4",
+              "CMS138v4",
+              "CMS139v4",
+              "CMS140v4",
+              "CMS141v5",
+              "CMS142v4",
+              "CMS143v4",
+              "CMS144v4",
+              "CMS145v4",
+              "CMS146v4",
+              "CMS147v5",
+              "CMS148v4",
+              "CMS149v4",
+              "CMS153v4",
+              "CMS154v4",
+              "CMS155v4",
+              "CMS156v4",
+              "CMS157v4",
+              "CMS158v4",
+              "CMS159v4",
+              "CMS160v4",
+              "CMS161v4",
+              "CMS163v4",
+              "CMS164v4",
+              "CMS165v4",
+              "CMS166v5",
+              "CMS167v4",
+              "CMS169v4",
+              "CMS177v4",
+              "CMS179v4",
+              "CMS182v5",
+              "CMS22v4",
+              "CMS2v5",
+              "CMS50v4",
+              "CMS52v4",
+              "CMS56v4",
+              "CMS61v5",
+              "CMS62v4",
+              "CMS64v5",
+              "CMS65v5",
+              "CMS66v4",
+              "CMS68v5",
+              "CMS69v4",
+              "CMS74v5",
+              "CMS75v4",
+              "CMS77v4",
+              "CMS82v3",
+              "CMS90v5"
+            ]
+          },
+          "relationships": {
+            "documents": {
+              "data": [
+
+              ]
+            }
+          },
+          "links": {
+            "self": "http://127.0.0.1:3000/api/v1/test_executions/5797a2963bb752280873d7c2"
+          }
+        }
+      },
+      "code": "202",
       "show_in_doc": 1,
       "recorded": true
     }
@@ -316,7 +572,7 @@
   "test_executions#destroy": [
     {
       "verb": "DELETE",
-      "path": "/api/v1/test_executions/579102db3bb752629ce40c1a",
+      "path": "/api/v1/test_executions/5797a2973bb752280873d7c5",
       "versions": [
         "v1"
       ],
@@ -343,7 +599,7 @@
         "data": [
           {
             "type": "test_executions",
-            "id": "579102dc3bb752629ce40c22",
+            "id": "5797a2973bb752280873d7cd",
             "attributes": {
               "state": "incomplete",
               "qrda_progress": 0.0,
@@ -356,7 +612,7 @@
                 "duplicate_population_ids"
               ],
               "measures": [
-                "40280381-4C18-79DF-014C-2D6122A30A44"
+                "CMS109v4"
               ]
             },
             "relationships": {
@@ -367,7 +623,7 @@
               }
             },
             "links": {
-              "self": "http://127.0.0.1:3000/api/v1/test_executions/579102dc3bb752629ce40c22"
+              "self": "http://127.0.0.1:3000/api/v1/test_executions/5797a2973bb752280873d7cd"
             }
           }
         ]
@@ -380,7 +636,7 @@
   "test_executions#show": [
     {
       "verb": "GET",
-      "path": "/api/v1/test_executions/579102db3bb752629ce40c1e",
+      "path": "/api/v1/test_executions/5797a2973bb752280873d7c9",
       "versions": [
         "v1"
       ],
@@ -389,7 +645,7 @@
       "response_data": {
         "data": {
           "type": "test_executions",
-          "id": "579102db3bb752629ce40c1e",
+          "id": "5797a2973bb752280873d7c9",
           "attributes": {
             "state": "incomplete",
             "qrda_progress": 0.0,
@@ -402,7 +658,7 @@
               "duplicate_population_ids"
             ],
             "measures": [
-              "40280381-4C18-79DF-014C-2D6122A30A44"
+              "CMS109v4"
             ]
           },
           "relationships": {
@@ -413,7 +669,7 @@
             }
           },
           "links": {
-            "self": "http://127.0.0.1:3000/api/v1/test_executions/579102db3bb752629ce40c1e"
+            "self": "http://127.0.0.1:3000/api/v1/test_executions/5797a2973bb752280873d7c9"
           }
         }
       },

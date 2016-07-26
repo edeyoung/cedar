@@ -36,11 +36,56 @@ module API
                  name: 'first',
                  reporting_period: '2016',
                  qrda_type: '1',
-                 measures: ['40280381-3D61-56A7-013e-6649110743ce'],
-                 validations: ['discharge_after_upload']
+                 measures: {
+                   tags: ['Hospital'],
+                   include: ['40280381-4B9A-3825-014B-C2730E6F088C', 'CMS117v4', 'CMS100V2'],
+                   exclude: %w(CMS9v4 CMS91v5)
+                 },
+                 validations: {
+                   tags: ['Schema'],
+                   include: %w(discharge_after_upload numer_greater_than_denom)
+                 }
                }
              }
         assert_response :success
+        data = json(response)
+        measures = data['data']['attributes']['measures']
+        validations = data['data']['attributes']['validations']
+        assert_includes measures, 'CMS117v4'
+        assert_includes measures, 'CMS75v4' # This is from 40280381-4B9A-3825-014B-C2730E6F088C in the measures include
+        refute_includes measures, 'CMS9v4'
+        refute_includes measures, 'CMS100v2'
+        assert_includes validations, 'discharge_after_upload'
+        refute_includes validations, 'numer_greater_than_denom'
+        assert_not_nil data['meta']['filtered']
+      end
+
+      test 'create test with all' do
+        post :create,
+             data: {
+               attributes: {
+                 name: 'all',
+                 reporting_period: '2016',
+                 qrda_type: '1',
+                 measures: { all: true },
+                 validations: { all: true }
+               }
+             }
+        assert_response :success
+      end
+
+      test 'create invalid test' do
+        post :create,
+             data: {
+               attributes: {
+                 name: 'incompatible measure and validation',
+                 reporting_period: '2016',
+                 qrda_type: '3',
+                 measures: { include: ['CMS55v4'] },
+                 validations: { include: ['numer_greater_than_denom'] }
+               }
+             }
+        assert_response 400
       end
 
       test 'delete test' do

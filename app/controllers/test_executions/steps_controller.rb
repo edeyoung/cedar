@@ -8,7 +8,7 @@ class TestExecutions::StepsController < ApplicationController
     update_position
     case step
     when :measures
-      @measures = Measure.where(bundle_id: @test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title, :tags).sort_by(&:cms_id)
+      @measures = Measure.all.bundle_id(@test_execution.bundle.id).top_level.only(:_id, :name, :cms_id, :title, :tags).sort_by(&:cms_id)
       @all_tags = get_all_tags(@measures)
     when :validations
       @useful_validations = @test_execution.determine_useful_validations
