@@ -4,13 +4,59 @@ title: Releases
 permalink: /releases/
 ---
 
-Cedar is a tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files. The Cedar tool is open source and freely available for use or adoption by state health agencies or any other organization that is set up to receive QRDA files.
+Cedar development began in January 2016 on MITRE servers and was released to GitHub on May 25th, 2016.  Release schedules are set based on planned functionality rather than on a set timeline.
 
-Current Cedar Version: 0.1
+## Version 0.3 (Planned for October 2016)
 
-<hr>
+### New Functionality
 
-## Release Notes for Previous Versions
+- Add UI Unit and Integration Tests
+- Allow user-specified modifications to the QRDA header
+- Improve performance of QRDA Category 3 file generation
+- Allow for a user-specified number of QRDA documents to be generated in each test
+- Generate QRDA files using the Joint Commission IG, rather than the CMS IG
+- Dashboard showing validation coverage over time
 
-### [Version 0.1](https://github.com/mitre/cedar/releases/tag/v0.1)
-- Initial release to GitHub
+## Version 0.2 (Planned for August 2016)
+
+### New Functionality
+
+- Add the ability to upload multiple measure bundles for multiple reporting years
+- Add docker configuration files and some setup instructions
+- Add v1 of the Cedar API
+- Add several invalidators and their respective unit tests
+  - Invalid Code
+  - Invalid Measure Identifier
+  - Inconsistent Time Formats
+  - Missing Population ID
+  - Performance Rate Divide by Zero
+  - Performance Rate Out of Range
+- Add configuration pages for measures and validations
+- Add the ability for users to tag and filter measures and validations so they can be more quickly accessed and used during test executions
+- Add an index number for each of the documents created in a test execution
+- Improve randomization of patient information in QRDA I files
+- Improve the random names given to documents created in a test execution - they now pull from a list of actual hospitals in the United States
+
+### Bug Fixes
+
+- Extra database cache records no longer created on test execution process runs
+- Incorporate error checking to prevent invalid reporting year/measure/validation combinations
+- Hardcode some constants to speed up server startup
+- Fix rails pipeline errors
+
+## [Version 0.1](https://github.com/mitre/cedar/releases/tag/v0.1) (May 25, 2016)
+
+### New Functionality
+
+- Generate both QRDA Category 1 and Category 3 files
+- Validations included for testing eCQM collection systems:
+  - Denominator Greater Than IPP
+  - Discharge After Upload
+  - Discharge Before Admission
+  - Duplicated Measure Population IDs
+  - Incorrect Code System
+  - Invalid Value Set
+  - Numerator Greater Than Denominator
+  - Reporting Period
+  - Unfinished QRDA file
+  - Value Set without Code System
