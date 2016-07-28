@@ -26,12 +26,6 @@
     "id": "40280381-4C18-79DF-014C-242D05BB02CD",
     "tags": ["Hospital", "Continuous"]
 }, {
-    "id": "40280381-4C18-79DF-014C-242D05BB02CD",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-4C18-79DF-014C-242D05BB02CD",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-4C18-79DF-014C-234FB44C0145",
     "tags": ["Hospital", "Discrete"]
 }, {
@@ -42,33 +36,6 @@
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8631EB001AF",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
@@ -89,47 +56,14 @@
     "id": "40280381-4C18-79DF-014C-291EF3F90654",
     "tags": ["Hospital", "Continuous"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B72CF0211",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8361D36015A",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-4DE7-DB4D-014D-E8361D36015A",
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-4C18-79DF-014C-3364EFA21057",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-4C18-79DF-014C-291EF3F90654",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-4C18-79DF-014C-291EF3F90654",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-4C18-79DF-014C-291EF3F90654",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-4BE2-53B3-014B-EA9DA2DF05BB",
     "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-4C18-79DF-014C-2414260502AD",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-4C18-79DF-014C-2414260502AD",
-    "tags": ["Hospital", "Continuous"]
 }, {
     "id": "40280381-4C18-79DF-014C-2414260502AD",
     "tags": ["Hospital", "Continuous"]
@@ -152,9 +86,6 @@
     "id": "40280381-4DE7-DB4D-014D-E8C552E9025F",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E8C552E9025F",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-4BE2-53B3-014C-056C3662131D",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -165,31 +96,16 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4B9A-3825-014B-E05F923D1119",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-E10B1E0A13DB",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-BD9841640641",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-BD9841640641",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-BD9841640641",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-BD9841640641",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-BD9841640641",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4BE2-53B3-014C-0F589C1A1C39",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E80FB801009E",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E80FB801009E",
     "tags": ["Provider", "Discrete"]
@@ -198,7 +114,7 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4B9A-3825-014B-E0BC5EFD12F0",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-E0A0EC991268",
     "tags": ["Provider", "Discrete"]
@@ -218,29 +134,11 @@
     "id": "40280381-4DE7-DB4D-014D-E8910D540228",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E8910D540228",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B64750209",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B64750209",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B64750209",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B64750209",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E88B64750209",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4DE7-DB4D-014D-E88B64750209",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4C18-79DF-014C-2DFA25F60C0E",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4BE2-53B3-014B-EBAF72D707C4",
     "tags": ["Provider", "Discrete"]
@@ -263,9 +161,6 @@
     "id": "40280381-4DE7-DB4D-014D-E8833C8401F7",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E8833C8401F7",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4B9A-3825-014B-E0999F911223",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -281,43 +176,10 @@
     "id": "40280381-4B9A-3825-014B-DC0A24B30FAA",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4B9A-3825-014B-DC0A24B30FAA",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-DC0A24B30FAA",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4B9A-3825-014B-C27EE384089E",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E877328B01DD",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E86C831201C7",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E86C831201C7",
@@ -335,12 +197,6 @@
     "id": "40280381-4DE7-DB4D-014D-E932BB6C02D0",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E932BB6C02D0",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E932BB6C02D0",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4B9A-3825-014B-C1FDE24A07D4",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -348,10 +204,10 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4B9A-3825-014B-C2899FCF08B9",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-C290ABF408CA",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-E07D028011C2",
     "tags": ["Provider", "Discrete"]
@@ -371,9 +227,6 @@
     "id": "40280381-4DE7-DB4D-014D-E861EA2D01A1",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E861EA2D01A1",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4BE2-53B3-014B-EBFCB19508CB",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -386,31 +239,13 @@
     "id": "40280381-4DE7-DB4D-014D-E8404B8A0178",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E8404B8A0178",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8404B8A0178",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4BE2-53B3-014B-E5F6100801ED",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E95F07E30324",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4DE7-DB4D-014D-E95F07E30324",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E95F07E30324",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4B9A-3825-014B-CBBDDD080B57",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E9482DD402ED",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E9482DD402ED",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E9482DD402ED",
@@ -423,22 +258,10 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4BE2-53B3-014C-040DE60D10E1",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4DE7-DB4D-014D-E8DE93D4027D",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4DE7-DB4D-014D-E8DE93D4027D",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-C2609C45085D",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-C2609C45085D",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4B9A-3825-014B-C2609C45085D",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4B9A-3825-014B-C2609C45085D",
     "tags": ["Provider", "Discrete"]
@@ -482,15 +305,6 @@
     "id": "40280381-43DB-D64C-0144-64E3651A2DCC",
     "tags": ["Hospital", "Continuous"]
 }, {
-    "id": "40280381-43DB-D64C-0144-64E3651A2DCC",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-64E3651A2DCC",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-64E3651A2DCC",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-446B-B8C2-0144-95DDB52A1CDC",
     "tags": ["Hospital", "Discrete"]
 }, {
@@ -498,39 +312,6 @@
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9F324C5B2D25",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
@@ -554,18 +335,6 @@
     "id": "40280381-4555-E1C1-0145-E20602FE49E8",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-9EDB61C22CB1",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-446B-B8C2-0144-95D106DA1CB4",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-446B-B8C2-0144-95D106DA1CB4",
     "tags": ["Hospital", "Discrete"]
 }, {
@@ -575,29 +344,8 @@
     "id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
     "tags": ["Hospital", "Continuous"]
 }, {
-    "id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-446B-B8C2-0144-9E0B96C12843",
     "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-43DB-D64C-0144-64CB12982D97",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-64CB12982D97",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-43DB-D64C-0144-64CB12982D97",
-    "tags": ["Hospital", "Continuous"]
 }, {
     "id": "40280381-43DB-D64C-0144-64CB12982D97",
     "tags": ["Hospital", "Continuous"]
@@ -620,9 +368,6 @@
     "id": "40280381-446B-B8C2-0144-95DDF0421CE4",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-446B-B8C2-0144-95DDF0421CE4",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-4555-E1C1-0145-D7C003364261",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -630,31 +375,16 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4600-425F-0146-1F2F42BF0E12",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-446B-B8C2-0145-3E1D974A66A3",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9038DC102B22",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9038DC102B22",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9038DC102B22",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9038DC102B22",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-9038DC102B22",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-762578A81C4C",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-B9A06ACE3771",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-B9A06ACE3771",
     "tags": ["Provider", "Discrete"]
@@ -663,7 +393,7 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-762289881C2E",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4600-425F-0146-1F27240B0DFE",
     "tags": ["Provider", "Discrete"]
@@ -683,29 +413,11 @@
     "id": "40280381-4555-E1C1-0145-B957717C3738",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4555-E1C1-0145-B957717C3738",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-1F6AE4760EEF",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-1F6AE4760EEF",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-1F6AE4760EEF",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-1F6AE4760EEF",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-1F6AE4760EEF",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4600-425F-0146-1F6AE4760EEF",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4600-425F-0146-1F5867D40E82",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-672613970D15",
     "tags": ["Provider", "Discrete"]
@@ -728,9 +440,6 @@
     "id": "40280381-4555-E1C1-0145-9457077D2D3D",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4555-E1C1-0145-9457077D2D3D",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4600-425F-0146-1F6E280C0F09",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -746,43 +455,10 @@
     "id": "40280381-4555-E1C1-0145-9507771B2DD1",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4555-E1C1-0145-9507771B2DD1",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9507771B2DD1",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4600-425F-0146-1F7808490F52",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-85C7311720F5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-9515DE702DF5",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-9515DE702DF5",
@@ -800,12 +476,6 @@
     "id": "40280381-4555-E1C1-0145-8EB06E66277A",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4555-E1C1-0145-8EB06E66277A",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-8EB06E66277A",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4555-E1C1-0145-E23D63344BB2",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -813,10 +483,10 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-6B7813C70FB3",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4600-425F-0146-1F6F722B0F17",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-9500C0B22DC1",
     "tags": ["Provider", "Discrete"]
@@ -836,9 +506,6 @@
     "id": "40280381-4600-425F-0146-1F8D3B750FAC",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4600-425F-0146-1F8D3B750FAC",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4555-E1C1-0145-CC7350473A13",
     "tags": ["Provider", "Discrete"]
 }, {
@@ -851,31 +518,13 @@
     "id": "40280381-4600-425F-0146-201B66C71138",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4600-425F-0146-201B66C71138",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4600-425F-0146-201B66C71138",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-4555-E1C1-0145-B4652C463506",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-BE65673D3935",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-4555-E1C1-0145-BE65673D3935",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-BE65673D3935",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-454E-C5FA-0145-51CF2C3501FC",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-BE9E7F6939A9",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-BE9E7F6939A9",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-BE9E7F6939A9",
@@ -888,22 +537,10 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-DC7DC26A44BF",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-D2B36DBB3FE6",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-D2B36DBB3FE6",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-CD28C4E03A73",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-CD28C4E03A73",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-4555-E1C1-0145-CD28C4E03A73",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-4555-E1C1-0145-CD28C4E03A73",
     "tags": ["Provider", "Discrete"]
@@ -918,9 +555,6 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-4555-E1C1-0145-AF598C243391",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-6649110743CE",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-6649110743CE",
@@ -965,25 +599,13 @@
     "id": "40280381-3D61-56A7-013E-62E052273699",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-8ACBFE873BCB",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3E93-D1AF-013E-D6E2B772150D",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-65C9C3043E54",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3E93-D1AF-013E-B297A0A15BB5",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-8B8F87F64D63",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-6ABD73E15076",
@@ -1001,16 +623,7 @@
     "id": "40280381-3D61-56A7-013E-66AE98364ADE",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-8ACBFE873BCB",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-8F2F5AD054E2",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3E93-D1AF-013E-B277EE0A5A46",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-5D11ABE068EB",
@@ -1019,20 +632,14 @@
     "id": "40280381-3D61-56A7-013E-8A3638093344",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3E93-D1AF-013E-B297A0A15BB5",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-6B885A105724",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3E93-D1AF-013E-9E3E037E08D6",
     "tags": ["Provider", "Continuous"]
 }, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-66BC02DA4DEE",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3E93-D1AF-013E-A49F8F204114",
     "tags": ["Provider", "Discrete"]
@@ -1040,58 +647,28 @@
     "id": "40280381-3D61-56A7-013E-61EF9907211D",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-6649110743CE",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-5D4001866C09",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-8A3638093344",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-7BC533A071D3",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-7BC5AEC17282",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-7AF612436402",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-6649110743CE",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-5D9034CF7065",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-66A79D4A4A23",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-8A3638093344",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-65C9C3043E54",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3E93-D1AF-013E-A36090B72CC8",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-846AAE0F021F",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3E93-D1AF-013E-D6E2B772150D",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-6649110743CE",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-62E052273699",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3E93-D1AF-013E-A49CA9F94008",
@@ -1100,25 +677,13 @@
     "id": "40280381-3D61-56A7-013E-57F49972361A",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-6B885A105724",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-669CBC034836",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-7AA509DE6258",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3F77-75C9-013F-7B481CEA02FD",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-6696AF6E477F",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-62240559256D",
@@ -1127,49 +692,28 @@
     "id": "40280381-3D61-56A7-013E-666032B244F7",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-5D4001866C09",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3E93-D1AF-013E-B277EE0A5A46",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-425AD8E9179C",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-66B2CA294C47",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-5BFF718B5A57",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-5D1EF9B76A48",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-62684F542B66",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-66A5A5834990",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-62367B892985",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-5D4001866C09",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "8A4D92B2-3927-D7AE-0139-366C49F93102",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3E93-D1AF-013E-A49F8F204114",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3E93-D1AF-013E-A4CAFFEF4684",
@@ -1179,18 +723,9 @@
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-5CD94A4D64FA",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5B2AA3493C42",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
-    "tags": ["Provider", "Discrete"]
+    "tags": ["Provider", "Discrete", "Top 10 Medicare eCQMs"]
 }, {
     "id": "40280381-3D61-56A7-013E-5CC8AA6D6290",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3E93-D1AF-013E-A49F8F204114",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-57FA83AF36FA",
@@ -1199,13 +734,7 @@
     "id": "40280381-3E93-D1AF-013E-AF14FC6B5642",
     "tags": ["Provider", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013E-5D530FD26D47",
-    "tags": ["Provider", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013E-8B6A8ACA4A39",
-    "tags": ["Provider", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013E-8ACBFE873BCB",
     "tags": ["Provider", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013E-6224E2AC25F3",
@@ -1256,22 +785,7 @@
     "id": "40280381-3D27-5493-013D-4BEBA8855DEB",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D86B2B36480",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-3D27-5493-013D-61073DA32A30",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D8E4DC46570",
     "tags": ["Hospital", "Continuous"]
 }, {
     "id": "40280381-3CD1-4954-013D-12B735B91C26",
@@ -1298,16 +812,10 @@
     "id": "40280381-3D27-5493-013D-4B6C7D1E455D",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-3D27-5493-013D-5C2858EC1933",
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-3D61-56A7-013D-694C97DB4155",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4DC3477E6961",
     "tags": ["Hospital", "Discrete"]
 }, {
     "id": "40280381-3D27-5493-013D-460F43C16CB7",
@@ -1316,32 +824,8 @@
     "id": "40280381-3D27-5493-013D-380BA9CE367C",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-3D27-5493-013D-61073DA32A30",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D86B2B36480",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-61073DA32A30",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013D-A31D2B2F57EA",
-    "tags": ["Hospital", "Discrete"]
-}, {
     "id": "40280381-3D61-56A7-013D-891538FB7B05",
     "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D8E4DC46570",
-    "tags": ["Hospital", "Continuous"]
 }, {
     "id": "40280381-3D27-5493-013D-4DBF0566683C",
     "tags": ["Hospital", "Discrete"]
@@ -1349,39 +833,6 @@
     "id": "8A4D92B2-37BF-6F1B-0137-CCD612A40D0E",
     "tags": ["Hospital", "Discrete"]
 }, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-61073DA32A30",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D27-5493-013D-61073DA32A30",
-    "tags": ["Hospital", "Continuous"]
-}, {
     "id": "40280381-3CD1-4954-013C-F32C3AA00C8F",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D8E4DC46570",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D27-5493-013D-4D86B2B36480",
-    "tags": ["Hospital", "Continuous"]
-}, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D61-56A7-013D-C5EF46C917F4",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
-    "tags": ["Hospital", "Discrete"]
-}, {
-    "id": "40280381-3D27-5493-013D-4B637CFF42A3",
     "tags": ["Hospital", "Discrete"]
 }]
