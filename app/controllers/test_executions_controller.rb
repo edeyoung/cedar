@@ -29,8 +29,11 @@ class TestExecutionsController < ApplicationController
     @tests_incomplete = @test_executions.state(:incomplete)
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
+    @tests_complete = @tests_passed | @tests_failed
     dashboard_errors
     @prevent_test = !bundle_exists?
+    @validations = Validation.all.to_a
+    @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
   end
 
   private

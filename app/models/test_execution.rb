@@ -17,6 +17,7 @@ class TestExecution
   field :results,             type: Hash,    default: { passed: 0, total: 0 }
   field :disable_details,     type: Boolean, default: false
   field :file_path,           type: String,  default: ''
+  field :detailed_results,    type: Hash,    default: {}
 
   has_and_belongs_to_many :measures
   has_and_belongs_to_many :validations
@@ -63,8 +64,14 @@ class TestExecution
     pass_test = true
     passed_validations = 0
     total_validations = 0
-    document_ids.each do |document|
-      doc = Document.find(document)
+
+    temp_detail = {}
+    documents.each do |doc|
+      code = doc.validation ? doc.validation.code : :valid
+
+      temp_detail[code] ||= { passed: 0, total: 0 }
+      temp_detail[code][:total] += 1
+
       total_validations += 1
       if doc.expected_result != doc.actual_result
         pass_test = false
@@ -72,10 +79,12 @@ class TestExecution
       else
         doc.update_attribute(:state, :passed)
         passed_validations += 1
+        temp_detail[code][:passed] += 1
       end
     end
     pass_test ? update_attribute(:state, :passed) : update_attribute(:state, :failed)
     update_attribute(:results, passed: passed_validations, total: total_validations)
+    update_attribute(:detailed_results, temp_detail)
   end
 
   # Allow for test_execution copying without associated qrda documents

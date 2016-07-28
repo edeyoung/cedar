@@ -185,6 +185,14 @@ border-right: 1px solid #9a79a6; }
       .progress-wizard ol li.current a {
         font-weight: bold;}
 
+
+.db-coverage .failed {
+  color: red;
+}
+.db-coverage .passed {
+  color: green;
+}
+
 /* Override for bootstrap-slider */
 .slider.slider-disabled .slider-track {
   cursor: default !important;}
