@@ -27,14 +27,31 @@
     </div>
   <% end %>
 
-  <%= render partial: 'test_executions/dashboard_panel_tests',
-             locals: {panel_title: 'PASSED',
-                      tests: @tests_passed} %>
-  <%= render partial: 'test_executions/dashboard_panel_tests',
-             locals: {panel_title: 'FAILED',
-                      tests: @tests_failed} %>
-  <%= render partial: 'test_executions/dashboard_panel_tests',
-             locals: {panel_title: 'INCOMPLETE',
-                      tests: @tests_incomplete} %>
+  <div style='height: 40px'></div>
 
+  <ul class='nav nav-tabs'>
+    <li class='active' role='presentation'>
+      <a data-toggle="tab" href='#panels'>Tests</a>
+    </li>
+    <li role='presentation'>
+      <a data-toggle="tab" href='#coverage'>Validation Coverage</a>
+    </li>
+  </ul>
+
+  <div class='tab-content'>
+    <div id='panels' class='tab-pane fade in active'>
+      <%= render partial: 'test_executions/dashboard_panel_tests',
+                 locals: {panel_title: 'PASSED',
+                          tests: @tests_passed} %>
+      <%= render partial: 'test_executions/dashboard_panel_tests',
+                 locals: {panel_title: 'FAILED',
+                          tests: @tests_failed} %>
+      <%= render partial: 'test_executions/dashboard_panel_tests',
+                 locals: {panel_title: 'INCOMPLETE',
+                          tests: @tests_incomplete} %>
+    </div>
+    <div id='coverage' class='tab-pane fade'>
+      <%= render partial: 'test_executions/dashboard_coverage'%>
+    </div>
+  </div>
 </div>

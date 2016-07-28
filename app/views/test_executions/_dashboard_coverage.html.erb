@@ -1,0 +1,35 @@
+<div class='table-responsive'>
+  <table class='db-coverage table table-bordered table-striped'>
+    <thead>
+      <tr>
+        <th>
+          Validations
+        </th>
+        <% @tests_complete.each do |test_execution| %>
+          <th class = 'text-center'>
+                <%= test_execution.name %>
+                <%= test_execution.updated_at.localtime.strftime('%m/%d/%Y') %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @validations.each do |validation| %>
+        <tr>
+          <td>
+            <%= validation.name %>
+          </td>
+          <% @tests_complete.each do |te| %>
+            <td class = 'text-center'>
+              <% if te.detailed_results[validation.code] %>
+                <%= content_tag :div, class: te.detailed_results[validation.code][:passed] == te.detailed_results[validation.code][:total] ? 'passed' : 'failed' do%>
+                  <%= te.detailed_results[validation.code][:passed] %>/<%= te.detailed_results[validation.code][:total] %>
+                <%end%>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
