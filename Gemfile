@@ -71,6 +71,9 @@ gem 'factory_girl_rails', '~> 4.0'
 # Roar rails for API field filtering and json-api standards
 gem 'roar', git: 'https://github.com/apotonick/roar.git'
 gem 'roar-rails'
+# Date range picker and momentjs dependency
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness

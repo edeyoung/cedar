@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'measures/:id/remove_tag', to: 'measures#remove_tag'
 
   get 'test_executions/:id/qrda_progress', to: 'test_executions#qrda_progress'
+  post 'test_executions/with_time_range', to: 'test_executions#with_time_range'
 
   resources :test_executions do
     member do
