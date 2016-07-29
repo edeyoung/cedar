@@ -13,11 +13,13 @@
     });
   </script>
 
-  <%= render partial: 'test_executions/dashboard_totals',
-             locals: {test_executions_num: @test_executions.length,
-                      tests_passed_num: @tests_passed.length,
-                      tests_failed_num: @tests_failed.length,
-                      tests_incomplete_num: @tests_incomplete.length} %>
+  <div id='totals'>
+    <%= render partial: 'test_executions/dashboard_totals',
+               locals: {test_executions_num: @test_executions.length,
+                        tests_passed_num: @tests_passed.length,
+                        tests_failed_num: @tests_failed.length,
+                        tests_incomplete_num: @tests_incomplete.length} %>
+  </div>
 
   <% unless @prevent_test %>
     <div class='col-lg-12 text-center'>
@@ -27,6 +29,7 @@
     </div>
   <% end %>
 
+  <div class='clearfix'></div>
   <div style='height: 40px'></div>
 
   <ul class='nav nav-tabs'>
@@ -51,7 +54,37 @@
                           tests: @tests_incomplete} %>
     </div>
     <div id='coverage' class='tab-pane fade'>
-      <%= render partial: 'test_executions/dashboard_coverage'%>
+      <%= render partial: 'test_executions/dashboard_coverage',
+                 locals: {tests: @tests_complete,
+                          validations: @validations} %>
+    </div>
+
+    <div class='clearfix'></div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('input[class="daterange"]').daterangepicker({
+        'opens':'left',
+        'drops': 'up',
+        'startDate': moment.unix(<%= @tests_complete.first.created_at.to_i %>),
+        'endDate': moment.unix(<%= @tests_complete.last.created_at.to_i %>),
+        'minDate': moment.unix(<%= @tests_complete.first.created_at.to_i %>),
+        'maxDate': moment.unix(<%= @tests_complete.last.created_at.to_i %>+1)
+      },
+      function(start, end, label){
+        $.ajax({
+          type: "POST",
+          url: "/test_executions/with_time_range",
+          data: {'start': start.unix(), 'end': end.unix()}
+        });
+      });
+    });
+    </script>
+
+    <div class='pull-right'>
+      <p>
+        Date range: <input type= 'text' class='daterange'  />
+      </p>
     </div>
   </div>
 </div>

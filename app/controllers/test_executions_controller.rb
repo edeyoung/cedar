@@ -1,6 +1,8 @@
 # While the steps controller takes care of the wizard, this should take care of
 # basic test execution creation items
 class TestExecutionsController < ApplicationController
+  respond_to :html, :js
+
   def new
     redirect_to test_execution_step_path(TestExecution.create(user_id: current_user.id), id: :details)
   end
@@ -25,18 +27,30 @@ class TestExecutionsController < ApplicationController
   end
 
   def dashboard
-    @test_executions = TestExecution.all.user(current_user)
+    @test_executions = TestExecution.all.user(current_user).order_by_date
+    set_vars
+    dashboard_errors
+  end
+
+  def with_time_range
+    @test_executions = TestExecution.all.user(current_user).where(created_at: (Time.at(params[:start].to_i).utc..Time.at(params[:end].to_i).utc))
+    set_vars
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
+
+  def set_vars
     @tests_incomplete = @test_executions.state(:incomplete)
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
     @tests_complete = @tests_passed | @tests_failed
-    dashboard_errors
     @prevent_test = !bundle_exists?
     @validations = Validation.all.to_a
     @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
   end
-
-  private
 
   def bundle_exists?
     HealthDataStandards::CQM::Bundle.first

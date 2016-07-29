@@ -193,6 +193,12 @@ border-right: 1px solid #9a79a6; }
   color: green;
 }
 
+.daterangepicker td.disabled, .daterangepicker option.disabled {
+  color: #ccc;
+  cursor: auto;
+  text-decoration: none;
+}
+
 /* Override for bootstrap-slider */
 .slider.slider-disabled .slider-track {
   cursor: default !important;}

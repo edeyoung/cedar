@@ -16,6 +16,8 @@
 //= require bootstrap-slider
 //= require parsley
 //= require sweetalert.min
+//= require moment
+//= require daterangepicker
 //= require jquery.filtertable.min
 //= require sweet-alert-confirm
 //= require tinysort

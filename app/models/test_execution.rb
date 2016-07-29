@@ -29,7 +29,7 @@ class TestExecution
 
   accepts_nested_attributes_for :documents
 
-  scope :order_by_date, -> { order_by(created_at: :desc) }
+  scope :order_by_date, -> { order_by(created_at: :asc) }
   scope :order_by_name, -> { order_by(name: :asc) }
   scope :order_by_state, -> { order_by(state: :asc) }
   scope :state, -> (state) { where state: state }

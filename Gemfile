@@ -64,6 +64,9 @@ gem 'quality-measure-engine', git: 'https://github.com/projectcypress/quality-me
 gem 'rubyzip'
 # Prettier replacements for javascript alerts
 gem 'sweet-alert-confirm'
+# Date range picker and momentjs dependency
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness

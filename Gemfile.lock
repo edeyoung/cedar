@@ -82,6 +82,8 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
+    bootstrap-daterangepicker-rails (0.1.4)
+      railties (~> 4.0)
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -165,6 +167,8 @@ GEM
     mime-types (2.99.2)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     mongo (2.2.5)
       bson (~> 4.0)
     mongoid (5.0.2)
@@ -304,6 +308,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   axe-matchers
+  bootstrap-daterangepicker-rails
   bootstrap-sass
   bootstrap-slider-rails
   brakeman
@@ -317,6 +322,7 @@ DEPENDENCIES
   health-data-standards!
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails
   mongoid (~> 5.0.0)
   non-stupid-digest-assets
   quality-measure-engine!
@@ -334,4 +340,4 @@ DEPENDENCIES
   wicked
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
