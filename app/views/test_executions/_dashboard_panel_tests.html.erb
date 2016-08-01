@@ -62,7 +62,7 @@
             </div>
             <div class='item-row2'>
               <span class='glyphicon glyphicon-calendar'></span>
-              <%= test_execution.updated_at.localtime.strftime('%m/%d/%Y') %>
+              <%= test_execution.created_at.localtime.strftime('%m/%d/%Y') %>
               <div class='progress <%= test_objects[:progress_background_class] %> pull-right'
                    data-toggle='tooltip'
                    data-placement='top'
