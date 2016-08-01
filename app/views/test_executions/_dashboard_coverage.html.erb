@@ -7,7 +7,9 @@
         </th>
         <% tests.each do |test_execution| %>
           <th class = 'text-center'>
-            <%= test_execution.name %>
+            <%= link_to test_execution_step_path(test_execution, test_execution.step.to_sym) do %>
+              <%= test_execution.name %>
+            <% end %>
             <div class='date'>
               <%= test_execution.created_at.localtime.strftime('%m/%d/%Y') %>
             </div>
