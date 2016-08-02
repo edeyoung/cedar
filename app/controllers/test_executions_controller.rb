@@ -27,20 +27,11 @@ class TestExecutionsController < ApplicationController
   end
 
   def dashboard
-    @test_executions = TestExecution.all.user(current_user).order_by_date
     set_vars
     dashboard_errors
   end
 
   def with_filters
-    @test_executions = TestExecution.all.user(current_user)
-    if params[:start] && params[:end]
-      @test_executions = @test_executions.where(created_at: (Time.at(params[:start].to_i).utc..Time.at(params[:end].to_i).utc))
-    end
-    if params[:qrda] && params[:qrda] != 'both'
-      @test_executions = @test_executions.where(qrda_type: params[:qrda])
-    end
-
     set_vars
     respond_to do |format|
       format.js
@@ -50,10 +41,19 @@ class TestExecutionsController < ApplicationController
   private
 
   def set_vars
+    @test_executions = TestExecution.all.user(current_user).order_by_date
+    @first_date = @test_executions.first.created_at
+    @last_date = @test_executions.last.created_at
+    if params[:start] && params[:end]
+      @test_executions = @test_executions.where(created_at: (Time.at(params[:start].to_i).utc..Time.at(params[:end].to_i).utc))
+    end
+    if params[:qrda] && params[:qrda] != 'both'
+      @test_executions = @test_executions.where(qrda_type: params[:qrda])
+    end
     @tests_incomplete = @test_executions.state(:incomplete)
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
-    @tests_complete = @tests_passed | @tests_failed
+    @tests_complete = @test_executions.in(state: [:passed, :failed])
     @prevent_test = !bundle_exists?
     @validations = Validation.all.to_a
     @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
