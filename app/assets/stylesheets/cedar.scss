@@ -26,6 +26,23 @@
     background-color: #6b576f; }
 
 /* Dashboard */
+.toolbar {
+  background-color: #299171;
+  border-color: #299171;
+  height: inherit; }
+  .toolbar a:hover, .toolbar a:focus, .toolbar a:active {
+    text-decoration: none;
+  }
+  .toolbar .navbar-nav {
+    background: none; }
+  .toolbar .navbar-right {
+    margin: 0; }
+  .toolbar .navbar-nav #reportrange {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc; }
+
 .db-right-border {
 border-right: 1px solid #9a79a6; }
 
