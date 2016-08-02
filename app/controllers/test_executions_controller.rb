@@ -32,8 +32,15 @@ class TestExecutionsController < ApplicationController
     dashboard_errors
   end
 
-  def with_time_range
-    @test_executions = TestExecution.all.user(current_user).where(created_at: (Time.at(params[:start].to_i).utc..Time.at(params[:end].to_i).utc))
+  def with_filters
+    @test_executions = TestExecution.all.user(current_user)
+    if params[:start] && params[:end]
+      @test_executions = @test_executions.where(created_at: (Time.at(params[:start].to_i).utc..Time.at(params[:end].to_i).utc))
+    end
+    if params[:qrda] && params[:qrda] != 'both'
+      @test_executions = @test_executions.where(qrda_type: params[:qrda])
+    end
+
     set_vars
     respond_to do |format|
       format.js
