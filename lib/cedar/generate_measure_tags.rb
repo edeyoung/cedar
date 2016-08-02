@@ -6,7 +6,7 @@ Measure.all.each do |measure|
   measure_hash['tags'] = []
   measure_hash['tags'] += case measure.type
                           when 'ep'
-                            ['Provider']
+                            ['Professional']
                           when 'eh'
                             ['Hospital']
                           end
