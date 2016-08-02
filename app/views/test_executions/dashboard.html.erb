@@ -14,48 +14,58 @@
   </script>
 
   <script type="text/javascript">
-  $(document).ready(function() {
-    start =  moment.unix(<%= @test_executions.first.created_at.to_i %>);
-    end = moment.unix(<%= @test_executions.last.created_at.to_i %>);
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('ll') + ' - ' + end.format('ll'));
+  $(function(){
+    var start_date, end_date, qrda;
+    // min max range for dates
+    first =  moment.unix(<%= @first_date.to_i %>);
+    last = moment.unix(<%= @last_date.to_i %>);
+
+    // load from query string if existing
+    start_date = moment.unix(<%= params[:start] || @first_date.to_i %>);
+    end_date = moment.unix(<%= params[:end] || @last_date.to_i %>);
+    qrda = "<%= params[:qrda] || 'both' %>";
+
+    function update_timerange() {
+      $('#reportrange span').html(start_date.format('ll') + ' - ' + end_date.format('ll'));
     }
     $('#reportrange').daterangepicker({
       'opens':'left',
       'drops': 'down',
-      'startDate': start,
-      'endDate': end,
-      'minDate': start,
-      'maxDate': end.add(1, 'seconds')
+      'startDate': start_date,
+      'endDate': end_date,
+      'minDate': first,
+      'maxDate': last.add(1, 'seconds')
     },
     function(start, end, label){
-      cb(start,end);
-      $.ajax({
-        type: "POST",
-        url: "/test_executions/with_filters",
-        data: {'start': start.unix(), 'end': end.unix()}
-      });
+      start_date = start;
+      end_date = end;
+      update_timerange();
+      update_filter();
     });
-    cb(start,end);
-  });
-  </script>
+    update_timerange();
 
-  <script type="text/javascript">
-  $(function(){
     $(".dropdown-menu li a").click(function(){
       $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
       $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+      qrda = $(this).data('value');
+      update_filter();
+    });
+    function update_filter(){
+      params = {'start': start_date.unix(), 'end': end_date.unix(), 'qrda': qrda}
+
       $.ajax({
         type: "POST",
         url: "/test_executions/with_filters",
-        data: {'start': start.unix(), 'end': end.unix(), 'qrda': $(this).data('value')}
+        data: params
       });
-    });
+      $(this).preventDefault;
+      history.pushState(null, null, "?"+$.param(params));
+    }
   });
   </script>
 
   <div class="btn-toolbar" role="toolbar" aria-label="...">
-    <div class="btn-group", role="group" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
       <% unless @prevent_test %>
         <%= link_to new_test_execution_path, type:"button", class:"btn btn-default" do %>
           <i class='glyphicon glyphicon-leaf'></i>&nbsp;Create a New Test
@@ -69,9 +79,9 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-          <li><a href="#cat1" data-value="1">Cat 1</a></li>
-          <li><a href="#cat3" data-value="3">Cat 3</a></li>
-          <li><a href="#both" data-value="both">Both</a></li>
+          <li><a data-value="1">Cat 1</a></li>
+          <li><a data-value="3">Cat 3</a></li>
+          <li><a data-value="both">Both</a></li>
         </ul>
       </div>
       <button type="button" class="btn btn-default" id="reportrange">
