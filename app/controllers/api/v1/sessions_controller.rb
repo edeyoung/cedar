@@ -11,7 +11,8 @@ module API
       respond_to :json_api
 
       api! 'get auth token'
-      # param :email, String, required: true
+      param :email, String, required: true
+      param :password, String, required: true
       def create
         resource = resource_from_credentials
         return invalid_login_attempt unless resource
