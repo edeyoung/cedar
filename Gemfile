@@ -67,6 +67,9 @@ gem 'sweet-alert-confirm'
 # Date range picker and momentjs dependency
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
+# Validation coverage pagination
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness

@@ -31,13 +31,6 @@ class TestExecutionsController < ApplicationController
     dashboard_errors
   end
 
-  def with_filters
-    set_vars
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
 
   def set_vars
@@ -53,7 +46,7 @@ class TestExecutionsController < ApplicationController
     @tests_incomplete = @test_executions.state(:incomplete)
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
-    @tests_complete = @test_executions.in(state: [:passed, :failed])
+    @tests_complete = @test_executions.in(state: [:passed, :failed]).page(params[:page] || 1).per(10)
     @prevent_test = !bundle_exists?
     @validations = Validation.all.to_a
     @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
