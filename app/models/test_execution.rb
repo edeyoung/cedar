@@ -35,6 +35,18 @@ class TestExecution
   scope :state, -> (state) { where state: state }
   scope :user, -> (user) { where user_id: user }
 
+  def from_preset(_preset)
+    update_attributes(
+      name: 'All Cat1 2016',
+      qrda_type: '1',
+      reporting_period: '2016'
+    )
+    update_attributes(
+      measures: Measure.all.bundle_id(bundle.id).top_level.to_a,
+      validations: determine_useful_validations
+    )
+  end
+
   # When we've gathered enough information, create the QRDA document package
   # First, disable all of the detail fields so dupe documents cannot be created
   # Then, generate a new document for each validation and a few acceptable docs

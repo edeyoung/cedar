@@ -4,7 +4,13 @@ class TestExecutionsController < ApplicationController
   respond_to :html, :js
 
   def new
-    redirect_to test_execution_step_path(TestExecution.create(user_id: current_user.id), id: :details)
+    if params[:preset]
+      te = TestExecution.create(user_id: current_user.id)
+      te.from_preset(params[:preset])
+      redirect_to test_execution_step_path(te, id: :download)
+    else
+      redirect_to test_execution_step_path(TestExecution.create(user_id: current_user.id), id: :details)
+    end
   end
 
   def show

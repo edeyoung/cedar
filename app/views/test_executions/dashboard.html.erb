@@ -44,9 +44,9 @@
     });
     update_timerange();
 
-    $(".dropdown-menu li a").click(function(){
-      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+    $(".qrda-dropdown .dropdown-menu li a").click(function(){
+      $(this).parents(".qrda-dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".qrda-dropdown").find('.btn').val($(this).data('value'));
       qrda = $(this).data('value');
       update_filter();
     });
@@ -67,13 +67,24 @@
   <div class="btn-toolbar" role="toolbar" aria-label="...">
     <div class="btn-group" role="group" aria-label="...">
       <% unless @prevent_test %>
-        <%= link_to new_test_execution_path, type:"button", class:"btn btn-default" do %>
-          <i class='glyphicon glyphicon-leaf'></i>&nbsp;Create a New Test
-        <% end %>
+        <div class="dropdown btn-group" role="group">
+          <%= link_to new_test_execution_path, type:"button", class:"btn btn-default" do %>
+            <i class='glyphicon glyphicon-leaf'></i>&nbsp;Create a New Test
+          <% end %>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li> <%= link_to "All Cat1 2016", new_test_execution_path(preset: 'all') %></li>
+            <li><a data-value="3">Cat 3</a></li>
+            <li><a data-value="both">Both</a></li>
+          </ul>
+        </div>
       <% end %>
     </div>
     <div class="btn-group pull-right" role="group" aria-label="...">
-      <div class="dropdown btn-group" role="group">
+      <div class="qrda-dropdown btn-group" role="group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Both
           <span class="caret"></span>
