@@ -24,6 +24,7 @@
     start_date = moment.unix(<%= params[:start] || @first_date.to_i %>);
     end_date = moment.unix(<%= params[:end] || @last_date.to_i %>);
     qrda = "<%= params[:qrda] || 'both' %>";
+    tab = "tests";
 
     function update_timerange() {
       $('#reportrange span').html(start_date.format('ll') + ' - ' + end_date.format('ll'));
@@ -50,8 +51,12 @@
       qrda = $(this).data('value');
       update_filter();
     });
+    $(".nav-tabs li a").click(function(){
+      tab = $(this).data("tab");
+      update_filter();
+    });
     function update_filter(){
-      params = {'start': start_date.unix(), 'end': end_date.unix(), 'qrda': qrda}
+      params = {'start': start_date.unix(), 'end': end_date.unix(), 'qrda': qrda, 'tab': tab}
 
       $.ajax({
         type: "GET",
@@ -105,10 +110,10 @@
 
   <ul class='nav nav-tabs'>
     <li class='active' role='presentation'>
-      <a data-toggle="tab" href='#panels'>Tests</a>
+      <a data-toggle="tab" href='#panels' data-tab='tests'>Tests</a>
     </li>
     <li role='presentation'>
-      <a data-toggle="tab" href='#coverage'>Validation Coverage</a>
+      <a data-toggle="tab" href='#coverage' data-tab='coverage'>Validation Coverage</a>
     </li>
   </ul>
 
@@ -125,9 +130,6 @@
                           tests: @tests_incomplete} %>
     </div>
     <div id='coverage' class='tab-pane fade'>
-      <%= render partial: 'test_executions/dashboard_coverage',
-                 locals: {tests: @tests_complete,
-                          validations: @validations} %>
     </div>
   </div>
 </div>

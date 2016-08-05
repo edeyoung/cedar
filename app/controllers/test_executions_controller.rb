@@ -46,10 +46,12 @@ class TestExecutionsController < ApplicationController
     @tests_incomplete = @test_executions.state(:incomplete)
     @tests_passed = @test_executions.state(:passed)
     @tests_failed = @test_executions.state(:failed)
-    @tests_complete = @test_executions.in(state: [:passed, :failed]).page(params[:page] || 1).per(10)
+    if params[:tab] == 'coverage'
+      @tests_complete = @test_executions.in(state: [:passed, :failed]).page(params[:page] || 1).per(10)
+      @validations = Validation.all.to_a
+      @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
+    end
     @prevent_test = !bundle_exists?
-    @validations = Validation.all.to_a
-    @validations << Validation.new(name: 'Accept Valid Files', code: :valid)
   end
 
   def bundle_exists?
