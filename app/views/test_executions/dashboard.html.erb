@@ -24,7 +24,9 @@
     start_date = moment.unix(<%= params[:start] || @first_date.to_i %>);
     end_date = moment.unix(<%= params[:end] || @last_date.to_i %>);
     qrda = "<%= params[:qrda] || 'both' %>";
-    tab = "tests";
+    tab = "<%= params[:tab] || 'panels' %>";
+
+    $('#'+tab+'-tab a:first').tab('show')
 
     function update_timerange() {
       $('#reportrange span').html(start_date.format('ll') + ' - ' + end_date.format('ll'));
@@ -109,27 +111,32 @@
   <div style='height: 20px'></div>
 
   <ul class='nav nav-tabs'>
-    <li class='active' role='presentation'>
-      <a data-toggle="tab" href='#panels' data-tab='tests'>Tests</a>
+    <li id='panels-tab' class='active' role='presentation'>
+      <a data-toggle="tab" href='#panels' data-tab='panels'>Tests</a>
     </li>
-    <li role='presentation'>
+    <li id='coverage-tab' role='presentation'>
       <a data-toggle="tab" href='#coverage' data-tab='coverage'>Validation Coverage</a>
     </li>
   </ul>
 
   <div class='tab-content'>
     <div id='panels' class='tab-pane fade in active'>
-      <%= render partial: 'test_executions/dashboard_panel_tests',
-                 locals: {panel_title: 'PASSED',
-                          tests: @tests_passed} %>
-      <%= render partial: 'test_executions/dashboard_panel_tests',
-                 locals: {panel_title: 'FAILED',
-                          tests: @tests_failed} %>
-      <%= render partial: 'test_executions/dashboard_panel_tests',
-                 locals: {panel_title: 'INCOMPLETE',
-                          tests: @tests_incomplete} %>
+      <% if params[:tab] == 'panels' || params[:tab].nil? %>
+        <%= render partial: 'test_executions/dashboard_panel_tests',
+                   locals: {panel_title: 'PASSED',
+                            tests: @tests_passed} %>
+        <%= render partial: 'test_executions/dashboard_panel_tests',
+                   locals: {panel_title: 'FAILED',
+                            tests: @tests_failed} %>
+        <%= render partial: 'test_executions/dashboard_panel_tests',
+                   locals: {panel_title: 'INCOMPLETE',
+                            tests: @tests_incomplete} %>
+      <% end %>
     </div>
     <div id='coverage' class='tab-pane fade'>
+      <% if params[:tab] == 'coverage' %>
+        <%= render partial: 'dashboard_coverage', locals: {tests: @tests_complete, validations: @validations} %>
+      <% end %>
     </div>
   </div>
 </div>
