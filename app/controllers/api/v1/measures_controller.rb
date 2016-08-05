@@ -6,7 +6,7 @@ module API
       respond_to :json_api
 
       resource_description do
-        short 'Test cases'
+        short 'Clinical Quality Measures'
         formats ['json']
         header 'X-API-EMAIL', 'user\'s email', required: true
         header 'X-API-TOKEN', 'user\'s current authentication token', required: true
