@@ -22,7 +22,17 @@ module API
 
       api! 'get all documents of test execution'
       def index
-        render json: DocumentRepresenter.for_collection.new(te.documents)
+        if ready?
+          render json: DocumentRepresenter.for_collection.new(te.documents)
+        else
+          render json: {
+            errors: [
+              { status: 404,
+                title: 'Document Generation Unfinished',
+                detail: "qrda_progress is #{te.qrda_progress}/100" }
+            ]
+          }, status: 404
+        end
       end
 
       api! 'get document of test execution'
@@ -64,6 +74,10 @@ module API
 
       def te
         TestExecution.find(params[:test_execution_id])
+      end
+
+      def ready?
+        te.qrda_progress == 100
       end
     end
   end

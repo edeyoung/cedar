@@ -28,11 +28,11 @@ FactoryGirl.define do
   end
 
   factory :document1, class: Document do
-    name '0000 - DAmore-Dare'
     expected_result 'reject'
     state 'failed'
     qrda { IO.read('test/fixtures/qrda/cat_1/good.xml') }
     sequence(:test_index, 0)
+    name { "000#{test_index} - DAmore-Dare" }
     validation_id { Validation.find_by(code: 'discharge_after_upload').id }
     measure_id '40280381-3D61-56A7-013E-6649110743CE'
     test_execution ''
@@ -43,6 +43,7 @@ FactoryGirl.define do
     name 'test2'
     reporting_period '2016'
     qrda_type '1'
+    qrda_progress '100'
     measures { [Measure.find_by(cms_id: 'CMS126v2')] }
     validations { [Validation.find_by(code: 'discharge_after_upload')] }
     after(:create) do |te, _evaluator|

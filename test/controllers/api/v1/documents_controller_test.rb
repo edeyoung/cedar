@@ -21,6 +21,13 @@ module API
         assert_equal '0', zeroeth['id'], '0th document in data should have id 0'
       end
 
+      test 'index returns error when unfinished' do
+        @te = create(:te1)
+        sign_in @te.user
+        get :index, test_execution_id: @te.id
+        assert_response :missing
+      end
+
       test 'show gets single document' do
         get :show, test_execution_id: @te.id, id: 0
         assert_response :success
