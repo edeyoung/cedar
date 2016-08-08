@@ -14,13 +14,13 @@ module API
       end
 
       test 'show all' do
-        get :index
+        get :index, qrda_type: 3, measure_type: 'all', tag: 'Calculation'
         assert_response :success
         executions = json(response)['data']
         assert executions.any?
       end
 
-      test 'get execution' do
+      test 'get validation' do
         @v = Validation.all.first
         get :show, id: @v.code
         assert_response :success

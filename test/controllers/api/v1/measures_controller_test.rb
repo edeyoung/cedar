@@ -14,13 +14,13 @@ module API
       end
 
       test 'show all' do
-        get :index
+        get :index, reporting_period: 2015, tags: 'Continuous'
         assert_response :success
         executions = json(response)['data']
         assert executions.any?
       end
 
-      test 'get execution' do
+      test 'get measure' do
         @m = Measure.all.first
         get :show, id: @m.cms_id
         assert_response :success

@@ -192,6 +192,125 @@
       "recorded": true
     }
   ],
+  "measures#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/measures",
+      "versions": [
+        "v1"
+      ],
+      "query": "reporting_period=2015&tags=Continuous",
+      "request_data": null,
+      "response_data": {
+        "data": [
+          {
+            "type": "measures",
+            "id": "CMS111v3",
+            "attributes": {
+              "name": "Median Admit Decision Time to ED Departure Time for Admitted Patients",
+              "description": "Median time (in minutes) from admit decision time to time of departure from the emergency department for emergency department patients admitted to inpatient status.",
+              "hqmf_id": "40280381-43DB-D64C-0144-64E3651A2DCC",
+              "tags": [
+                "Hospital",
+                "Continuous"
+              ],
+              "reporting_period": "2015"
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/measures/CMS111v3"
+            }
+          },
+          {
+            "type": "measures",
+            "id": "CMS32v4",
+            "attributes": {
+              "name": "Median Time from ED Arrival to ED Departure for Discharged ED Patients",
+              "description": "Median time from emergency department arrival to time of departure from the emergency room for patients discharged from the emergency department.",
+              "hqmf_id": "40280381-43DB-D64C-0144-6A8B0A3B30C6",
+              "tags": [
+                "Hospital",
+                "Continuous"
+              ],
+              "reporting_period": "2015"
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/measures/CMS32v4"
+            }
+          },
+          {
+            "type": "measures",
+            "id": "CMS55v3",
+            "attributes": {
+              "name": "Median Time from ED Arrival to ED Departure for Admitted ED Patients",
+              "description": "Median time from emergency department arrival to time of departure from the emergency room for patients admitted to the facility from the emergency department.",
+              "hqmf_id": "40280381-43DB-D64C-0144-64CB12982D97",
+              "tags": [
+                "Hospital",
+                "Continuous"
+              ],
+              "reporting_period": "2015"
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/measures/CMS55v3"
+            }
+          },
+          {
+            "type": "measures",
+            "id": "CMS179v3",
+            "attributes": {
+              "name": "ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range",
+              "description": "Average percentage of time in which patients aged 18 and older with atrial fibrillation who are on chronic warfarin therapy have International Normalized Ratio (INR) test results within the therapeutic range (i.e., TTR) during the measurement period.",
+              "hqmf_id": "40280381-454E-C5FA-0145-517F7383016D",
+              "tags": [
+                "Provider",
+                "Continuous"
+              ],
+              "reporting_period": "2015"
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/measures/CMS179v3"
+            }
+          }
+        ]
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "measures#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/measures/CMS100v3",
+      "versions": [
+        "v1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "data": {
+          "type": "measures",
+          "id": "CMS100v3",
+          "attributes": {
+            "name": "Aspirin Prescribed at Discharge",
+            "description": "Acute myocardial infarction (AMI) patients who are prescribed aspirin at hospital discharge",
+            "hqmf_id": "40280381-446B-B8C2-0144-9DFA522927ED",
+            "tags": [
+              "Hospital",
+              "Discrete"
+            ],
+            "reporting_period": "2015"
+          },
+          "links": {
+            "self": "http://127.0.0.1:3000/api/v1/measures/CMS100v3"
+          }
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
   "registrations#create": [
     {
       "verb": "POST",
@@ -692,6 +811,85 @@
           },
           "links": {
             "self": "http://127.0.0.1:3000/api/v1/test_executions/5797a2973bb752280873d7c9"
+          }
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "validations#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/validations",
+      "versions": [
+        "v1"
+      ],
+      "query": "measure_type=all&qrda_type=3&tag=Calculation",
+      "request_data": null,
+      "response_data": {
+        "data": [
+          {
+            "type": "validations",
+            "id": "duplicate_population_ids",
+            "attributes": {
+              "description": "Within a QRDA Cat 3 file, measure population IDs should only exist once.  In this file, one of the measure populations (e.g., IPP, Numerator, Observed Value, etc.) will be reported twice.",
+              "qrda_type": "3",
+              "measure_type": "all",
+              "tags": [
+                "Calculation"
+              ]
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/validations/duplicate_population_ids"
+            }
+          },
+          {
+            "type": "validations",
+            "id": "missing_population_id",
+            "attributes": {
+              "description": "According to each eCQM specification, several populations are required for calculation. In this file, one of those necessary populations will be removed.",
+              "qrda_type": "3",
+              "measure_type": "all",
+              "tags": [
+                "Calculation"
+              ]
+            },
+            "links": {
+              "self": "http://127.0.0.1:3000/api/v1/validations/missing_population_id"
+            }
+          }
+        ]
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "validations#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/validations/discharge_after_upload",
+      "versions": [
+        "v1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "data": {
+          "type": "validations",
+          "id": "discharge_after_upload",
+          "attributes": {
+            "description": "Among the encounter and procedure events in a QRDA category 1 file, all discharge dates should be before the file upload date.  In this file, a randomly selected encounter or procedure will have a discharge date after the file upload date.",
+            "qrda_type": "1",
+            "measure_type": "all",
+            "tags": [
+
+            ]
+          },
+          "links": {
+            "self": "http://127.0.0.1:3000/api/v1/validations/discharge_after_upload"
           }
         }
       },

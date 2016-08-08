@@ -15,7 +15,10 @@ module API
         EOS
       end
 
-      api! 'get all measures'
+      api! 'get all measures with query strings'
+      param :tag, String, desc: 'Only show measures that have this tag'
+      param :reporting_period, BUNDLE_MAP.keys, desc: 'Only show measures from this year'
+      description 'Returns measures that satisfy all query paramters, or all measures if no query string is given.'
       def index
         render json: MeasureRepresenter.for_collection.new(Measure.all.top_level.where(query_params)
         .only(:tags, :cms_id, :name, :description, :hqmf_id, :bundle_id))
