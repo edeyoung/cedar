@@ -17,12 +17,18 @@ module API
 
       api! 'get all validations'
       def index
-        render json: ValidationRepresenter.for_collection.new(Validation.all)
+        render json: ValidationRepresenter.for_collection.new(Validation.where(query_params))
       end
 
       api! 'show single validation'
       def show
         respond_with Validation.find_by(code: params[:id])
+      end
+
+      private
+
+      def query_params
+        params.permit(:qrda_type, :measure_type, :tags)
       end
     end
   end

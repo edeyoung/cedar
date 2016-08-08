@@ -15,6 +15,7 @@ module API
       property :cms_id, as: :id
       property :hqmf_id
       property :tags
+      property :reporting_period
     end
   end
 end
