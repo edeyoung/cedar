@@ -27,6 +27,10 @@ module API
           sign_in(user, store: false)
         end
       end
+
+      rescue_from Apipie::ParamError do |e|
+        render json: { errors: [{ title: e.message }] }, status: 400
+      end
     end
   end
 end

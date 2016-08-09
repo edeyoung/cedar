@@ -27,8 +27,7 @@ module API
         else
           render json: {
             errors: [
-              { status: 404,
-                title: 'Document Generation Unfinished',
+              { title: 'Document Generation Unfinished',
                 detail: "qrda_progress is #{te.qrda_progress}/100" }
             ]
           }, status: 404
