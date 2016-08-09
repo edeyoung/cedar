@@ -10,7 +10,7 @@ title: Cedar
 email: cedar-feedback-list@lists.mitre.org
 description: > # this means to ignore newlines until "baseurl:"
   Cedar is a tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files.
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://projectcedar.org" # the base hostname & protocol for your site
 github_username:  mitre/cedar
 
