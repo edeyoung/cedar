@@ -35,6 +35,8 @@ To start a local instance of Cedar for development purposes, ensure that you hav
 
 Production Docker Installation
 ==============================
+**Note: if you are running docker on OSX or Windows, make sure that you have installed a version >= 1.12.0, as this allows for containers to run without docker-machine.**
+
 1. Pull Cedar down from github: `git clone https://github.com/mitre/cedar`
 2. Go into the new directory: `cd cedar`
 3. Generate new secrets for devise and rails: `./prod_setup.sh`
@@ -44,8 +46,7 @@ Production Docker Installation
   * `docker exec -it cedar_cedar_1 ./bin/bundle exec rake bundle:download_and_install version=2015-alpha-20160224`
   * You will be prompted for your [NLM username and password](https://www.nlm.nih.gov/databases/umls.html)
   * Repeat with `version=2.6.0` and `version=2.4.0`
-7. Determine which IP address your docker container is running on: `docker-machine ip default`
-8. You should be able to use Cedar running at `http://{IP address from step 7}:3000`
+7. You should be able to use Cedar running at `http://localhost:3000`
 
 Unit and System Tests
 =====================
