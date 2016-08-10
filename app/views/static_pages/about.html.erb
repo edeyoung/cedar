@@ -4,12 +4,64 @@
   </div>
   <div class='process-content'>
     <p>Cedar is a tool for testing the strength of Electronic Clinical Quality Measure (eCQM) collection systems that receive Quality Reporting Document Architecture (QRDA) files. The Cedar tool is open source and freely available for use or adoption by state health agencies or any other organization that is set up to receive QRDA files.</p>
-    <p>Current Cedar Version: 0.1</p>
-    <hr>
-    <h4>Release Notes for Previous Versions</h4>
-    <strong>Version 0.1</strong>
+    <h1>Releases</h1>
+    <p>Cedar development began in January 2016 on MITRE servers and was released to GitHub on May 25th, 2016.  Release schedules are set based on planned functionality rather than on a set timeline.</p>
+    <h2>Version 0.3 (Planned for October 2016)</h2>
+    <h3>New Functionality</h3>
     <ul>
-      <li>Initial release to GitHub
+      <li>Add UI Unit and Integration Tests</li>
+      <li>Allow user-specified modifications to the QRDA header</li>
+      <li>Improve performance of QRDA Category 3 file generation</li>
+      <li>Allow for a user-specified number of QRDA documents to be generated in each test</li>
+      <li>Generate QRDA files using the Joint Commission IG in addition to the CMS IG</li>
+      <li>Dashboard showing validation coverage over time</li>
+    </ul>
+    <h2><a href='https://github.com/mitre/cedar/releases/tag/v0.2'>Version 0.2</a> (August 10, 2016)</h2>
+    <h3>New Functionality</h3>
+    <ul>
+      <li>Add the ability to upload multiple measure bundles for multiple reporting years</li>
+      <li>Add docker configuration files and some setup instructions</li>
+      <li>Add v1 of the Cedar API</li>
+      <li>Add several invalidators and their respective unit tests
+        <ul>
+          <li>Invalid Code</li>
+          <li>Invalid Measure Identifier</li>
+          <li>Inconsistent Time Formats</li>
+          <li>Missing Population ID</li>
+          <li>Performance Rate Divide by Zero</li>
+          <li>Performance Rate Out of Range</li>
+        </ul>
+      </li>
+      <li>Add configuration pages for measures and validations</li>
+      <li>Add the ability for users to tag and filter measures and validations so they can be more quickly accessed and used during test executions</li>
+      <li>Add an index number for each of the documents created in a test execution</li>
+      <li>Improve randomization of patient information in QRDA I files</li>
+      <li>Improve the random names given to documents created in a test execution - they now pull from a list of actual hospitals in the United States</li>
+    </ul>
+    <h3>Bug Fixes</h3>
+    <ul>
+      <li>Extra database cache records no longer created on test execution process runs</li>
+      <li>Incorporate error checking to prevent invalid reporting year/measure/validation combinations</li>
+      <li>Hardcode some constants to speed up server startup</li>
+      <li>Fix rails pipeline errors</li>
+    </ul>
+    <h2><a href='https://github.com/mitre/cedar/releases/tag/v0.1'>Version 0.1</a> (May 25, 2016)</h2>
+    <h3>New Functionality</h3>
+    <ul>
+      <li>Generate both QRDA Category 1 and Category 3 files
+      <li>Validations included for testing eCQM collection systems:
+        <ul>
+          <li>Denominator Greater Than IPP
+          <li>Discharge After Upload
+          <li>Discharge Before Admission
+          <li>Duplicated Measure Population IDs
+          <li>Incorrect Code System
+          <li>Invalid Value Set
+          <li>Numerator Greater Than Denominator
+          <li>Reporting Period
+          <li>Unfinished QRDA file
+          <li>Value Set without Code System
+        </ul>
     </ul>
   </div>
 </div>
