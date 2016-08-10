@@ -36,7 +36,7 @@ Apipie.configure do |config|
   {POST /api/v1/test_executions/:test_execution_id/documents/report_results}[link:/apipie/v1/documents/report_results.html]
 EOS
   config.api_base_url            = '/api'
-  config.doc_base_url            = '/apipie'
+  config.doc_base_url            = '/apidocs'
   config.default_version         = 'v1'
   # where is your API defined?
   config.api_controllers_matcher = "#{Rails.root}/app/controllers/**/*.rb"
