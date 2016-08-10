@@ -17,7 +17,7 @@ Cedar development began in January 2016 on MITRE servers and was released to Git
 - Generate QRDA files using the Joint Commission IG in addition to the CMS IG
 - Dashboard showing validation coverage over time
 
-## Version 0.2 (Planned for August 2016)
+## [Version 0.2](https://github.com/mitre/cedar/releases/tag/v0.2) (August 10, 2016)
 
 ### New Functionality
 
