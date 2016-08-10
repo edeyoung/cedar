@@ -64,6 +64,13 @@ gem 'quality-measure-engine', git: 'https://github.com/projectcypress/quality-me
 gem 'rubyzip'
 # Prettier replacements for javascript alerts
 gem 'sweet-alert-confirm'
+# Apipie for documentation
+gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
+# FactoryGirl for testing
+gem 'factory_girl_rails', '~> 4.0'
+# Roar rails for API field filtering and json-api standards
+gem 'roar', git: 'https://github.com/apotonick/roar.git'
+gem 'roar-rails'
 
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
@@ -78,6 +85,8 @@ group :development, :test do
   # Brakeman and bundle-audit for automated testing of security vulnerabilities
   gem 'brakeman', require: false
   gem 'bundler-audit'
+  # Reset MongoDB after each test
+  gem 'database_cleaner'
 end
 
 group :production do

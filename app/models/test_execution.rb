@@ -66,13 +66,9 @@ class TestExecution
     document_ids.each do |document|
       doc = Document.find(document)
       total_validations += 1
-      if doc.expected_result != doc.actual_result
-        pass_test = false
-        doc.update_attribute(:state, :failed)
-      else
-        doc.update_attribute(:state, :passed)
-        passed_validations += 1
-      end
+      doc_pass = doc.update_state
+      pass_test &&= doc_pass
+      passed_validations += 1 if doc_pass
     end
     pass_test ? update_attribute(:state, :passed) : update_attribute(:state, :failed)
     update_attribute(:results, passed: passed_validations, total: total_validations)
@@ -94,7 +90,46 @@ class TestExecution
     duplicate
   end
 
+  def as_json(_options = {})
+    super(except: [:disable_details, :results, :step, :wizard_progress])
+  end
+
+  def selected_measure_types
+    types = { discrete: false, continuous: false }
+    measure_ids.each do |measure_id|
+      measure = HealthDataStandards::CQM::Measure.find_by(_id: measure_id)
+      measure.continuous_variable ? types[:continuous] = true : types[:discrete] = true
+    end
+    types
+  end
+
+  # Take the intersection of all checks for useful validations given test conditions
+  def determine_useful_validations
+    useful_checks = [
+      useful_validations_for_qrda_type,
+      useful_validations_for_measure_type
+    ]
+    useful_checks.inject(:&)
+  end
+
   private
+
+  def useful_validations_for_qrda_type
+    Validation.all.qrda_type(qrda_type) + Validation.all.qrda_type('all')
+  end
+
+  # If both continuous and discrete measures are selected, validations for both types of measure are valid
+  # If only one type is selected, remove the validations specific to the other type
+  def useful_validations_for_measure_type
+    measure_types = selected_measure_types
+    if measure_types[:discrete] == false
+      Validation.all - Validation.all.measure_type('discrete')
+    elsif measure_types[:continuous] == false
+      Validation.all - Validation.all.measure_type('continuous')
+    else
+      Validation.all.to_a
+    end
+  end
 
   # For each chosen validation, generate one or two invalid qrda documents
   def generate_invalid_qrda_text

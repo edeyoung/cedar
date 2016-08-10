@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Set up the order of test execution, a la Rails versions < 5
   config.active_support.test_order = :sorted
+
+  # Representer/Roar Hyperlinks
+  config.representer.default_url_options = { host: '127.0.0.1:3000' }
 end
