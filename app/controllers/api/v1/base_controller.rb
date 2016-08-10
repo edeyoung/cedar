@@ -6,13 +6,6 @@ module API
       before_action :destroy_session
       before_action :authenticate_user!
 
-      # Apipie
-      def_param_group :headers do
-        param :street, String
-        param :number, Integer
-        param :zip, String
-      end
-
       def destroy_session
         request.session_options[:skip] = true
       end

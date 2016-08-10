@@ -9,6 +9,10 @@ Apipie.configure do |config|
   data, which are stored in Documents. Documents are also used to check your collection system's
   accuracy.
 
+  Follows the {JSON-API specification}[link:jsonapi.org]. In addition to formatting responses,
+  JSON-API compliance means requests must be made with 'application/vnd.api+json' accept and content-type headers.
+
+
   == Common Usage
 
   <b>Get authentication token with one of two methods:</b>
