@@ -31,7 +31,7 @@ To start a local instance of Cedar for development purposes, ensure that you hav
 12. Import Cypress measure bundles (containing seed information for measures, patients, value sets, etc.): `./bundle_import.sh`
   - Note: you will be asked multiple times for an NLM username and password. If you do not have one, you may [request an NLM username and password](https://uts.nlm.nih.gov/home.html) (also referred to as a UMLS license).
 13. Start the background job worker: `bundle exec rake jobs:work`
-14. In a separate shell, start the Cedar application: `bundle exec rake rails s`
+14. In a separate shell, start the Cedar application: `bundle exec rails s`
 
 Production Docker Installation
 ==============================
@@ -47,6 +47,10 @@ Production Docker Installation
   * You will be prompted for your [NLM username and password](https://www.nlm.nih.gov/databases/umls.html)
   * Repeat with `version=2.6.0` and `version=2.4.0`
 7. You should be able to use Cedar running at `http://localhost:3000`
+
+API
+===
+API documentation is located at `http://localhost:3000/apidocs`
 
 Unit and System Tests
 =====================
