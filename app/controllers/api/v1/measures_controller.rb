@@ -26,14 +26,17 @@ module API
 
       api! 'show single measure'
       def show
+        # This is not respond_with because the API::V1 namespace makes it unable to find HealthDataStandards
         render json: MeasureRepresenter.new(Measure.find_by(cms_id: params[:id]))
       end
 
       private
 
       def query_params
+        # Accept a tag and reporting period as query params
         filtered = params.permit(:tags, :reporting_period)
         if filtered[:reporting_period]
+          # Measures don't have a reporting year attribute, so we have to filter manually using the bundle map (in constants.rb)
           bundle = HealthDataStandards::CQM::Bundle.all.to_a.select { |b| BUNDLE_MAP.key(b.measure_period_start) == filtered[:reporting_period] }[0]
           filtered[:bundle_id] = bundle.id
           filtered.delete :reporting_period

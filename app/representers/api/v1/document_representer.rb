@@ -4,7 +4,6 @@ module API
   module V1
     class DocumentRepresenter < Roar::Decorator
       include Roar::JSON::JSONAPI
-      # include Roar::Hypermedia
       type :documents
 
       link :self do

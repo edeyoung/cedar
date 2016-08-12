@@ -6,6 +6,7 @@ module API
       before_action :destroy_session
       before_action :authenticate_user!
 
+      # Authentication
       def destroy_session
         request.session_options[:skip] = true
       end
@@ -21,6 +22,7 @@ module API
         end
       end
 
+      # Make APIPIE send a comprehensible error message when validating parameters
       rescue_from Apipie::ParamError do |e|
         render json: { errors: [{ title: e.message }] }, status: 400
       end

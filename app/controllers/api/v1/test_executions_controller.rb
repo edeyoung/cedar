@@ -61,8 +61,12 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
         # However, it does not play nice with controller tests and apipie example generation
         # Also, from_hash(params) would not work with application/vnd.api+json content-type if not for code in initializers/mime_types.rb
         TestExecutionRepresenter.new(te).from_hash(params)
+
+        # Measures and validations need to be processed separately and after everything else
         process_measure_params(te)
         process_validation_params(te)
+
+        # Check for conflicts in settings, and try to salvage
         @errors = []
         @warnings = []
         validate_test_execution(te)
@@ -122,7 +126,6 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       end
 
       def validate_test_execution(test_execution)
-        @errors = []
         check_measure_year(test_execution)
         check_validation_qrda_type(test_execution)
         check_validation_measure_type(test_execution)
@@ -130,6 +133,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       end
 
       def check_measure_year(test_execution)
+        # Makes sure all measures are in the reporting year chosen
         bundle_id = test_execution.bundle.id
         invalid_measures = test_execution.measures.select { |measure| measure.bundle_id != bundle_id }
 
@@ -144,6 +148,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       end
 
       def check_validation_measure_type(test_execution)
+        # Checks that if there's only one category of measure chosen, all validations work with that type
         measure_types = test_execution.selected_measure_types
         if !measure_types[:discrete]
           invalid = 'discrete'
@@ -164,6 +169,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       end
 
       def check_validation_qrda_type(test_execution)
+        # Makes sure all validations are of the chosen qrda type
         qrda_type = test_execution.qrda_type
         invalid_validations = test_execution.validations.select { |validation| validation.qrda_type != 'all' && validation.qrda_type != qrda_type }
         if invalid_validations.any?
@@ -177,6 +183,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       end
 
       def check_nulls(test_execution)
+        # Will not continue with creation if there are no validations or measures
         if test_execution.validations.empty?
           @errors << {
             title: 'No Validations',
@@ -191,6 +198,7 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
         end
       end
 
+      # The convert functions take arrays of human readable ids and convert them into measure/validation objects
       def convert_measures(hqmf_or_cms_ids)
         Measure.any_of({ :hqmf_id.in => hqmf_or_cms_ids.collect(&:upcase) },
                        :cms_id.in => hqmf_or_cms_ids.collect { |i| /^#{Regexp.escape(i)}$/i }).to_a
