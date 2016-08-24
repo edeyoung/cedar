@@ -2,18 +2,70 @@
 <%= progress_bar %>
 
 <div class='container'>
-  <div class='col-md-12'>
-    <div class='process-title'><h3>Overview</h3></div>
-  </div>
+  <div class='col-lg-12'>
+    <div class="panel panel-default">
+      <div class='process-title panel-heading'><h3>Overview</h3></div>
+        <div class="panel-body">
+          <table class="table table-condensed" style="border-collapse:collapse;">
+            <thead>
+             <tr><th>&nbsp;</th>
+                 <th>Tested Document</th>
+                 <th>Expected</th>
+                 <th>Actual</th>
+                 <th>Status</th>
+             </tr>
+           </thead>
+
+           <tbody>
+             <% @test_execution.documents.all.each do |doc| %>
+               <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                         <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                   <td><%= doc.name.to_s %></td>
+                   <td><% if doc.state == :passed %>
+                     <h4 class='text-success'><i class='glyphicon glyphicon-check'></i> Passed</h4>
+                   <% else %>
+                     <h4 class='text-danger'><i class='glyphicon glyphicon-exclamation-sign'></i> Failed</h4>
+                   <% end %></td>
+                   <td>  <% if doc.actual_result == :accept %>
+                       <h3 style='margin: 5px 0'><span class='label label-success'>Accept</span></h4>
+                     <% else %>
+                       <h3 style='margin: 5px 0'><span class='label label-danger'>Reject</span></h4>
+                     <% end %></td>
+                   <td><% if doc.expected_result == :accept %>
+                     <h4 class='text-success'>Accept</h4>
+                   <% else %>
+                     <h4 class='text-danger'>Reject</h4>
+                   <% end %></td>
+
+
+               </tr>
+               <% end %>
+               <tr>
+                   <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1">
+                     <table class="table table-striped">
+                             <thead>
+                               <tr><td><a href="WorkloadURL">Workload link</a></td><td>Bandwidth: Dandwidth Details</td><td>OBS Endpoint: end point</td></tr>
+                               <tr><th>Access Key</th><th>Secret Key</th><th>Status </th><th> Created</th><th> Expires</th><th>Actions</th></tr>
+                             </thead>
+                             <tbody>
+                               <tr><td>access-key-1</td><td>secretKey-1</td><td>Status</td><td>some date</td><td>some date</td><td><a href="#" class="btn btn-default btn-sm">
+                         <i class="glyphicon glyphicon-cog"></i></a></td></tr>
+
+                             </tbody>
+                       </table>
+                     </div> </td>
+               </tr>
+           </tbody>
+         </table>
+
+        </div
+
+    </div>
+
 
   <div class='col-md-12'>
     <div class='overview-panels'>
-      <div class='panel-selection-bar'>
-        <div class='pull-left bar-column1'>Tested Document</div>
-        <div class='pull-right bar-column2'>Status</div>
-        <div class='pull-right bar-column3'>Actual</div>
-        <div class='pull-right bar-column4'>Expected</div>
-      </div>
+
       <% @test_execution.documents.all.each do |doc| %>
         <div class='panel-group'>
           <div class='pull-right panel-toggle' data-toggle='collapse' href='#collapse<%= doc.id.to_s %>'>
