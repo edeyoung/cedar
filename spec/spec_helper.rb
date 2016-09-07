@@ -23,6 +23,7 @@ require 'rspec/rails'
 RSpec.configure do |config|
   require 'database_cleaner'
   require 'capybara/rspec'
+  config.include FactoryGirl::Syntax::Methods
   # require 'capybara/rails'
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
