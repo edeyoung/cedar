@@ -108,6 +108,7 @@ class TestExecution
     useful_checks = [
       useful_validations_for_qrda_type,
       useful_validations_for_measure_type
+      # TODO: Add useful_validations_for_performance_rate
     ]
     useful_checks.inject(:&)
   end
@@ -173,13 +174,11 @@ class TestExecution
     start_date = DateTime.new(reporting_period.to_i, 1, 1).utc
     end_date = start_date.years_since(1) - 1
     bundle = self.bundle
-    patient_records = HealthDataStandards::CQM::PatientCache.where('value.measure_id' => measure_id, 'value.test_id' => nil).to_a.map(&:record)
-    if qrda_type == '3' # TODO: We could potentially create a Cat 3 file without creating Cat 1 files
-      zip = Cypress::CreateDownloadZip.create_zip(patient_records, 'qrda', measure, start_date, end_date)
+    if qrda_type == '3'
       c3c = Cypress::Cat3Calculator.new([measure_id], bundle)
-      c3c.import_cat1_zip(zip)
       c3c.generate_cat3(start_date, end_date)
     elsif qrda_type == '1'
+      patient_records = HealthDataStandards::CQM::PatientCache.where('value.measure_id' => measure_id, 'value.test_id' => nil).to_a.map(&:record)
       formatter = Cypress::QRDAExporter.new([measure], start_date, end_date)
       patient = patient_records.sample
       Cypress::DemographicsRandomizer.randomize(patient)
@@ -213,12 +212,44 @@ class TestExecution
     update_attribute(:qrda_progress, 100 * @current_document / @documents_to_generate)
   end
 
+  # Take the intersection of all checks for useful measures given test conditions
   def determine_useful_measures(validation_id)
+    useful_checks = [
+      useful_measures_by_performance_rate(validation_id),
+      useful_measures_by_measure_type(validation_id)
+    ]
+    useful_checks.inject(:&)
+  end
+
+  # If the validation requires discrete measures, select only discrete measures (likewise for continuous measures)
+  # Otherwise return all measures
+  def useful_measures_by_measure_type(validation_id)
     validation = Validation.find(validation_id)
     if validation.measure_type == 'discrete'
       measure_ids.select { |id| HealthDataStandards::CQM::Measure.find_by(_id: id).continuous_variable == false }
     elsif validation.measure_type == 'continuous'
       measure_ids.select { |id| HealthDataStandards::CQM::Measure.find_by(_id: id).continuous_variable == true }
+    else
+      measure_ids
+    end
+  end
+
+  # If validations require a performance rate, find measures in the query cache with a non-null, non-zero performance rate
+  # Otherwise return all measures
+  def useful_measures_by_performance_rate(validation_id)
+    validation = Validation.find(validation_id)
+    if validation.performance_rate_required == true
+      # Remove all continuous measures since they do not have a performance rate
+      measure_ids.select! { |id| HealthDataStandards::CQM::Measure.find_by(_id: id).continuous_variable == false }
+      useful_measure_ids = []
+      measure_ids.each do |id|
+        hqmf_id = HealthDataStandards::CQM::Measure.find_by(_id: id).hqmf_id
+        cache = HealthDataStandards::CQM::QueryCache.find_by(measure_id: hqmf_id)
+        if (cache.NUMER != 0 && !cache.NUMER.nil?) || ((cache.DENOM ||= 0) - (cache.DENEXCEP ||= 0) - (cache.DENEX ||= 0)) != 0
+          useful_measure_ids << HealthDataStandards::CQM::Measure.find_by(hqmf_id: hqmf_id).id
+        end
+      end
+      useful_measure_ids
     else
       measure_ids
     end

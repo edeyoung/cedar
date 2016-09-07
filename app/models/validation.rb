@@ -8,6 +8,7 @@ class Validation
   field :overview_text,             type: String
   field :qrda_type,                 type: String # 1, 3, or all
   field :measure_type,              type: String # discrete, continuous, all
+  field :performance_rate_required, type: Boolean
   field :tags,                      type: Array, default: []
 
   default_scope -> { order('qrda_type ASC, name ASC') }
