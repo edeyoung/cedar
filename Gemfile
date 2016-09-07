@@ -66,8 +66,7 @@ gem 'rubyzip'
 gem 'sweet-alert-confirm'
 # Apipie for documentation
 gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
-# FactoryGirl for testing
-gem 'factory_girl_rails', '~> 4.0'
+
 # Roar rails for API field filtering and json-api standards
 gem 'roar', git: 'https://github.com/apotonick/roar.git'
 gem 'roar-rails'
@@ -75,16 +74,25 @@ gem 'roar-rails'
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
   gem 'rubocop'
+  gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debug console
   gem 'byebug'
-  # Capybara and selenium for automated testing
-  gem 'capybara'
-  gem 'capybara-accessible'
-  gem 'axe-matchers'
-  gem 'selenium-webdriver', '2.48.0'
+  # FactoryGirl for testing
+  gem 'factory_girl_rails', '~> 4.0'
   # Brakeman and bundle-audit for automated testing of security vulnerabilities
   gem 'brakeman', require: false
   gem 'bundler-audit'
+end
+group :test do
+  # Capybara and selenium for automated testing
+  gem 'capybara'
+  gem 'capybara-accessible'
+  # gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'mongoid-rspec'
+  gem 'guard-rspec'
+  gem 'axe-matchers'
+  gem 'launchy'
   # Reset MongoDB after each test
   gem 'database_cleaner'
 end

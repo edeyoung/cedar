@@ -35,6 +35,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  # TODO: add name field validate uniqueness and presence of email, name before saving a user to db
+
   has_many :test_executions
   before_save :ensure_authentication_token!
 

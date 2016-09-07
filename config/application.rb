@@ -8,7 +8,7 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
 require 'sprockets/railtie'
-require 'rails/test_unit/railtie'
+# require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -29,10 +29,22 @@ module Cedar
     # config.i18n.default_locale = :de
 
     # For loading fonts in the asset path, since they aren't auto-loaded like js and css
+    config.generators do |g|
+      g.test_framework  :rspec,
+                        fixtures: true,
+                        view_specs: false,
+                        helper_specs: false,
+                        routing_specs: true,
+                        controller_specs: true,
+                        request_specs: true
+      #g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     config.autoload_paths += Dir["#{config.root}/lib/"]
 
     # Backend jobs for QRDA creation
     config.active_job.queue_adapter = :delayed_job
+    # Prevent passwords from being written to log file
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
