@@ -11,13 +11,16 @@ RSpec.describe 'home page test:', type: :feature do
     @one_user = FactoryGirl.create(:user)
     expect(@one_user.email).to_not be_nil
     expect(@one_user.password).to_not be_nil
-    fill_in('user_email', with: @one_user.email)
-    fill_in('user_password', with: @one_user.password)
-    sleep 3
-    # expect(page).to have_content('Please sign in or create a new account.')
-    find('input#LogIn').click
+    fill_in('user_email', with: 'scudmore@gmail.com')
+    fill_in('user_password', with: 'password')
+    # fill_in('user_email', with: @one_user.email)
+    # fill_in('user_password', with: @one_user.password)
+    find(:css, '#user_remember_me').set(true)
+    click_button 'Log in'
+    expect(page).to have_css('.db-overview-results')
+    expect(find(:css, '.alert').visible?).to be true
     sleep 1
-    # expect(page).to have_content('Welcome to Cedar!')
-    # expect(page).should have_content('Welcome to Cedar!')
+    # expect(find(:css, '.db-center-results div > :first-child .db-overview-results h1 p')).to have_content('total tests')
+    expect(page).to have_content('Welcome to Cedar!')
   end
 end

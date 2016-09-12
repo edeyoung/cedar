@@ -86,9 +86,9 @@ end
 group :test do
   # Capybara and selenium for automated testing
   gem 'capybara'
-  gem 'capybara-accessible'
+  # gem 'capybara-accessible'  --- this was causing testing errors. removing for now.
   gem 'selenium-webdriver', '2.48.0'
-  gem 'capybara-webkit'
+  # gem 'capybara-webkit'
   gem 'headless'
   gem 'mongoid-rspec'
   gem 'guard-rspec'
