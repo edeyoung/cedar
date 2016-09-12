@@ -87,8 +87,9 @@ group :test do
   # Capybara and selenium for automated testing
   gem 'capybara'
   gem 'capybara-accessible'
-  # gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.48.0'
   gem 'capybara-webkit'
+  gem 'headless'
   gem 'mongoid-rspec'
   gem 'guard-rspec'
   gem 'axe-matchers'
