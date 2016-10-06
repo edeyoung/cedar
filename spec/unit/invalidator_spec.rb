@@ -1,16 +1,33 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'fileutils'
 require 'nokogiri'
 require 'rspec/expectations'
-
 # Unit test cases for all of the Cedar invalidators
 RSpec.describe 'Invalidator Tests: ' do
   include RSpec::Matchers
+
+  # include Mongoid::Document
+  before :all do
+    # collection_fixtures('product_tests', 'products', 'bundles', 'artifacts',
+    #                     'measures', 'records', 'patient_cache',
+    #                     'health_data_standards_svs_value_sets')
+    collection_fixtures('measures', 'health_data_standards_svs_value_sets')
+    load_library_functions
+  end
+
   before(:each) do
     @cat_1_file = IO.read('test/fixtures/qrda/cat_1/good.xml')
     @cat_3_file = IO.read('test/fixtures/qrda/cat_3/good.xml')
   end
 
+  # xit 'can access records' do
+  #   @measures.each do |measure|
+  #     puts measure
+  #   end
+  #   # Document::Records.find.first do |record|
+  #   #   puts record
+  #   # end
+  # end
   # --- Validations for both QRDA Category 1 and Category 3 ---
   it 'test_inconsistent_time_formats' do
     expect(@cat_1_file).to_not be_nil
@@ -24,12 +41,14 @@ RSpec.describe 'Invalidator Tests: ' do
   it 'test_invalid_measure_id' do
     # Find all the valid measure ids
     valid_measure_ids = []
-    HealthDataStandards::CQM::Measure.all.each do |measure|
+    measures = HealthDataStandards::CQM::Measure.all
+    expect(measures).to_not be_empty
+    measures.each do |measure|
       valid_measure_ids << measure.hqmf_id
       valid_measure_ids << measure.hqmf_set_id
     end
+
     expect(valid_measure_ids).to_not be_empty
-    # byebu
     # Test the measure IDs to see if they are valid
     bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_measure_id(Nokogiri::XML(@cat_1_file)))
     measure_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
@@ -127,11 +146,12 @@ RSpec.describe 'Invalidator Tests: ' do
   it 'test_incorrect_code_system' do
     # Create an array of all codes with their respective code systems
     all_valid_codes = []
+    # aBundle = HealthDataStandards::CQM::Bundle.find_by measure_period_start: BUNDLE_MAP["2016"]
     HealthDataStandards::SVS::ValueSet.each do |vs|
       vs.concepts.each { |concept| all_valid_codes << [concept.code, concept.system] }
     end
     all_valid_codes.uniq!
-    expect(all_valid_codes).to_not be_nil
+    expect(all_valid_codes).to_not be_empty
     bad_file = Nokogiri::XML(Cedar::Invalidator.incorrect_code_system(Nokogiri::XML(@cat_1_file)))
     nodes_with_code_system = bad_file.css('[codeSystem]').to_a
     bad_code_systems = 0
@@ -152,11 +172,12 @@ RSpec.describe 'Invalidator Tests: ' do
     expect(all_codes).to_not be_nil
     bad_file = Nokogiri::XML(Cedar::Invalidator.incorrect_code_system(Nokogiri::XML(@cat_1_file)))
     nodes_with_value_set = bad_file.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a
-    # byebug
     bad_codes = 0
     nodes_with_value_set.each do |node|
-      code = node.attributes['code'].value
-      value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
+      code = node.value
+      # code = node.attributes['code'].value
+      # value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
+      value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node.attributes['valueSet'].value)
       valid_codes = []
       value_set.concepts.each { |vs| valid_codes << vs.code }
       bad_codes += 1 unless valid_codes.include? code
@@ -166,13 +187,12 @@ RSpec.describe 'Invalidator Tests: ' do
 
   it 'test_invalid_value_set' do
     begin
-      measure = HealthDataStandards::CQM::Measure.find_by(hqmf_id: '40280381-4C72-51DF-014C-8F7B539207A9')
+      measure = HealthDataStandards::CQM::Measure.find_by(hqmf_id: '8A4D92B2-397A-48D2-0139-7CC6B5B8011E')
     rescue
-      puts measure
       expect(measure).to_not be_nil
-      # expect(!measure.nil?).to be true
     end
-    bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_value_set(Nokogiri::XML(@cat_1_file), '40280381-4C72-51DF-014C-8F7B539207A9'))
+
+    bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_value_set(Nokogiri::XML(@cat_1_file), '8A4D92B2-397A-48D2-0139-7CC6B5B8011E'))
     nodes_with_value_set = bad_file.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.collect(&:parent)
     valid_value_sets = %w(2.16.840.1.114222.4.11.3591
                           2.16.840.1.113883.3.117.1.7.1.424
@@ -180,6 +200,7 @@ RSpec.describe 'Invalidator Tests: ' do
                           2.16.840.1.113883.3.117.1.7.1.247
                           2.16.840.1.113883.3.117.1.7.1.201
                           2.16.840.1.113883.3.117.1.7.1.292)
+    invalid_value_sets = 0
     invalid_value_sets = 0
     nodes_with_value_set.each do |node|
       value_set = node.attributes['valueSet'].value

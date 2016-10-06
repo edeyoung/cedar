@@ -3,6 +3,7 @@ ENV['HTTP_PROXY'] = ENV['http_proxy'] = nil
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'devise'
 require 'capybara/rspec'
 require 'database_cleaner'
 
@@ -26,17 +27,22 @@ require 'database_cleaner'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
-  # require 'capybara/rails'
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = 'mongoid'
   end
-
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
   # allows you to run only the failures from the previous run:
   # rspec --only-failures
   config.example_status_persistence_file_path = './tmp/rspec-examples.txt'
-
+  config.use_transactional_fixtures = false
   Capybara.default_selector = :css
+  # Capybara.server_port = 270_17
   # Capybara.register_driver :selenium_chrome do |app|
   #   Capybara::Selenium::Driver.new(app, debug: true, window_size: [1300, 1000])
   # end
@@ -44,14 +50,17 @@ RSpec.configure do |config|
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
-  config.before(:each) do
-    DatabaseCleaner.clean
-  end
 
+  # db_host = ENV['TEST_DB_HOST'] || 'localhost'
+  #
+  # Mongoid.configure do
+  #   config.sessions = { default: { hosts: ["#{db_host}:27017"], database: 'cedar_test' } }
+  # end
+  #
+  # MONGO_DB = Mongoid.default_session
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-  config.use_transactional_fixtures = false
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

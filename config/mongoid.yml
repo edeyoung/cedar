@@ -17,7 +17,7 @@ measure_eval:
 test:
   clients:
     default:
-      database: cedar_test<%= ENV['TEST_ENV_NUMBER'] %>
+      database: cedar_test
       hosts:
         - <%= ENV.fetch('MONGO_PORT_27017_TCP_ADDR', 'localhost') %>:<%= ENV.fetch('MONGO_PORT_27017_TCP_PORT', '27017') %>
 production:
