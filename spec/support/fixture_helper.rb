@@ -1,11 +1,8 @@
 module FixtureHelper
-  def setup
-    Settings[:ignore_roles] = false
+  def setup_fixture_data
     collection_fixtures('product_tests', 'products', 'bundles', 'artifacts',
                         'measures', 'records', 'patient_cache',
                         'health_data_standards_svs_value_sets')
-    # collection_fixtures('measures', 'health_data_standards_svs_value_sets')
-    puts 'Setup called'
     load_library_functions
   end
 
@@ -71,7 +68,6 @@ module FixtureHelper
     collections.each do |collection|
       Mongoid.default_client[collection].drop
       Dir.glob(File.join(Rails.root, 'spec', 'fixtures', collection, '*.json')).each do |json_fixture_file|
-        puts 'Importing-----------' + json_fixture_file
         fixture_json = JSON.parse(File.read(json_fixture_file), max_nesting: 250)
         map_bson_ids(fixture_json)
         Mongoid.default_client[collection].insert_one(fixture_json)
@@ -81,7 +77,6 @@ module FixtureHelper
 
   def load_library_functions
     Dir.glob(File.join(Rails.root, 'spec', 'fixtures', 'library_functions', '*.js')).each do |js_path|
-      puts 'Importing functions-----------' + js_path
       fn = "function () {\n #{File.read(js_path)} \n }"
       name = File.basename(js_path, '.js')
       Mongoid.default_client['system.js'].replace_one({ '_id' => name },

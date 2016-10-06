@@ -8,11 +8,7 @@ RSpec.describe 'Invalidator Tests: ' do
 
   # include Mongoid::Document
   before :all do
-    # collection_fixtures('product_tests', 'products', 'bundles', 'artifacts',
-    #                     'measures', 'records', 'patient_cache',
-    #                     'health_data_standards_svs_value_sets')
-    collection_fixtures('measures', 'health_data_standards_svs_value_sets')
-    load_library_functions
+    setup_fixture_data
   end
 
   before(:each) do
@@ -20,14 +16,6 @@ RSpec.describe 'Invalidator Tests: ' do
     @cat_3_file = IO.read('test/fixtures/qrda/cat_3/good.xml')
   end
 
-  # xit 'can access records' do
-  #   @measures.each do |measure|
-  #     puts measure
-  #   end
-  #   # Document::Records.find.first do |record|
-  #   #   puts record
-  #   # end
-  # end
   # --- Validations for both QRDA Category 1 and Category 3 ---
   it 'test_inconsistent_time_formats' do
     expect(@cat_1_file).to_not be_nil
