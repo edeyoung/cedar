@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -57,7 +57,7 @@ gem 'bootstrap-slider-rails'
 # Randomized names and companies for the QRDA files
 gem 'faker'
 # health-data-standards to create QRDA documents
-gem 'health-data-standards', git: 'https://github.com/projectcypress/health-data-standards.git', branch: 'bump_mongoid'
+gem 'health-data-standards', git: 'https://github.com/projectcypress/health-data-standards.git', branch: 'mongoid5'
 # Quality Measure Engine to create CQMs
 gem 'quality-measure-engine', git: 'https://github.com/projectcypress/quality-measure-engine.git', branch: 'bump_mongoid'
 # For zipping QRDA documents once they are created

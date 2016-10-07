@@ -1,8 +1,6 @@
 module FixtureHelper
   def setup_fixture_data
-    collection_fixtures('product_tests', 'products', 'bundles', 'artifacts',
-                        'measures', 'records', 'patient_cache',
-                        'health_data_standards_svs_value_sets')
+    collection_fixtures('measures', 'records', 'patient_cache', 'health_data_standards_svs_value_sets')
     load_library_functions
   end
 
@@ -41,6 +39,8 @@ module FixtureHelper
     else
       v
     end
+    byebug
+    # puts 'In value_or_bson: ' + v.to_s
   end
 
   def map_array(arr)
@@ -49,16 +49,20 @@ module FixtureHelper
       ret << value_or_bson(v)
     end
     ret
+    byebug
   end
 
   def map_bson_ids(json)
-    json.each_pair do |k, v|
+    json.each do |k, v|
       if v.is_a? Hash
         json[k] = value_or_bson(v)
+        # puts 'value: ' + ' key:' + k + ' value:' + v.to_s
       elsif v.is_a? Array
         json[k] = map_array(v)
+        # puts 'array: ' + ' key:' + k + ' first value:' + v[0].to_s
       elsif k == 'create_at' || k == 'updated_at'
         json[k] = Time.at.local(v).in_time_zone
+        puts 'time: ' + ' key:' + k + ' value:' + v
       end
     end
     json
@@ -69,8 +73,10 @@ module FixtureHelper
       Mongoid.default_client[collection].drop
       Dir.glob(File.join(Rails.root, 'spec', 'fixtures', collection, '*.json')).each do |json_fixture_file|
         fixture_json = JSON.parse(File.read(json_fixture_file), max_nesting: 250)
+        puts 'Loading file -------- ' + json_fixture_file
         map_bson_ids(fixture_json)
         Mongoid.default_client[collection].insert_one(fixture_json)
+        # byebug
       end
     end
   end
@@ -79,11 +85,7 @@ module FixtureHelper
     Dir.glob(File.join(Rails.root, 'spec', 'fixtures', 'library_functions', '*.js')).each do |js_path|
       fn = "function () {\n #{File.read(js_path)} \n }"
       name = File.basename(js_path, '.js')
-      Mongoid.default_client['system.js'].replace_one({ '_id' => name },
-                                                      { '_id' => name,
-                                                        'value' => BSON::Code.new(fn)
-                                                       }, upsert: true
-                                                      )
+      Mongoid.default_client['system.js'].replace_one({ '_id' => name }, { '_id' => name, 'value' => BSON::Code.new(fn) }, upsert: true)
     end
   end
 end
