@@ -30,7 +30,6 @@ RSpec.describe 'Invalidator Tests: ' do
     # Find all the valid measure ids
     valid_measure_ids = []
     measures = HealthDataStandards::CQM::Measure.all
-    # byebug
     expect(measures).to_not be_empty
     measures.each do |measure|
       valid_measure_ids << measure.hqmf_id
