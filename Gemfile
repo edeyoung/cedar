@@ -97,7 +97,7 @@ group :test do
   # Reset MongoDB after each test
   gem 'database_cleaner'
   gemm 'rspec-mock'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :production do
