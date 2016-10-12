@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore files created by test coverage report
+/coverage/*
+
 # test executions
 public/data/*
 !public/data/.keep
