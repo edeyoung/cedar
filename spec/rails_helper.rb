@@ -7,7 +7,7 @@ require 'rspec/rails'
 require 'spec_helper'
 require 'simplecov'
 # May need to move this above require File... not sure yet.
-SimpleCov.start
+SimpleCov.start :rails
 require 'support/fixture_helper'
 
 # Add additional requires below this line. Rails is not loaded until this point!
