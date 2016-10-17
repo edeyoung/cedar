@@ -7,13 +7,14 @@ RSpec.describe 'Invalidator Tests: ' do
   include RSpec::Matchers
 
   # include Mongoid::Document
-  before :all do
-    setup_fixture_data
-  end
+  # before :all do
+  #   setup_fixture_data
+  # end
 
   before(:each) do
     @cat_1_file = IO.read('test/fixtures/qrda/cat_1/good.xml')
     @cat_3_file = IO.read('test/fixtures/qrda/cat_3/good.xml')
+    setup_fixture_data
   end
 
   # --- Validations for both QRDA Category 1 and Category 3 ---
@@ -29,11 +30,14 @@ RSpec.describe 'Invalidator Tests: ' do
   it 'test_invalid_measure_id' do
     # Find all the valid measure ids
     valid_measure_ids = []
-    measures = HealthDataStandards::CQM::Measure.all
-    expect(measures).to_not be_empty
+
+    measures = HealthDataStandards::CQM::Measure.all.to_a
+
     measures.each do |measure|
-      valid_measure_ids << measure.hqmf_id
-      valid_measure_ids << measure.hqmf_set_id
+      expect(measure.id).to_not be_empty
+      # puts 'measure: ' + measure
+      valid_measure_ids.push(measure.hqmf_id)
+      valid_measure_ids.push(measure.hqmf_set_id)
     end
 
     expect(valid_measure_ids).to_not be_empty

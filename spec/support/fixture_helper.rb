@@ -1,7 +1,9 @@
+require 'json'
 module FixtureHelper
   def setup_fixture_data
-    collection_fixtures('measures', 'records', 'patient_cache', 'health_data_standards_svs_value_sets')
+    collection_fixtures('bundles', 'records', 'measures', 'patient_cache', 'health_data_standards_svs_value_sets')
     load_library_functions
+    @logger = Rails.logger
   end
 
   def teardown
@@ -67,7 +69,6 @@ module FixtureHelper
       Mongoid.default_client[collection].drop
       Dir.glob(File.join(Rails.root, 'spec', 'fixtures', collection, '*.json')).each do |json_fixture_file|
         fixture_json = JSON.parse(File.read(json_fixture_file), max_nesting: 250)
-        puts 'Loading file -------- ' + json_fixture_file
         map_bson_ids(fixture_json)
         Mongoid.default_client[collection].insert_one(fixture_json)
       end
