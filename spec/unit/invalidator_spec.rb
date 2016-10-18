@@ -142,28 +142,11 @@ RSpec.describe 'Invalidator Tests: ' do
   end
 
   it 'test_invalid_code' do
-    # Loop through the value sets to find a master list of unique, valid codes
-    all_codes = []
-    HealthDataStandards::SVS::ValueSet.all.to_a.each { |vs| vs.concepts.each { |concept| all_codes << concept.code } }
-    all_codes.uniq!
-    expect(all_codes).to_not be_nil
-    bad_file = Nokogiri::XML(Cedar::Invalidator.incorrect_code_system(Nokogiri::XML(@cat_1_file)))
-    nodes_with_value_set = bad_file.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a
-    bad_codes = 0
-    nodes_with_value_set.each do |node|
-      code_from_bad_file = node.value
-      # code = node.attributes['code'].value
-      # value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node_with_value_set.attributes['valueSet'].value)
-
-      # value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node.attributes['valueSet'].value)
-      value_set = HealthDataStandards::SVS::ValueSet.find_by(oid: node.value)
-      valid_codes = []
-      value_set.concepts.each { |vs| valid_codes << vs.code }
-      bad_codes += 1 unless valid_codes.include? code_from_bad_file
-    end
-    # byebug
-    expect(bad_codes).to eq(1)
-    # byebug
+    good_file = Nokogiri::XML(@cat_1_file, &:noblanks)
+    good_file_nodes = good_file.css('[code]').to_a
+    bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_code(Nokogiri::XML(@cat_1_file, &:noblanks)))
+    bad_file_nodes = bad_file.css('[code]').to_a
+    expect(bad_file_nodes).to_not match_array(good_file_nodes)
   end
 
   it 'test_invalid_value_set' do
