@@ -6,14 +6,9 @@ require 'rspec/expectations'
 RSpec.describe 'Invalidator Tests: ' do
   include RSpec::Matchers
 
-  # include Mongoid::Document
-  # before :all do
-  #   setup_fixture_data
-  # end
-
   before(:each) do
-    @cat_1_file = IO.read('test/fixtures/qrda/cat_1/good.xml')
-    @cat_3_file = IO.read('test/fixtures/qrda/cat_3/good.xml')
+    @cat_1_file = IO.read('spec/fixtures/qrda/cat_1/good.xml')
+    @cat_3_file = IO.read('spec/fixtures/qrda/cat_3/good.xml')
     setup_fixture_data
   end
 
