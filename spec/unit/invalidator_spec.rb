@@ -160,10 +160,9 @@ RSpec.describe 'Invalidator Tests: ' do
                           2.16.840.1.113883.3.117.1.7.1.201
                           2.16.840.1.113883.3.117.1.7.1.292)
     invalid_value_sets = 0
-    invalid_value_sets = 0
     nodes_with_value_set.each do |node|
       value_set = node.attributes['valueSet'].value
-      invalid_value_sets += 1 if valid_value_sets.index[value_set].nil?
+      invalid_value_sets += 1 unless valid_value_sets.include?(value_set)
     end
     expect(invalid_value_sets == 1).to be true
   end
