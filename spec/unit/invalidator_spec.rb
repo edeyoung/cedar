@@ -24,22 +24,25 @@ RSpec.describe 'Invalidator Tests: ' do
 
   it 'test_invalid_measure_id' do
     # Find all the valid measure ids
-    valid_measure_ids = []
+    # valid_measure_ids = []
+    # TODO: Code below is not being used ... Either change invalidator to grab values from database or
+    # => Or make sure test file values match what is in db
+    # HealthDataStandards::CQM::Measure.all.to_a.each do |measure|
+    #   # puts 'measure: ' + measure
+    #   valid_measure_ids.push(measure.hqmf_id)
+    #   valid_measure_ids.push(measure.hqmf_set_id)
+    # end
+    # expect(valid_measure_ids).not_to be_empty
 
-    HealthDataStandards::CQM::Measure.all.to_a.each do |measure|
-      expect(measure.id.nil?).to_not be_empty
-      # puts 'measure: ' + measure
-      valid_measure_ids.push(measure.hqmf_id)
-      valid_measure_ids.push(measure.hqmf_set_id)
-    end
-
-    expect(valid_measure_ids).to_not be_empty
     # Test the measure IDs to see if they are valid
     bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_measure_id(Nokogiri::XML(@cat_1_file)))
-    measure_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
-    set_id = bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument setId').attributes['root'].value
-    expect(valid_measure_ids.include?(measure_id)).to be true
-    expect(valid_measure_ids.include?(set_id)).to be true
+    invalid_measure_id =
+      bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
+    invalid_set_id =
+      bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument setId').attributes['root'].value
+
+    expect(ALL_VALID_MEASURE_IDS.include?(invalid_measure_id) || ALL_VALID_MEASURE_IDS.include?(invalid_set_id)).to be true
+    expect(ALL_VALID_MEASURE_IDS.include?(invalid_measure_id) && ALL_VALID_MEASURE_IDS.include?(invalid_set_id)).to be false
   end
 
   it 'test_reporting_period' do
