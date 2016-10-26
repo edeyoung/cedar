@@ -1,0 +1,25 @@
+{  "bundle_id" : {"$oid" : "4fdb62e01d41c820f6000001"},
+        "concepts": [
+        {
+          "black_list": false,
+          "code": "183452005",
+          "code_system": "2.16.840.1.113883.6.96",
+          "code_system_name": "SNOMEDCT",
+          "code_system_version": "2016-09",
+          "display_name": "Emergency hospital admission (procedure)",
+          "white_list": false
+        },
+        {
+          "black_list": false,
+          "code": "32485007",
+          "code_system": "2.16.840.1.113883.6.96",
+          "code_system_name": "SNOMEDCT",
+          "code_system_version": "2016-09",
+          "display_name": "Hospital admission (procedure)",
+          "white_list": false
+        }
+      ],
+      "display_name": "Non-Elective Inpatient Encounter",
+      "oid": "2.16.840.1.113883.3.117.1.7.1.424",
+      "version": "20160929"
+}
