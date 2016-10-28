@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -57,7 +57,7 @@ gem 'bootstrap-slider-rails'
 # Randomized names and companies for the QRDA files
 gem 'faker'
 # health-data-standards to create QRDA documents
-gem 'health-data-standards', git: 'https://github.com/projectcypress/health-data-standards.git', branch: 'bump_mongoid'
+gem 'health-data-standards', git: 'https://github.com/projectcypress/health-data-standards.git', branch: 'mongoid5'
 # Quality Measure Engine to create CQMs
 gem 'quality-measure-engine', git: 'https://github.com/projectcypress/quality-measure-engine.git', branch: 'bump_mongoid'
 # For zipping QRDA documents once they are created
@@ -66,8 +66,7 @@ gem 'rubyzip'
 gem 'sweet-alert-confirm'
 # Apipie for documentation
 gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
-# FactoryGirl for testing
-gem 'factory_girl_rails', '~> 4.0'
+
 # Roar rails for API field filtering and json-api standards
 gem 'roar', git: 'https://github.com/apotonick/roar.git'
 gem 'roar-rails'
@@ -75,18 +74,30 @@ gem 'roar-rails'
 group :development, :test do
   # Rubocop for syntax checking and code cleanliness
   gem 'rubocop'
+  gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debug console
   gem 'byebug'
-  # Capybara and selenium for automated testing
-  gem 'capybara'
-  gem 'capybara-accessible'
-  gem 'axe-matchers'
-  gem 'selenium-webdriver', '2.48.0'
+  # FactoryGirl for testing
+  gem 'factory_girl_rails', '~> 4.0'
   # Brakeman and bundle-audit for automated testing of security vulnerabilities
   gem 'brakeman', require: false
   gem 'bundler-audit'
+end
+group :test do
+  # Capybara and selenium for automated testing
+  gem 'capybara'
+  # gem 'capybara-accessible'  --- this was causing testing errors. removing for now.
+  gem 'selenium-webdriver', '2.48.0'
+  # gem 'capybara-webkit'
+  gem 'headless'
+  gem 'mongoid-rspec'
+  gem 'guard-rspec'
+  gem 'axe-matchers'
+  gem 'launchy'
   # Reset MongoDB after each test
   gem 'database_cleaner'
+  gem 'rspec-mocks'
+  gem 'simplecov', require: false
 end
 
 group :production do

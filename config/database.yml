@@ -1,0 +1,15 @@
+# Mongoid Configuration for Travis CI
+# ===================================
+#
+development:
+  clients:
+    default:
+      database: cedar_development
+      hosts:
+        - <%= ENV.fetch('MONGO_PORT_27017_TCP_ADDR', 'localhost') %>:<%= ENV.fetch('MONGO_PORT_27017_TCP_PORT', '27017') %>
+test:
+  clients:
+    default:
+      database: cedar_test<%= ENV['TEST_ENV_NUMBER'] %>
+      hosts:
+        - <%= ENV.fetch('MONGO_PORT_27017_TCP_ADDR', 'localhost') %>:<%= ENV.fetch('MONGO_PORT_27017_TCP_PORT', '27017') %>

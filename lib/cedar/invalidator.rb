@@ -26,11 +26,12 @@ module Cedar
     def self.invalid_measure_id(doc)
       # Randomly select the id or setId to invalidate
       id_or_set_id = %w(id setId).sample
+
       id_to_invalidate = doc.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument ' + id_or_set_id)
       # Generate a guid that doesn't exist in the db and inject it
       bad_guid = SecureRandom.uuid.upcase
       bad_guid = SecureRandom.uuid.upcase while ALL_VALID_MEASURE_IDS.include?(bad_guid)
-      id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value
+      id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value = bad_guid
       doc.to_xml
     end
 
