@@ -16,8 +16,7 @@ Cedar development began in January 2016 on MITRE servers and was released to Git
 
 ## Version 0.3 (Planned for October 2016)
 
-New project staffing and the pending MACRA final rule limited the potential for new functionality
-this release cycle.
+New project staffing limited the potential for new functionality this release cycle.
 
 ### New Functionality
 
