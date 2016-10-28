@@ -7,3 +7,4 @@ _site
 /tmp
 .byebug_history
 .env-prod
+/coverage/**
