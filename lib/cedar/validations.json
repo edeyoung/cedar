@@ -6,7 +6,8 @@
             "name": "Discharge After Upload",
             "overview_text": "In this file, a randomly selected encounter or procedure had a discharge date after the file upload date. The file should be rejected.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -16,7 +17,8 @@
             "name": "Discharge Before Admission",
             "overview_text": "In this file, a randomly selected encounter or procedure had a discharge date before its admission date. The file should be rejected.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -26,7 +28,8 @@
             "name": "Incorrect Code System",
             "overview_text": "In this file, the OID of one of the existing code systems was replaced by the OID of another.  This invalidates the reported code and the file should be rejected.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -36,7 +39,8 @@
             "name": "Invalid Code",
             "overview_text": "In this file, one of the existing codes was replaced by a code that is not valid for the value set.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -46,7 +50,8 @@
             "name": "Invalid Value Set",
             "overview_text": "In this file, one of the value set OIDs was replaced by an OID that is not useful for calculating this measure.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -56,7 +61,8 @@
             "name": "Value Set without Code System",
             "overview_text": "In this file, one of the code systems for a given value set was removed.",
             "qrda_type": "1",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -67,7 +73,8 @@
             "overview_text": "In this file, the submitted denominator was greater than the initial patient population. In discrete eCQMs, the denominator should always be less than or equal to the initial patient population.",
             "qrda_type": "3",
             "measure_type": "discrete",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": false
         }
     },
     {
@@ -78,7 +85,8 @@
             "overview_text": "In this file, one of the measure populations (e.g., IPP, Numerator, Observed Value, etc.) was reported twice.  For a given measure, these populations should be reported once and only once.",
             "qrda_type": "3",
             "measure_type": "all",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": false
         }
     },
     {
@@ -89,7 +97,8 @@
             "overview_text": "In this file, one of populations necessary to calculate the measure was removed.",
             "qrda_type": "3",
             "measure_type": "all",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": false
         }
     },
     {
@@ -100,7 +109,8 @@
             "overview_text": "In this file, the submitted numerator was greater than the denominator.  Discrete eCQMs should be a ratio less than one.",
             "qrda_type": "3",
             "measure_type": "discrete",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": false
         }
     },
     {
@@ -111,7 +121,8 @@
             "overview_text": "In this file, the denominator in the performance rate calculation results in a divide by zero error, but the performance rate was not reported as 'NA'.",
             "qrda_type": "3",
             "measure_type": "discrete",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": true
         }
     },
     {
@@ -122,7 +133,8 @@
             "overview_text": "In this file, the performance rate was replaced with a number that is outside the acceptable range (a floating point number between 0 and 1).",
             "qrda_type": "3",
             "measure_type": "discrete",
-            "tags": ["Calculation"]
+            "tags": ["Calculation"],
+            "performance_rate_required": true
         }
     },
     {
@@ -132,7 +144,8 @@
             "name": "Invalid Measure ID",
             "overview_text": "In this file, a valid HQMF ID or HQMF Set ID was be replaced with an invalid GUID.",
             "qrda_type": "all",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -142,7 +155,8 @@
             "name": "Inconsistent Time Formats",
             "overview_text": "In this file, one of the times was given a different format than the others.",
             "qrda_type": "all",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -152,7 +166,8 @@
             "name": "Reporting Period",
             "overview_text": "The reporting period for this QRDA document was dated outside of the reporting year and the file should have been rejected.",
             "qrda_type": "all",
-            "measure_type": "all"
+            "measure_type": "all",
+            "performance_rate_required": false
         }
     },
     {
@@ -163,7 +178,8 @@
             "overview_text": "The latter half of this file was deleted to represent a file transfer error that would result in an unfinished QRDA file.  It should be rejected outright.",
             "qrda_type": "all",
             "measure_type": "all",
-            "tags": ["Schema"]
+            "tags": ["Schema"],
+            "performance_rate_required": false
         }
     }
 ]
