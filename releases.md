@@ -6,16 +6,27 @@ permalink: /releases/
 
 Cedar development began in January 2016 on MITRE servers and was released to GitHub on May 25th, 2016.  Release schedules are set based on planned functionality rather than on a set timeline.
 
-## Version 0.3 (Planned for October 2016)
-
-### New Functionality
-
-- Add UI Unit and Integration Tests
+## Version 0.4 (TBD)
 - Allow user-specified modifications to the QRDA header
 - Improve performance of QRDA Category 3 file generation
 - Allow for a user-specified number of QRDA documents to be generated in each test
 - Generate QRDA files using the Joint Commission IG in addition to the CMS IG
 - Dashboard showing validation coverage over time
+
+
+## Version 0.3 (Planned for October 2016)
+
+New project staffing and the pending MACRA final rule limited the potential for new functionality
+this release cycle.
+
+### New Functionality
+
+- Add UI Unit and Integration Tests
+
+### Bug Fixes
+
+- Invalid measure id test was not inserting an invalid guid for the 'root' id.
+- Fixed performance rate bug.
 
 ## [Version 0.2](https://github.com/mitre/cedar/releases/tag/v0.2) (August 10, 2016)
 
