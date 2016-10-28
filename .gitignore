@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-# Ignore files created by test coverage report
+# Ignore SimpleCov output
 /coverage/*
 
 # test executions
