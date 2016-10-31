@@ -14,7 +14,7 @@ Cedar development began in January 2016 on MITRE servers and was released to Git
 - Dashboard showing validation coverage over time
 
 
-## [Version 0.3](https://github.com/mitre/cedar/tree/v0.3) (October 31,2016)
+## [Version 0.3](https://github.com/mitre/cedar/releases/tag/v0.3) (October 31,2016)
 
 New project staffing limited the potential for new functionality this release cycle.
 
