@@ -31,12 +31,6 @@ gem 'spring', group: :development
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 # Cedar Additions
 # Mongo for our database
 gem 'mongoid', '~> 5.0.0'
@@ -98,6 +92,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-mocks'
   gem 'simplecov', require: false
+  gem 'rubycritic', require: false
 end
 
 group :production do
