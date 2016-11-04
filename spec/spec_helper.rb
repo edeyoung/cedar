@@ -26,17 +26,10 @@ require 'database_cleaner'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = 'mongoid'
-  end
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-  config.before(:each) do
-    DatabaseCleaner.clean
-  end
+  # config.include FactoryGirl::Syntax::Methods
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
   # allows you to run only the failures from the previous run:
   # rspec --only-failures
   config.example_status_persistence_file_path = './tmp/rspec-examples.txt'
