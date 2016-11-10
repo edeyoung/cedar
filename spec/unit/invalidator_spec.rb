@@ -12,6 +12,10 @@ RSpec.describe 'Invalidator Tests: ' do
     setup_fixture_data
   end
 
+  it 'test_database_has_measures' do
+    my_measuure = HealthDataStandards::CQM::Measure.where(cms_id: 'CMS155v1')
+  end
+
   # --- Validations for both QRDA Category 1 and Category 3 ---
   it 'test_inconsistent_time_formats' do
     expect(@cat_1_file).to_not be_nil

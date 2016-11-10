@@ -62,7 +62,9 @@ gem 'sweet-alert-confirm'
 gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
 
 # Roar rails for API field filtering and json-api standards
+# Must use master branch because of a json issue: https://github.com/apotonick/roar/issues/191
 gem 'roar', git: 'https://github.com/apotonick/roar.git'
+gem 'responders'
 gem 'roar-rails'
 
 group :development, :test do

@@ -5,7 +5,7 @@ module API
     class ValidationRepresenter < Roar::Decorator
       include Roar::JSON::JSONAPI
       type :validations
-
+      # Note to self: this is a link for a client calling the api
       link :self do
         api_v1_validation_url(represented.code)
       end

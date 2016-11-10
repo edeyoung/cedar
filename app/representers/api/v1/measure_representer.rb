@@ -6,6 +6,7 @@ module API
       include Roar::JSON::JSONAPI
       type :measures
 
+      # Note to self: this is a link for a client calling the api
       link :self do
         api_v1_measure_url(represented.cms_id)
       end

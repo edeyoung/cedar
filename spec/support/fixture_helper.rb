@@ -3,6 +3,7 @@ module FixtureHelper
   def setup_fixture_data
     collection_fixtures('bundles', 'records', 'measures', 'patient_cache', 'health_data_standards_svs_value_sets')
     load_library_functions
+    load_validations
     @logger = Rails.logger
   end
 
@@ -23,6 +24,32 @@ module FixtureHelper
 
   def drop_collection(collection)
     Mongoid.default_client[collection].drop
+  end
+
+  def load_validations
+    validations_data = JSON.parse(File.read('lib/cedar/validations.json'))
+    validations_data.each do |new_val|
+      begin
+        val = Validation.find_by(code: new_val['code'])
+        new_val['attributes'].each do |key, value|
+          case key
+          when 'tags'
+            unless new_val['attributes']['tags'].nil?
+              # Respect any user-added tags and add the ones in the validations.json file
+              val.update_attribute(:tags, (val.tags + new_val['attributes']['tags']).uniq)
+            end
+          else
+            val.update_attribute(key, value)
+          end
+        end
+      rescue
+        Validation.where(code: new_val['code']).first_or_create(
+          new_val['attributes'].each do |key, value|
+            "#{key}: #{value}"
+          end
+        )
+      end
+    end
   end
 
   def arrays_equivalent(a1, a2)

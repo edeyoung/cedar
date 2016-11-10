@@ -11,6 +11,7 @@ module API
 
         property :test_index, as: :id
         property :state
+        # Note to self: this is a link for a client calling the api
         link :self do
           api_v1_test_execution_document_url(represented.test_execution.id, represented.test_index)
         end
