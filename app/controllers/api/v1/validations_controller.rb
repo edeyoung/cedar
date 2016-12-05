@@ -26,7 +26,8 @@ module API
 
       api! 'show single validation'
       def show
-        respond_with Validation.find_by(code: params[:id])
+        render json: Validation.find_by(code: params[:id])
+        # respond_with Validation.find_by(code: params[:id])
       end
 
       private

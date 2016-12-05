@@ -8,37 +8,42 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password 'password'
   end
-
   factory :te1, class: TestExecution do
+    User.create
     association :user, factory: :user
     # association :document, factory: :document
     name 'first test'
-    reporting_period '2016'
+    reporting_period '2015'
     qrda_type '3'
     measures { [Measure.where(cms_id: 'CMS155v1')] }
     validations { [Validation.where(code: 'duplicate_population_ids')] }
-    ignore do
-      doc_count 5
+    transient do
+      create_docs false
+      doc_count 3
     end
+
     trait :with_documents do
-      after(:create) do |te, evaluator|
-        create_list(:document, evaluator.doc_count, test_execution: te)
+      create_docs true
+      factory :document1, class: Document do
+        # association :te1
+        # test_execution = create(:te2)
+        expected_result 'reject'
+        state 'failed'
+        qrda { IO.read('test/fixtures/qrda/cat_1/good.xml') }
+        sequence(:test_index, 0)
+        name { "000#{test_index} - DAmore-Dare" }
+        validation_id { Validation.find_by(code: 'discharge_after_upload').id }
+        measure_id '40280381-3D61-56A7-013E-6649110743CE'
+      end
+      after(:create) do |te1, evaluator|
+        create_list(:document1, evaluator.doc_count, test_execution: te1)
+        # te.documents << build(:document1, test_execution: te)
       end
     end
   end
-
-  factory :document, class: Document do
-    expected_result 'reject'
-    state 'failed'
-    qrda { IO.read('test/fixtures/qrda/cat_1/good.xml') }
-    sequence(:test_index) { |n| n.to_s }
-    name { "000#{test_index} - DAmore-Dare" }
-    # validation_id { [Validation.where(code: 'discharge_after_upload')] }
-    measure_id '40280381-3D61-56A7-013E-6649110743CE'
-  end
-
   factory :te2, class: TestExecution do
-    association :user, factory: :user2
+    User.create
+    # association :user2
     name 'test2'
     reporting_period '2016'
     qrda_type '1'
@@ -47,28 +52,23 @@ FactoryGirl.define do
   end
 
   # factory :te_with_documents, class: TestExecution do
-  #   association :user, factory: :user2
+  #   User.create
+  #   # association :user
   #   name 'test2'
   #   reporting_period '2016'
   #   qrda_type '1'
   #   qrda_progress '100'
-  #   measures { [Measure.where(cms_id: 'CMS126v2')] }
+  #   measures { [Measure.where(cms_id: 'CMS126v1')] }
   #   validations { [Validation.where(code: 'discharge_after_upload')] }
-  #   # after(:create) do |te, _evaluator|
-  #   #   create_list(:document1, 2, te_with_documents: te)
+  #   transient do
+  #     doc_count 1
+  #   end
+  #   before(:create) do |te, evaluator|
+  #     te.documents << create(:document1, test_execution: te)
+  #   end
+  #   # before(:create) do |te_with_documents, _evaluator|
+  #   #   create(:document1, test_execution: te_with_documents)
   #   # end
   # end
 
-
-
-  # factory :document1, class: Document do
-  #   expected_result 'reject'
-  #   state 'failed'
-  #   qrda { IO.read('test/fixtures/qrda/cat_1/good.xml') }
-  #   sequence(:test_index, 0)
-  #   name { "000#{test_index} - DAmore-Dare" }
-  #   validation_id { Validation.find_by(code: 'discharge_after_upload').id }
-  #   measure_id '40280381-3D61-56A7-013E-6649110743CE'
-  #   test_execution :te2
-  # end
 end

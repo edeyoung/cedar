@@ -1,0 +1,1798 @@
+{
+  "id": "40280381-4BE2-53B3-014B-E66BED0703D0",
+  "bundle_id": "583dca7ce223706c1b12d0d2",
+  "nqf_id": "0142",
+  "hqmf_id": "40280381-4BE2-53B3-014B-E66BED0703D0",
+  "hqmf_set_id": "BB481284-30DD-4383-928C-82385BBF1B17",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS100v4",
+  "name": "Aspirin Prescribed at Discharge",
+  "description": "Acute myocardial infarction (AMI) patients who are prescribed aspirin at hospital discharge",
+  "type": "eh",
+  "category": "Acute Myocardial Infarction",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0142';\n        hqmfjs.hqmf_id = '40280381-4BE2-53B3-014B-E66BED0703D0';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.666.5.626':{'RxNorm':['1049691','103863','198479','318272','403924','654251','994435','996988','197945','205281','308366','308370','308416','308417','312287','313806','410205','432389','637540','702316','763116','828585','994226','996994','1147492','1234872','197930','198466','198475','238135','308287','308363','435521','545871','605252','646434','827318','853499','863186','994535','996991','1250907','198473','243670','259081','647976','797050','849315','849316','896884','994237','763111','197447','198477','198480','243694','246460','252380','432638','695963','1092398','198467','238134','243011','243663','307677','308409','359221','435504','647869','647984','724614','806446','198463','198464','198471','212033','243683','308278','349516','848768','857525','863184','900528','994528','1291868','197429','199274','205251','235945','243685','308297','308410','308411','308414','435517','692836','747211','994430']},'2.16.840.1.113762.1.4.1021.3':{'RxNorm':['1191']},'2.16.840.1.113762.1.4.1045.31':{'RxNorm':['1364445','1037045','1037179','1114198','1232082','1364435','1232086']},'2.16.840.1.113883.3.117.1.7.1.139':{'RxNorm':['1245474','1297834','17315','215256','218783','689519','689552','702317','763117','1008006','1191','214249','215451','217481','220143','220751','466424','687078','689524','689554','847088','1052442','1193079','1247393','214159','214254','215770','218776','353447','721973','1052436','1423839','18385','214256','214258','215431','215575','217127','25027','466549','701317','763112','816818','818496','1052413','1053120','1053324','1111420','1358848','1361397','214250','219010','220011','226716','24292','314293','689509','689518','689541','1008791','219779','219980','466584','689522','724441','848769','1147493','1007353','1247398','202554','214160','214253','214255','214257','215568','227773','848763','1303154','135095','1438292','214251','216919','217020','669119','689512','689551','707765']},'2.16.840.1.113883.3.666.5.3011':{'ICD-10-CM':['I22.8','I21.19','I21.3','I22.9','I21.11','I21.29','I22.1','I21.21','I21.02','I21.4','I22.0','I21.01','I22.2','I21.09'],'SNOMED-CT':['15990001','233838001','401303003','70422006','70998009','194809007','194857001','23311000119105','233833005','194798004','233831007','307140009','401314000','703164000','73795002','76593002','17531000119105','194856005','233825009','233835003','233836002','282006','285991000119100','59063002','703210007','703252002','233837006','30277009','304914007','314207007','703211006','703253007','194858006','233826005','233827001','233829003','285981000119103','52035003','54329005','57054005','58612006','62695002','703213009','703360004','233828006','233830008','233832000','65547006','70211005','703165004','703209002','703251009','79009004','10273003','233834004','64627002'],'ICD-9-CM':['410.61','410.30','410.50','410.20','410.40','410.51','410.80','410.01','410.31','410.41','410.91','410.60','410.71','410.00','410.81','410.21','410.10','410.11','410.70','410.90']},'2.16.840.1.113883.3.666.5.1145':{'SNOMED-CT':['421139008']},'2.16.840.1.113883.3.117.1.7.1.308':{'SNOMED-CT':['445060000']},'2.16.840.1.113883.3.117.1.7.1.207':{'SNOMED-CT':['428371000124100']},'2.16.840.1.113883.3.117.1.7.1.209':{'SNOMED-CT':['428361000124107']},'2.16.840.1.113883.3.117.1.7.1.232':{'RxNorm':['855312','855338','855288','855302','855318','855332','855296','855324','855344']},'2.16.840.1.113883.3.117.1.7.1.473':{'SNOMED-CT':['79899007','428024001','31438003','428119001','183932001','410536001','416098002','183964008','266721009','35688006','407563006','183966005','59037007','419511003','397745006','410529002','410534003','62014003']},'2.16.840.1.113883.3.117.1.7.1.93':{'SNOMED-CT':['182901005','182903008','183944003','183945002','413312003','182890002','182897004','406149000','105480006','182895007','182896008','182900006','443390004','182898009','183947005','183948000','371138003','416432009','275936005','385648002']},'2.16.840.1.113883.3.117.1.7.1.87':{'SNOMED-CT':['306701001','434781000124105','306703003']},'2.16.840.1.113883.3.117.1.7.1.309':{'SNOMED-CT':['371828006']},'2.16.840.1.113762.1.4.1':{'AdministrativeGender':['M','F']},'2.16.840.1.114222.4.11.836':{'CDC Race':['2076-8','1002-5','2131-1','2106-3','2028-9','2054-5']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['521','84','6','331','3119','953','3222','512','349','37','41','523','3116','312','3113','5','32126','212','3115','3211','54','112','611','311','333','21','122','39','822','332','32122','82','73','322','32125','3711','121','389','3','511','342','36','3712','59','3221','379','62','43','3223','123','119','3212','32121','52','81','55','34','69','8','821','98','3112','519','3114','79','3811','32123','25','38','613','35','2','94','85','99','91','3123','321','3229','3813','83','3713','24','951','213','522','129','61','1','3122','64','612','334','529','22','33','31','72','219','619','3812','92','211','29','4','51','313','63','341','9','514','3819','513','515','95','44','42','53','823','96','113','93','343','3121','362','89','959','11','32','32124','381','111','23','19','954','12','372','9999','71','361','7','382','369','3111','371']},'2.16.840.1.113883.3.666.5.307':{'SNOMED-CT':['8715000','183452005','32485007']},'2.16.840.1.113883.3.117.1.7.1.70':{'SNOMED-CT':['3950001']},'2.16.840.1.113883.3.117.1.7.1.292':{'SNOMED-CT':['4525004']},'1.3.6.1.4.1.33895.1.3.0.45':{'SNOMED-CT':['133918004','385763009','385736008','182964004']},'2.16.840.1.113883.3.117.1.7.1.14':{'SNOMED-CT':['63161005']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.GROUP_variable_CHILDREN_12 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_10(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_12',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_12';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"M\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"Source of Payment Typology\":[\"523\",\"41\",\"512\",\"953\",\"37\",\"212\",\"331\",\"6\",\"84\",\"521\",\"3115\",\"3119\",\"3222\",\"5\",\"312\",\"3116\",\"3113\",\"349\",\"32126\",\"121\",\"39\",\"333\",\"311\",\"3\",\"611\",\"389\",\"3711\",\"21\",\"32122\",\"32125\",\"122\",\"322\",\"73\",\"112\",\"54\",\"332\",\"82\",\"822\",\"3211\",\"3712\",\"62\",\"379\",\"119\",\"3221\",\"511\",\"43\",\"36\",\"123\",\"342\",\"59\",\"3223\",\"98\",\"8\",\"69\",\"3811\",\"35\",\"34\",\"55\",\"52\",\"79\",\"32121\",\"613\",\"519\",\"81\",\"38\",\"3114\",\"821\",\"25\",\"3212\",\"3112\",\"32123\",\"22\",\"213\",\"3229\",\"64\",\"3122\",\"321\",\"3123\",\"24\",\"91\",\"3713\",\"951\",\"529\",\"99\",\"85\",\"94\",\"1\",\"2\",\"83\",\"129\",\"3813\",\"522\",\"61\",\"334\",\"612\",\"29\",\"51\",\"211\",\"514\",\"9\",\"341\",\"3812\",\"31\",\"619\",\"33\",\"4\",\"63\",\"219\",\"92\",\"72\",\"313\",\"113\",\"89\",\"96\",\"362\",\"959\",\"823\",\"3121\",\"95\",\"53\",\"343\",\"515\",\"3819\",\"42\",\"44\",\"93\",\"513\",\"381\",\"371\",\"361\",\"3111\",\"71\",\"32124\",\"23\",\"111\",\"382\",\"9999\",\"369\",\"12\",\"372\",\"954\",\"19\",\"32\",\"7\",\"11\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"CDC Race\":[\"2076-8\",\"1002-5\",\"2131-1\",\"2028-9\",\"2054-5\",\"2106-3\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_4 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_2(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_3(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_6 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_4(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_6',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_10 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_8(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_9(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_12 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_10(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_12',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_12';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_14 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.87\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_19 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.308\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_20 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.309\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_21 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.209\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.207\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAny_CHILDREN_23 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_18(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_19(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_20(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_21(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_22(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_INTERSECT_CHILDREN_24 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.GROUP_variable_CHILDREN_12(patient, initialSpecificContext),\n    hqmfjs.GROUP_satisfiesAny_CHILDREN_23(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.InterventionOrderComfortMeasures_precondition_26 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.InterventionPerformedComfortMeasures_precondition_27 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_28 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.InterventionOrderComfortMeasures_precondition_26(patient, initialSpecificContext),\n    hqmfjs.InterventionPerformedComfortMeasures_precondition_27(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_30 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_28(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_30',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBCWS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_30_precondition_31 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_28(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_30',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_32(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_30_precondition_33 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_28(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_30',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationDischargeAspirin_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"discharge\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.666.5.626\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationOrderAspirinIngredientSpecific_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.3\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationOrderAspirinIngredientSpecific_precondition_38 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.3\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationDischargeAspirinIngredientSpecific_precondition_39 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"discharge\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.473\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.3\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationDischargeAspirinIngredientSpecific_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"discharge\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113762.1.4.1021.3\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationDischargeWarfarin_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"discharge\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.232\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi_precondition_42 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"discharge\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113762.1.4.1045.31\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_43 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.MedicationOrderAspirinIngredientSpecific_precondition_37(patient, initialSpecificContext),\n    hqmfjs.MedicationOrderAspirinIngredientSpecific_precondition_38(patient, initialSpecificContext),\n    hqmfjs.MedicationDischargeAspirinIngredientSpecific_precondition_39(patient, initialSpecificContext),\n    hqmfjs.MedicationDischargeAspirinIngredientSpecific_precondition_40(patient, initialSpecificContext),\n    hqmfjs.MedicationDischargeWarfarin_precondition_41(patient, initialSpecificContext),\n    hqmfjs.MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi_precondition_42(patient, initialSpecificContext)\n  );\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBCWS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAllergyAspirinAllergen_precondition_45 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allergies\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.139\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_47 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.3011\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBCWS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.3011\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_49(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_50 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_47(patient, initialSpecificContext),\n    hqmfjs.DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_48(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredAspirin_precondition_51 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.666.5.1145\", \"valueSetId\": \"2.16.840.1.113883.3.666.5.626\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_53 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.MedicationAdministeredAspirin_precondition_55 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.666.5.1145\", \"valueSetId\": \"2.16.840.1.113883.3.666.5.626\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_54 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.MedicationAdministeredAspirin_precondition_55(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_56 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_53(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_54(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"GROUP_variable_CHILDREN_12\",\"type\":\"OCCURRENCE_A_OF_ENCOUNTERINPATIENT\",\"function\":\"GROUP_variable_CHILDREN_12\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('57', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_14, hqmfjs.GROUP_UNION_CHILDREN_50\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient) { return new Boolean(true); }\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('74', patient, initialSpecificContext, hqmfjs.MedicationDischargeAspirin_precondition_34\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    atLeastOneTrue('61', patient, initialSpecificContext, hqmfjs.GROUP_INTERSECT_CHILDREN_24, hqmfjs.GROUP_variable_CHILDREN_30_precondition_31, hqmfjs.GROUP_variable_CHILDREN_30_precondition_33\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEXCEP', patient, initialSpecificContext,\n    atLeastOneTrue('65', patient, initialSpecificContext,\n      allTrue('66', patient, initialSpecificContext, hqmfjs.MedicationAdministeredAspirin_precondition_51,\n        atLeastOneTrue('68', patient, initialSpecificContext,\n          allFalse('73', patient, initialSpecificContext, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_44\n          )\n        )\n      ), hqmfjs.GROUP_satisfiesAll_CHILDREN_56, hqmfjs.GROUP_UNION_CHILDREN_43, hqmfjs.MedicationAllergyAspirinAllergen_precondition_45\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(true); }\n        hqmfjs.MSRPOPLEX = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        // VARIABLES\n        hqmfjs.VARIABLES = function(patient, initialSpecificContext) {\nhqmfjs.GROUP_variable_CHILDREN_6(patient, initialSpecificContext);\nhqmfjs.GROUP_variable_CHILDREN_30(patient, initialSpecificContext);\nreturn false;\n}\n        \n        \n        var occurrenceId = [\"GROUP_variable_CHILDREN_12\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var msrpoplex = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPLEX, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var variables = function() {\n          if (Logger.enable_rationale) {\n            return executeIfAvailable(hqmfjs.VARIABLES, patient_api);\n          }\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n            Logger.short_circuit = short_circuit;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, msrpoplex, observ, occurrenceId,false,stratification, variables);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0142",
+    "hqmf_id": "40280381-4BE2-53B3-014B-E66BED0703D0",
+    "hqmf_set_id": "BB481284-30DD-4383-928C-82385BBF1B17",
+    "hqmf_version_number": 4,
+    "title": "Aspirin Prescribed at Discharge",
+    "description": "Acute myocardial infarction (AMI) patients who are prescribed aspirin at hospital discharge",
+    "cms_id": "CMS100v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "EC667551-DC48-4DB9-83C9-F8929959480A",
+        "preconditions": [
+          {
+            "id": 57,
+            "preconditions": [
+              {
+                "id": 14,
+                "reference": "PatientCharacteristicBirthdateBirthdate_precondition_14"
+              },
+              {
+                "id": 46,
+                "reference": "GROUP_UNION_CHILDREN_50"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "CECC6F75-F830-43B3-B268-DB3772A858C9"
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator Exclusion",
+        "hqmf_id": "8DFB7929-9265-49D8-8716-2B46867D13BD",
+        "preconditions": [
+          {
+            "id": 61,
+            "preconditions": [
+              {
+                "id": 15,
+                "reference": "GROUP_INTERSECT_CHILDREN_24"
+              },
+              {
+                "id": 31,
+                "reference": "GROUP_variable_CHILDREN_30_precondition_31"
+              },
+              {
+                "id": 33,
+                "reference": "GROUP_variable_CHILDREN_30_precondition_33"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue"
+          }
+        ]
+      },
+      "DENEXCEP": {
+        "conjunction?": true,
+        "type": "DENEXCEP",
+        "title": "Denominator Exception",
+        "hqmf_id": "C903B2CB-7CEA-4A1C-985C-74940D4F1C69",
+        "preconditions": [
+          {
+            "id": 65,
+            "preconditions": [
+              {
+                "id": 66,
+                "preconditions": [
+                  {
+                    "id": 51,
+                    "reference": "MedicationAdministeredAspirin_precondition_51"
+                  },
+                  {
+                    "id": 68,
+                    "preconditions": [
+                      {
+                        "id": 73,
+                        "preconditions": [
+                          {
+                            "id": 44,
+                            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_44"
+                          }
+                        ],
+                        "conjunction_code": "atLeastOneTrue",
+                        "negation": true
+                      }
+                    ],
+                    "conjunction_code": "atLeastOneTrue"
+                  }
+                ],
+                "conjunction_code": "allTrue"
+              },
+              {
+                "id": 52,
+                "reference": "GROUP_satisfiesAll_CHILDREN_56"
+              },
+              {
+                "id": 35,
+                "reference": "GROUP_UNION_CHILDREN_43"
+              },
+              {
+                "id": 45,
+                "reference": "MedicationAllergyAspirinAllergen_precondition_45"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "13FF9550-C4CD-4A5E-8724-81CAF6370374",
+        "preconditions": [
+          {
+            "id": 74,
+            "preconditions": [
+              {
+                "id": 34,
+                "reference": "MedicationDischargeAspirin_precondition_34"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_2": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_3": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_4": {
+        "title": "GROUP_satisfiesAll_CHILDREN_4",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_2",
+          "EncounterPerformedEncounterInpatient_precondition_3"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_4",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_6": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true
+      },
+      "EncounterPerformedEncounterInpatient_precondition_8": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_9": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_10": {
+        "title": "GROUP_satisfiesAll_CHILDREN_10",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_8",
+          "EncounterPerformedEncounterInpatient_precondition_9"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_10",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_12": {
+        "title": "GROUP_variable_CHILDREN_12",
+        "description": "Occurrence A of $EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_10"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENT",
+        "source_data_criteria": "GROUP_variable_CHILDREN_12",
+        "variable": true
+      },
+      "PatientCharacteristicBirthdateBirthdate_precondition_14": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "EncounterPerformedEncounterInpatient_precondition_18": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+            "title": "Discharge To Acute Care Facility"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_19": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.308",
+            "title": "Left Against Medical Advice"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_20": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+            "title": "Patient Expired"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_21": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.209",
+            "title": "Discharged to Home for Hospice Care"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_22": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.207",
+            "title": "Discharged to Health Care Facility for Hospice Care"
+          }
+        }
+      },
+      "GROUP_satisfiesAny_CHILDREN_23": {
+        "title": "GROUP_satisfiesAny_CHILDREN_23",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_18",
+          "EncounterPerformedEncounterInpatient_precondition_19",
+          "EncounterPerformedEncounterInpatient_precondition_20",
+          "EncounterPerformedEncounterInpatient_precondition_21",
+          "EncounterPerformedEncounterInpatient_precondition_22"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "satisfies_any",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAny_CHILDREN_23",
+        "variable": false
+      },
+      "GROUP_INTERSECT_CHILDREN_24": {
+        "title": "GROUP_INTERSECT_CHILDREN_24",
+        "description": "",
+        "children_criteria": [
+          "GROUP_variable_CHILDREN_12",
+          "GROUP_satisfiesAny_CHILDREN_23"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_INTERSECT_CHILDREN_24",
+        "variable": false
+      },
+      "InterventionOrderComfortMeasures_precondition_26": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "InterventionPerformedComfortMeasures_precondition_27": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_28": {
+        "title": "GROUP_UNION_CHILDREN_28",
+        "description": "",
+        "children_criteria": [
+          "InterventionOrderComfortMeasures_precondition_26",
+          "InterventionPerformedComfortMeasures_precondition_27"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_28",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_30": {
+        "title": "GROUP_variable_CHILDREN_30",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_28"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_30",
+        "variable": true
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_32": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBCWS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_30_precondition_31": {
+        "title": "GROUP_variable_CHILDREN_30",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_28"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_30",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_32"
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_30_precondition_33": {
+        "title": "GROUP_variable_CHILDREN_30",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_28"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_30",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "MedicationDischargeAspirin_precondition_34": {
+        "title": "Aspirin",
+        "description": "Medication, Discharge: Aspirin",
+        "code_list_id": "2.16.840.1.113883.3.666.5.626",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeAspirin",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "MedicationOrderAspirinIngredientSpecific_precondition_37": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Order: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+        "variable": false
+      },
+      "MedicationOrderAspirinIngredientSpecific_precondition_38": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Order: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+        "variable": false
+      },
+      "MedicationDischargeAspirinIngredientSpecific_precondition_39": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Discharge: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.473",
+        "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+        "variable": false
+      },
+      "MedicationDischargeAspirinIngredientSpecific_precondition_40": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Discharge: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+        "variable": false
+      },
+      "MedicationDischargeWarfarin_precondition_41": {
+        "title": "Warfarin",
+        "description": "Medication, Discharge: Warfarin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeWarfarin",
+        "variable": false
+      },
+      "MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi_precondition_42": {
+        "title": "Other Anticoagulants for Acute Myocardial Infarction (AMI)",
+        "description": "Medication, Discharge: Other Anticoagulants for Acute Myocardial Infarction (AMI)",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.31",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_43": {
+        "title": "GROUP_UNION_CHILDREN_43",
+        "description": "",
+        "children_criteria": [
+          "MedicationOrderAspirinIngredientSpecific_precondition_37",
+          "MedicationOrderAspirinIngredientSpecific_precondition_38",
+          "MedicationDischargeAspirinIngredientSpecific_precondition_39",
+          "MedicationDischargeAspirinIngredientSpecific_precondition_40",
+          "MedicationDischargeWarfarin_precondition_41",
+          "MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi_precondition_42"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_43",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_44": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBCWS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAllergyAspirinAllergen_precondition_45": {
+        "title": "Aspirin Allergen",
+        "description": "Medication, Allergy: Aspirin Allergen",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.139",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationAllergyAspirinAllergen",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_47": {
+        "title": "Acute Myocardial Infarction (AMI)",
+        "description": "Diagnosis, Active: Acute Myocardial Infarction (AMI)",
+        "code_list_id": "2.16.840.1.113883.3.666.5.3011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteMyocardialInfarctionAmi",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "Principal"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_49": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBCWS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_48": {
+        "title": "Acute Myocardial Infarction (AMI)",
+        "description": "Diagnosis, Active: Acute Myocardial Infarction (AMI)",
+        "code_list_id": "2.16.840.1.113883.3.666.5.3011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteMyocardialInfarctionAmi",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "Principal"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_49"
+          }
+        ]
+      },
+      "GROUP_UNION_CHILDREN_50": {
+        "title": "GROUP_UNION_CHILDREN_50",
+        "description": "",
+        "children_criteria": [
+          "DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_47",
+          "DiagnosisActiveAcuteMyocardialInfarctionAmi_precondition_48"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_50",
+        "variable": false
+      },
+      "MedicationAdministeredAspirin_precondition_51": {
+        "title": "Aspirin",
+        "description": "Medication, Administered: Aspirin",
+        "code_list_id": "2.16.840.1.113883.3.666.5.626",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.666.5.1145",
+        "source_data_criteria": "MedicationAdministeredAspirin",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_53": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "MedicationAdministeredAspirin_precondition_55": {
+        "title": "Aspirin",
+        "description": "Medication, Administered: Aspirin",
+        "code_list_id": "2.16.840.1.113883.3.666.5.626",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.666.5.1145",
+        "source_data_criteria": "MedicationAdministeredAspirin",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_54": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "MedicationAdministeredAspirin_precondition_55"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_56": {
+        "title": "GROUP_satisfiesAll_CHILDREN_56",
+        "description": "<= 1 hours Ends Before Start Of",
+        "children_criteria": [
+          "EncounterPerformedEmergencyDepartmentVisit_precondition_53",
+          "EncounterPerformedEmergencyDepartmentVisit_precondition_54"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_56",
+        "variable": false
+      }
+    },
+    "source_data_criteria": {
+      "DiagnosisActiveAcuteMyocardialInfarctionAmi": {
+        "title": "Acute Myocardial Infarction (AMI)",
+        "description": "Diagnosis, Active: Acute Myocardial Infarction (AMI)",
+        "code_list_id": "2.16.840.1.113883.3.666.5.3011",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveAcuteMyocardialInfarctionAmi",
+        "variable": false
+      },
+      "MedicationDischargeAspirin": {
+        "title": "Aspirin",
+        "description": "Medication, Discharge: Aspirin",
+        "code_list_id": "2.16.840.1.113883.3.666.5.626",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeAspirin",
+        "variable": false
+      },
+      "MedicationAdministeredAspirin": {
+        "title": "Aspirin",
+        "description": "Medication, Administered: Aspirin",
+        "code_list_id": "2.16.840.1.113883.3.666.5.626",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredAspirin",
+        "variable": false
+      },
+      "MedicationAllergyAspirinAllergen": {
+        "title": "Aspirin Allergen",
+        "description": "Medication, Allergy: Aspirin Allergen",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.139",
+        "type": "medications",
+        "definition": "medication_allergy",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "MedicationAllergyAspirinAllergen",
+        "variable": false
+      },
+      "MedicationDischargeAspirinIngredientSpecific": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Discharge: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeAspirinIngredientSpecific",
+        "variable": false
+      },
+      "MedicationOrderAspirinIngredientSpecific": {
+        "title": "Aspirin ingredient specific",
+        "description": "Medication, Order: Aspirin ingredient specific",
+        "code_list_id": "2.16.840.1.113762.1.4.1021.3",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderAspirinIngredientSpecific",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthdate": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        }
+      },
+      "InterventionPerformedComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "InterventionOrderComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicExpiredExpired": {
+        "title": "Expired",
+        "description": "Patient Characteristic Expired: Expired",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+        "property": "expired",
+        "type": "characteristic",
+        "definition": "patient_characteristic_expired",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicExpiredExpired",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "371828006"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi": {
+        "title": "Other Anticoagulants for Acute Myocardial Infarction (AMI)",
+        "description": "Medication, Discharge: Other Anticoagulants for Acute Myocardial Infarction (AMI)",
+        "code_list_id": "2.16.840.1.113762.1.4.1045.31",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeOtherAnticoagulantsForAcuteMyocardialInfarctionAmi",
+        "variable": false
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "MedicationDischargeWarfarin": {
+        "title": "Warfarin",
+        "description": "Medication, Discharge: Warfarin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.232",
+        "type": "medications",
+        "definition": "medication",
+        "status": "discharge",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationDischargeWarfarin",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_6": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_12": {
+        "title": "GROUP_variable_CHILDREN_12",
+        "description": "Occurrence A of $EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_10"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENT",
+        "source_data_criteria": "GROUP_variable_CHILDREN_12",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_30": {
+        "title": "GROUP_variable_CHILDREN_30",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_28"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_30",
+        "variable": true
+      }
+    },
+    "attributes": [
+      {
+        "id": "NQF_ID_NUMBER",
+        "code": "OTH",
+        "value": "0142",
+        "name": "NQF ID Number"
+      },
+      {
+        "id": "COPYRIGHT",
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain.\r\n\r\nLOINC (R) is a registered trademark of the Regenstrief Institute.\r\n\r\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT (C)) copyright 2004-2014 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright"
+      },
+      {
+        "id": "DISCLAIMER",
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.  The measures and specifications are provided without warranty.  CMS has contracted with Mathematical Policy Research and its subcontractors, Lantana and Telligen, for the continued maintenance of this electronic measure.",
+        "name": "Disclaimer"
+      },
+      {
+        "id": "MEASURE_SCORING",
+        "code": "MSRSCORE",
+        "value": "Proportion",
+        "name": "Measure Scoring"
+      },
+      {
+        "id": "MEASURE_TYPE",
+        "code": "MSRTYPE",
+        "value": "Process",
+        "name": "Measure Type"
+      },
+      {
+        "id": "STRATIFICATION",
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification"
+      },
+      {
+        "id": "RISK_ADJUSTMENT",
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment"
+      },
+      {
+        "id": "RATE_AGGREGATION",
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation"
+      },
+      {
+        "id": "RATIONALE",
+        "code": "RAT",
+        "value": "Aspirin therapy in patients who have suffered an acute myocardial infarction reduces the risk of adverse events and mortality. Studies have demonstrated that aspirin can reduce this risk by 20% (Antiplatelet Trialists' Collaboration, 1994). National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI (O'Gara, 2013; Jneid, 2012; and Smith, 2011).",
+        "name": "Rationale"
+      },
+      {
+        "id": "CLINICAL_RECOMMENDATION_STATEMENT",
+        "code": "CRS",
+        "value": "National guidelines strongly recommend long-term aspirin for the secondary prevention of subsequent cardiovascular events in eligible older patients discharged after AMI",
+        "name": "Clinical Recommendation Statement"
+      },
+      {
+        "id": "IMPROVEMENT_NOTATION",
+        "code": "IDUR",
+        "value": "Improvement noted as an increase in rate",
+        "name": "Improvement Notation"
+      },
+      {
+        "id": "REFERENCE",
+        "code": "REF",
+        "value": "Anderson JL, Adams CD, Antman EM, Bridges CR, Califf RM, Casey DE Jr, et al. ACC/AHA 2007 guidelines for the management of patients with unstable angina/non-ST-elevation myocardial infarction: a report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines (Writing Committee to Revise the 2002 Guidelines for the Management of Patients With Unstable Angina/Non-ST-Elevation Myocardial Infarction): developed in collaboration with the American College of Emergency Physicians, American College of Physicians, Society for Academic Emergency Medicine, Society for Cardiovascular Angiography and Interventions, and Society of Thoracic Surgeons. J Am Coll Cardiol. 2007;50:e1-157.\r\nAntiplatelet Trialists' Collaboration. Collaborative overview of randomized trials of antiplatelet therapy - I: prevention of death, myocardial infarction, and stroke by prolonged antiplatelet therapy in various categories of patients. BMJ. 1994;308:81-106.\r\nJneid H, Anderson JL, Wright RS, Adams CD, Bridges CR, Casey DE Jr, et al. 2012 ACCF/AHA focused update of the guideline for the management of patients with unstable angina/non-ST-elevation myocardial infarction (updating the 2007 guideline and replacing the 2011 focused update): a report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. J Am Coll Cardiol 2012;60:645-81.\r\nKrumholz HM, Anderson JL, Bachelder BL, Fesmire FM, Fihn SD, Foody JM, et al. ACC/AHA 2008 performance measures for adults with ST-elevation and non-ST-elevation myocardial infarction: a report of the American College of Cardiology/American Heart Association Task Force on Performance Measures (Writing Committee to Develop Performance Measures for ST-Elevation and Non-ST-Elevation Myocardial Infarction). J Am Coll Cardiol. 2008;52:2046-99.\r\nO'Gara PT, Kushner FG, Ascheim DD, Casey DE, Jr, Chung MK, de Lemos JA, et al. 2013 ACCF/AHA guideline for the management of ST-elevation myocardial infarction: a report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. J Am Coll Cardiol 2013;61:485-510.Smith SC Jr, Benjamin EJ, Bonow RO, Braun LT, Creager MA, et al. AHA/ACCF secondary prevention and risk reduction therapy for patients with coronary and other atherosclerotic vascular disease: 2011 update: a guideline from the American Heart Association and American College of Cardiology Foundation. Circulation. 2011;124:2458-2473.",
+        "name": "Reference"
+      },
+      {
+        "id": "DEFINITION",
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition"
+      },
+      {
+        "id": "GUIDANCE",
+        "code": "GUIDE",
+        "value": "Exclusion element guidance: \r\nMedical or patient reasons for not performing a test or giving a medication are categories for valid medical or patient reasons that are not specifically listed in the exclusion section of the measure. Each is expected to be captured and made available for measurement or clinical decision support within the EHR workflow but the exact method or location of capture is a local or vendor decision.",
+        "name": "Guidance"
+      },
+      {
+        "id": "TRANSMISSION_FORMAT",
+        "code": "OTH",
+        "value": "None",
+        "name": "Transmission Format"
+      },
+      {
+        "id": "DENOMINATOR",
+        "code": "DENOM",
+        "value": "Equals Initial Population",
+        "name": "Denominator"
+      },
+      {
+        "id": "DENOMINATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "Patients with Comfort Measures documented. \r\nPatients discharged to another hospital. \r\nPatients who left against medical advice. \r\nPatients who expired.\r\nPatients discharged to home for hospice care.\r\nPatients discharged to a health care facility for hospice care.",
+        "name": "Denominator Exclusions"
+      },
+      {
+        "id": "NUMERATOR",
+        "code": "NUMER",
+        "value": "Acute Myocardial Infarction patients prescribed aspirin at hospital discharge.",
+        "name": "Numerator"
+      },
+      {
+        "id": "NUMERATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "None",
+        "name": "Numerator Exclusions"
+      },
+      {
+        "id": "DENOMINATOR_EXCEPTIONS",
+        "code": "DENEXCEP",
+        "value": "Patients with a documented reason for not prescribing aspirin at discharge. This includes patients with an aspirin allergy; discharged on warfarin or other specific anticoagulant medications;  the administration of aspirin medications are on HOLD; or a medical or patient reason for not prescribing aspirin.",
+        "name": "Denominator Exceptions"
+      },
+      {
+        "id": "MEASURE_POPULATION",
+        "code": "MSRPOPL",
+        "value": "Not applicable",
+        "name": "Measure Population"
+      },
+      {
+        "id": "MEASURE_OBSERVATIONS",
+        "code": "OTH",
+        "value": "Not applicable",
+        "name": "Measure Observations"
+      },
+      {
+        "id": "SUPPLEMENTAL_DATA_ELEMENTS",
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity, and sex.",
+        "name": "Supplemental Data Elements"
+      }
+    ],
+    "populations": [
+      {
+        "IPP": "IPP",
+        "DENOM": "DENOM",
+        "DENEX": "DENEX",
+        "DENEXCEP": "DENEXCEP",
+        "NUMER": "NUMER"
+      }
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.666.5.626",
+    "2.16.840.1.113762.1.4.1021.3",
+    "2.16.840.1.113762.1.4.1045.31",
+    "2.16.840.1.113883.3.117.1.7.1.139",
+    "2.16.840.1.113883.3.666.5.3011",
+    "2.16.840.1.113883.3.666.5.1145",
+    "2.16.840.1.113883.3.117.1.7.1.308",
+    "2.16.840.1.113883.3.117.1.7.1.207",
+    "2.16.840.1.113883.3.117.1.7.1.209",
+    "2.16.840.1.113883.3.117.1.7.1.232",
+    "2.16.840.1.113883.3.117.1.7.1.473",
+    "2.16.840.1.113883.3.117.1.7.1.93",
+    "2.16.840.1.113883.3.117.1.7.1.87",
+    "2.16.840.1.113883.3.117.1.7.1.309",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.666.5.307",
+    "2.16.840.1.113883.3.117.1.7.1.70",
+    "2.16.840.1.113883.3.117.1.7.1.292",
+    "1.3.6.1.4.1.33895.1.3.0.45",
+    "2.16.840.1.113883.3.117.1.7.1.14"
+  ],
+  "population_ids": {
+    "IPP": "EC667551-DC48-4DB9-83C9-F8929959480A",
+    "DENOM": "CECC6F75-F830-43B3-B268-DB3772A858C9",
+    "DENEX": "8DFB7929-9265-49D8-8716-2B46867D13BD",
+    "NUMER": "13FF9550-C4CD-4A5E-8724-81CAF6370374",
+    "DENEXCEP": "C903B2CB-7CEA-4A1C-985C-74940D4F1C69"
+  }
+}

@@ -2,98 +2,106 @@ require 'rails_helper'
 require 'fileutils'
 require 'nokogiri'
 
-module API
-  module V1
-    RSpec.describe 'API Integration Tests: ', type: 'request' do
-      # include Devise::Test::ControllerHelpers
+RSpec.describe 'API Integration Tests: ', type: 'request' do
 
-      before(:each) do
-        @request.env['devise.mapping'] = Devise.mappings[:user]
-        @request.headers['Accept'] = 'application/vnd.api+json'
-        @request.headers['Content-Type'] = 'application/vnd.api+json'
-        @te = create(:te1)
-        create(:te2)
-        @user = @te.user
-        sign_in @user
-      end
+  before(:each) do
+    create_logged_in_user
+    setup_fixture_data
+  end
 
-      it 'show user\'s executions' do
-        get :index
-        expect(response).to have_http_status(:success)
-        executions = json(response)['data']
-        assert executions.any?
-      end
+  it 'show user\'s executions' do
+    # TODO use urls instead of :index, etc here
+    get :index
+    expect(response).to have_http_status(:success)
+    executions = JSON.parse(response.body)
+    # byebug
+    # executions = json(response)['data']
+    assert executions.any?
+  end
 
-      it 'get execution' do
-        get :show, id: @te.id
-        expect(response).to have_http_status(:success)
-        assert_equal @te.name, json(response)['data']['attributes']['name']
-      end
+  it 'get test execution by id' do
+    @te = create(:te1)
+    post '/api/v1/users/sign_in', { email: @te.user.email, password: @te.user.password }, headers: @header
+    get '/api/v1/test_executions', { id: @te.id }, headers: @header
+    expect(response).to have_http_status(:success)
+    result = JSON.parse(response.body)
+    byebug
+    assert_equal @te.name, result['data']['attributes']['name']
+  end
 
-      it 'create test' do
-        post :create,
-             data: {
-               attributes: {
-                 name: 'first',
-                 reporting_period: '2016',
-                 qrda_type: '1',
-                 measures: {
-                   tags: ['Hospital'],
-                   include: ['40280381-4B9A-3825-014B-C2730E6F088C', 'CMS117v4', 'CMS100V2'],
-                   exclude: %w(CMS9v4 CMS91v5)
-                 },
-                 validations: {
-                   tags: ['Schema'],
-                   include: %w(discharge_after_upload numer_greater_than_denom)
-                 }
-               }
+  it 'create test' do
+
+    a_user = create_logged_in_user
+    expect(a_user.authentication_token).not_to be_empty
+    post '/api/v1/users/sign_in', { email: a_user.email, password: a_user.password }, headers: @header
+    post '/api/v1/test_executions',
+         data: {
+           attributes: {
+             name: 'first',
+             reporting_period: '2016',
+             qrda_type: '1',
+             measures: {
+               tags: ['Hospital'],
+               include: ['40280381-4BE2-53B3-014B-E66BED0703D0', 'CMS107v4', 'CMS100v4'],
+               exclude: %w(CMS9v4 CMS91v5)
+             },
+             validations: {
+               tags: ['Schema'],
+               include: %w(discharge_after_upload)
              }
-        expect(response).to have_http_status(:success)
-        data = json(response)
-        measures = data['data']['attributes']['measures']
-        validations = data['data']['attributes']['validations']
-        assert_includes measures, 'CMS117v4'
-        assert_includes measures, 'CMS75v4' # This is from 40280381-4B9A-3825-014B-C2730E6F088C in the measures include
-        refute_includes measures, 'CMS9v4'
-        refute_includes measures, 'CMS100v2'
-        assert_includes validations, 'discharge_after_upload'
-        refute_includes validations, 'numer_greater_than_denom'
-        assert_not_nil data['meta']['filtered']
-      end
+           }
+         }
+    expect(response).to have_http_status(:success)
+    data = JSON.parse(response.body)
 
-      it 'create test with all' do
-        post :create,
-             data: {
-               attributes: {
-                 name: 'all',
-                 reporting_period: '2016',
-                 qrda_type: '1',
-                 measures: { all: true },
-                 validations: { all: true }
-               }
-             }
-        expect(response).to have_http_status(:success)
-      end
+    measures = data['data']['attributes']['measures']
+    validations = data['data']['attributes']['validations']
+    assert_includes measures, 'CMS107v4'
+    assert_includes measures, 'CMS100v4' # This is from 40280381-4B9A-3825-014B-C2730E6F088C in the measures include
 
-      it 'create invalid test' do
-        post :create,
-             data: {
-               attributes: {
-                 name: 'incompatible measure and validation',
-                 reporting_period: '2016',
-                 qrda_type: '3',
-                 measures: { include: ['CMS55v4'] },
-                 validations: { include: ['numer_greater_than_denom'] }
-               }
-             }
-        assert_response 400
-      end
+    refute_includes measures, 'CMS9v4'
+    assert_includes validations, 'discharge_after_upload'
+    refute_includes validations, 'numer_greater_than_denom'
+  end
 
-      it 'delete test' do
-        delete :destroy, id: @te.id
-        expect(response).to have_http_status(:success)
-        assert_empty TestExecution.where(id: @te.id).documents
-      end
-    end
+  it 'create test with all' do
+    a_user = create_logged_in_user
+    expect(a_user.authentication_token).not_to be_empty
+    post '/api/v1/users/sign_in', { email: a_user.email, password: a_user.password }, headers: @header
+
+    post '/api/v1/test_executions',
+         data: {
+           attributes: {
+             name: 'all',
+             reporting_period: '2015',
+             qrda_type: '1',
+             measures: { all: true },
+             validations: { all: true }
+           }
+         }
+byebug
+    expect(response).to have_http_status(:success)
+
+  end
+
+  it 'create invalid test' do
+    post :create,
+         data: {
+           attributes: {
+             name: 'incompatible measure and validation',
+             reporting_period: '2016',
+             qrda_type: '3',
+             measures: { include: ['CMS55v4'] },
+             validations: { include: ['numer_greater_than_denom'] }
+           }
+         }
+    assert_response 400
+  end
+
+  it 'delete test' do
+    @te = create(:te1)
+    delete '/api/v1/test_executions', id: @te.id
+    expect(response).to have_http_status(:success)
+    assert_empty TestExecution.where(id: @te.id).documents
   end
 end

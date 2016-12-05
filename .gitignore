@@ -35,3 +35,8 @@ Thumbs.db
 
 # Production Environment Secrets
 .env-prod
+
+# Convenience data for tests
+/spec/fixtures/bundles/bundle-2.4.0
+/spec/fixtures/bundles/bundle-2.6.0
+/spec/fixtures/bundles/bundle-2015-alpha-20160224

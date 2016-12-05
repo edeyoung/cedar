@@ -23,7 +23,10 @@ module API
 
       api! 'get test'
       def show
-        respond_with TestExecution.user(current_user).find(params[:id])
+        @te = TestExecution.user(current_user).find(params[:id])
+        respond_to do |format|
+          format.json { render json: @te }
+        end
       end
 
       api! 'create new test'
@@ -65,7 +68,6 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
         # Measures and validations need to be processed separately and after everything else
         process_measure_params(te)
         process_validation_params(te)
-
         # Check for conflicts in settings, and try to salvage
         @errors = []
         @warnings = []
@@ -114,7 +116,6 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
       # yields a block to convert measure/validation from input ids to actual validation/measure object
       def process_tag_include_exclude_options(all, options)
         included = []
-
         included = all if options[:all]
         included.concat(all.select { |item| (item.tags & options[:tags]).any? }) if options[:tags]
         included.concat(yield(options[:include])) if options[:include]
@@ -134,9 +135,9 @@ Cedar will attempt to filter out incompatible measures, and a message will be se
 
       def check_measure_year(test_execution)
         # Makes sure all measures are in the reporting year chosen
-        bundle_id = test_execution.bundle.id
-        invalid_measures = test_execution.measures.select { |measure| measure.bundle_id != bundle_id }
 
+        bundle_id = test_execution.bundle.id.to_s
+        invalid_measures = test_execution.measures.select { |measure| measure.bundle_id != bundle_id }
         if invalid_measures.any?
           test_execution.measures -= invalid_measures
           @warnings << {

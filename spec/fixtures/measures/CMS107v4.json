@@ -1,0 +1,1502 @@
+{
+  "id": "40280381-4B9A-3825-014B-C1CE20F40785",
+  "nqf_id": "0440",
+  "bundle_id": "583dca7ce223706c1b12d0d2",
+  "hqmf_id": "40280381-4B9A-3825-014B-C1CE20F40785",
+  "hqmf_set_id": "217FDF0D-3D64-4720-9116-D5E5AFA27F2C",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS107v4",
+  "name": "Stroke Education",
+  "description": "Ischemic or hemorrhagic stroke patients or their caregivers who were given educational materials during the hospital stay addressing all of the following: activation of emergency medical system, need for follow-up after discharge, medications prescribed at discharge, risk factors for stroke, and warning signs and symptoms of stroke.",
+  "type": "eh",
+  "category": "Stroke",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0440';\n        hqmfjs.hqmf_id = '40280381-4B9A-3825-014B-C1CE20F40785';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.424':{'SNOMED-CT':['183452005','32485007']},'2.16.840.1.113883.3.117.1.7.1.377':{'SNOMED-CT':['428551000124102','385867000']},'2.16.840.1.113883.3.117.1.7.1.378':{'SNOMED-CT':['428521000124106','61342007']},'2.16.840.1.113883.3.117.1.7.1.381':{'SNOMED-CT':['223413005']},'2.16.840.1.113883.3.117.1.7.1.379':{'SNOMED-CT':['386465007','423076000']},'2.16.840.1.113883.3.117.1.7.1.380':{'SNOMED-CT':['415233007']},'2.16.840.1.113883.3.117.1.7.1.212':{'ICD-10-CM':['I60.31','I60.50','I60.10','I60.4','I60.8','I61.3','I61.8','I60.00','I60.02','I60.32','I60.7','I61.1','I60.20','I61.5','I60.12','I60.21','I60.22','I60.6','I61.2','I61.6','I61.9','I60.11','I60.9','I61.0','I61.4','I60.01','I60.30','I60.51','I60.52'],'SNOMED-CT':['230709005','276278003','276722003','52201006','276283006','195168007','230706003','270907008','42429001','230708002','23276006','274100004','276277008','276281008','28318001','230712008','276285004','28837001','73020009','195155004','195167002','20908003','230707007','276286003','195160000','195165005','230710000','276280009','425957003','75038005','195169004','230711001','276282001','276284000','449020009','49422009','7713009','95454007'],'ICD-9-CM':['430','431']},'2.16.840.1.113883.3.117.1.7.1.247':{'ICD-10-CM':['I63.011','I63.00','I63.10','I63.12','I63.132','I63.212','I63.321','I63.419','I63.422','I63.431','I63.441','I63.449','I63.49','I63.50','I63.519','I63.539','I63.59','I63.9','I66.11','I63.111','I63.112','I63.339','I63.341','I63.542','I63.8','I66.03','I63.02','I63.039','I63.20','I63.219','I63.319','I63.411','I63.442','I66.12','I63.119','I63.211','I63.232','I63.29','I63.342','I63.40','I63.439','I63.521','I63.522','I66.3','I63.012','I63.031','I63.139','I63.19','I63.239','I63.312','I63.511','I63.529','I65.21','I65.22','I66.01','I66.09','I66.13','I66.21','I63.019','I63.032','I63.09','I63.30','I63.329','I63.331','I63.332','I63.412','I63.429','I63.541','I63.131','I63.322','I63.349','I63.39','I63.421','I63.432','I63.532','I63.549','I63.6','I65.23','I66.23','I67.89','I63.22','I63.231','I63.311','I63.512','I63.531','I65.29','I66.02','I66.19','I66.22','I66.29'],'SNOMED-CT':['195189003','230693009','230694003','195185009','195216008','230692004','230695002','288723005','300920004','195230003','71444005','111297002','195186005','230690007','230696001','230698000','230699008','64586002','195190007','195217004','233964008','195213000','230700009','116288000','195212005','230691006'],'ICD-9-CM':['434.11','436','433.10','433.31','434.00','433.11','433.21','433.91','434.01','434.91','433.81','433.01']},'2.16.840.1.113883.3.117.1.7.1.82':{'SNOMED-CT':['306691003','306692005','306705005','306690002','65537008','86400002','10161009','306689006']},'2.16.840.1.113883.3.117.1.7.1.415':{'SNOMED-CT':['413318004']},'2.16.840.1.113883.3.117.1.7.1.93':{'SNOMED-CT':['182901005','182903008','183944003','183945002','413312003','182890002','182897004','406149000','105480006','182895007','182896008','182900006','443390004','182898009','183947005','183948000','371138003','416432009','275936005','385648002']},'2.16.840.1.113762.1.4.1':{'AdministrativeGender':['M','F']},'2.16.840.1.114222.4.11.836':{'CDC Race':['2076-8','1002-5','2131-1','2106-3','2028-9','2054-5']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['521','84','6','331','3119','953','3222','512','349','37','41','523','3116','312','3113','5','32126','212','3115','3211','54','112','611','311','333','21','122','39','822','332','32122','82','73','322','32125','3711','121','389','3','511','342','36','3712','59','3221','379','62','43','3223','123','119','3212','32121','52','81','55','34','69','8','821','98','3112','519','3114','79','3811','32123','25','38','613','35','2','94','85','99','91','3123','321','3229','3813','83','3713','24','951','213','522','129','61','1','3122','64','612','334','529','22','33','31','72','219','619','3812','92','211','29','4','51','313','63','341','9','514','3819','513','515','95','44','42','53','823','96','113','93','343','3121','362','89','959','11','32','32124','381','111','23','19','954','12','372','9999','71','361','7','382','369','3111','371']},'2.16.840.1.113883.3.117.1.7.1.70':{'SNOMED-CT':['3950001']},'2.16.840.1.113883.3.117.1.7.1.292':{'SNOMED-CT':['4525004']},'1.3.6.1.4.1.33895.1.3.0.45':{'SNOMED-CT':['133918004','385763009','385736008','182964004']},'2.16.840.1.113883.3.117.1.7.1.14':{'SNOMED-CT':['63161005']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.GROUP_variable_CHILDREN_12 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_10(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_12',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_12';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"M\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"CDC Race\":[\"2076-8\",\"1002-5\",\"2131-1\",\"2028-9\",\"2054-5\",\"2106-3\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"Source of Payment Typology\":[\"523\",\"41\",\"512\",\"953\",\"37\",\"212\",\"331\",\"6\",\"84\",\"521\",\"3115\",\"3119\",\"3222\",\"5\",\"312\",\"3116\",\"3113\",\"349\",\"32126\",\"121\",\"39\",\"333\",\"311\",\"3\",\"611\",\"389\",\"3711\",\"21\",\"32122\",\"32125\",\"122\",\"322\",\"73\",\"112\",\"54\",\"332\",\"82\",\"822\",\"3211\",\"3712\",\"62\",\"379\",\"119\",\"3221\",\"511\",\"43\",\"36\",\"123\",\"342\",\"59\",\"3223\",\"98\",\"8\",\"69\",\"3811\",\"35\",\"34\",\"55\",\"52\",\"79\",\"32121\",\"613\",\"519\",\"81\",\"38\",\"3114\",\"821\",\"25\",\"3212\",\"3112\",\"32123\",\"22\",\"213\",\"3229\",\"64\",\"3122\",\"321\",\"3123\",\"24\",\"91\",\"3713\",\"951\",\"529\",\"99\",\"85\",\"94\",\"1\",\"2\",\"83\",\"129\",\"3813\",\"522\",\"61\",\"334\",\"612\",\"29\",\"51\",\"211\",\"514\",\"9\",\"341\",\"3812\",\"31\",\"619\",\"33\",\"4\",\"63\",\"219\",\"92\",\"72\",\"313\",\"113\",\"89\",\"96\",\"362\",\"959\",\"823\",\"3121\",\"95\",\"53\",\"343\",\"515\",\"3819\",\"42\",\"44\",\"93\",\"513\",\"381\",\"371\",\"361\",\"3111\",\"71\",\"32124\",\"23\",\"111\",\"382\",\"9999\",\"369\",\"12\",\"372\",\"954\",\"19\",\"32\",\"7\",\"11\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.InterventionOrderComfortMeasures_precondition_2 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.InterventionPerformedComfortMeasures_precondition_3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_4 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.InterventionOrderComfortMeasures_precondition_2(patient, initialSpecificContext),\n    hqmfjs.InterventionPerformedComfortMeasures_precondition_3(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_6 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_4(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_6',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_8 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_10 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_8(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_9(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_12 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_10(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_12',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_12';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_14 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.DiagnosisActiveIschemicStroke_precondition_17 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.247\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveHemorrhagicStroke_precondition_18 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.212\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"ordinality\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.14\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_19 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.DiagnosisActiveIschemicStroke_precondition_17(patient, initialSpecificContext),\n    hqmfjs.DiagnosisActiveHemorrhagicStroke_precondition_18(patient, initialSpecificContext)\n  );\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_6_precondition_20 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_4(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_6',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_24 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_22(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_23(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_26 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_24(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_26',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_29 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.424\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.82\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_INTERSECT_CHILDREN_30 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.GROUP_variable_CHILDREN_12(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedNonElectiveInpatientEncounter_precondition_29(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_32 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBCWS(events, hqmfjs.GROUP_variable_CHILDREN_12(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_6_precondition_31 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_4(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_6',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_32(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.377\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.378\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientPrescribedMedicationsEducation_precondition_35 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.379\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientRiskFactorsEducation_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.380\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.381\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientWrittenInformationGiven_precondition_38 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.415\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.CommunicationFromProviderToPatientWrittenInformationGiven_precondition_39 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"communications\", \"includeEventsWithoutStatus\": true, \"negated\": true, \"negationValueSetId\": \"2.16.840.1.113883.3.117.1.7.1.93\", \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.415\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByCommunicationDirection(events, 'communication_from_provider_to_patient');\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_12(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"GROUP_variable_CHILDREN_12\",\"type\":\"OCCURRENCE_A_OF_ENCOUNTERINPATIENTNONELECTIVE\",\"function\":\"GROUP_variable_CHILDREN_12\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('40', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_14, hqmfjs.GROUP_UNION_CHILDREN_19\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('43', patient, initialSpecificContext, hqmfjs.GROUP_INTERSECT_CHILDREN_30\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('48', patient, initialSpecificContext,\n      atLeastOneTrue('49', patient, initialSpecificContext,\n        allTrue('50', patient, initialSpecificContext, hqmfjs.CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation_precondition_33, hqmfjs.CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge_precondition_34, hqmfjs.CommunicationFromProviderToPatientPrescribedMedicationsEducation_precondition_35, hqmfjs.CommunicationFromProviderToPatientRiskFactorsEducation_precondition_36, hqmfjs.CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation_precondition_37, hqmfjs.CommunicationFromProviderToPatientWrittenInformationGiven_precondition_38\n        ), hqmfjs.CommunicationFromProviderToPatientWrittenInformationGiven_precondition_39\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    atLeastOneTrue('45', patient, initialSpecificContext, hqmfjs.GROUP_variable_CHILDREN_6_precondition_31, hqmfjs.GROUP_variable_CHILDREN_6_precondition_20\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(true); }\n        hqmfjs.MSRPOPLEX = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        // VARIABLES\n        hqmfjs.VARIABLES = function(patient, initialSpecificContext) {\nhqmfjs.GROUP_variable_CHILDREN_6(patient, initialSpecificContext);\nhqmfjs.GROUP_variable_CHILDREN_26(patient, initialSpecificContext);\nreturn false;\n}\n        \n        \n        var occurrenceId = [\"GROUP_variable_CHILDREN_12\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var msrpoplex = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPLEX, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var variables = function() {\n          if (Logger.enable_rationale) {\n            return executeIfAvailable(hqmfjs.VARIABLES, patient_api);\n          }\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n            Logger.short_circuit = short_circuit;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, msrpoplex, observ, occurrenceId,false,stratification, variables);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0440",
+    "hqmf_id": "40280381-4B9A-3825-014B-C1CE20F40785",
+    "hqmf_set_id": "217FDF0D-3D64-4720-9116-D5E5AFA27F2C",
+    "hqmf_version_number": 4,
+    "title": "Stroke Education",
+    "description": "Ischemic or hemorrhagic stroke patients or their caregivers who were given educational materials during the hospital stay addressing all of the following: activation of emergency medical system, need for follow-up after discharge, medications prescribed at discharge, risk factors for stroke, and warning signs and symptoms of stroke.",
+    "cms_id": "CMS107v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "CDBA1079-A55A-4D37-B964-A9DB57FB5E72",
+        "preconditions": [
+          {
+            "id": 40,
+            "preconditions": [
+              {
+                "id": 14,
+                "reference": "PatientCharacteristicBirthdateBirthdate_precondition_14"
+              },
+              {
+                "id": 15,
+                "reference": "GROUP_UNION_CHILDREN_19"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "3CDDDAD1-DFBC-4994-90AA-7734440215D9",
+        "preconditions": [
+          {
+            "id": 43,
+            "preconditions": [
+              {
+                "id": 27,
+                "reference": "GROUP_INTERSECT_CHILDREN_30"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator Exclusion",
+        "hqmf_id": "8BB24CA5-1A7E-492A-BDB6-120A1D42D3F3",
+        "preconditions": [
+          {
+            "id": 45,
+            "preconditions": [
+              {
+                "id": 31,
+                "reference": "GROUP_variable_CHILDREN_6_precondition_31"
+              },
+              {
+                "id": 20,
+                "reference": "GROUP_variable_CHILDREN_6_precondition_20"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "9A55A9D7-D9C5-4CC4-B3A8-F387FDBFEA2C",
+        "preconditions": [
+          {
+            "id": 48,
+            "preconditions": [
+              {
+                "id": 49,
+                "preconditions": [
+                  {
+                    "id": 50,
+                    "preconditions": [
+                      {
+                        "id": 33,
+                        "reference": "CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation_precondition_33"
+                      },
+                      {
+                        "id": 34,
+                        "reference": "CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge_precondition_34"
+                      },
+                      {
+                        "id": 35,
+                        "reference": "CommunicationFromProviderToPatientPrescribedMedicationsEducation_precondition_35"
+                      },
+                      {
+                        "id": 36,
+                        "reference": "CommunicationFromProviderToPatientRiskFactorsEducation_precondition_36"
+                      },
+                      {
+                        "id": 37,
+                        "reference": "CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation_precondition_37"
+                      },
+                      {
+                        "id": 38,
+                        "reference": "CommunicationFromProviderToPatientWrittenInformationGiven_precondition_38"
+                      }
+                    ],
+                    "conjunction_code": "allTrue"
+                  },
+                  {
+                    "id": 39,
+                    "reference": "CommunicationFromProviderToPatientWrittenInformationGiven_precondition_39"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "InterventionOrderComfortMeasures_precondition_2": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "InterventionPerformedComfortMeasures_precondition_3": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_4": {
+        "title": "GROUP_UNION_CHILDREN_4",
+        "description": "",
+        "children_criteria": [
+          "InterventionOrderComfortMeasures_precondition_2",
+          "InterventionPerformedComfortMeasures_precondition_3"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_4",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_6": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter_precondition_8": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter_precondition_9": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_10": {
+        "title": "GROUP_satisfiesAll_CHILDREN_10",
+        "description": "Non-Elective Inpatient Encounter : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedNonElectiveInpatientEncounter_precondition_8",
+          "EncounterPerformedNonElectiveInpatientEncounter_precondition_9"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_10",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_12": {
+        "title": "GROUP_variable_CHILDREN_12",
+        "description": "Occurrence A of $EncounterInpatientNonElective",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_10"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENTNONELECTIVE",
+        "source_data_criteria": "GROUP_variable_CHILDREN_12",
+        "variable": true
+      },
+      "PatientCharacteristicBirthdateBirthdate_precondition_14": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosisActiveIschemicStroke_precondition_17": {
+        "title": "Ischemic Stroke",
+        "description": "Diagnosis, Active: Ischemic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.247",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicStroke",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "Principal"
+          }
+        }
+      },
+      "DiagnosisActiveHemorrhagicStroke_precondition_18": {
+        "title": "Hemorrhagic Stroke",
+        "description": "Diagnosis, Active: Hemorrhagic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.212",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveHemorrhagicStroke",
+        "variable": false,
+        "field_values": {
+          "ORDINAL": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.14",
+            "title": "Principal"
+          }
+        }
+      },
+      "GROUP_UNION_CHILDREN_19": {
+        "title": "GROUP_UNION_CHILDREN_19",
+        "description": "",
+        "children_criteria": [
+          "DiagnosisActiveIschemicStroke_precondition_17",
+          "DiagnosisActiveHemorrhagicStroke_precondition_18"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_19",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_6_precondition_20": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter_precondition_22": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter_precondition_23": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_24": {
+        "title": "GROUP_satisfiesAll_CHILDREN_24",
+        "description": "Non-Elective Inpatient Encounter : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedNonElectiveInpatientEncounter_precondition_22",
+          "EncounterPerformedNonElectiveInpatientEncounter_precondition_23"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_24",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_26": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "EncounterInpatientNonElective",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter_precondition_29": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.82",
+            "title": "Discharge To Home Or Police Custody"
+          }
+        }
+      },
+      "GROUP_INTERSECT_CHILDREN_30": {
+        "title": "GROUP_INTERSECT_CHILDREN_30",
+        "description": "",
+        "children_criteria": [
+          "GROUP_variable_CHILDREN_12",
+          "EncounterPerformedNonElectiveInpatientEncounter_precondition_29"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_INTERSECT_CHILDREN_30",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_32": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBCWS",
+            "reference": "GROUP_variable_CHILDREN_12",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_6_precondition_31": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_32"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation_precondition_33": {
+        "title": "Activation of Emergency Medical System Education",
+        "description": "Communication: From Provider to Patient: Activation of Emergency Medical System Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.377",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge_precondition_34": {
+        "title": "Instructions for Follow Up After Discharge",
+        "description": "Communication: From Provider to Patient: Instructions for Follow Up After Discharge",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.378",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientPrescribedMedicationsEducation_precondition_35": {
+        "title": "Prescribed Medications Education",
+        "description": "Communication: From Provider to Patient: Prescribed Medications Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.379",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientPrescribedMedicationsEducation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientRiskFactorsEducation_precondition_36": {
+        "title": "Risk Factors Education",
+        "description": "Communication: From Provider to Patient: Risk Factors Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.380",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientRiskFactorsEducation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation_precondition_37": {
+        "title": "Warning Signs and Symptoms Education",
+        "description": "Communication: From Provider to Patient: Warning Signs and Symptoms Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.381",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientWrittenInformationGiven_precondition_38": {
+        "title": "Written Information Given",
+        "description": "Communication: From Provider to Patient: Written Information Given",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.415",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientWrittenInformationGiven",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      },
+      "CommunicationFromProviderToPatientWrittenInformationGiven_precondition_39": {
+        "title": "Written Information Given",
+        "description": "Communication: From Provider to Patient: Written Information Given",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.415",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": true,
+        "negation_code_list_id": "2.16.840.1.113883.3.117.1.7.1.93",
+        "source_data_criteria": "CommunicationFromProviderToPatientWrittenInformationGiven",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_12"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation": {
+        "title": "Activation of Emergency Medical System Education",
+        "description": "Communication: From Provider to Patient: Activation of Emergency Medical System Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.377",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientActivationOfEmergencyMedicalSystemEducation",
+        "variable": false
+      },
+      "PatientCharacteristicBirthdateBirthdate": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        }
+      },
+      "InterventionOrderComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "InterventionPerformedComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicExpiredExpired": {
+        "title": "Expired",
+        "description": "Patient Characteristic Expired: Expired",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+        "property": "expired",
+        "type": "characteristic",
+        "definition": "patient_characteristic_expired",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicExpiredExpired",
+        "variable": false
+      },
+      "DiagnosisActiveHemorrhagicStroke": {
+        "title": "Hemorrhagic Stroke",
+        "description": "Diagnosis, Active: Hemorrhagic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.212",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveHemorrhagicStroke",
+        "variable": false
+      },
+      "CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge": {
+        "title": "Instructions for Follow Up After Discharge",
+        "description": "Communication: From Provider to Patient: Instructions for Follow Up After Discharge",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.378",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientInstructionsForFollowUpAfterDischarge",
+        "variable": false
+      },
+      "DiagnosisActiveIschemicStroke": {
+        "title": "Ischemic Stroke",
+        "description": "Diagnosis, Active: Ischemic Stroke",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.247",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveIschemicStroke",
+        "variable": false
+      },
+      "EncounterPerformedNonElectiveInpatientEncounter": {
+        "title": "Non-Elective Inpatient Encounter",
+        "description": "Encounter, Performed: Non-Elective Inpatient Encounter",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.424",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedNonElectiveInpatientEncounter",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "CommunicationFromProviderToPatientPrescribedMedicationsEducation": {
+        "title": "Prescribed Medications Education",
+        "description": "Communication: From Provider to Patient: Prescribed Medications Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.379",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientPrescribedMedicationsEducation",
+        "variable": false
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "CommunicationFromProviderToPatientRiskFactorsEducation": {
+        "title": "Risk Factors Education",
+        "description": "Communication: From Provider to Patient: Risk Factors Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.380",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientRiskFactorsEducation",
+        "variable": false
+      },
+      "CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation": {
+        "title": "Warning Signs and Symptoms Education",
+        "description": "Communication: From Provider to Patient: Warning Signs and Symptoms Education",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.381",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientWarningSignsAndSymptomsEducation",
+        "variable": false
+      },
+      "CommunicationFromProviderToPatientWrittenInformationGiven": {
+        "title": "Written Information Given",
+        "description": "Communication: From Provider to Patient: Written Information Given",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.415",
+        "type": "communications",
+        "definition": "communication_from_provider_to_patient",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "CommunicationFromProviderToPatientWrittenInformationGiven",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_6": {
+        "title": "GROUP_variable_CHILDREN_6",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_4"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_6",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_12": {
+        "title": "GROUP_variable_CHILDREN_12",
+        "description": "Occurrence A of $EncounterInpatientNonElective",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_10"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENTNONELECTIVE",
+        "source_data_criteria": "GROUP_variable_CHILDREN_12",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_26": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "EncounterInpatientNonElective",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true
+      }
+    },
+    "attributes": [
+      {
+        "id": "NQF_ID_NUMBER",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "NQF ID Number"
+      },
+      {
+        "id": "COPYRIGHT",
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain\n\nLOINC(R) is a registered trademark of the Regenstrief Institute.\n\nThis material contains SNOMED Clinical Terms (R) (SNOMED CT[C]) copyright 2004-2014 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright"
+      },
+      {
+        "id": "DISCLAIMER",
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "name": "Disclaimer"
+      },
+      {
+        "id": "MEASURE_SCORING",
+        "code": "MSRSCORE",
+        "value": "Proportion",
+        "name": "Measure Scoring"
+      },
+      {
+        "id": "MEASURE_TYPE",
+        "code": "MSRTYPE",
+        "value": "Process",
+        "name": "Measure Type"
+      },
+      {
+        "id": "STRATIFICATION",
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification"
+      },
+      {
+        "id": "RISK_ADJUSTMENT",
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment"
+      },
+      {
+        "id": "RATE_AGGREGATION",
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation"
+      },
+      {
+        "id": "RATIONALE",
+        "code": "RAT",
+        "value": "There are many examples of how patient education programs for specific chronic conditions have increased healthful behaviors, improved health status, and/or decreased health care costs of their participants. Clinical practice guidelines include recommendations for patient and family education during hospitalization as well as information about resources for social support services. Some clinical trials have shown measurable benefits in patient and caregiver outcomes with the application of education and support strategies. The type of stroke experienced and the resulting outcomes will play a large role in determining not only the course of treatment but also what education will be required. Patient education should include information about the event (eg, cause, treatment, and risk factors), the role of various medications or strategies, as well as desirable lifestyle modifications to reduce risk or improve outcomes. Family/caregivers will also need guidance in planning effective and realistic care strategies appropriate to the patient's prognosis and potential for rehabilitation.",
+        "name": "Rationale"
+      },
+      {
+        "id": "CLINICAL_RECOMMENDATION_STATEMENT",
+        "code": "CRS",
+        "value": "Some clinical trials have shown measurable benefits in patient and caregiver outcomes with the application of education and support strategies. Patient education should include information about the event (eg, cause, treatment, and risk factors), the role of various medications or strategies, as well as desirable lifestyle modifications to reduce risk or improve outcomes. Family/caregivers will also need guidance in planning effective and realistic care strategies appropriate to the patient's prognosis and potential for rehabilitation.",
+        "name": "Clinical Recommendation Statement"
+      },
+      {
+        "id": "IMPROVEMENT_NOTATION",
+        "code": "IDUR",
+        "value": "Improvement noted as an increase in rate.",
+        "name": "Improvement Notation"
+      },
+      {
+        "id": "REFERENCE",
+        "code": "REF",
+        "value": "Eames, S., T. Hoffmann, L. Worrall, and S. Read. \"Stroke Patients' and Carers' Perception of Barriers to Accessing Stroke Information.\" [In eng]. Top Stroke Rehabil 17, no. 2 (Mar-Apr 2010): 69-78.Furie, K. L., S. E. Kasner, R. J. Adams, G. W. Albers, R. L. Bush, S. C. Fagan, J. L. Halperin, et al. \"Guidelines for the Prevention of Stroke in Patients with Stroke or Transient Ischemic Attack: A Guideline for Healthcare Professionals from the American Heart Association/American Stroke Association.\" [In eng]. Stroke 42, no. 1 (Jan 2011): 227-76.Goldstein, L. B., C. D. Bushnell, R. J. Adams, L. J. Appel, L. T. Braun, S. Chaturvedi, M. A. Creager, et al. \"Guidelines for the Primary Prevention of Stroke: A Guideline for Healthcare Professionals from the American Heart Association/American Stroke Association.\" [In eng]. Stroke 42, no. 2 (Feb 2011): 517-84.Hafsteinsdottir, T. B., M. Vergunst, E. Lindeman, and M. Schuurmans. \"Educational Needs of Patients with a Stroke and Their Caregivers: A Systematic Review of the Literature.\" [In eng]. Patient Educ Couns 85, no. 1 (Oct 2011): 14-25Jauch, E. C., J. L. Saver, H. P. Adams, Jr., A. Bruno, J. J. Connors, B. M. Demaerschalk, P. Khatri, et al. \"Guidelines for the Early Management of Patients with Acute Ischemic Stroke: A Guideline for Healthcare Professionals from the American Heart Association/American Stroke Association.\" [In Eng]. Stroke  (Jan 31 2013).Lorig, K. R., D. S. Sobel, A. L. Stewart, B. W. Brown, Jr., A. Bandura, P. Ritter, V. M. Gonzalez, D. D. Laurent, and H. R. Holman. \"Evidence Suggesting That a Chronic Disease Self-Management Program Can Improve Health Status While Reducing Hospitalization: A Randomized Trial.\" [In eng]. Med Care 37, no. 1 (Jan 1999): 5-14.",
+        "name": "Reference"
+      },
+      {
+        "id": "DEFINITION",
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition"
+      },
+      {
+        "id": "GUIDANCE",
+        "code": "GUIDE",
+        "value": "The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\n\nWritten information given to the patient is required to address each and every one of the educational components. These components are modeled in the population criteria and data criteria as communication from provider to patient :activation of emergency medical system, follow-up after discharge, medications prescribed at discharge, risk factors and signs and symptoms, and are intended to be specific to stroke.\n\nThe \"Non-elective admissions\" value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the \"Inpatient encounter\" value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective admissions include emergency, urgent and unplanned admissions.",
+        "name": "Guidance"
+      },
+      {
+        "id": "TRANSMISSION_FORMAT",
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format"
+      },
+      {
+        "id": "DENOMINATOR",
+        "code": "DENOM",
+        "value": "Ischemic stroke or hemorrhagic stroke patients discharged to home, home care, or court/law enforcement.",
+        "name": "Denominator"
+      },
+      {
+        "id": "DENOMINATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "Patients with comfort measures documented.",
+        "name": "Denominator Exclusions"
+      },
+      {
+        "id": "NUMERATOR",
+        "code": "NUMER",
+        "value": "Ischemic or hemorrhagic stroke patients with written documentation that they or their caregivers were given educational material addressing all of the following:\n1. Activation of emergency medical system \n2. Follow-up after discharge\n3. Medications prescribed at discharge\n4. Risk factors for stroke\n5. Warning signs and symptoms of stroke.",
+        "name": "Numerator"
+      },
+      {
+        "id": "NUMERATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions"
+      },
+      {
+        "id": "DENOMINATOR_EXCEPTIONS",
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions"
+      },
+      {
+        "id": "MEASURE_POPULATION",
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population"
+      },
+      {
+        "id": "MEASURE_OBSERVATIONS",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations"
+      },
+      {
+        "id": "SUPPLEMENTAL_DATA_ELEMENTS",
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements"
+      }
+    ],
+    "populations": [
+      {
+        "IPP": "IPP",
+        "DENOM": "DENOM",
+        "DENEX": "DENEX",
+        "NUMER": "NUMER"
+      }
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.424",
+    "2.16.840.1.113883.3.117.1.7.1.377",
+    "2.16.840.1.113883.3.117.1.7.1.378",
+    "2.16.840.1.113883.3.117.1.7.1.381",
+    "2.16.840.1.113883.3.117.1.7.1.379",
+    "2.16.840.1.113883.3.117.1.7.1.380",
+    "2.16.840.1.113883.3.117.1.7.1.212",
+    "2.16.840.1.113883.3.117.1.7.1.247",
+    "2.16.840.1.113883.3.117.1.7.1.82",
+    "2.16.840.1.113883.3.117.1.7.1.415",
+    "2.16.840.1.113883.3.117.1.7.1.93",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.117.1.7.1.70",
+    "2.16.840.1.113883.3.117.1.7.1.292",
+    "1.3.6.1.4.1.33895.1.3.0.45",
+    "2.16.840.1.113883.3.117.1.7.1.14"
+  ],
+  "population_ids": {
+    "IPP": "CDBA1079-A55A-4D37-B964-A9DB57FB5E72",
+    "DENOM": "3CDDDAD1-DFBC-4994-90AA-7734440215D9",
+    "DENEX": "8BB24CA5-1A7E-492A-BDB6-120A1D42D3F3",
+    "NUMER": "9A55A9D7-D9C5-4CC4-B3A8-F387FDBFEA2C"
+  }
+}
