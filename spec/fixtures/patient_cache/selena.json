@@ -1,6 +1,6 @@
 {
   "_id" : {"$oid" : "513cb76049b046bf46217666"},
-  "bundle_id" : {"$oid" : "4fdb62e01d41c820f6000001"} ,
+  "bundle_id" : "83dca7ce223706c1b12d0d2",
   "value" : {
     "IPP" : 1,
     "DENOM" : 1,
@@ -11,7 +11,7 @@
     "medical_record_id" : "21",
     "test_id" : null,
     "provider_performances" : null,
-    "measure_id" : "8A4D92B2-3946-CDAE-0139-7944ACB700BD",
+    "measure_id" : "40280381-43DB-D64C-0144-64CB12982D97",
     "sub_id": "a",
     "DENEXCEP" : 0
   }

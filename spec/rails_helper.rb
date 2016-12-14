@@ -28,9 +28,12 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 #      But it will need some updating (i.e. copy over config from spec_helpter.rb).
 RSpec.configure do |config|
   # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
   config.include FixtureHelper
   config.include RequestHelpers
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

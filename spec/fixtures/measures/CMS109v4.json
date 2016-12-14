@@ -1,0 +1,2037 @@
+{
+  "id": "40280381-4C18-79DF-014C-2D6122A30A44",
+  "nqf_id": "0374",
+  "hqmf_id": "40280381-4C18-79DF-014C-2D6122A30A44",
+  "hqmf_set_id": "BCCE43DD-08E3-46C3-BFDD-0B1B472690F0",
+  "hqmf_version_number": 4,
+  "cms_id": "CMS109v4",
+  "name": "Venous Thromboembolism Patients Receiving Unfractionated Heparin with Dosages/Platelet Count Monitoring by Protocol or Nomogram",
+  "description": "This measure assesses the number of patients diagnosed with confirmed VTE who received intravenous (IV) UFH therapy dosages AND had their platelet counts monitored using defined parameters such as a nomogram or protocol.",
+  "type": "eh",
+  "category": "Venous Thromboembolism",
+  "map_fn": "function() {\n          var patient = this;\n          var effective_date = <%= effective_date %>;\n          var enable_logging = <%= enable_logging %>;\n          var enable_rationale = <%= enable_rationale %>;\n          var short_circuit = <%= short_circuit %>;\n\n        <% if (!test_id.nil? && test_id.class==Moped::BSON::ObjectId) %>\n          var test_id = new ObjectId(\"<%= test_id %>\");\n        <% else %>\n          var test_id = null;\n        <% end %>\n\n          hqmfjs = {}\n          <%= init_js_frameworks %>\n\n          hqmfjs.effective_date = effective_date;\n          hqmfjs.test_id = test_id;\n      \n          \n        var patient_api = new hQuery.Patient(patient);\n\n        \n        // #########################\n        // ##### DATA ELEMENTS #####\n        // #########################\n\n        hqmfjs.nqf_id = '0374';\n        hqmfjs.hqmf_id = '40280381-4C18-79DF-014C-2D6122A30A44';\n        hqmfjs.sub_id = null;\n        if (typeof(test_id) == 'undefined') hqmfjs.test_id = null;\n\n        OidDictionary = {'2.16.840.1.113883.3.117.1.7.1.308':{'SNOMED-CT':['445060000']},'2.16.840.1.113883.3.117.1.7.1.207':{'SNOMED-CT':['428371000124100']},'2.16.840.1.113883.3.117.1.7.1.278':{'SNOMED-CT':['417886001']},'2.16.840.1.113883.3.117.1.7.1.253':{'SNOMED-CT':['370858005']},'2.16.840.1.113883.3.117.1.7.1.267':{'LOINC':['778-1','13056-7','26516-5','49497-1','15201-7','26515-7','71692-8','777-3']},'2.16.840.1.113883.3.117.1.7.1.209':{'SNOMED-CT':['428361000124107']},'2.16.840.1.113883.3.117.1.7.1.276':{'LOINC':['46308-3','46317-4','48691-0','69399-4','24556-3','30668-8','30673-8','30674-6','30871-8','30881-7','36134-5','36237-6','36825-8','36831-6','39432-0','39443-7','39696-0','39837-0','39940-2','42394-7','43513-1','44128-7','44174-1','46318-2','69162-6','36147-7','36442-2','36785-4','36795-3','36813-4','36850-6','36858-9','36942-1','37182-3','37416-5','37440-5','39057-5','39430-4','39697-8','39898-2','43556-0','43657-6','46361-2','46363-8','69252-5','24659-5','24867-4','30804-9','36095-8','36450-5','36547-8','36789-6','36803-5','36824-1','24533-2','38773-8','39442-9','39498-1','39833-9','39838-8','39944-4','39945-1','39947-7','42294-9','42461-4','46313-3','46329-9','46364-6','57822-9','69212-9','30598-7','30807-2','30862-7','30864-3','36855-5','36859-7','36863-9','36878-7','39420-5','39441-1','39835-4','39836-2','39946-9','43445-6','44135-2','24628-0','24824-5','30616-7','30874-2','39619-2','39948-5','42274-1','42275-8','42277-4','42462-2','43454-8','43656-8','46307-5','46330-7','69108-9','24557-1','24887-2','24888-0','30599-5','30623-3','30697-7','36079-2','36796-1','36854-8','36882-9','39422-1','39504-6','39834-7','39941-0','39943-6','43512-3','36781-3','69096-6','24873-2','35974-5','36156-8','36283-0','36284-8','36420-8','36791-2','36848-0','36849-8','37426-4','46324-0','48692-8','24629-8','24820-3','24866-6','30830-4','36098-2','36102-2','36266-5','36416-6','36784-7','36846-4','36883-7','37779-6','39431-2','39695-2','39942-8','44129-5']},'2.16.840.1.113883.3.117.1.7.1.407':{'SNOMED-CT':['1001000119102','132301000119107','427776007','57834008','195411001','233936003','74315008','132291000119106','195410000','195426004','195427008','233935004','59282003','132251000119101','1748006','195425000','234044007','281595001','427775006','42861008']},'2.16.840.1.113883.3.117.1.7.1.279':{'ICD-10-CM':['I26.02','I80.209','I80.293','I82.401','I82.422','I26.09','I80.11','I80.203','I80.223','I82.419','I82.431','I82.4Y3','I82.4Y9','I80.10','I80.291','I80.3','I82.290','I82.402','I82.413','I82.439','I26.92','I80.219','I80.229','I80.9','I82.411','I80.12','I80.201','I80.222','I80.292','I80.299','I82.403','I82.412','I82.433','I80.212','I80.221','I82.421','I82.4Y1','I80.13','I82.429','I82.432','I82.4Y2','I82.90','I26.99','I80.202','I80.211','I80.213','I82.220','I82.409','I82.423','I82.890'],'SNOMED-CT':['234049002','266267005','64662007','1001000119102','128053003','134399007','312584000','427776007','57834008','83938003','132301000119107','16750002','195422002','195423007','213220000','233936003','31295000','35979000','40198004','441746000','77892009','194883006','195411001','276494008','46253008','58309001','95448006','95449003','195394007','195405004','404223003','429098002','69357003','7387004','128055005','312588002','413956008','444325005','52496006','74315008','83727005','195426004','195427008','195437003','233935004','25114006','59282003','11029002','132291000119106','195408002','195410000','195425000','234044007','281595001','427775006','42861008','50817002','132251000119101','1748006','195421009'],'ICD-9-CM':['453.2','415.13','453.87','451.19','453.40','453.9','451.81','453.41','453.89','415.19','451.2','451.9','415.11','451.11']},'2.16.840.1.113883.3.117.1.7.1.264':{'SNOMED-CT':['200284000','200299000','200302000','26743002','62583006','663008','84216001','198876008','200232006','267280004','82153002','56462001','200233001','200237000','200304004','37787009','55976003','63795001','19363005','200238005','200303005','55589000','57734001','280966008','72044001','88980002','13943000','21604008','51096002','200301007','43306002','49956009','56272000','58123006','609497003'],'ICD-9-CM':['636.62','637.60','639.6','671.30','671.40','671.92','671.93','635.60','635.62','637.62','671.31','673.24','635.61','671.44','671.90','671.91','671.52','671.53','673.21','673.23','634.60','634.61','671.33','671.50','673.20','636.60','636.61','637.61','671.51','671.94','638.6','671.42','671.54','673.22','634.62'],'ICD-10-CM':['O03.2','O22.90','O22.92','O88.219','O87.0','O87.3','O22.31','O22.50','O22.91','O88.213','O22.8X9','O22.33','O87.9','O07.2','O88.211','O88.212','O88.22','O03.35','O03.7','O22.30','O22.32','O22.51','O22.53','O07.35','O22.8X1','O22.8X3','O22.52','O88.23','O22.8X2','O04.7','O08.2','O22.93','O87.1']},'2.16.840.1.113883.3.117.1.7.1.218':{'RxNorm':['1361568','1361048','1361226','1361615','1361607','1362831','1362837','1361574','1361613','1361577']},'2.16.840.1.113883.3.117.1.7.1.222':{'SNOMED-CT':['47625008','419993007','418114005']},'2.16.840.1.113883.3.117.1.7.1.87':{'SNOMED-CT':['306701001','434781000124105','306703003']},'2.16.840.1.113883.3.117.1.7.1.309':{'SNOMED-CT':['371828006']},'2.16.840.1.113762.1.4.1':{'AdministrativeGender':['M','F']},'2.16.840.1.114222.4.11.836':{'CDC Race':['2076-8','1002-5','2131-1','2106-3','2028-9','2054-5']},'2.16.840.1.114222.4.11.837':{'CDC Race':['2135-2','2186-5']},'2.16.840.1.114222.4.11.3591':{'Source of Payment Typology':['521','84','6','331','3119','953','3222','512','349','37','41','523','3116','312','3113','5','32126','212','3115','3211','54','112','611','311','333','21','122','39','822','332','32122','82','73','322','32125','3711','121','389','3','511','342','36','3712','59','3221','379','62','43','3223','123','119','3212','32121','52','81','55','34','69','8','821','98','3112','519','3114','79','3811','32123','25','38','613','35','2','94','85','99','91','3123','321','3229','3813','83','3713','24','951','213','522','129','61','1','3122','64','612','334','529','22','33','31','72','219','619','3812','92','211','29','4','51','313','63','341','9','514','3819','513','515','95','44','42','53','823','96','113','93','343','3121','362','89','959','11','32','32124','381','111','23','19','954','12','372','9999','71','361','7','382','369','3111','371']},'2.16.840.1.113883.3.666.5.307':{'SNOMED-CT':['8715000','183452005','32485007']},'2.16.840.1.113883.3.117.1.7.1.70':{'SNOMED-CT':['3950001']},'2.16.840.1.113883.3.117.1.7.1.292':{'SNOMED-CT':['4525004']},'1.3.6.1.4.1.33895.1.3.0.45':{'SNOMED-CT':['133918004','385763009','385736008','182964004']}};\n        \n        // Measure variables\nvar MeasurePeriod = {\n  \"low\": new TS(\"201201010000\", true),\n  \"high\": new TS(\"201212312359\", true)\n}\nhqmfjs.MeasurePeriod = function(patient) {\n  return [new hQuery.CodedEntry(\n    {\n      \"start_time\": MeasurePeriod.low.asDate().getTime()/1000,\n      \"end_time\": MeasurePeriod.high.asDate().getTime()/1000,\n      \"codes\": {}\n    }\n  )];\n}\nif (typeof effective_date === 'number') {\n  MeasurePeriod.high.date = new Date(1000*effective_date);\n  // add one minute before pulling off the year.  This turns 12-31-2012 23:59 into 1-1-2013 00:00 => 1-1-2012 00:00\n  MeasurePeriod.low.date = new Date(1000*(effective_date+60));\n  MeasurePeriod.low.date.setFullYear(MeasurePeriod.low.date.getFullYear()-1);\n}\n\n// Data critera\nhqmfjs.OccurrenceAUnfractionatedHeparin1 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_19 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_17(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_19',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_19';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.PatientCharacteristicEthnicityEthnicity = function(patient, initialSpecificContext) {\n  var value = patient.ethnicity() || null;\n  matching = matchingValue(value, null);\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicSexOncAdministrativeSex = function(patient, initialSpecificContext) {\n  var value = patient.gender() || null;\n  matching = matchingValue(value, new CD(\"M\", \"Administrative Sex\"));\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicPayerPayer = function(patient, initialSpecificContext) {\n  var value = patient.payer() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"Source of Payment Typology\":[\"523\",\"41\",\"512\",\"953\",\"37\",\"212\",\"331\",\"6\",\"84\",\"521\",\"3115\",\"3119\",\"3222\",\"5\",\"312\",\"3116\",\"3113\",\"349\",\"32126\",\"121\",\"39\",\"333\",\"311\",\"3\",\"611\",\"389\",\"3711\",\"21\",\"32122\",\"32125\",\"122\",\"322\",\"73\",\"112\",\"54\",\"332\",\"82\",\"822\",\"3211\",\"3712\",\"62\",\"379\",\"119\",\"3221\",\"511\",\"43\",\"36\",\"123\",\"342\",\"59\",\"3223\",\"98\",\"8\",\"69\",\"3811\",\"35\",\"34\",\"55\",\"52\",\"79\",\"32121\",\"613\",\"519\",\"81\",\"38\",\"3114\",\"821\",\"25\",\"3212\",\"3112\",\"32123\",\"22\",\"213\",\"3229\",\"64\",\"3122\",\"321\",\"3123\",\"24\",\"91\",\"3713\",\"951\",\"529\",\"99\",\"85\",\"94\",\"1\",\"2\",\"83\",\"129\",\"3813\",\"522\",\"61\",\"334\",\"612\",\"29\",\"51\",\"211\",\"514\",\"9\",\"341\",\"3812\",\"31\",\"619\",\"33\",\"4\",\"63\",\"219\",\"92\",\"72\",\"313\",\"113\",\"89\",\"96\",\"362\",\"959\",\"823\",\"3121\",\"95\",\"53\",\"343\",\"515\",\"3819\",\"42\",\"44\",\"93\",\"513\",\"381\",\"371\",\"361\",\"3111\",\"71\",\"32124\",\"23\",\"111\",\"382\",\"9999\",\"369\",\"12\",\"372\",\"954\",\"19\",\"32\",\"7\",\"11\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.PatientCharacteristicRaceRace = function(patient, initialSpecificContext) {\n  var value = patient.race() || null;\n  if (value === null) {\n    matching = new Boolean(false);\n  } else {\n    matching = new Boolean(value.includedIn({\"CDC Race\":[\"2076-8\",\"1002-5\",\"2131-1\",\"2028-9\",\"2054-5\",\"2106-3\"]}));\n  }\n  matching.specificContext=hqmf.SpecificsManager.identity();\n  return matching;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_3 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_4 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_5 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_3(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_4(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_7 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_5(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_7',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveVenousThromboembolism_precondition_9 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.279\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosisActiveObstetricsVte_precondition_10 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProblems\", \"statuses\": [\"active\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.264\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_11 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.DiagnosisActiveVenousThromboembolism_precondition_9(patient, initialSpecificContext),\n    hqmfjs.DiagnosisActiveObstetricsVte_precondition_10(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_13 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_11(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_13',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_15 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"lengthOfStay\", new IVL_PQ(null, new PQ(120, \"d\", true)));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_16 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EDU(events, hqmfjs.MeasurePeriod(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_17 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_15(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_16(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_19 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_17(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_19',events);\n  events.specific_occurrence = 'GROUP_variable_CHILDREN_19';\n\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.InterventionOrderComfortMeasures_precondition_22 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.InterventionPerformedComfortMeasures_precondition_23 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"1.3.6.1.4.1.33895.1.3.0.45\"};\n  var events = patient.getEvents(eventCriteria);\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_24 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.InterventionOrderComfortMeasures_precondition_22(patient, initialSpecificContext),\n    hqmfjs.InterventionPerformedComfortMeasures_precondition_23(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_26 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_24(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_26',events);\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_27 = function(patient, initialSpecificContext) {\n  var value = patient.birthtime() || null;\n  var events = value ? [value] : [];\n  events = SBS(events, hqmfjs.GROUP_variable_CHILDREN_19(patient), new IVL_PQ(new PQ(18, \"a\", true), null));\n  events.specificContext=events.specificContext||hqmf.SpecificsManager.identity();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_13_precondition_28 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_11(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_13',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_26_precondition_29 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_24(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_26',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_33 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.87\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_34 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.308\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_35 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.309\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_36 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.209\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.EncounterPerformedEncounterInpatient_precondition_37 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.666.5.307\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"dischargeDisposition\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.207\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAny_CHILDREN_38 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_33(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_34(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_35(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_36(patient, initialSpecificContext),\n    hqmfjs.EncounterPerformedEncounterInpatient_precondition_37(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_INTERSECT_CHILDREN_39 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.GROUP_variable_CHILDREN_19(patient, initialSpecificContext),\n    hqmfjs.GROUP_satisfiesAny_CHILDREN_38(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredUnfractionatedHeparin_precondition_40 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"encounters\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.292\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = EBCWS(events, hqmfjs.GROUP_variable_CHILDREN_19(patient), new IVL_PQ(null, new PQ(1, \"h\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_13_precondition_42 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_11(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_13',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_44 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.276\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByValue(events, new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.407\")));\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_46 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.276\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_47 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.276\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.GROUP_variable_CHILDREN_19(patient), new IVL_PQ(null, new PQ(4, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_48 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.276\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBS(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient), new IVL_PQ(null, new PQ(4, \"d\", true)));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_49 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.276\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAny_CHILDREN_50 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_46(patient, initialSpecificContext),\n    hqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_47(patient, initialSpecificContext),\n    hqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_48(patient, initialSpecificContext),\n    hqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_49(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_51 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.DiagnosticStudyPerformedVteDiagnosticTest_precondition_44(patient, initialSpecificContext),\n    hqmfjs.GROUP_satisfiesAny_CHILDREN_50(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.MedicationAdministeredUnfractionatedHeparin_precondition_52 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"administered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_variable_CHILDREN_26_precondition_53 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_UNION_CHILDREN_24(patient, initialSpecificContext)\n  );\n  // record the result of the source of the variable to the rationale\n  if(Logger.enable_rationale) Logger.record('GROUP_variable_CHILDREN_26',events);\n\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedurePerformedTreatmentAdjustedByProtocol_precondition_56 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.278\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SACW(events, hqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_56(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedTreatmentAdjustedByProtocol_precondition_58 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.278\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_59 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.ProcedurePerformedTreatmentAdjustedByProtocol_precondition_56(patient, initialSpecificContext),\n    hqmfjs.ProcedurePerformedTreatmentAdjustedByProtocol_precondition_58(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.ProcedurePerformedClinicalPathwayProtocol_precondition_61 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.253\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SACW(events, hqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_61(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.ProcedurePerformedClinicalPathwayProtocol_precondition_63 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allProcedures\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.253\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_64 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.ProcedurePerformedClinicalPathwayProtocol_precondition_61(patient, initialSpecificContext),\n    hqmfjs.ProcedurePerformedClinicalPathwayProtocol_precondition_63(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.GROUP_UNION_CHILDREN_65 = function(patient, initialSpecificContext) {\n  var events = UNION(\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_59(patient, initialSpecificContext),\n    hqmfjs.GROUP_satisfiesAll_CHILDREN_64(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_67 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  events.specificContext=new hqmf.SpecificOccurrence(Row.buildForDataCriteria(events.specific_occurrence, events))\n  return events;\n}\n\nhqmfjs.LaboratoryTestPerformedPlateletCount_precondition_67 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.267\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SAS(events, hqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_67(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.LaboratoryTestPerformedPlateletCount_precondition_69 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"laboratoryTests\", \"statuses\": [\"performed\"], \"includeEventsWithoutStatus\": true, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.267\"};\n  var events = patient.getEvents(eventCriteria);\n  if (events.length > 0 || !Logger.short_circuit) events = SBE(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.GROUP_satisfiesAll_CHILDREN_70 = function(patient, initialSpecificContext) {\n  var events = INTERSECT(\n    hqmfjs.LaboratoryTestPerformedPlateletCount_precondition_67(patient, initialSpecificContext),\n    hqmfjs.LaboratoryTestPerformedPlateletCount_precondition_69(patient, initialSpecificContext)\n  );\n\n  hqmf.SpecificsManager.setIfNull(events);\n  return events;\n}\n\nhqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_71 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.GROUP_variable_CHILDREN_19(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\nhqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_73 = function(patient, initialSpecificContext) {\n  var eventCriteria = {\"type\": \"allMedications\", \"statuses\": [\"ordered\"], \"includeEventsWithoutStatus\": false, \"valueSetId\": \"2.16.840.1.113883.3.117.1.7.1.218\", \"specificOccurrence\": \"OccurrenceAUnfractionatedHeparin1\"};\n  var events = patient.getEvents(eventCriteria);\n  events = filterEventsByField(events, \"route\", new CodeList(getCodes(\"2.16.840.1.113883.3.117.1.7.1.222\")));\n  if (events.length > 0 || !Logger.short_circuit) events = SDU(events, hqmfjs.EncounterPerformedEmergencyDepartmentVisit_precondition_41(patient));\n  if (events.length == 0) events.specificContext=hqmf.SpecificsManager.empty();\n  return events;\n}\n\n\n\n        // #########################\n        // ##### MEASURE LOGIC #####\n        // #########################\n        \n        hqmfjs.initializeSpecifics = function(patient_api, hqmfjs) { hqmf.SpecificsManager.initialize(patient_api,hqmfjs,{\"id\":\"OccurrenceAUnfractionatedHeparin1\",\"type\":\"MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN\",\"function\":\"OccurrenceAUnfractionatedHeparin1\"},{\"id\":\"GROUP_variable_CHILDREN_19\",\"type\":\"OCCURRENCE_A_OF_ENCOUNTERINPATIENT\",\"function\":\"GROUP_variable_CHILDREN_19\"}) }\n\n        // INITIAL PATIENT POPULATION\n        hqmfjs.IPP = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('IPP', patient, initialSpecificContext,\n    allTrue('75', patient, initialSpecificContext, hqmfjs.PatientCharacteristicBirthdateBirthdate_precondition_27,\n      atLeastOneTrue('77', patient, initialSpecificContext, hqmfjs.GROUP_variable_CHILDREN_13_precondition_28, hqmfjs.GROUP_variable_CHILDREN_13_precondition_42\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // STRATIFICATION\n        hqmfjs.STRAT=null;\n        // DENOMINATOR\n        hqmfjs.DENOM = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('DENOM', patient, initialSpecificContext,\n    allTrue('80', patient, initialSpecificContext, hqmfjs.GROUP_satisfiesAll_CHILDREN_51,\n      atLeastOneTrue('82', patient, initialSpecificContext, hqmfjs.MedicationAdministeredUnfractionatedHeparin_precondition_52, hqmfjs.MedicationAdministeredUnfractionatedHeparin_precondition_40\n      )\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        // NUMERATOR\n        hqmfjs.NUMER = function(patient, initialSpecificContext) {\n  population_criteria_fn = allTrue('NUMER', patient, initialSpecificContext,\n    allTrue('89', patient, initialSpecificContext,\n      atLeastOneTrue('90', patient, initialSpecificContext, hqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_71, hqmfjs.OccurrenceAUnfractionatedHeparin1_precondition_73\n      ), hqmfjs.GROUP_UNION_CHILDREN_65, hqmfjs.GROUP_satisfiesAll_CHILDREN_70\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEX = function(patient, initialSpecificContext) {\n  population_criteria_fn = atLeastOneTrue('DENEX', patient, initialSpecificContext,\n    atLeastOneTrue('85', patient, initialSpecificContext, hqmfjs.GROUP_variable_CHILDREN_26_precondition_53, hqmfjs.GROUP_variable_CHILDREN_26_precondition_29, hqmfjs.GROUP_INTERSECT_CHILDREN_39\n    )\n  );\n  if (typeof(population_criteria_fn) == 'function') {\n  \treturn population_criteria_fn();\n  } else {\n  \treturn population_criteria_fn;\n  }\n};\n\n\n        hqmfjs.DENEXCEP = function(patient) { return new Boolean(false); }\n        // CV\n        hqmfjs.MSRPOPL = function(patient) { return new Boolean(true); }\n        hqmfjs.MSRPOPLEX = function(patient) { return new Boolean(false); }\n        hqmfjs.OBSERV = function(patient) { return new Boolean(false); }\n        // VARIABLES\n        hqmfjs.VARIABLES = function(patient, initialSpecificContext) {\nhqmfjs.GROUP_variable_CHILDREN_7(patient, initialSpecificContext);\nhqmfjs.GROUP_variable_CHILDREN_13(patient, initialSpecificContext);\nhqmfjs.GROUP_variable_CHILDREN_26(patient, initialSpecificContext);\nreturn false;\n}\n        \n        \n        var occurrenceId = [\"GROUP_variable_CHILDREN_19\"];\n\n        hqmfjs.initializeSpecifics(patient_api, hqmfjs)\n        \n        var population = function() {\n          return executeIfAvailable(hqmfjs.IPP, patient_api);\n        }\n        var stratification = null;\n        if (hqmfjs.STRAT) {\n          stratification = function() {\n            return hqmf.SpecificsManager.setIfNull(executeIfAvailable(hqmfjs.STRAT, patient_api));\n          }\n        }\n        var denominator = function() {\n          return executeIfAvailable(hqmfjs.DENOM, patient_api);\n        }\n        var numerator = function() {\n          return executeIfAvailable(hqmfjs.NUMER, patient_api);\n        }\n        var exclusion = function() {\n          return executeIfAvailable(hqmfjs.DENEX, patient_api);\n        }\n        var denexcep = function() {\n          return executeIfAvailable(hqmfjs.DENEXCEP, patient_api);\n        }\n        var msrpopl = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPL, patient_api);\n        }\n        var msrpoplex = function() {\n          return executeIfAvailable(hqmfjs.MSRPOPLEX, patient_api);\n        }\n        var observ = function(specific_context) {\n          \n          var observFunc = hqmfjs.OBSERV\n          if (typeof(observFunc)==='function')\n            return observFunc(patient_api, specific_context);\n          else\n            return [];\n        }\n        \n        var variables = function() {\n          if (Logger.enable_rationale) {\n            return executeIfAvailable(hqmfjs.VARIABLES, patient_api);\n          }\n        }\n        \n        var executeIfAvailable = function(optionalFunction, patient_api) {\n          if (typeof(optionalFunction)==='function') {\n            result = optionalFunction(patient_api);\n            \n            return result;\n          } else {\n            return false;\n          }\n        }\n\n        \n        if (typeof Logger != 'undefined') {\n          // clear out logger\n          Logger.logger = [];\n          Logger.rationale={};\n          if (typeof short_circuit == 'undefined') short_circuit = true;\n        \n          // turn on logging if it is enabled\n          if (enable_logging || enable_rationale) {\n            injectLogger(hqmfjs, enable_logging, enable_rationale, short_circuit);\n          } else {\n            Logger.enable_rationale = false;\n            Logger.short_circuit = short_circuit;\n          }\n        }\n\n        try {\n          map(patient, population, denominator, numerator, exclusion, denexcep, msrpopl, msrpoplex, observ, occurrenceId,false,stratification, variables);\n        } catch(err) {\n          print(err.stack);\n          throw err;\n        }\n\n        \n        };\n        ",
+  "continuous_variable": false,
+  "episode_of_care": true,
+  "hqmf_document": {
+    "id": "0374",
+    "hqmf_id": "40280381-4C18-79DF-014C-2D6122A30A44",
+    "hqmf_set_id": "BCCE43DD-08E3-46C3-BFDD-0B1B472690F0",
+    "hqmf_version_number": 4,
+    "title": "Venous Thromboembolism Patients Receiving Unfractionated Heparin with Dosages/Platelet Count Monitoring by Protocol or Nomogram",
+    "description": "This measure assesses the number of patients diagnosed with confirmed VTE who received intravenous (IV) UFH therapy dosages AND had their platelet counts monitored using defined parameters such as a nomogram or protocol.",
+    "cms_id": "CMS109v4",
+    "population_criteria": {
+      "IPP": {
+        "conjunction?": true,
+        "type": "IPP",
+        "title": "Initial Patient Population",
+        "hqmf_id": "6DC0E9D1-3492-4F6F-B807-D57E442A9ABC",
+        "preconditions": [
+          {
+            "id": 75,
+            "preconditions": [
+              {
+                "id": 27,
+                "reference": "PatientCharacteristicBirthdateBirthdate_precondition_27"
+              },
+              {
+                "id": 77,
+                "preconditions": [
+                  {
+                    "id": 28,
+                    "reference": "GROUP_variable_CHILDREN_13_precondition_28"
+                  },
+                  {
+                    "id": 42,
+                    "reference": "GROUP_variable_CHILDREN_13_precondition_42"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENOM": {
+        "conjunction?": true,
+        "type": "DENOM",
+        "title": "Denominator",
+        "hqmf_id": "E35059CA-91F5-41D5-B759-4D38CB7EF655",
+        "preconditions": [
+          {
+            "id": 80,
+            "preconditions": [
+              {
+                "id": 43,
+                "reference": "GROUP_satisfiesAll_CHILDREN_51"
+              },
+              {
+                "id": 82,
+                "preconditions": [
+                  {
+                    "id": 52,
+                    "reference": "MedicationAdministeredUnfractionatedHeparin_precondition_52"
+                  },
+                  {
+                    "id": 40,
+                    "reference": "MedicationAdministeredUnfractionatedHeparin_precondition_40"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      },
+      "DENEX": {
+        "conjunction?": true,
+        "type": "DENEX",
+        "title": "Denominator Exclusion",
+        "hqmf_id": "49FD5C18-793F-4604-A441-A3405EE08D60",
+        "preconditions": [
+          {
+            "id": 85,
+            "preconditions": [
+              {
+                "id": 53,
+                "reference": "GROUP_variable_CHILDREN_26_precondition_53"
+              },
+              {
+                "id": 29,
+                "reference": "GROUP_variable_CHILDREN_26_precondition_29"
+              },
+              {
+                "id": 30,
+                "reference": "GROUP_INTERSECT_CHILDREN_39"
+              }
+            ],
+            "conjunction_code": "atLeastOneTrue"
+          }
+        ]
+      },
+      "NUMER": {
+        "conjunction?": true,
+        "type": "NUMER",
+        "title": "Numerator",
+        "hqmf_id": "1B95635F-783E-40C2-88FC-169E5A9B6F1E",
+        "preconditions": [
+          {
+            "id": 89,
+            "preconditions": [
+              {
+                "id": 90,
+                "preconditions": [
+                  {
+                    "id": 71,
+                    "reference": "OccurrenceAUnfractionatedHeparin1_precondition_71"
+                  },
+                  {
+                    "id": 73,
+                    "reference": "OccurrenceAUnfractionatedHeparin1_precondition_73"
+                  }
+                ],
+                "conjunction_code": "atLeastOneTrue"
+              },
+              {
+                "id": 54,
+                "reference": "GROUP_UNION_CHILDREN_65"
+              },
+              {
+                "id": 66,
+                "reference": "GROUP_satisfiesAll_CHILDREN_70"
+              }
+            ],
+            "conjunction_code": "allTrue"
+          }
+        ]
+      }
+    },
+    "data_criteria": {
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_3": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_4": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_5": {
+        "title": "GROUP_satisfiesAll_CHILDREN_5",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_3",
+          "EncounterPerformedEncounterInpatient_precondition_4"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_5",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_7": {
+        "title": "GROUP_variable_CHILDREN_7",
+        "description": "EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_5"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_7",
+        "variable": true
+      },
+      "DiagnosisActiveVenousThromboembolism_precondition_9": {
+        "title": "Venous Thromboembolism",
+        "description": "Diagnosis, Active: Venous Thromboembolism",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+        "variable": false
+      },
+      "DiagnosisActiveObstetricsVte_precondition_10": {
+        "title": "Obstetrics VTE",
+        "description": "Diagnosis, Active: Obstetrics VTE",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveObstetricsVte",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_11": {
+        "title": "GROUP_UNION_CHILDREN_11",
+        "description": "",
+        "children_criteria": [
+          "DiagnosisActiveVenousThromboembolism_precondition_9",
+          "DiagnosisActiveObstetricsVte_precondition_10"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_11",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_13": {
+        "title": "GROUP_variable_CHILDREN_13",
+        "description": "DiagnosisVTE",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_11"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_13",
+        "variable": true
+      },
+      "EncounterPerformedEncounterInpatient_precondition_15": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "LENGTH_OF_STAY": {
+            "type": "IVL_PQ",
+            "high": {
+              "type": "PQ",
+              "unit": "d",
+              "value": "120",
+              "inclusive?": true,
+              "derived?": false
+            }
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_16": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EDU",
+            "reference": "MeasurePeriod"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_17": {
+        "title": "GROUP_satisfiesAll_CHILDREN_17",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_15",
+          "EncounterPerformedEncounterInpatient_precondition_16"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_17",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_19": {
+        "title": "GROUP_variable_CHILDREN_19",
+        "description": "Occurrence A of $EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_17"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENT",
+        "source_data_criteria": "GROUP_variable_CHILDREN_19",
+        "variable": true
+      },
+      "InterventionOrderComfortMeasures_precondition_22": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "InterventionPerformedComfortMeasures_precondition_23": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_24": {
+        "title": "GROUP_UNION_CHILDREN_24",
+        "description": "",
+        "children_criteria": [
+          "InterventionOrderComfortMeasures_precondition_22",
+          "InterventionPerformedComfortMeasures_precondition_23"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_24",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_26": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true
+      },
+      "PatientCharacteristicBirthdateBirthdate_precondition_27": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        },
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "GROUP_variable_CHILDREN_19",
+            "range": {
+              "type": "IVL_PQ",
+              "low": {
+                "type": "PQ",
+                "unit": "a",
+                "value": "18",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_13_precondition_28": {
+        "title": "GROUP_variable_CHILDREN_13",
+        "description": "DiagnosisVTE",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_11"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_13",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_26_precondition_29": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "EncounterPerformedEncounterInpatient_precondition_33": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.87",
+            "title": "Discharge To Acute Care Facility"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_34": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.308",
+            "title": "Left Against Medical Advice"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_35": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+            "title": "Patient Expired"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_36": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.209",
+            "title": "Discharged to Home for Hospice Care"
+          }
+        }
+      },
+      "EncounterPerformedEncounterInpatient_precondition_37": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false,
+        "field_values": {
+          "DISCHARGE_STATUS": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.207",
+            "title": "Discharged to Health Care Facility for Hospice Care"
+          }
+        }
+      },
+      "GROUP_satisfiesAny_CHILDREN_38": {
+        "title": "GROUP_satisfiesAny_CHILDREN_38",
+        "description": "Encounter Inpatient : Encounter, Performed",
+        "children_criteria": [
+          "EncounterPerformedEncounterInpatient_precondition_33",
+          "EncounterPerformedEncounterInpatient_precondition_34",
+          "EncounterPerformedEncounterInpatient_precondition_35",
+          "EncounterPerformedEncounterInpatient_precondition_36",
+          "EncounterPerformedEncounterInpatient_precondition_37"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "satisfies_any",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAny_CHILDREN_38",
+        "variable": false
+      },
+      "GROUP_INTERSECT_CHILDREN_39": {
+        "title": "GROUP_INTERSECT_CHILDREN_39",
+        "description": "",
+        "children_criteria": [
+          "GROUP_variable_CHILDREN_19",
+          "GROUP_satisfiesAny_CHILDREN_38"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_INTERSECT_CHILDREN_39",
+        "variable": false
+      },
+      "MedicationAdministeredUnfractionatedHeparin_precondition_40": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Administered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "EncounterPerformedEmergencyDepartmentVisit_precondition_41": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "EBCWS",
+            "reference": "GROUP_variable_CHILDREN_19",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "h",
+                "value": "1",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_13_precondition_42": {
+        "title": "GROUP_variable_CHILDREN_13",
+        "description": "DiagnosisVTE",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_11"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_13",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41"
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest_precondition_44": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "code_list_id": "2.16.840.1.113883.3.117.1.7.1.407",
+          "title": "VTE Confirmed"
+        }
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest_precondition_46": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest_precondition_47": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "GROUP_variable_CHILDREN_19",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "4",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest_precondition_48": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBS",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41",
+            "range": {
+              "type": "IVL_PQ",
+              "high": {
+                "type": "PQ",
+                "unit": "d",
+                "value": "4",
+                "inclusive?": true,
+                "derived?": false
+              }
+            }
+          }
+        ]
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest_precondition_49": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41"
+          }
+        ]
+      },
+      "GROUP_satisfiesAny_CHILDREN_50": {
+        "title": "GROUP_satisfiesAny_CHILDREN_50",
+        "description": "Starts During",
+        "children_criteria": [
+          "DiagnosticStudyPerformedVteDiagnosticTest_precondition_46",
+          "DiagnosticStudyPerformedVteDiagnosticTest_precondition_47",
+          "DiagnosticStudyPerformedVteDiagnosticTest_precondition_48",
+          "DiagnosticStudyPerformedVteDiagnosticTest_precondition_49"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "satisfies_any",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAny_CHILDREN_50",
+        "variable": false
+      },
+      "GROUP_satisfiesAll_CHILDREN_51": {
+        "title": "GROUP_satisfiesAll_CHILDREN_51",
+        "description": "VTE Diagnostic Test : Diagnostic Study, Performed",
+        "children_criteria": [
+          "DiagnosticStudyPerformedVteDiagnosticTest_precondition_44",
+          "GROUP_satisfiesAny_CHILDREN_50"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_51",
+        "variable": false
+      },
+      "MedicationAdministeredUnfractionatedHeparin_precondition_52": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Administered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41"
+          }
+        ]
+      },
+      "GROUP_variable_CHILDREN_26_precondition_53": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true,
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41"
+          }
+        ]
+      },
+      "OccurrenceAUnfractionatedHeparin1_precondition_56": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        }
+      },
+      "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_56": {
+        "title": "Treatment Adjusted by Protocol",
+        "description": "Procedure, Performed: Treatment Adjusted by Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.278",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedTreatmentAdjustedByProtocol",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SACW",
+            "reference": "OccurrenceAUnfractionatedHeparin1_precondition_56"
+          }
+        ]
+      },
+      "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_58": {
+        "title": "Treatment Adjusted by Protocol",
+        "description": "Procedure, Performed: Treatment Adjusted by Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.278",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedTreatmentAdjustedByProtocol",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_59": {
+        "title": "GROUP_satisfiesAll_CHILDREN_59",
+        "description": "Starts After Or Concurrent With Start Of",
+        "children_criteria": [
+          "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_56",
+          "ProcedurePerformedTreatmentAdjustedByProtocol_precondition_58"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_59",
+        "variable": false
+      },
+      "OccurrenceAUnfractionatedHeparin1_precondition_61": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        }
+      },
+      "ProcedurePerformedClinicalPathwayProtocol_precondition_61": {
+        "title": "Clinical Pathway Protocol",
+        "description": "Procedure, Performed: Clinical Pathway Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.253",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedClinicalPathwayProtocol",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SACW",
+            "reference": "OccurrenceAUnfractionatedHeparin1_precondition_61"
+          }
+        ]
+      },
+      "ProcedurePerformedClinicalPathwayProtocol_precondition_63": {
+        "title": "Clinical Pathway Protocol",
+        "description": "Procedure, Performed: Clinical Pathway Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.253",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedClinicalPathwayProtocol",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_64": {
+        "title": "GROUP_satisfiesAll_CHILDREN_64",
+        "description": "Starts After Or Concurrent With Start Of",
+        "children_criteria": [
+          "ProcedurePerformedClinicalPathwayProtocol_precondition_61",
+          "ProcedurePerformedClinicalPathwayProtocol_precondition_63"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_64",
+        "variable": false
+      },
+      "GROUP_UNION_CHILDREN_65": {
+        "title": "GROUP_UNION_CHILDREN_65",
+        "description": "",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_59",
+          "GROUP_satisfiesAll_CHILDREN_64"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_UNION_CHILDREN_65",
+        "variable": false
+      },
+      "OccurrenceAUnfractionatedHeparin1_precondition_67": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        }
+      },
+      "LaboratoryTestPerformedPlateletCount_precondition_67": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Performed: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestPerformedPlateletCount",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SAS",
+            "reference": "OccurrenceAUnfractionatedHeparin1_precondition_67"
+          }
+        ]
+      },
+      "LaboratoryTestPerformedPlateletCount_precondition_69": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Performed: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestPerformedPlateletCount",
+        "variable": false,
+        "temporal_references": [
+          {
+            "type": "SBE",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "GROUP_satisfiesAll_CHILDREN_70": {
+        "title": "GROUP_satisfiesAll_CHILDREN_70",
+        "description": "Starts After Start Of",
+        "children_criteria": [
+          "LaboratoryTestPerformedPlateletCount_precondition_67",
+          "LaboratoryTestPerformedPlateletCount_precondition_69"
+        ],
+        "derivation_operator": "INTERSECT",
+        "type": "derived",
+        "definition": "satisfies_all",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_satisfiesAll_CHILDREN_70",
+        "variable": false
+      },
+      "OccurrenceAUnfractionatedHeparin1_precondition_71": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "GROUP_variable_CHILDREN_19"
+          }
+        ]
+      },
+      "OccurrenceAUnfractionatedHeparin1_precondition_73": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false,
+        "field_values": {
+          "ROUTE": {
+            "type": "CD",
+            "code_list_id": "2.16.840.1.113883.3.117.1.7.1.222",
+            "title": "Intravenous route"
+          }
+        },
+        "temporal_references": [
+          {
+            "type": "SDU",
+            "reference": "EncounterPerformedEmergencyDepartmentVisit_precondition_41"
+          }
+        ]
+      }
+    },
+    "source_data_criteria": {
+      "PatientCharacteristicBirthdateBirthdate": {
+        "title": "Birthdate",
+        "description": "Patient Characteristic Birthdate: Birthdate",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.70",
+        "property": "birthtime",
+        "type": "characteristic",
+        "definition": "patient_characteristic_birthdate",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicBirthdateBirthdate",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "3950001"
+          ]
+        }
+      },
+      "ProcedurePerformedClinicalPathwayProtocol": {
+        "title": "Clinical Pathway Protocol",
+        "description": "Procedure, Performed: Clinical Pathway Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.253",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedClinicalPathwayProtocol",
+        "variable": false
+      },
+      "InterventionOrderComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Order: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "InterventionOrderComfortMeasures",
+        "variable": false
+      },
+      "InterventionPerformedComfortMeasures": {
+        "title": "Comfort Measures ",
+        "description": "Intervention, Performed: Comfort Measures ",
+        "code_list_id": "1.3.6.1.4.1.33895.1.3.0.45",
+        "type": "interventions",
+        "definition": "intervention",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "InterventionPerformedComfortMeasures",
+        "variable": false
+      },
+      "EncounterPerformedEmergencyDepartmentVisit": {
+        "title": "Emergency Department Visit",
+        "description": "Encounter, Performed: Emergency Department Visit",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.292",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEmergencyDepartmentVisit",
+        "variable": false
+      },
+      "EncounterPerformedEncounterInpatient": {
+        "title": "Encounter Inpatient",
+        "description": "Encounter, Performed: Encounter Inpatient",
+        "code_list_id": "2.16.840.1.113883.3.666.5.307",
+        "type": "encounters",
+        "definition": "encounter",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "EncounterPerformedEncounterInpatient",
+        "variable": false
+      },
+      "PatientCharacteristicEthnicityEthnicity": {
+        "title": "Ethnicity",
+        "description": "Patient Characteristic Ethnicity: Ethnicity",
+        "code_list_id": "2.16.840.1.114222.4.11.837",
+        "property": "ethnicity",
+        "type": "characteristic",
+        "definition": "patient_characteristic_ethnicity",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicEthnicityEthnicity",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2135-2",
+            "2186-5"
+          ]
+        }
+      },
+      "PatientCharacteristicExpiredExpired": {
+        "title": "Expired",
+        "description": "Patient Characteristic Expired: Expired",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.309",
+        "property": "expired",
+        "type": "characteristic",
+        "definition": "patient_characteristic_expired",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicExpiredExpired",
+        "variable": false,
+        "inline_code_list": {
+          "SNOMED-CT": [
+            "371828006"
+          ]
+        }
+      },
+      "DiagnosisActiveObstetricsVte": {
+        "title": "Obstetrics VTE",
+        "description": "Diagnosis, Active: Obstetrics VTE",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.264",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveObstetricsVte",
+        "variable": false
+      },
+      "PatientCharacteristicSexOncAdministrativeSex": {
+        "title": "ONC Administrative Sex",
+        "description": "Patient Characteristic Sex: ONC Administrative Sex",
+        "code_list_id": "2.16.840.1.113762.1.4.1",
+        "property": "gender",
+        "type": "characteristic",
+        "definition": "patient_characteristic_gender",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicSexOncAdministrativeSex",
+        "variable": false,
+        "value": {
+          "type": "CD",
+          "system": "Administrative Sex",
+          "code": "M"
+        }
+      },
+      "PatientCharacteristicPayerPayer": {
+        "title": "Payer",
+        "description": "Patient Characteristic Payer: Payer",
+        "code_list_id": "2.16.840.1.114222.4.11.3591",
+        "property": "payer",
+        "type": "characteristic",
+        "definition": "patient_characteristic_payer",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicPayerPayer",
+        "variable": false,
+        "inline_code_list": {
+          "Source of Payment Typology": [
+            "523",
+            "41",
+            "512",
+            "953",
+            "37",
+            "212",
+            "331",
+            "6",
+            "84",
+            "521",
+            "3115",
+            "3119",
+            "3222",
+            "5",
+            "312",
+            "3116",
+            "3113",
+            "349",
+            "32126",
+            "121",
+            "39",
+            "333",
+            "311",
+            "3",
+            "611",
+            "389",
+            "3711",
+            "21",
+            "32122",
+            "32125",
+            "122",
+            "322",
+            "73",
+            "112",
+            "54",
+            "332",
+            "82",
+            "822",
+            "3211",
+            "3712",
+            "62",
+            "379",
+            "119",
+            "3221",
+            "511",
+            "43",
+            "36",
+            "123",
+            "342",
+            "59",
+            "3223",
+            "98",
+            "8",
+            "69",
+            "3811",
+            "35",
+            "34",
+            "55",
+            "52",
+            "79",
+            "32121",
+            "613",
+            "519",
+            "81",
+            "38",
+            "3114",
+            "821",
+            "25",
+            "3212",
+            "3112",
+            "32123",
+            "22",
+            "213",
+            "3229",
+            "64",
+            "3122",
+            "321",
+            "3123",
+            "24",
+            "91",
+            "3713",
+            "951",
+            "529",
+            "99",
+            "85",
+            "94",
+            "1",
+            "2",
+            "83",
+            "129",
+            "3813",
+            "522",
+            "61",
+            "334",
+            "612",
+            "29",
+            "51",
+            "211",
+            "514",
+            "9",
+            "341",
+            "3812",
+            "31",
+            "619",
+            "33",
+            "4",
+            "63",
+            "219",
+            "92",
+            "72",
+            "313",
+            "113",
+            "89",
+            "96",
+            "362",
+            "959",
+            "823",
+            "3121",
+            "95",
+            "53",
+            "343",
+            "515",
+            "3819",
+            "42",
+            "44",
+            "93",
+            "513",
+            "381",
+            "371",
+            "361",
+            "3111",
+            "71",
+            "32124",
+            "23",
+            "111",
+            "382",
+            "9999",
+            "369",
+            "12",
+            "372",
+            "954",
+            "19",
+            "32",
+            "7",
+            "11"
+          ]
+        }
+      },
+      "LaboratoryTestPerformedPlateletCount": {
+        "title": "Platelet Count",
+        "description": "Laboratory Test, Performed: Platelet Count",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.267",
+        "type": "laboratory_tests",
+        "definition": "laboratory_test",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "LaboratoryTestPerformedPlateletCount",
+        "variable": false
+      },
+      "PatientCharacteristicRaceRace": {
+        "title": "Race",
+        "description": "Patient Characteristic Race: Race",
+        "code_list_id": "2.16.840.1.114222.4.11.836",
+        "property": "race",
+        "type": "characteristic",
+        "definition": "patient_characteristic_race",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "PatientCharacteristicRaceRace",
+        "variable": false,
+        "inline_code_list": {
+          "CDC Race": [
+            "2076-8",
+            "1002-5",
+            "2131-1",
+            "2028-9",
+            "2054-5",
+            "2106-3"
+          ]
+        }
+      },
+      "ProcedurePerformedTreatmentAdjustedByProtocol": {
+        "title": "Treatment Adjusted by Protocol",
+        "description": "Procedure, Performed: Treatment Adjusted by Protocol",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.278",
+        "type": "procedures",
+        "definition": "procedure",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "ProcedurePerformedTreatmentAdjustedByProtocol",
+        "variable": false
+      },
+      "MedicationAdministeredUnfractionatedHeparin": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Administered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "administered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationAdministeredUnfractionatedHeparin",
+        "variable": false
+      },
+      "OccurrenceAUnfractionatedHeparin1": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Ordered: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "MEDICATION_ORDERED_UNFRACTIONATED_HEPARIN",
+        "source_data_criteria": "OccurrenceAUnfractionatedHeparin1",
+        "variable": false
+      },
+      "DiagnosisActiveVenousThromboembolism": {
+        "title": "Venous Thromboembolism",
+        "description": "Diagnosis, Active: Venous Thromboembolism",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.279",
+        "type": "conditions",
+        "definition": "diagnosis",
+        "status": "active",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosisActiveVenousThromboembolism",
+        "variable": false
+      },
+      "DiagnosticStudyPerformedVteDiagnosticTest": {
+        "title": "VTE Diagnostic Test",
+        "description": "Diagnostic Study, Performed: VTE Diagnostic Test",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.276",
+        "type": "diagnostic_studies",
+        "definition": "diagnostic_study",
+        "status": "performed",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "DiagnosticStudyPerformedVteDiagnosticTest",
+        "variable": false
+      },
+      "MedicationOrderUnfractionatedHeparin": {
+        "title": "Unfractionated Heparin",
+        "description": "Medication, Order: Unfractionated Heparin",
+        "code_list_id": "2.16.840.1.113883.3.117.1.7.1.218",
+        "type": "medications",
+        "definition": "medication",
+        "status": "ordered",
+        "hard_status": true,
+        "negation": false,
+        "source_data_criteria": "MedicationOrderUnfractionatedHeparin",
+        "variable": false
+      },
+      "GROUP_variable_CHILDREN_7": {
+        "title": "GROUP_variable_CHILDREN_7",
+        "description": "EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_5"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_7",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_13": {
+        "title": "GROUP_variable_CHILDREN_13",
+        "description": "DiagnosisVTE",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_11"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_13",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_19": {
+        "title": "GROUP_variable_CHILDREN_19",
+        "description": "Occurrence A of $EncounterInpatient",
+        "children_criteria": [
+          "GROUP_satisfiesAll_CHILDREN_17"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "specific_occurrence": "A",
+        "specific_occurrence_const": "OCCURRENCE_A_OF_ENCOUNTERINPATIENT",
+        "source_data_criteria": "GROUP_variable_CHILDREN_19",
+        "variable": true
+      },
+      "GROUP_variable_CHILDREN_26": {
+        "title": "GROUP_variable_CHILDREN_26",
+        "description": "InterventionComfortMeasures",
+        "children_criteria": [
+          "GROUP_UNION_CHILDREN_24"
+        ],
+        "derivation_operator": "UNION",
+        "type": "derived",
+        "definition": "derived",
+        "hard_status": false,
+        "negation": false,
+        "source_data_criteria": "GROUP_variable_CHILDREN_26",
+        "variable": true
+      }
+    },
+    "attributes": [
+      {
+        "id": "NQF_ID_NUMBER",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "NQF ID Number"
+      },
+      {
+        "id": "COPYRIGHT",
+        "code": "COPY",
+        "value": "Measure specifications are in the Public Domain.\r\n\r\nLOINC(R) is a registered trademark of the Regenstrief Institute.\r\n\r\nThis material contains SNOMED Clinical Terms(R) (SNOMED CT(C)) copyright 2004-2014 International Health Terminology Standards Development Organization. All rights reserved.",
+        "name": "Copyright"
+      },
+      {
+        "id": "DISCLAIMER",
+        "code": "DISC",
+        "value": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.",
+        "name": "Disclaimer"
+      },
+      {
+        "id": "MEASURE_SCORING",
+        "code": "MSRSCORE",
+        "value": "Proportion",
+        "name": "Measure Scoring"
+      },
+      {
+        "id": "MEASURE_TYPE",
+        "code": "MSRTYPE",
+        "value": "Process",
+        "name": "Measure Type"
+      },
+      {
+        "id": "STRATIFICATION",
+        "code": "STRAT",
+        "value": "None",
+        "name": "Stratification"
+      },
+      {
+        "id": "RISK_ADJUSTMENT",
+        "code": "MSRADJ",
+        "value": "None",
+        "name": "Risk Adjustment"
+      },
+      {
+        "id": "RATE_AGGREGATION",
+        "code": "MSRAGG",
+        "value": "None",
+        "name": "Rate Aggregation"
+      },
+      {
+        "id": "RATIONALE",
+        "code": "RAT",
+        "value": "Heparin is commonly involved in adverse drug events (Geerts et al., 2008). Sub-therapeutic and supratherapeutic levels can lead to thromboembolic or bleeding complications that may increase the patient's length of stay. The use of weight-based nomograms has increased the likelihood that a therapeutic partial prothromboplastin time (aPTT) will be achieved within the first 24 to 48 hours of therapy. The risk of recurrent thromboembolism is reduced when a therapeutic level of heparin is reached quickly. Unfractionated heparin (UFH) management by weight-based aPTT adjusted protocols have demonstrated their ability through clinical trials to achieve a therapeutic aPTT more rapidly than with standard UFH dosing without increasing major bleeding (Rashke et al., 1993).\r\n\r\nHeparin nomograms are superior compared to routine care in the timely achievement of therapeutic anticoagulation despite the trend toward patients having aPTTs above the target range (http://archive.ahrq.gov/clinic/ptsafety/chap9.htm, retrieved March 13, 2015). Heparin-induced thrombocytopenia (HIT) occurs more commonly in patients who receive UFH than in those who receive low molecular weight heparin (Martel et al., 2005). HIT is defined as an unexplained fall in platelet count (specifically, a 50% fall in platelet count from baseline, even if the platelet count remains above 150 x 109/L) (Warkentin et al., 2003). Platelet counts generally begin to fall 5-10 days after the initiation of heparin therapy. Prompt recognition of HIT is important so that heparin can be discontinued and the risk of venous and arterial thrombosis minimized. To detect HIT, platelet count monitoring is recommended for all patients treated with UFH (Warkentin et al., 2003).",
+        "name": "Rationale"
+      },
+      {
+        "id": "CLINICAL_RECOMMENDATION_STATEMENT",
+        "code": "CRS",
+        "value": "Heparin-induced thrombocytopenia (HIT) may occur in patients who receive unfractionated heparin (UHF) for treatment of thromboembolism. Prompt recognition of HIT by evaluation of platelet counts can allow for detection of HIT, and the subsequent discontinuation of UFH.  Management of UFH by nomogram/protocol is recommended to decrease the time outside of the therapeutic range.",
+        "name": "Clinical Recommendation Statement"
+      },
+      {
+        "id": "IMPROVEMENT_NOTATION",
+        "code": "IDUR",
+        "value": "Improvement noted as an increase in rate",
+        "name": "Improvement Notation"
+      },
+      {
+        "id": "REFERENCE",
+        "code": "REF",
+        "value": "Gandi TK, Shojania KG, Bates DW. Chapter 9. Protocols for High-Risk Drugs: Reducing Adverse Drugs Events Related to Anticoagulants. Retrieved from the World Wide Web at http://archive.ahrq.gov/clinic/ptsafety/chap9.htm accessed on March 13, 2015.Geerts WH, Bergquist D., Pineo,GF., Heit, J.A., Samama, CM., Lassen, MR., Colwell, CW. Prevention of venous thromboembolism: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). CHEST. 2008:133; 381-453.Guyatt, G.H., Akl, E.A., Crowther, M., Gutterman, D., Schunemann, H. Antithromboitic Therapy and Prevention of Thrombosis, 9th edition: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines. CHEST 2012; 141(2) (Supp):7S-47S.Kearon C, Akl EA, Comerota AJ, Prandoni P, Bounameaux H, Goldhaber SZ, Nelson ME, Wells PS, Gould MK, Dentali F, Crowther M, Kahn SR. Antithrombotic therapy for VTE disease: antithrombotic therapy and prevention of thrombosis, 9th ed: American College of Chest Physicians evidence-based clinical practice guidelines. Chest. 2012 Feb;141(2 Suppl):e419S-94S.Martel, N., Lee, J., and Wells, P.S. Risk for heparin induced thrombocytopenia with unfractionated and low-molecular-weight heparin thromboprophylaxis: a meta-analysis. Blood 2005 June; 106:2710-2715.Raschke RA, Reilly BM, Guidry JR et al. The weight-based heparin dosing nomogram compared with 'standard care' nomogram. Ann Intern Med. 1993 Nov 1; 119(9):874-81.Warkentin TE, Roberts RS, Hirsh J, et al. An improved definition of immune heparin-induced thrombocytopenia in postoperative orthopedic patients. Arch Intern Med 2003; 163:2518-24.",
+        "name": "Reference"
+      },
+      {
+        "id": "DEFINITION",
+        "code": "DEF",
+        "value": "None",
+        "name": "Definition"
+      },
+      {
+        "id": "GUIDANCE",
+        "code": "GUIDE",
+        "value": "CMS recognizes the difficulty in capturing the VTE confirmed concept required in this measure and suggests eligible hospitals participating in the Medicare & Medicaid EHR Incentive Programs consider selecting alternative electronic clinical quality measures (eCQMs) to meet program requirements for meaningful use. If suitable alternatives are unavailable, CMS will accept a 0 denominator submission for the eCQM version only for this measure. \r\n\r\nThe unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.\r\n\r\nTreatment adjustment by protocol and/or use of a clinical pathway must be specific to unfractionated heparin therapy. Heparin protocols and clinical pathways may include use of a nomogram.\r\n\r\nThe construct of Unfractionated Heparin (route: 'Intravenous route') intends to capture continually infused heparin rather than heparin flushes or pushes.",
+        "name": "Guidance"
+      },
+      {
+        "id": "TRANSMISSION_FORMAT",
+        "code": "OTH",
+        "value": "TBD",
+        "name": "Transmission Format"
+      },
+      {
+        "id": "DENOMINATOR",
+        "code": "DENOM",
+        "value": "Patients with VTE confirmed through a diagnostic test and receiving IV UFH therapy",
+        "name": "Denominator"
+      },
+      {
+        "id": "DENOMINATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "Patients with comfort measures documented\r\nPatients discharged to an acute care facility \r\nPatients who left against medical advice\r\nPatients who expired\r\nPatients discharged to home for hospice care\r\nPatients discharged to a health care facility for hospice care",
+        "name": "Denominator Exclusions"
+      },
+      {
+        "id": "NUMERATOR",
+        "code": "NUMER",
+        "value": "Patients who have their IV UFH therapy dosages and platelet counts monitored according to defined parameters such as a nomogram or protocol.",
+        "name": "Numerator"
+      },
+      {
+        "id": "NUMERATOR_EXCLUSIONS",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Numerator Exclusions"
+      },
+      {
+        "id": "DENOMINATOR_EXCEPTIONS",
+        "code": "DENEXCEP",
+        "value": "None",
+        "name": "Denominator Exceptions"
+      },
+      {
+        "id": "MEASURE_POPULATION",
+        "code": "MSRPOPL",
+        "value": "Not Applicable",
+        "name": "Measure Population"
+      },
+      {
+        "id": "MEASURE_OBSERVATIONS",
+        "code": "OTH",
+        "value": "Not Applicable",
+        "name": "Measure Observations"
+      },
+      {
+        "id": "SUPPLEMENTAL_DATA_ELEMENTS",
+        "code": "OTH",
+        "value": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex.",
+        "name": "Supplemental Data Elements"
+      }
+    ],
+    "populations": [
+      {
+        "IPP": "IPP",
+        "DENOM": "DENOM",
+        "DENEX": "DENEX",
+        "NUMER": "NUMER"
+      }
+    ],
+    "measure_period": {
+      "type": "IVL_TS",
+      "low": {
+        "type": "TS",
+        "value": "201201010000",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "high": {
+        "type": "TS",
+        "value": "201212312359",
+        "inclusive?": true,
+        "derived?": false
+      },
+      "width": {
+        "type": "PQ",
+        "unit": "a",
+        "value": "1",
+        "inclusive?": true,
+        "derived?": false
+      }
+    }
+  },
+  "oids": [
+    "2.16.840.1.113883.3.117.1.7.1.308",
+    "2.16.840.1.113883.3.117.1.7.1.207",
+    "2.16.840.1.113883.3.117.1.7.1.278",
+    "2.16.840.1.113883.3.117.1.7.1.253",
+    "2.16.840.1.113883.3.117.1.7.1.267",
+    "2.16.840.1.113883.3.117.1.7.1.209",
+    "2.16.840.1.113883.3.117.1.7.1.276",
+    "2.16.840.1.113883.3.117.1.7.1.407",
+    "2.16.840.1.113883.3.117.1.7.1.279",
+    "2.16.840.1.113883.3.117.1.7.1.264",
+    "2.16.840.1.113883.3.117.1.7.1.218",
+    "2.16.840.1.113883.3.117.1.7.1.222",
+    "2.16.840.1.113883.3.117.1.7.1.87",
+    "2.16.840.1.113883.3.117.1.7.1.309",
+    "2.16.840.1.113762.1.4.1",
+    "2.16.840.1.114222.4.11.836",
+    "2.16.840.1.114222.4.11.837",
+    "2.16.840.1.114222.4.11.3591",
+    "2.16.840.1.113883.3.666.5.307",
+    "2.16.840.1.113883.3.117.1.7.1.70",
+    "2.16.840.1.113883.3.117.1.7.1.292",
+    "1.3.6.1.4.1.33895.1.3.0.45"
+  ],
+  "population_ids": {
+    "IPP": "6DC0E9D1-3492-4F6F-B807-D57E442A9ABC",
+    "DENOM": "E35059CA-91F5-41D5-B759-4D38CB7EF655",
+    "DENEX": "49FD5C18-793F-4604-A441-A3405EE08D60",
+    "NUMER": "1B95635F-783E-40C2-88FC-169E5A9B6F1E"
+  }
+}

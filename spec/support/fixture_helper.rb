@@ -85,7 +85,8 @@ module FixtureHelper
       elsif v.is_a? Array
         json[k] = map_array(v)
       elsif k == 'create_at' || k == 'updated_at'
-        json[k] = Time.at.local(v).in_time_zone
+        t = DateTime.parse(json[k])
+        json[k] = Time.local(t.year, t.month, t.day, t.hour, t.min, t.sec, t.zone).in_time_zone
       end
     end
     json

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'validations/:id/add_tag', to: 'validations#add_tag'
   post 'validations/:id/remove_tag', to: 'validations#remove_tag'
 
+  get 'measures', to: 'measures#show'
   get 'measures', to: 'measures#index'
   post 'measures/:id/add_tag', to: 'measures#add_tag'
   post 'measures/:id/remove_tag', to: 'measures#remove_tag'
