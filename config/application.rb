@@ -37,7 +37,7 @@ module Cedar
                         routing_specs: true,
                         controller_specs: true,
                         request_specs: true
-      #g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     config.autoload_paths += Dir["#{config.root}/lib/"]

@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     namespace :v1, defaults: { format: 'json' } do
       devise_for :users, controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/registrations' }
       devise_scope :users do
-        get 'login' => "users/sessions#new"
+        get 'login' => 'users/sessions#new'
       end
-      resources :validations
+      resources :validations #, only: [:index, :show], defaults: { format: 'json' }
       resources :measures, only: [:index, :show]
       resources :test_executions, only: [:index, :create, :show, :update, :destroy] do
         resources :documents, only: [:index, :show, :update] do

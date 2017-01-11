@@ -10,8 +10,8 @@ FactoryGirl.define do
   end
   factory :te1, class: TestExecution do
     User.create
+    # create(:user)
     association :user, factory: :user
-    # association :document, factory: :document
     name 'first test'
     reporting_period '2015'
     qrda_type '3'
@@ -25,8 +25,6 @@ FactoryGirl.define do
     trait :with_documents do
       create_docs true
       factory :document1, class: Document do
-        # association :te1
-        # test_execution = create(:te2)
         expected_result 'reject'
         state 'failed'
         qrda { IO.read('test/fixtures/qrda/cat_1/good.xml') }
@@ -37,7 +35,6 @@ FactoryGirl.define do
       end
       after(:create) do |te1, evaluator|
         create_list(:document1, evaluator.doc_count, test_execution: te1)
-        # te.documents << build(:document1, test_execution: te)
       end
     end
   end
@@ -50,7 +47,6 @@ FactoryGirl.define do
     measures { [Measure.where(cms_id: 'CMS126v1')] }
     validations { [Validation.where(code: 'discharge_after_upload')] }
   end
-
   # factory :te_with_documents, class: TestExecution do
   #   User.create
   #   # association :user
@@ -70,5 +66,4 @@ FactoryGirl.define do
   #   #   create(:document1, test_execution: te_with_documents)
   #   # end
   # end
-
 end

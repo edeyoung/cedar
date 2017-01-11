@@ -2,9 +2,11 @@ require 'rails_helper'
 require 'fileutils'
 require 'nokogiri'
 require 'rspec/expectations'
+
 # Unit test cases for all of the Cedar invalidators
 RSpec.describe 'API Integration Tests: ', type: 'request' do
   include RSpec::Matchers
+  include ActiveJob::TestHelper
   # include Devise::Test::ControllerHelpers
   # include FactoryGirl::Syntax::Methods
   include Warden::Test::Helpers
@@ -32,7 +34,7 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     # user = FactoryGirl.create(:user)
     # user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the "confirmable" module
     # sign_in user
-    # byebug
+
 
     # @request.headers['Accept'] = 'application/vnd.api+json'
     # @request.headers['Content-Type'] = 'application/vnd.api+json'
@@ -49,21 +51,23 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     expect(response.body).to include('email')
     expect(response.content_type).to eq('application/json')
     expect(response).to have_http_status(:success)
-    # perform_enqueued_jobs do
-    post '/api/v1/test_executions',
-      data: {
-        type: 'test_executions',
-        attributes: {
-          name: 'first test',
-          description: '',
-          reporting_period: '2016',
-          qrda_type: '1',
-          # measures: { include: ['40280381-4B9A-3825-014B-C2730E6F088c'] },
-          validations: { include: ['discharge_after_upload'] },
-          # validations: [Validation.where(code: 'duplicate_population_ids')],
-          measures: { include: ['40280381-4DE7-DB4D-014D-E8631EB001AF'] }
+    expect(enqueued_jobs.size).to eq 0
+    perform_enqueued_jobs do
+      post '/api/v1/test_executions',
+        data: {
+          type: 'test_executions',
+          attributes: {
+            name: 'create test_execution',
+            description: '',
+            reporting_period: '2016',
+            qrda_type: '1',
+            measures: { include: ['40280381-446B-B8C2-0144-9EDB61C22CB1', '40280381-43DB-D64C-0144-64CB12982D97'] },
+            # measures: { include: ['40280381-4B9A-3825-014B-C2730E6F088c'] },
+            validations: { include: %w(discharge_before_admission incorrect_code_system) },
+          }
         }
-      }
+    end
+    expect(enqueued_jobs.size).to eq 1
     expect(response).to have_http_status(:success)
     data_json = JSON.parse(response.body)
     link = data_json['data']['links']['self']
@@ -74,10 +78,8 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     # expect(data_json['data']['attributes']['file_path']).not_to be_empty
     # TODO This test does way too many things. Separate the following out into
     # new test
-    # byebug
     # get "#{link}/documents", headers: @header
     # expect(response).to have_http_status(:success)
-    # byebug
     # docnum = json(response)['data'].length
     #
     # # Bulk report results
@@ -91,12 +93,10 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
 
   it 'get documents' do
     te = TestExecution.all.user(@user).first
-    # byebug
     get "/api/v1/test_executions/#{te.id}/documents", headers: @header
     expect(response).to have_http_status(:success)
     te = TestExecution.all.user(@user).first
     # test_executions = create_list(:te1, 5)
-    # byebug
     get "/api/v1/test_executions/#{te.id}/documents", headers: @header
     expect(response).to have_http_status(:success)
   end
@@ -106,7 +106,6 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     # te = create(:te_with_10_docs)
     te = create(:te1)
     # te = create(:te1, :with_documents, doc_count: 10)
-    # byebug
     get "/api/v1/test_executions/#{te.id}/documents/1", headers: @header
     expect(response).to have_http_status(:success)
     assert_equal json(response)['test_index'], 1

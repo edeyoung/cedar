@@ -1,17 +1,15 @@
 require 'rails_helper'
 require 'fileutils'
 require 'nokogiri'
-# require 'rspec/expectations'
 
-RSpec.describe 'Documents "code Tests: ', type: 'controller' do
+RSpec.describe API::V1::DocumentsController, type: 'controller' do
   include RSpec::Matchers
-  include Devise::Test::ControllerHelpers
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
     @request.headers['Accept'] = 'application/vnd.api+json'
     @request.headers['Content-Type'] = 'application/vnd.api+json'
-    @te = create(:te_with_documents)
+    @te = create(:te1, :with_documents)
     sign_in @te.user
   end
 

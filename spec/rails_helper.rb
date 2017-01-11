@@ -9,7 +9,7 @@ require 'simplecov'
 # May need to move this above require File... not sure yet.
 SimpleCov.start :rails
 require 'support/fixture_helper'
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -28,7 +28,6 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 #      But it will need some updating (i.e. copy over config from spec_helpter.rb).
 RSpec.configure do |config|
   # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-  config.include Devise::TestHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
   config.include FixtureHelper

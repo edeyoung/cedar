@@ -14,7 +14,6 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     get :index
     expect(response).to have_http_status(:success)
     executions = JSON.parse(response.body)
-    # byebug
     # executions = json(response)['data']
     assert executions.any?
   end
@@ -25,7 +24,6 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
     get '/api/v1/test_executions', { id: @te.id }, headers: @header
     expect(response).to have_http_status(:success)
     result = JSON.parse(response.body)
-    byebug
     assert_equal @te.name, result['data']['attributes']['name']
   end
 
@@ -79,9 +77,7 @@ RSpec.describe 'API Integration Tests: ', type: 'request' do
              validations: { all: true }
            }
          }
-byebug
     expect(response).to have_http_status(:success)
-
   end
 
   it 'create invalid test' do

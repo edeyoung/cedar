@@ -2,37 +2,37 @@ require 'rails_helper'
 require 'fileutils'
 require 'nokogiri'
 
-module API
-  module V1
-    RSpec.describe 'Sessions Controller Tests: ', type: 'request' do
-      before(:each) do
-        @user = create(:user)
-        @request.env['devise.mapping'] = Devise.mappings[:user]
-        @request.headers['Accept'] = 'application/vnd.api+json'
-        @request.headers['Content-Type'] = 'application/vnd.api+json'
-      end
+  RSpec.describe 'Sessions Controller Tests: ', type: 'request' do
+    include Warden::Test::Helpers
+    Warden.test_mode!
+    before(:each) do
+      setup_fixture_data
+      @user = create(:user)
+      byebug
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      @request.headers['Accept'] = 'application/vnd.api+json'
+      @request.headers['Content-Type'] = 'application/vnd.api+json'
+    end
 
-      it 'valid sign in' do
-        post :create, email: @user.email, password: @user.password
+    it 'valid sign in' do
+      post '/api/v1/sign_in', { email: @user.email, password: @user.password }
 
-        expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:success)
 
-        user = json(response)['user']
-        assert_not_nil user['authentication_token']
-      end
+      user = json(response)['user']
+      assert_not_nil user['authentication_token']
+    end
 
-      it 'invalid sign in' do
-        post :create, email: Faker::Internet.email, password: 'incorrect'
-        expect(response).to have_http_status(:unauthorized)
-      end
+    it 'invalid sign in' do
+      post '/api/v1/sign_in', { email: Faker::Internet.email, password: 'incorrect' }
+      expect(response).to have_http_status(:unauthorized)
+    end
 
-      it 'sign out' do
-        token = @user.authentication_token
-        @request.headers['X-API-TOKEN'] = token
-        delete :destroy, {}
+    it 'sign out' do
+      token = @user.authentication_token
+      @request.headers['X-API-TOKEN'] = token
+      delete :destroy, {}
 
-        assert_not_equal token, User.all.first.authentication_token
-      end
+      assert_not_equal token, User.all.first.authentication_token
     end
   end
-end

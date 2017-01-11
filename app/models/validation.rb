@@ -13,8 +13,8 @@ class Validation
 
   default_scope -> { order('qrda_type ASC, name ASC') }
 
-  scope :qrda_type, -> (qrda_type) { where qrda_type: qrda_type }
-  scope :measure_type, -> (measure_type) { where measure_type: measure_type }
+  scope :qrda_type, ->(qrda_type) { where qrda_type: qrda_type }
+  scope :measure_type, ->(measure_type) { where measure_type: measure_type }
 
   has_and_belongs_to_many :test_executions
   has_many                :documents

@@ -26,7 +26,6 @@ require 'database_cleaner'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # config.include FactoryGirl::Syntax::Methods
   # config.before(:each) do
   #   DatabaseCleaner.start
   # end
@@ -46,8 +45,9 @@ RSpec.configure do |config|
 
   # db_host = ENV['TEST_DB_HOST'] || 'localhost'
   #
-  # Mongoid.configure do
-  #   config.sessions = { default: { hosts: ["#{db_host}:27017"], database: 'cedar_test' } }
+  # Mongoid.configure do |c|
+  #   # config.sessions = { default: { hosts: ["#{db_host}:27017"], database: 'cedar_test' } }
+  #   c.master = Mongo::Connection.new('localhost', 270_17).db('cedar_test')
   # end
   #
   # MONGO_DB = Mongoid.default_session

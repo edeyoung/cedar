@@ -33,6 +33,7 @@ gem 'spring', group: :development
 
 # Cedar Additions
 # Mongo for our database
+gem 'mongo'
 gem 'mongoid', '~> 5.0.0'
 # Devise for user configuration
 gem 'devise'
@@ -60,17 +61,17 @@ gem 'rubyzip'
 gem 'sweet-alert-confirm'
 # Apipie for documentation
 gem 'apipie-rails', git: 'https://github.com/ottodog/apipie-rails.git'
-
+gem 'responders'
 # Roar rails for API field filtering and json-api standards
 # Must use master branch because of a json issue: https://github.com/apotonick/roar/issues/191
-gem 'roar', git: 'https://github.com/apotonick/roar.git'
-gem 'responders'
+# SLC commented the line below out on 12/17/16... It doesn't look like the PR was accepted but this seemed to
+#     fix an rvm issue
+# gem 'roar', git: 'https://github.com/apotonick/roar.git'
 gem 'roar-rails'
 
 group :development, :test do
-  # Rubocop for syntax checking and code cleanliness
-  gem 'rubocop'
   gem 'rspec-rails'
+  gem 'rubocop' # Rubocop for syntax checking and code cleanliness
   # Call 'byebug' anywhere in the code to stop execution and get a debug console
   gem 'byebug'
   # FactoryGirl for testing
@@ -85,18 +86,18 @@ group :test do
   # gem 'capybara-accessible'  --- this was causing testing errors. removing for now.
   gem 'selenium-webdriver', '2.48.0'
   # gem 'capybara-webkit'
-  gem 'headless'
-  gem 'mongoid-rspec'
-  gem 'guard-rspec'
+  # gem 'headless'
   gem 'axe-matchers'
+  gem 'guard-rspec'
   gem 'launchy'
+  gem 'mongoid-rspec'
+
   # Reset MongoDB after each test
   gem 'database_cleaner'
   gem 'rspec-mocks'
-  gem 'simplecov', require: false
   gem 'rubycritic', require: false
+  gem 'simplecov', require: false
 end
-
 group :production do
   gem 'unicorn-rails'
 end

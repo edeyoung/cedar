@@ -8,7 +8,7 @@ module API
 
       # Note to self: this is a link for a client calling the api
       link :self do
-        api_v1_measure_url(represented.cms_id)
+        api_v1_measure_url(represented)
       end
 
       property :name
