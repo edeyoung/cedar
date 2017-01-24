@@ -13,21 +13,21 @@ RSpec.describe API::V1::SessionsController, type: 'controller' do
   end
 
   it 'valid sign in' do
-    post :create, email: @user.email, password: @user.password
+    post :create, params: { email: @user.email, password: @user.password }
     data = JSON.parse(response.body)
-    expect( data["user"]["authentication_token"]).not_to be_empty
+    expect(data['user']['authentication_token']).not_to be_empty
   end
 
   it 'invalid sign in' do
-    post :create, email: @user.email, password: 'incorrect'
+    post :create, params: { email: @user.email, password: 'incorrect' }
     data = JSON.parse(response.body)
-    expect( data["success"]).to eq false
+    expect(data['success']).to eq false
   end
 
   it 'sign out' do
-    post :create, email: @user.email, password: @user.password
+    post :create, params: { email: @user.email, password: @user.password }
     data = JSON.parse(response.body)
-    expect( data["user"]["authentication_token"]).not_to be_empty
+    expect(data['user']['authentication_token']).not_to be_empty
     token = @user.authentication_token
     @request.headers['X-API-TOKEN'] = token
     delete :destroy
