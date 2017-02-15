@@ -46,7 +46,7 @@
                                 progress_tooltip: test_execution.results[:passed].to_s + ' out of ' + test_execution.results[:total].to_s + ' passed',
                                 progress_percent: 100*test_execution.results[:passed].to_i/test_execution.results[:total].to_i} %>
           <% end %>
-          <div class='list-group-item' data-name='<%= test_execution.name %>' data-date='<%= test_execution.updated_at %>'>
+          <div class='list-group-item' style='overflow:visible' data-name='<%= test_execution.name %>' data-date='<%= test_execution.updated_at %>'>
             <div class='item-row1'>
               <%= link_to test_execution_step_path(test_execution, test_execution.step.to_sym) do %>
                 <%= test_execution.name %>
