@@ -1,5 +1,21 @@
 module Cedar
   class Invalidator
+    @distinct_valid_measure_ids = [] # retrieve these as needed
+    @distinct_value_set_codes = [] # get this only when needed for an invalidation
+    @distinct_value_set_oids = HealthDataStandards::SVS::ValueSet.distinct('oid')
+
+    def self.parse_all_valid_measure_ids
+      hqmf = HealthDataStandards::CQM::Measure.distinct('hqmf_id')
+      hqmf_set = HealthDataStandards::CQM::Measure.distinct('hqmf_set_id')
+      hqmf + hqmf_set
+    end
+
+    def self.parse_value_set_codes
+      value_set_codes = []
+      HealthDataStandards::SVS::ValueSet.each { |v| v.concepts.each { |c| value_set_codes << c.code } }
+      value_set_codes
+    end
+
     # Grab the text and validation code, then send it to the naughty methods below
     def self.invalidate_qrda(doc)
       text = doc.qrda
@@ -24,13 +40,13 @@ module Cedar
     end
 
     def self.invalid_measure_id(doc)
+      @distinct_valid_measure_ids = self.parse_all_valid_measure_ids
       # Randomly select the id or setId to invalidate
       id_or_set_id = %w(id setId).sample
-
       id_to_invalidate = doc.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument ' + id_or_set_id)
       # Generate a guid that doesn't exist in the db and inject it
       bad_guid = SecureRandom.uuid.upcase
-      bad_guid = SecureRandom.uuid.upcase while ALL_VALID_MEASURE_IDS.include?(bad_guid)
+      bad_guid = SecureRandom.uuid.upcase while @distinct_valid_measure_ids.include?(bad_guid)
       id_or_set_id == 'id' ? id_to_invalidate.attributes['extension'].value = bad_guid : id_to_invalidate.attributes['root'].value = bad_guid
       doc.to_xml
     end
@@ -158,7 +174,8 @@ module Cedar
       valid_codes = []
       value_set.concepts.each { |vs| valid_codes << vs.code }
       valid_codes.uniq!
-      invalid_code = (ALL_VALUE_SET_CODES - valid_codes).sample
+      @distinct_value_set_codes = self.parse_value_set_codes unless @distinct_value_set_codes.count > 0
+      invalid_code = (@distinct_value_set_codes - valid_codes).sample
       # Inject the invalid code into the file and save it
       node_with_value_set.attributes['code'].value = invalid_code
       doc.to_xml
@@ -169,7 +186,7 @@ module Cedar
       # Pick a random value set in the file
       sample_value_set = doc.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.sample
       # Inject a value set that should not be used for that measure
-      sample_value_set.value = (ALL_VALUE_SET_OIDS - measure.oids).sample
+      sample_value_set.value = (@distinct_value_set_oids - measure.oids).sample
       doc.to_xml
     end
 

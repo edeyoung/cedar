@@ -6,6 +6,11 @@
 
 # Ignore bundler config.
 /.bundle
+/spec/fixtures/bundles/**
+/bundles/bundle-2-4.0/**/*.json
+/bundles/bundle-2-6.0/**/*.json
+/bundles/bundle-2015-alpha-20160224/**/*.json
+
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

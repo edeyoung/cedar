@@ -24,25 +24,15 @@ RSpec.describe 'Invalidator Tests: ' do
 
   it 'test_invalid_measure_id' do
     # Find all the valid measure ids
-    # valid_measure_ids = []
-    # TODO: Code below is not being used ... Either change invalidator to grab values from database or
-    # => Or make sure test file values match what is in db
-    # HealthDataStandards::CQM::Measure.all.to_a.each do |measure|
-    #   # puts 'measure: ' + measure
-    #   valid_measure_ids.push(measure.hqmf_id)
-    #   valid_measure_ids.push(measure.hqmf_set_id)
-    # end
-    # expect(valid_measure_ids).not_to be_empty
-
+    @distinct_valid_measure_ids = Cedar::Invalidator.parse_all_valid_measure_ids
     # Test the measure IDs to see if they are valid
     bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_measure_id(Nokogiri::XML(@cat_1_file)))
     invalid_measure_id =
       bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument id').attributes['extension'].value
     invalid_set_id =
       bad_file.at_css('templateId[root="2.16.840.1.113883.10.20.24.3.98"] ~ reference externalDocument setId').attributes['root'].value
-
-    expect(ALL_VALID_MEASURE_IDS.include?(invalid_measure_id) || ALL_VALID_MEASURE_IDS.include?(invalid_set_id)).to be true
-    expect(ALL_VALID_MEASURE_IDS.include?(invalid_measure_id) && ALL_VALID_MEASURE_IDS.include?(invalid_set_id)).to be false
+    expect(@distinct_valid_measure_ids.include?(invalid_measure_id) || @distinct_valid_measure_ids.include?(invalid_set_id)).to be true
+    expect(@distinct_valid_measure_ids.include?(invalid_measure_id) && @distinct_valid_measure_ids.include?(invalid_set_id)).to be false
   end
 
   it 'test_reporting_period' do
@@ -153,9 +143,9 @@ RSpec.describe 'Invalidator Tests: ' do
     rescue
       expect(measure).to_not be_nil
     end
-
     bad_file = Nokogiri::XML(Cedar::Invalidator.invalid_value_set(Nokogiri::XML(@cat_1_file), '8A4D92B2-397A-48D2-0139-7CC6B5B8011E'))
     nodes_with_value_set = bad_file.xpath('//@sdtc:valueSet', xmlns: 'urn:hl7-org:v3', sdtc: 'urn:hl7-org:sdtc').to_a.collect(&:parent)
+    # byebug
     valid_value_sets = %w(2.16.840.1.114222.4.11.3591
                           2.16.840.1.113883.3.117.1.7.1.424
                           2.16.840.1.113883.3.117.1.7.1.14
@@ -168,6 +158,7 @@ RSpec.describe 'Invalidator Tests: ' do
       invalid_value_sets += 1 unless valid_value_sets.include?(value_set)
     end
     expect(invalid_value_sets == 1).to be true
+
   end
 
   it 'test_value_set_without_code_system' do
