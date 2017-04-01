@@ -3,7 +3,7 @@ require 'fileutils'
 require 'nokogiri'
 # require 'rspec/expectations'
 
-RSpec.describe 'Documents "code Tests: ', type: 'controller' do
+RSpec.describe 'API: Documents "code Tests: ', type: 'controller' do
   include RSpec::Matchers
   include Devise::Test::ControllerHelpers
 

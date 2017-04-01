@@ -1,7 +1,7 @@
 require 'capybara/rails'
 require 'rails_helper'
 # require '../support/request_helper'
-require 'headless'
+# require 'headless'
 
 RSpec.describe 'home page test:', type: :feature do
   # include Devise::TestHelpers
