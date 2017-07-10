@@ -4,8 +4,7 @@
 # Update here after new bundle installed.
 # Add correct value for the new start date.
 BUNDLE_MAP = { '2016' => 1_388_534_400,
-               '2015' => 1_356_998_400,
-               '2014' => 1_325_376_000 }.freeze
+               '2015' => 1_356_998_400 }.freeze
 CV_POPULATION_KEYS = %w(IPP MSRPOPL MSRPOPLEX OBSERV).freeze
 REQUIRED_CV_POPULATION_KEYS = %w(IPP MSRPOPL OBSERV).freeze
 PROPORTION_POPULATION_KEYS = %w(IPP DENOM NUMER DENEX DENEXCEP).freeze
